@@ -5,7 +5,7 @@ Uses Visual Studio 2010 VSIX to generate a .Net MVC N-Layered site with built-in
 
 The main purpose is to facilitate MVC developers to create new web sites that use built-in best practices. 
 
-VSIX will guide through : 
+VSIX will guide through:
 
 1.- initialize Membership, Roles, Profiles and Logging databases. 
 
