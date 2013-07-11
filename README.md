@@ -14,9 +14,13 @@ VSIX will guide through :
 Once the application is created you will get an MVC site with:
 
 1.- WCF Authentication 
+
 2.- Authorization based on User/Roles
+
 3.- Administration zone with user management & logging viewer
+
 4.- User zone with language and jQuery theme management
+
 
 
 
