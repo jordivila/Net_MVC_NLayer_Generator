@@ -1,0 +1,69 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.BL</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.BL</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.BL.csproj" File="Template.BL.csproj" ReplaceParameters="true">
+      <Folder Name="AuthenticationServices" TargetFolderName="AuthenticationServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AuthenticationBL.cs">AuthenticationBL.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="BaseBL.cs">BaseBL.cs</ProjectItem>
+      <Folder Name="LoggingServices" TargetFolderName="LoggingServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingBL.cs">LoggingBL.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Mailing" TargetFolderName="Mailing">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MailingHelper.cs">MailingHelper.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipProfileServices" TargetFolderName="MembershipProfileServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProfileBL.cs">MembershipProfileBL.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipRoleServices" TargetFolderName="MembershipRoleServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipRoleBL.cs">MembershipRoleBL.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipServices" TargetFolderName="MembershipServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipBL.cs">MembershipBL.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="SyndicationServices" TargetFolderName="SyndicationServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationBL.cs">SyndicationBL.cs</ProjectItem>
+      </Folder>
+      <Folder Name="TockenPersistenceServices" TargetFolderName="TockenPersistenceServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistenceBL.cs">TokenPersistenceBL.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Data" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging.Database" version="5.0.505.0" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+    </packages>
+  </WizardData>
+</VSTemplate>

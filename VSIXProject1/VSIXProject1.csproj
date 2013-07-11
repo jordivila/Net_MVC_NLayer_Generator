@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{5EBB22C5-C75A-498F-BE4F-7E7C17BE6985}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VSIXProject1</RootNamespace>
+    <AssemblyName>VSIXProject1</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.pdb" />
+    <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.xml" />
+    <Content Include="packages\Moq.4.0.10827\lib\NET40\Moq.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Moq.4.0.10827\lib\NET40\Moq.pdb" />
+    <Content Include="packages\Moq.4.0.10827\lib\NET40\Moq.xml" />
+    <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Castle.Core.dll" />
+    <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Moq.Silverlight.dll" />
+    <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Moq.Silverlight.pdb" />
+    <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Moq.Silverlight.xml" />
+    <Content Include="packages\Moq.4.0.10827\License.txt" />
+    <Content Include="packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\WebGrease.1.1.0\lib\WebGrease.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\WebGrease.1.1.0\tools\WG.exe" />
+    <None Include="packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\tools\Utils.psm1" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nuspec" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nuspec" />
+    <Content Include="packages\Moq.4.0.10827\Moq.4.0.10827.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Moq.4.0.10827\Moq.4.0.10827.nuspec" />
+    <None Include="packages\Moq.4.0.10827\Moq.chm" />
+    <None Include="packages\Unity.2.1.505.2\tools\install.ps1" />
+    <None Include="packages\Unity.2.1.505.2\tools\Utils.psm1" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.2.1.505.2\Unity.2.1.505.2.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Unity.2.1.505.2\Unity.2.1.505.2.nuspec" />
+    <None Include="packages\Unity.Interception.2.1.505.2\tools\install.ps1" />
+    <None Include="packages\Unity.Interception.2.1.505.2\tools\Utils.psm1" />
+    <Content Include="packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nuspec" />
+    <Content Include="packages\WebGrease.1.1.0\WebGrease.1.1.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\WebGrease.1.1.0\WebGrease.1.1.0.nuspec" />
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectTemplate1\ProjectTemplate1.csproj">
+      <Project>{C6FF170E-1B92-470C-A829-1FA834899A76}</Project>
+      <Name>ProjectTemplate1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <TemplateType>Project</TemplateType>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+    </ProjectReference>
+    <ProjectReference Include="..\Wizard\Wizard.csproj">
+      <Project>{A334D4A2-9D04-4C52-8164-59ED4B8EB800}</Project>
+      <Name>Wizard</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+      <VSIXSubPath>Web</VSIXSubPath>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.pdb" />
+    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.XML" />
+    <Content Include="packages\CommonServiceLocator.1.0\lib\SL30\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="packages\CommonServiceLocator.1.0\lib\SL30\Microsoft.Practices.ServiceLocation.XML" />
+    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Caching.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Caching.xml" />
+    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Caching.Silverlight.dll" />
+    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Caching.Silverlight.xml" />
+    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Common.Silverlight.dll" />
+    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Common.Silverlight.xml" />
+    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
+    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.xml" />
+    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Logging.Silverlight.dll" />
+    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Logging.Silverlight.XML" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.Database.xml" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\scripts\LoggingDatabase.sql" />
+    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.xml" />
+    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\Unity.2.1.505.2\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll" />
+    <Content Include="packages\Unity.2.1.505.2\lib\SL30\Microsoft.Practices.Unity.Silverlight.xml" />
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.xml" />
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.xml" />
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\SL40\Microsoft.Practices.Unity.Interception.Silverlight.dll" />
+    <Content Include="packages\Unity.Interception.2.1.505.2\lib\SL40\Microsoft.Practices.Unity.Interception.Silverlight.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="EnvDTE">
+      <Guid>{80CC9F66-E7D8-4DDD-85B6-D9E6CD0E93E2}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EnvDTE80">
+      <Guid>{1A31287A-4D7D-413E-8E32-3B374931BD89}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EnvDTE90">
+      <Guid>{2CE2370E-D744-4936-A090-3FFFE667B0E1}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.VisualStudio.CommandBars">
+      <Guid>{1CBA492E-7263-47BB-87FE-639000619B15}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

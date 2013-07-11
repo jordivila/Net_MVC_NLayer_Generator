@@ -1,0 +1,25 @@
+﻿@model $customNamespace$.UI.Web.Areas.UserAccount.Models.AccountActivationClientModel
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+
+}
+@section InlineStyles{
+
+}
+
+@{
+        if(this.Model.Result.Data.User!=null)
+        {
+            <text>
+                <h3>User account activated</h3>
+            </text>
+        }
+        else
+        {
+            <text>
+                <h3>User account not found.</h3>
+            </text>
+        }
+    }

@@ -1,0 +1,27 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+@using System.Text;
+
+@{
+    IEnumerable<SelectListItem> listItems = (IEnumerable<SelectListItem>)ViewData["listItems"];
+    Position position = (Position)ViewData["position"];
+    Func<MvcHtmlString> createRadioButtons = delegate()
+    {
+        StringBuilder htmlResult = new StringBuilder();
+        foreach (SelectListItem item in listItems)
+        {
+            string id = string.Format("{0}_{1}", ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty),item.Value);
+
+            htmlResult.Append(string.Format("<div class='{0}'>", position == Position.Horizontal ? "ui-widget-radioHorizontal" : "ui-widget-radioVertical"));
+            htmlResult.Append(string.Format("<div>{0}</div>", Html.Label(string.Empty, item.Text, new { For = id })));
+            htmlResult.Append(Html.RadioButton(string.Empty,
+                                                item.Value,
+                                                item.Selected,
+                                                new { id = id }));
+            htmlResult.Append("</div>");
+        }
+        return MvcHtmlString.Create(htmlResult.ToString());
+    };
+
+    @createRadioButtons()
+}

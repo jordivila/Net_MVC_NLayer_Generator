@@ -1,0 +1,44 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+@model $customNamespace$.UI.Web.Areas.Test.Models.TestViewModel
+
+
+@using (MvcForm form = Html.BeginWidgetForm(new { id = "widgetTreeListSortable" }))
+{
+    using (MvcWidgetBox box = Html.BeginWidgetBox(false, true, true, string.Empty, null))
+    {
+        using (MvcWidgetBoxHeader header = Html.BeginWidgetBoxHeader())
+        {
+            <text>Demo Widget Tree List Sortable</text>
+        }
+        using (MvcWidgetBoxContent content = Html.BeginWidgetBoxContent())
+        { 
+            <text>
+                <div id="renderResult"></div>
+                <br />
+                <button type="button" onclick="jQuery('#treeListSortable').treeListSortable('destroy');">Destroy</button>
+                <button type="button" onclick="jQuery('#treeListSortable').treeListSortable();">Create</button>
+                <button type="button" onclick="jQuery('#treeListSortable').treeListSortable('selected', jQuery('#treeListSortable').find('li:nth-child(1):first'));" >Select First</button>
+                <button type="button" onclick="jQuery('#treeListSortable').treeListSortable('openNode', jQuery('#treeListSortable').find('li'));" >Expand All</button>
+                <button type="button" onclick="jQuery('#treeListSortable').treeListSortable('closeNode', jQuery('#treeListSortable').find('li'));" >Collapse All</button>
+                <br /><br />
+                <ul id="treeListSortable">
+                    <li>Node 1
+                    <ul>
+                        <li>Node 1.1</li>
+                        <li>Node 1.2</li>
+                        <li>Node 1.3</li>
+                    </ul>
+                    </li>
+                    <li>Node 2
+                    <ul>
+                        <li>Node 2.1</li>
+                        <li>Node 2.2</li>
+                        <li>Node 2.3</li>
+                    </ul>
+                    </li>
+                </ul>        
+            </text>
+        }
+    }
+}

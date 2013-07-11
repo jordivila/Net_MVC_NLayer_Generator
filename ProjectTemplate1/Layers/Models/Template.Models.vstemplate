@@ -1,0 +1,164 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.Models</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.Models</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Models.csproj" File="Template.Models.csproj" ReplaceParameters="true">
+      <Folder Name="Authentication" TargetFolderName="Authentication">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderAuthenticationInterface.cs">ProviderAuthenticationInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyAuthentication.cs">ProviderProxyAuthentication.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Collections" TargetFolderName="Collections">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CollectionHelpers.cs">CollectionHelpers.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Common" TargetFolderName="Common">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseDataCommonResults.cs">BaseDataCommonResults.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseDataResult.cs">BaseDataResult.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseModel.cs">BaseModel.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Configuration" TargetFolderName="Configuration">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationConfiguration.cs">ApplicationConfiguration.cs</ProjectItem>
+        <Folder Name="ConfigSections" TargetFolderName="ConfigSections">
+          <Folder Name="ClientResources" TargetFolderName="ClientResources">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ClientResourcesConfiguration.cs">ClientResourcesConfiguration.cs</ProjectItem>
+          </Folder>
+          <Folder Name="DomainInfo" TargetFolderName="DomainInfo">
+            <ProjectItem ReplaceParameters="true" TargetFileName="DomainInfoConfiguration.cs">DomainInfoConfiguration.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Mailing" TargetFolderName="Mailing">
+            <ProjectItem ReplaceParameters="true" TargetFileName="MailingConfiguration.cs">MailingConfiguration.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Unity" TargetFolderName="Unity">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UnityConfiguration.cs">UnityConfiguration.cs</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="ConnectionProviders" TargetFolderName="ConnectionProviders">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionProvidersConfig.cs">ConnectionProvidersConfig.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Cryptography" TargetFolderName="Cryptography">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CryptoHelper.cs">CryptoHelper.cs</ProjectItem>
+      </Folder>
+      <Folder Name="DataAnnotationsAttributes" TargetFolderName="DataAnnotationsAttributes">
+        <ProjectItem ReplaceParameters="true" TargetFileName="aa_Readme.txt">aa_Readme.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DateAttribute.cs">DateAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DateGreaterThanAttribute.cs">DateGreaterThanAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DigitsAttribute.cs">DigitsAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DisplayAttribute.cs">DisplayAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EmailAttribute.cs">EmailAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EqualToAttribute.cs">EqualToAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FileExtensionsAttribute.cs">FileExtensionsAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IntegerAttribute.cs">IntegerAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MaxAttribute.cs">MaxAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MinAttribute.cs">MinAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="NumericAttribute.cs">NumericAttribute.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UrlAttribute.cs">UrlAttribute.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Enumerations" TargetFolderName="Enumerations">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnumExtensions.cs">EnumExtensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Enums.cs">Enums.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Globalization" TargetFolderName="Globalization">
+        <ProjectItem ReplaceParameters="true" TargetFileName="GlobalizationHelper.cs">GlobalizationHelper.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Logging" TargetFolderName="Logging">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerProxiedWCF.cs">CustomTraceListenerProxiedWCF.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerRollingXml.cs">CustomTraceListenerRollingXml.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingHelper.cs">LoggingHelper.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogMessage.cs">LogMessage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogMessageFilter.cs">LogMessageFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderLoggingInterface.cs">ProviderLoggingInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyLogging.cs">ProviderProxyLogging.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Membership" TargetFolderName="Membership">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataFilterUserList.cs">DataFilterUserList.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultProviderSettings.cs">DataResultProviderSettings.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUser.cs">DataResultUser.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserActivate.cs">DataResultUserActivate.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserCantAccess.cs">DataResultUserCantAccess.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserCreateResult.cs">DataResultUserCreateResult.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserList.cs">DataResultUserList.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserSearch.cs">DataResultUserSearch.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderMembershipInterface.cs">ProviderMembershipInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderMembershipSettings.cs">ProviderMembershipSettings.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyMembership.cs">ProviderProxyMembership.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Profile" TargetFolderName="Profile">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Profile.cs">Profile.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProfileInterface.cs">ProviderProfileInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyProfiles.cs">ProviderProxyProfiles.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ProxyProviders" TargetFolderName="ProxyProviders">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyBase.cs">ProviderProxyBase.cs</ProjectItem>
+      </Folder>
+      <Folder Name="RepositoryPattern" TargetFolderName="RepositoryPattern">
+        <ProjectItem ReplaceParameters="true" TargetFileName="RepositoryPattern.cs">RepositoryPattern.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Roles" TargetFolderName="Roles">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyRoleManager.cs">ProviderProxyRoleManager.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyRoles.cs">ProviderProxyRoles.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderRoleManagerInterface.cs">ProviderRoleManagerInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderRolesInterface.cs">ProviderRolesInterface.cs</ProjectItem>
+      </Folder>
+      <Folder Name="SmtpModels" TargetFolderName="SmtpModels">
+        <Folder Name="Contracts" TargetFolderName="Contracts" />
+        <ProjectItem ReplaceParameters="true" TargetFileName="SmtpClientProxy.cs">SmtpClientProxy.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Syndication" TargetFolderName="Syndication">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataFilterSyndication.cs">DataFilterSyndication.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxySyndication.cs">ProviderProxySyndication.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderSyndicationInterface.cs">ProviderSyndicationInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationEqualityComparer.cs">SyndicationEqualityComparer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationHelpers.cs">SyndicationHelpers.cs</ProjectItem>
+      </Folder>
+      <Folder Name="TokenPersistence" TargetFolderName="TokenPersistence">
+        <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistence.cs">TokenPersistence.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Unity" TargetFolderName="Unity">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UnityHelper.cs">UnityHelper.cs</ProjectItem>
+      </Folder>
+      <Folder Name="UserRequestModel" TargetFolderName="UserRequestModel">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserRequest.cs">UserRequest.cs</ProjectItem>
+      </Folder>
+      <Folder Name="UserSessionPersistence" TargetFolderName="UserSessionPersistence">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserSessionHelper.cs">UserSessionHelper.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging.Database" version="5.0.505.0" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+    </packages>
+  </WizardData>
+  
+</VSTemplate>

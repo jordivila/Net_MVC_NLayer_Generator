@@ -1,0 +1,58 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html
+@model $customNamespace$.UI.Web.Models.baseViewModel
+               
+<div class="ui-mvcMembership-userDetailsPage">
+
+	<table class="ui-mvcMembership-userDetailsPage-TableContent" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="ui-mvcMembership-userDetailsPage-account">
+
+                <div class="ui-detailsBox">
+                    <div class="ui-widget-header ui-widget-content  ui-corner-top">
+                        @$customNamespace$.Resources.UserAdministration.UserAdminTexts.Account
+                    </div>
+                    <div class="ui-widget-contentBody ui-widget-content ">
+                        <ul class="ui-mvcMembership-userDetailsPage-accountContent">
+                            <li><div class="ui-field-name">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.UserName</div><label class="ui-model-userName"></label></li>
+							<li><div class="ui-field-name">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.LastActive</div><label class="ui-model-lastActive"></label></li>
+							<li><div class="ui-field-name">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.LastLogin</div><label class="ui-model-lastLogin"></label></li>
+                            <li><div class="ui-field-name">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.Created</div><label class="ui-model-created"></label></li>
+						</ul>
+                    </div>
+                    <div class="ui-widget-contentFooter ui-widget-content  ui-corner-bottom ui-mvcMembership-userDetailsPage-buttonsBox">
+						<button class="ui-mvcMembership-btnApprove" type="button">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.ApproveAccount</button>
+						<button class="ui-mvcMembership-btnUnApprove" type="button">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.UnApproveAccount</button>
+						<button class="ui-mvcMembership-btnDelete" type="button">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.DeleteAccount</button>
+                    </div>
+                </div>
+
+			</td>
+            <td class="ui-mvcMembership-userDetailsPage-colSeparate"></td>
+			<td class="ui-mvcMembership-userDetailsPage-emailComments">
+
+                <div class="ui-detailsBox">
+                    <div class="ui-widget-header ui-corner-top ui-widget-content">
+                        @$customNamespace$.Resources.UserAdministration.UserAdminTexts.EmailAndComments
+                    </div>
+                    <div  class="ui-widget-contentBody ui-widget-content">
+						<ul class="ui-mvcMembership-userDetailsPage-emailComments-content">
+							<li>
+                                <div class="ui-field-name">
+                                    <label for="comments">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.Comments</label>
+                                </div>
+                                <div class="ui-field-comments">
+                                    <textarea class="ui-model-comments" rows="" cols=""></textarea>
+                                </div>
+                            </li>
+						</ul>
+                    </div>
+                    <div class="ui-widget-contentFooter ui-mvcMembership-userDetailsPage-buttonsBox ui-widget-content  ui-corner-bottom">
+                        <button type="submit" class="ui-mvcMembership-btnSave">@$customNamespace$.Resources.UserAdministration.UserAdminTexts.SaveComments</button>
+                    </div>
+                </div>
+
+
+			</td>
+		</tr>
+	</table>
+</div>

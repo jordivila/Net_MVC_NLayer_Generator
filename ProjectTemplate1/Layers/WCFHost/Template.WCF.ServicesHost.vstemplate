@@ -1,0 +1,53 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.WCF.ServicesHost</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.WCF.ServicesHost</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.WCF.ServicesHost.csproj" File="Template.WCF.ServicesHost.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="app.config">app.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Host.cs">Host.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="HostService.cs">HostService.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="HostService.designer.cs">HostService.designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="postBuild.bat">postBuild.bat</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="preBuild.bat">preBuild.bat</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.cs">ProjectInstaller.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.designer.cs">ProjectInstaller.designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.resx">ProjectInstaller.resx</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Data" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging.Database" version="5.0.505.0" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+    </packages>
+  </WizardData>
+</VSTemplate>

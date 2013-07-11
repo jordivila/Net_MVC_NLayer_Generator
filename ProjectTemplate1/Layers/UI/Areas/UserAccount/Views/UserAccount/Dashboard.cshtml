@@ -1,0 +1,77 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAdministration;
+@using $customNamespace$.UI.Web.Areas.Error;
+@using $customNamespace$.Models.Profile;
+@using $customNamespace$.UI.Web.Areas.UserAccount.Models;
+@model DashBoardViewModel
+
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+    
+}
+
+@section InlineStyles{
+    <style type="text/css">
+        .ui-dashboard-box { width:20em; float:left; margin: 1em 1em 1em 1em;}
+        .ui-dashboard-box li { padding:1em 1em 1em 1em; }
+    </style>
+}
+
+@{
+    using(MvcForm form = Html.BeginWidgetForm())
+    {
+        using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-siteAdminBox" }))    
+        {
+            using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+            { 
+                @$customNamespace$.Resources.General.GeneralTexts.SiteAdmin
+            }
+            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+            {
+                <text>
+                    <ul>
+                    @{
+                        foreach (var item in this.Model.SiteAdminMenu.MenuItems)
+                        {
+                            <text>
+                                <li><a href="@item.DataAction">@item.Description</a></li>
+                            </text>
+                        }    
+                    }
+                    </ul>
+                </text>
+            }
+        }
+    }
+}
+
+
+@{
+    using (MvcForm form = Html.BeginWidgetForm())
+    {
+        using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-userPofile" }))    
+        {
+            using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+            { 
+                @$customNamespace$.Resources.Account.AccountResources.UserProfile
+            }
+            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+            {
+                <text>
+                    <ul>
+                    @{
+                        foreach (var item in this.Model.ProfileMenu.MenuItems)
+                        {
+                            <text>
+                                <li><a href="@item.DataAction">@item.Description</a></li>
+                            </text>
+                        }    
+                    }
+                    </ul>
+                </text>
+            }
+        }
+    }
+}

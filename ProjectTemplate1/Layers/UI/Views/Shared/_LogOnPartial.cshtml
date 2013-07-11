@@ -1,0 +1,17 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@model $customNamespace$.UI.Web.Models.baseViewModel
+
+@{
+    if (this.Model.BaseViewModelInfo.IsUserIntendedController)
+    {
+        if (this.Model.BaseViewModelInfo.UserIsLoggedIn)
+        {
+            @Html.LogOffButton()
+        }
+        else
+        {
+            @Html.LogOnButton()
+        }
+    }
+}
+

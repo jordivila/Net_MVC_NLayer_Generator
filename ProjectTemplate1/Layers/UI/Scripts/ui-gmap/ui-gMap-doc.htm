@@ -1,0 +1,370 @@
+﻿<h3>jQuery ui-Gmap Widget</h3>
+<br />
+
+This widget is the first one of a serie intended to be lightweight widgets to use among google maps API reference.<br /><br />
+
+<div id="overview" class="ui-widgetDocSection">
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#theming">Theming</a></li>
+    </ul>    
+    <h2>Overview</h2>
+    jQuery UI widget for creating themable google maps direction service utility. <br />
+    Use this widget for computing directions between two places by specifying location of origin, destination, preferred unit system and 
+    a type of routing.<br />
+    
+    The widget definition includes some english literals. These literals have been defined in the same file so that you can use/change them easily.<br />
+    <pre>
+        <code>
+var uigMapDirectionsTxt = {
+    uiTitleBox: "Get Directions"
+    , uiFrom: "From"
+    , uiTo: "To"
+    , uiByCar: "By Car"
+    , uiByWalk: "Walking"
+    , uiBicycling: "Bicycling"
+    , uiUnitImperial: "Imperial"
+    , uiUnitMetric: "Metric"
+    , uiPrint: "Print"
+    , uiClear: "Clear"
+    , uiGo: "Go"
+    , uiExplain: 'Use this service for computing directions between two places ...'
+};
+        </code>
+    </pre>
+
+    <h3>Dependencies:</h3>
+    <a href="http://maps.google.com/maps/api/js?language=en&sensor=false">Google Maps Api v3</a><br />
+    ui.core.js<br />
+    ui.widget.js<br />
+    <br />
+</div>
+<div id="options" class="ui-widgetDocSection">
+    <h2>Options</h2>
+    <ul>
+        <li>
+            <h3><a href="#option-map">map</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>google.maps.Map</dd>
+            </dl>
+            <div>
+                <p>Required <code>google.maps.Map</code> object reference. </p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with the <code>map</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ map: urMap });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>map</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var oGoogleMap = jQuery('.selector').gMapDirections('option', 'map');
+//setter
+jQuery('.selector').gMapDirections('option', 'map', googleMapObject);
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>    
+        <li>
+            <h3><a href="#option-draggable">draggable</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>boolean</dd>
+            </dl>
+            <dl>
+              <dt>Default:</dt>
+                <dd>True</dd>
+            </dl>
+            <div>
+                <p>Adds draggable interaction to widget's element.</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with the <code>draggable</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ draggable: false });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>draggable</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var isDraggable = jQuery('.selector').gMapDirections('option', 'draggable');
+//setter
+jQuery('.selector').gMapDirections('option', 'draggable', 'false');
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>        
+        <li>
+            <h3><a href="#option-draggable">resizable</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>boolean</dd>
+            </dl>
+            <dl>
+              <dt>Default:</dt>
+                <dd>True</dd>
+            </dl>
+            <div>
+                <p>Adds resizable interaction to widget's element.</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with the <code>resizable</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ resizable: false });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>resizable</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var isResizable = jQuery('.selector').gMapDirections('option', 'resizable');
+//setter
+jQuery('.selector').gMapDirections('option', 'resizable', 'false');
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>                    
+        <li>
+            <h3><a href="#option-opacity">opacity</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>number</dd>
+            </dl>
+            <dl>
+              <dt>Default:</dt>
+                <dd>0.8</dd>
+            </dl>
+            <div>
+                <p>Apply fadeTo() method to widget's element.</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with the <code>opacity</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ opacity: 0.4 });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>opacity</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var numOpacity = jQuery('.selector').gMapDirections('option', 'opacity');
+//setter
+jQuery('.selector').gMapDirections('option', 'opacity', '0.4');
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>      
+        <li>
+            <h3><a href="#option-width">width</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>number</dd>
+            </dl>
+            <dl>
+              <dt>Default:</dt>
+                <dd>300</dd>
+            </dl>
+            <div>
+                <p>Apply width in pixels to widget's element.</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with <code>width</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ width: 350 });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>width</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var width = jQuery('.selector').gMapDirections('option', 'width');
+//setter
+jQuery('.selector').gMapDirections('option', 'width', '350');
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>       
+        <li>
+            <h3><a href="#option-height">height</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>number</dd>
+            </dl>
+            <dl>
+              <dt>Default:</dt>
+                <dd>250</dd>
+            </dl>
+            <div>
+                <p>Apply height in pixels to widget's element.</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with <code>height</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ height: 350 });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>height</code> option, after init.
+                    </dt>
+                    <dd>
+                <pre><code>
+//getter
+var height = jQuery('.selector').gMapDirections('option', 'height');
+//setter
+jQuery('.selector').gMapDirections('option', 'height', '350');
+                </code></pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>             
+       <li>
+            <h3><a href="#option-uiTemplate">uiTemplate</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>string</dd>
+            </dl>
+            <div>
+                <p>
+                    In case default template does not meet your spectations you can change it by passing new template in options object.
+                    <br /> 
+                    Just keep in mind there are some html objects needed for the widget:
+                    <ul>
+                        <li><b>div.ui-gMapDirections-buttons</b>: buttons container</li>
+                        <li><b>button.ui-widget-dirGo</b>: button needed for triggering search service</li>
+                        <li><b>button.ui-widget-clear</b>: button needed to clear previous search results</li>
+                        <li><b>button.ui-widget-print</b>:button needed to print previous results</li>
+                        <li></li>
+                        <li><b>div.ui-gMapDirections-closeHandler</b></li>
+                        <li><b>div.ui-gMapDirections-info</b>: search service result container</li>
+                        <li><b>div.ui-gMapDirections-dragHandler</b></li>
+                        <li></li>
+                        <li><b>input.ui-gMapDirections-from</b></li>
+                        <li><b>input.ui-gMapDirections-to</b></li>
+                        <li></li>
+                        <li><b>select.ui-gMapDirections-travelMode</b></li>
+                        <li><b>select.ui-gMapDirections-unit</b></li>
+                    </ul>
+                </p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize the widget with <code>height</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').gMapDirections({ uiTemplate: function(){ return "yourHtmlCode";} });</code></pre></dd>
+                </dl>
+            </div>
+        </li>                                       
+    </ul>
+</div>
+<div id="events" class="ui-widgetDocSection">
+    <h2>Events</h2>
+    <ul>
+        <li>
+            <h3><a href="#event-close">close</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>close</dd>
+            </dl>
+            <div>
+                <p>This event is triggered when the user clicks the close handler</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl class="event-examples-list">
+                    <dt>
+                        Supply a callback function to handle the <code>onSelect</code> event as an init option.
+                        </dt>
+                        <dd>
+                        <pre><code>jQuery('.selector').gMapDirections({ close: function(e, ui) { ... }});</code></pre>
+                        </dd>
+                        <dt>
+                        Bind to the <code>close</code> event by type: <code>gMapDirectionsclose</code>.
+                        </dt>
+                        <dd>
+                        <pre><code>jQuery('.selector').bind('gMapDirectionsclose', function(event, ui) {...});</code></pre>
+                        </dd>
+                    </dl>
+            </div>
+        </li>    
+    </ul>
+</div>
+<div id="methods" class="ui-widgetDocSection">
+    <h2>Methods</h2>
+    <ul>
+        <li>
+            <h3><a href="#method-destroy">destroy</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.gMapDirections('destroy')</dd>
+            </dl>
+            <div>
+                <p>Remove the gMapDirections functionality completely. This will return the element back to its pre-init state.</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="theming" class="ui-widgetDocSection">
+    <h2 class="top-header">Theming</h2>
+    <p>
+        This widget uses the jQuery UI CSS Framework to style its look and feel. 
+        Use the ThemeRoller tool to create and download custom themes that are easy to build and maintain.
+    </p>
+    <p>
+        If a deeper level of customization is needed, there are widget-specific classes referenced within 
+        the ui-gMapDirections.css stylesheet that can be modified. These classes are shown below.
+    </p>
+    <h3>Sample markup with jQuery UI CSS Framework classes</h3>
+        <pre>
+            <code>
+.ui-gMapDirections { padding:5px;overflow:hidden;}
+.ui-gMapDirections .ui-gMapDirections-dragHandler { height:20px;padding:5px 0px 0px 10px; position:relative;}
+.ui-gMapDirections .ui-gMapDirections-closeHandler { cursor:pointer; width:16px;margin:-2px 0px 0px -20px;left:100%;top:5px;position:absolute; }
+.ui-gMapDirections .ui-gMapDirections-inputs { margin:5px 5px 0px 5px;  padding:5px 5px 5px 5px;}
+.ui-gMapDirections .ui-gMapDirections-inputs ul {  list-style-type: none;  margin: 0px 0px 10px 0px;  padding: 0;}
+.ui-gMapDirections .ui-gMapDirections-inputs ul .ui-gMapDirections-label {  font-weight: bold;  padding-right: 3px;  text-align: right;  width: 40px;  float:left;}
+.ui-gMapDirections .ui-gMapDirections-inputs li input, .ui-gMapDirections .ui-gMapDirections-inputs li select {  width: 70px;}
+.ui-gMapDirections .ui-gMapDirections-inputs input[type=button] {    margin:0px 0px 0px 110px;}
+.ui-gMapDirections .ui-gMapDirections-info {margin:5px 5px 0px 5px;  padding:5px 5px 5px 5px;overflow:auto;position:relative;height:90px;}
+.ui-gMapDirections .ui-gMapDirections-info .ui-gMapDirections table {  width: 100%;}
+.ui-gMapDirections .ui-gMapDirections-buttons {text-align:right;padding:5px 5px 0px 5px;margin:0px 0px 0px 0px;}
+.ui-gMapDirections .ui-gMapDirections-buttons button{margin:0px 0px 0px 5px;}
+.ui-gMapDirections .ui-gMap-iPrint {width:0px;height:0px;position:absolute;left:2000px;}
+            </code>
+        </pre>
+</div>

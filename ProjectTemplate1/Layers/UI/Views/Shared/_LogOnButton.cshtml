@@ -1,0 +1,18 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+
+@model $customNamespace$.UI.Web.Models.baseViewModel
+           
+
+<div class="ui-login-UserInfo">
+	<ul class="ui-login-UserInfoBox ">
+        <li>
+            @Html.Button(@$customNamespace$.Resources.Account.AccountResources.SignIn,
+                                    jQueryHelpers.Icon.ui_icon_person,
+                                    ButtonType.Button,
+                                    new {
+                                        onclick = string.Format("window.location.href = '{0}'", Url.Account_LogOn())
+                                    })
+        </li>
+	</ul>
+</div>

@@ -1,0 +1,132 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models;
+@using $customNamespace$.Models.Enumerations;
+@using $customNamespace$.Models.Common;
+@using System.Linq;
+@using System.Linq.Expressions;
+
+@{
+    Func<int, int, bool, string, IDataFilter, MvcHtmlString> buildPage = delegate(int page, int currentPage, bool isNavigationItem, string text, IDataFilter dataFilterTemp)
+    {
+        Dictionary<string, object> attributes = new Dictionary<string, object>();
+        attributes.Add("class", currentPage == page && !isNavigationItem ? "ui-state-highlight" : "ui-state-default");
+        
+        dataFilterTemp.Page = page;
+
+        return MvcHtmlString.Create(
+                            string.Format("<li><form method='post'>{0}{1}{2}</form></li>"
+                                            , string.Format("<input type='hidden'  name='{1}' value=\"{0}\" />", HttpUtility.HtmlEncode(((baseModel)dataFilterTemp).SerializeToJson()), ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldFilterSerializedKey))
+                                            , string.Format("<input type='hidden'  name='{1}' value='{0}' />", ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldPaginationEventKey), ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldEventKey))
+                                            , Html.Button(text,
+                                                        jQueryHelpers.Icon.None,
+                                                        ButtonType.Submit,
+                                                        attributes)));
+    };
+
+    Func<IDataFilter, MvcHtmlString> buildPageSizeSelector = delegate(IDataFilter dataFilterTemp)
+    {
+        Func<Enum, SelectListItem> funcTransformItem = (Enum item) => new SelectListItem() { Text = (Convert.ToInt32(item)).ToString(), Value = (Convert.ToInt32(item)).ToString(), Selected = (Convert.ToInt32(item)) == dataFilterTemp.PageSize };
+        List<SelectListItem> pageSizeItems = PageSizesAvailable.RowsPerPage10.ToSelectList(typeof(PageSizesAvailable), funcTransformItem).ToList();
+        Dictionary<string, object> attributesPageSize = new Dictionary<string, object>();
+        attributesPageSize.Add("onchange", "this.form.submit()");
+        attributesPageSize.Add("class", "ui-widget-content ui-corner-all");
+        
+
+        return MvcHtmlString.Create(
+                            string.Format("{0}{1}{2}"
+                                                    , string.Format("<input type='hidden' name='{1}' value=\"{0}\" />", HttpUtility.HtmlEncode(((baseModel)dataFilterTemp).SerializeToJson()), ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldFilterSerializedKey))
+                                                    , string.Format("<input type='hidden' name='{1}' value='{0}' />", ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldPageSizeEventKey), ((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldEventKey))
+                                                    , Html.DropDownList(((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldPageSizeKey), pageSizeItems, attributesPageSize)
+                                                    ));
+    };
+    
+    
+    Func<int, int, int, int> getStartPage = delegate(int nPagesInPaginators, int totalPages, int currentPage)
+    {
+        int startPage = (int)currentPage > 0 ?
+                                                            (int)currentPage > (nPagesInPaginators / 2) ? (int)(((int)currentPage + 1) - Math.Ceiling((decimal)(nPagesInPaginators / 2))) : 1
+                                                            :
+                                                            1;
+        if ((startPage + nPagesInPaginators) > totalPages)
+        {
+            startPage = totalPages - nPagesInPaginators;
+        }
+
+        if (startPage < 1)
+        {
+            startPage = 1;
+        }
+
+        return startPage;
+    };
+
+    Func<int, int, int, int> getEndPage = delegate(int nPagesInPaginators, int totalPages, int startPage)
+    {
+        int endPage = startPage + nPagesInPaginators;
+        endPage = endPage > totalPages ? totalPages : endPage;
+        return endPage;
+    };
+
+    Func<int?, int> getCurrentPage = delegate(int? currentPage)
+    {
+        return currentPage == null ? 0 : (int)currentPage;
+    };
+
+
+
+    IPaginated dataPaginated = (IPaginated)ViewData["dataPaginated"];
+    IDataFilter dataFilter = (IDataFilter)ViewData["dataFilter"];
+    
+    
+    if (dataFilter.GetType().BaseType != typeof(baseModel))
+    {
+        throw new Exception(string.Format("IDataFilter must inherit {0}", typeof(baseModel).FullName));
+    }
+
+    int? Page = dataFilter.Page;
+    int PageSize = dataFilter.PageSize;
+    int TotalPages = dataPaginated.TotalPages;
+    int TotalRows = dataPaginated.TotalRows;
+
+    var nPagesInPaginator = 4;    // Must be nPagerItems % 2 == 0
+    var start = getStartPage(nPagesInPaginator, TotalPages, getCurrentPage(Page));
+    var end = getEndPage(nPagesInPaginator, TotalPages, start);
+
+    <text>
+        <div class='ui-widgetGrid-pager-Info'>
+            <table>
+                <tr>
+                    <td class='ui-widgetGrid-pager-showPages'>
+                        <form method="post">
+                            @$customNamespace$.Resources.General.GeneralTexts.Showing
+                            @buildPageSizeSelector(dataFilter)
+                        </form>
+                    </td>
+                    <td class='ui-widgetGrid-pager-numbers'>
+
+                            <ul style="width:@(Convert.ToInt32((2.9)*(nPagesInPaginator+4)).ToString())em">
+                                @buildPage(0, getCurrentPage(Page), true, "&lt;&lt;", dataFilter)
+                                @buildPage(getCurrentPage(Page) - 1 < 0 ? 0 : getCurrentPage(Page) - 1, getCurrentPage(Page), true, "&lt;", dataFilter)
+                                @{
+                                    for (var i = start; i <= end; i++)
+                                    {
+                                        @buildPage((int)i - 1, getCurrentPage(Page), false, i.ToString(), dataFilter)
+                                    }
+                                }
+                                @buildPage(getCurrentPage(Page) + 1 >= TotalPages ? getCurrentPage(Page) : getCurrentPage(Page) + 1, getCurrentPage(Page), true, "&gt;", dataFilter)
+                                @buildPage(TotalPages - 1, getCurrentPage(Page), true, "&gt;&gt;", dataFilter)
+                                <li class='ui-carriageReturn'></li>
+                            </ul>
+
+                    </td>
+                    <td class='ui-widgetGrid-pager-totalPages'>
+                        @$customNamespace$.Resources.General.GeneralTexts.TotalRecordsFound: @TotalRows
+                    </td>
+                </tr>
+            </table>
+            <div class='ui-carriageReturn'></div>
+        </div>
+    </text>
+}
+
+

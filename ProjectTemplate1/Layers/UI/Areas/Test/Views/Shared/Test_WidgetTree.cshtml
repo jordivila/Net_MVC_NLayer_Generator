@@ -1,0 +1,44 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+@model $customNamespace$.UI.Web.Areas.Test.Models.TestViewModel
+
+@using (MvcForm form = Html.BeginWidgetForm(new { id = "widgetTreeList" }))
+{
+    using (MvcWidgetBox box = Html.BeginWidgetBox(false, true, true, string.Empty, null))
+    {
+        using (MvcWidgetBoxHeader header = Html.BeginWidgetBoxHeader())
+        {
+            <text>Demo Widget Tree List</text>
+        }
+        using (MvcWidgetBoxContent content = Html.BeginWidgetBoxContent())
+        { 
+            <text>
+                <div id="renderResult"></div>
+                <br />
+                <input id="treeList_destroy" type="button" value="Destroy"  />
+                <input id="treeList_create" type="button" value="Create"  />
+                <input id="treeList_selectFirst" type="button" value="Select first"  />
+                <input id="treeList_selected" type="button" value="Get Selected"  />
+                <input id="treeList_Expand" type="button" value="Expand All"   />
+                <input id="treeList_Collapse" type="button" value="Collapse All"  />
+                <br /><br />
+                <ul id="treeList">
+                    <li>Node 1
+                    <ul>
+                        <li>Node 1.1</li>
+                        <li>Node 1.2</li>
+                        <li>Node 1.3</li>
+                    </ul>
+                    </li>
+                    <li>Node 2
+                    <ul>
+                        <li>Node 2.1</li>
+                        <li>Node 2.2</li>
+                        <li>Node 2.3</li>
+                    </ul>
+                    </li>
+                </ul>                
+            </text>
+        }
+    }
+}

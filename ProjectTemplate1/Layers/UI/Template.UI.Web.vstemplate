@@ -1,0 +1,1076 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.UI.Web</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.UI.Web</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.UI.Web.csproj" File="Template.UI.Web.csproj" ReplaceParameters="true">
+      <Folder Name="App_Data" TargetFolderName="App_Data" />
+      <Folder Name="Areas" TargetFolderName="Areas">
+        <Folder Name="Blog" TargetFolderName="Blog">
+          <ProjectItem ReplaceParameters="true" TargetFileName="BlogAreaRegistration.cs">BlogAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="BlogUrlHelper.cs">BlogUrlHelper.cs</ProjectItem>
+          <Folder Name="Content" TargetFolderName="Content">
+            <ProjectItem ReplaceParameters="true" TargetFileName="blog.css">blog.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="blogrss.xml">blogrss.xml</ProjectItem>
+          </Folder>
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="BlogController.cs">BlogController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="BlogModel.cs">BlogModel.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Blog" TargetFolderName="Blog">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Category.cshtml">Category.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <Folder Name="DisplayTemplates" TargetFolderName="DisplayTemplates">
+                <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationItem.cshtml">SyndicationItem.cshtml</ProjectItem>
+              </Folder>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="Error" TargetFolderName="Error">
+          <Folder Name="Content" TargetFolderName="Content">
+            <ProjectItem ReplaceParameters="false" TargetFileName="ErrorLogged.jpg">ErrorLogged.jpg</ProjectItem>
+          </Folder>
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ErrorController.cs">ErrorController.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ErrorAreaRegistration.cs">ErrorAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ErrorUrlHelper.cs">ErrorUrlHelper.cs</ProjectItem>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ErrorModels.cs">ErrorModels.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Error" TargetFolderName="Error">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Communication.cshtml">Communication.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="FaultExceptionUnExpected.cshtml">FaultExceptionUnExpected.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LogClientSideError.cshtml">LogClientSideError.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="NotFound404.cshtml">NotFound404.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="SessionExpired.cshtml">SessionExpired.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="UnAuthorized.cshtml">UnAuthorized.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Layout.cshtml">Layout.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="Home" TargetFolderName="Home">
+          <Folder Name="Content" TargetFolderName="Content" />
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HomeAreaRegistration.cs">HomeAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HomeUrlHelper.cs">HomeUrlHelper.cs</ProjectItem>
+          <Folder Name="Models" TargetFolderName="Models" />
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Home" TargetFolderName="Home">
+              <ProjectItem ReplaceParameters="true" TargetFileName="About.cshtml">About.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Shared" TargetFolderName="Shared" />
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="LogViewer" TargetFolderName="LogViewer">
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerController.cs">LogViewerController.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerAreaRegistration.cs">LogViewerAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerUrlHelper.cs">LogViewerUrlHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerViewHelper.cs">LogViewerViewHelper.cs</ProjectItem>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerModel.cs">LogViewerModel.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="LogViewer" TargetFolderName="LogViewer">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerById.cshtml">LogViewerById.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerBySourceName.cshtml">LogViewerBySourceName.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerDisplay.cshtml">LogViewerDisplay.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <Folder Name="DisplayTemplates" TargetFolderName="DisplayTemplates">
+                <ProjectItem ReplaceParameters="true" TargetFileName="LogMessageModel.cshtml">LogMessageModel.cshtml</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Layout.cshtml">Layout.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="Test" TargetFolderName="Test">
+          <Folder Name="Content" TargetFolderName="Content">
+            <ProjectItem ReplaceParameters="false" TargetFileName="Test_WidgetTree.js">Test_WidgetTree.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Test_WidgetTreeNest.js">Test_WidgetTreeNest.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Test_WidgetTreeSortable.js">Test_WidgetTreeSortable.js</ProjectItem>
+          </Folder>
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="TestController.cs">TestController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="TestViewModel.cs">TestViewModel.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="TestAreaRegistration.cs">TestAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="TestUrlHelper.cs">TestUrlHelper.cs</ProjectItem>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Test_WidgetFormItem.cshtml">Test_WidgetFormItem.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Test_WidgetMessages.cshtml">Test_WidgetMessages.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Test_WidgetTree.cshtml">Test_WidgetTree.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Test_WidgetTreeNest.cshtml">Test_WidgetTreeNest.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Test_WidgetTreeSortable.cshtml">Test_WidgetTreeSortable.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Test" TargetFolderName="Test">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="UserAccount" TargetFolderName="UserAccount">
+          <Folder Name="Content" TargetFolderName="Content" />
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountBarController.cs">UserAccountBarController.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountController.cs">UserAccountController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountModel.cs">UserAccountModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountValidation.cs">UserAccountValidation.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountAreaRegistration.cs">UserAccountAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountUrlHelper.cs">UserAccountUrlHelper.cs</ProjectItem>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Shared" TargetFolderName="Shared" />
+            <Folder Name="UserAccount" TargetFolderName="UserAccount">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Activate.cshtml">Activate.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="CantAccessYourAccount.cshtml">CantAccessYourAccount.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ChangePassword.cshtml">ChangePassword.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Dashboard.cshtml">Dashboard.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LogOn.cshtml">LogOn.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Register.cshtml">Register.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ResetPassword.cshtml">ResetPassword.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountBar.cshtml">UserAccountBar.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="UserAdministration" TargetFolderName="UserAdministration">
+          <Folder Name="Content" TargetFolderName="Content">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAdmin.css">UserAdmin.css</ProjectItem>
+          </Folder>
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserAdministrationController.cs">UserAdministrationController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="DetailsViewModel.cs">DetailsViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IndexViewModel.cs">IndexViewModel.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="RoleViewModel.cs">RoleViewModel.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserAdministrationAreaRegistration.cs">UserAdministrationAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserAdminUrlHelper.cs">UserAdminUrlHelper.cs</ProjectItem>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <ProjectItem ReplaceParameters="true" TargetFileName="_LayOut.cshtml">_LayOut.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="userDetails_Account.cshtml">userDetails_Account.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="userDetails_Password.cshtml">userDetails_Password.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="userDetails_UserRoles.cshtml">userDetails_UserRoles.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="UserAdministration" TargetFolderName="UserAdministration">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Details.cshtml">Details.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="UserProfile" TargetFolderName="UserProfile">
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileController.cs">UserProfileController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileModels.cs">UserProfileModels.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileAreaRegistration.cs">UserProfileAreaRegistration.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileUrlHelper.cs">UserProfileUrlHelper.cs</ProjectItem>
+          <Folder Name="Views" TargetFolderName="Views">
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <Folder Name="EditorTemplates" TargetFolderName="EditorTemplates">
+                <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileModel.cshtml">UserProfileModel.cshtml</ProjectItem>
+              </Folder>
+            </Folder>
+            <Folder Name="UserProfile" TargetFolderName="UserProfile">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Edit.cshtml">Edit.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <Folder Name="CDN" TargetFolderName="CDN">
+        <Folder Name="Css" TargetFolderName="Css">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Template.CDN.Common.css">Template.CDN.Common.css</ProjectItem>
+        </Folder>
+        <Folder Name="Scripts" TargetFolderName="Scripts">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Template.CDN.Common.en-GB.js">Template.CDN.Common.en-GB.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Template.CDN.Common.en-US.js">Template.CDN.Common.en-US.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Template.CDN.Common.es.js">Template.CDN.Common.es.js</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Common" TargetFolderName="Common">
+        <Folder Name="ApplicationServicesProvider" TargetFolderName="ApplicationServicesProvider">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CookieManagerBehaviourExtension.cs">CookieManagerBehaviourExtension.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MembershipUpdateLastActivityAttribute.cs">MembershipUpdateLastActivityAttribute.cs</ProjectItem>
+        </Folder>
+        <Folder Name="MvcAttributes" TargetFolderName="MvcAttributes">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeAttibuteExtended.cs">AuthorizeAttibuteExtended.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CacheFilter.cs">CacheFilter.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CompressFilter.cs">CompressFilter.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HandleErrorAttributeExtended.cs">HandleErrorAttributeExtended.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="NonValidateModelOnHttpGetAttribute.cs">NonValidateModelOnHttpGetAttribute.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="RequestLoggerAttibute.cs">RequestLoggerAttibute.cs</ProjectItem>
+        </Folder>
+        <Folder Name="MvcHelpers" TargetFolderName="MvcHelpers">
+          <ProjectItem ReplaceParameters="true" TargetFileName="HtmlHelper.cs">HtmlHelper.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="UrlHelper.cs">UrlHelper.cs</ProjectItem>
+        </Folder>
+        <Folder Name="T4" TargetFolderName="T4">
+          <ProjectItem ReplaceParameters="true" TargetFileName="BaseInclude.tt">BaseInclude.tt</ProjectItem>
+          <Folder Name="BuildEventBatchFiles" TargetFolderName="BuildEventBatchFiles">
+            <ProjectItem ReplaceParameters="false" TargetFileName="Template_T4_BuildEvent__TransformBatch.cmd">Template_T4_BuildEvent__TransformBatch.cmd</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Template_T4_BuildEvent__TransformBatchItem.cmd">Template_T4_BuildEvent__TransformBatchItem.cmd</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_Base.tt">Template_T4_BuildEvent_Base.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_CDN_Base.tt">Template_T4_BuildEvent_CDN_Base.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_CDN_CSS_Generator.tt">Template_T4_BuildEvent_CDN_CSS_Generator.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_CDN_JS_Generator.tt">Template_T4_BuildEvent_CDN_JS_Generator.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_JS_Ajax.tt">Template_T4_BuildEvent_JS_Ajax.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_BuildEvent_JS_Intellisense.tt">Template_T4_BuildEvent_JS_Intellisense.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_Runtime_CSS_ControllerStylesheets.tt">Template_T4_Runtime_CSS_ControllerStylesheets.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_Runtime_CSS_ControllerStylesheets.cs">Template_T4_Runtime_CSS_ControllerStylesheets.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_Runtime_JS_ControllerScripts.tt">Template_T4_Runtime_JS_ControllerScripts.tt</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Template_T4_Runtime_JS_ControllerScripts.cs">Template_T4_Runtime_JS_ControllerScripts.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Content" TargetFolderName="Content">
+        <ProjectItem ReplaceParameters="false" TargetFileName="reset.css">reset.css</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Site.css">Site.css</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Site.mobile.css">Site.mobile.css</ProjectItem>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ControllerExtended.cs">ControllerExtended.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ControllerFactory.cs">ControllerFactory.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ControllerHelper.cs">ControllerHelper.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CultureController.cs">CultureController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ResourceDispatcherController.cs">ResourceDispatcherController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ThemeController.cs">ThemeController.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
+      <Folder Name="Models" TargetFolderName="Models">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseModelView.cs">BaseModelView.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbModel.cs">BreadcrumbModel.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ClientCultures.cs">ClientCultures.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MenuModel.cs">MenuModel.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <Folder Name="jquery" TargetFolderName="jquery">
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.7.2-vsdoc.js">jquery-1.7.2-vsdoc.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1-vsdoc.js">jquery-1.9.1-vsdoc.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1.js">jquery-1.9.1.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1.min.js">jquery-1.9.1.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui-i18n.min.js">jquery-ui-i18n.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui.min.js">jquery-ui.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="jquery.min.js">jquery.min.js</ProjectItem>
+        </Folder>
+        <Folder Name="jquery-globalize" TargetFolderName="jquery-globalize">
+          <Folder Name="lib" TargetFolderName="lib">
+            <Folder Name="cultures" TargetFolderName="cultures">
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.af-ZA.js">globalize.culture.af-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.af.js">globalize.culture.af.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.am-ET.js">globalize.culture.am-ET.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.am.js">globalize.culture.am.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-AE.js">globalize.culture.ar-AE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-BH.js">globalize.culture.ar-BH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-DZ.js">globalize.culture.ar-DZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-EG.js">globalize.culture.ar-EG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-IQ.js">globalize.culture.ar-IQ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-JO.js">globalize.culture.ar-JO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-KW.js">globalize.culture.ar-KW.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-LB.js">globalize.culture.ar-LB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-LY.js">globalize.culture.ar-LY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-MA.js">globalize.culture.ar-MA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-OM.js">globalize.culture.ar-OM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-QA.js">globalize.culture.ar-QA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-SA.js">globalize.culture.ar-SA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-SY.js">globalize.culture.ar-SY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-TN.js">globalize.culture.ar-TN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar-YE.js">globalize.culture.ar-YE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ar.js">globalize.culture.ar.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.arn-CL.js">globalize.culture.arn-CL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.arn.js">globalize.culture.arn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.as-IN.js">globalize.culture.as-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.as.js">globalize.culture.as.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.az-Cyrl-AZ.js">globalize.culture.az-Cyrl-AZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.az-Cyrl.js">globalize.culture.az-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.az-Latn-AZ.js">globalize.culture.az-Latn-AZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.az-Latn.js">globalize.culture.az-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.az.js">globalize.culture.az.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ba-RU.js">globalize.culture.ba-RU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ba.js">globalize.culture.ba.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.be-BY.js">globalize.culture.be-BY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.be.js">globalize.culture.be.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bg-BG.js">globalize.culture.bg-BG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bg.js">globalize.culture.bg.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bn-BD.js">globalize.culture.bn-BD.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bn-IN.js">globalize.culture.bn-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bn.js">globalize.culture.bn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bo-CN.js">globalize.culture.bo-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bo.js">globalize.culture.bo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.br-FR.js">globalize.culture.br-FR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.br.js">globalize.culture.br.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bs-Cyrl-BA.js">globalize.culture.bs-Cyrl-BA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bs-Cyrl.js">globalize.culture.bs-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bs-Latn-BA.js">globalize.culture.bs-Latn-BA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bs-Latn.js">globalize.culture.bs-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.bs.js">globalize.culture.bs.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ca-ES.js">globalize.culture.ca-ES.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ca.js">globalize.culture.ca.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.co-FR.js">globalize.culture.co-FR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.co.js">globalize.culture.co.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.cs-CZ.js">globalize.culture.cs-CZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.cs.js">globalize.culture.cs.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.cy-GB.js">globalize.culture.cy-GB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.cy.js">globalize.culture.cy.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.da-DK.js">globalize.culture.da-DK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.da.js">globalize.culture.da.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de-AT.js">globalize.culture.de-AT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de-CH.js">globalize.culture.de-CH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de-DE.js">globalize.culture.de-DE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de-LI.js">globalize.culture.de-LI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de-LU.js">globalize.culture.de-LU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.de.js">globalize.culture.de.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.dsb-DE.js">globalize.culture.dsb-DE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.dsb.js">globalize.culture.dsb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.dv-MV.js">globalize.culture.dv-MV.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.dv.js">globalize.culture.dv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.el-GR.js">globalize.culture.el-GR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.el.js">globalize.culture.el.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-029.js">globalize.culture.en-029.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-AU.js">globalize.culture.en-AU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-BZ.js">globalize.culture.en-BZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-CA.js">globalize.culture.en-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-GB.js">globalize.culture.en-GB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-IE.js">globalize.culture.en-IE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-IN.js">globalize.culture.en-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-JM.js">globalize.culture.en-JM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-MY.js">globalize.culture.en-MY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-NZ.js">globalize.culture.en-NZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-PH.js">globalize.culture.en-PH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-SG.js">globalize.culture.en-SG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-TT.js">globalize.culture.en-TT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-US.js">globalize.culture.en-US.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-ZA.js">globalize.culture.en-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.en-ZW.js">globalize.culture.en-ZW.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-AR.js">globalize.culture.es-AR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-BO.js">globalize.culture.es-BO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-CL.js">globalize.culture.es-CL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-CO.js">globalize.culture.es-CO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-CR.js">globalize.culture.es-CR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-DO.js">globalize.culture.es-DO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-EC.js">globalize.culture.es-EC.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-ES.js">globalize.culture.es-ES.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-GT.js">globalize.culture.es-GT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-HN.js">globalize.culture.es-HN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-MX.js">globalize.culture.es-MX.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-NI.js">globalize.culture.es-NI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-PA.js">globalize.culture.es-PA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-PE.js">globalize.culture.es-PE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-PR.js">globalize.culture.es-PR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-PY.js">globalize.culture.es-PY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-SV.js">globalize.culture.es-SV.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-US.js">globalize.culture.es-US.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-UY.js">globalize.culture.es-UY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es-VE.js">globalize.culture.es-VE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.es.js">globalize.culture.es.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.et-EE.js">globalize.culture.et-EE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.et.js">globalize.culture.et.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.eu-ES.js">globalize.culture.eu-ES.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.eu.js">globalize.culture.eu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fa-IR.js">globalize.culture.fa-IR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fa.js">globalize.culture.fa.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fi-FI.js">globalize.culture.fi-FI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fi.js">globalize.culture.fi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fil-PH.js">globalize.culture.fil-PH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fil.js">globalize.culture.fil.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fo-FO.js">globalize.culture.fo-FO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fo.js">globalize.culture.fo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-BE.js">globalize.culture.fr-BE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-CA.js">globalize.culture.fr-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-CH.js">globalize.culture.fr-CH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-FR.js">globalize.culture.fr-FR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-LU.js">globalize.culture.fr-LU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr-MC.js">globalize.culture.fr-MC.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fr.js">globalize.culture.fr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fy-NL.js">globalize.culture.fy-NL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.fy.js">globalize.culture.fy.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ga-IE.js">globalize.culture.ga-IE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ga.js">globalize.culture.ga.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gd-GB.js">globalize.culture.gd-GB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gd.js">globalize.culture.gd.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gl-ES.js">globalize.culture.gl-ES.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gl.js">globalize.culture.gl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gsw-FR.js">globalize.culture.gsw-FR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gsw.js">globalize.culture.gsw.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gu-IN.js">globalize.culture.gu-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.gu.js">globalize.culture.gu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ha-Latn-NG.js">globalize.culture.ha-Latn-NG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ha-Latn.js">globalize.culture.ha-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ha.js">globalize.culture.ha.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.he-IL.js">globalize.culture.he-IL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.he.js">globalize.culture.he.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hi-IN.js">globalize.culture.hi-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hi.js">globalize.culture.hi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hr-BA.js">globalize.culture.hr-BA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hr-HR.js">globalize.culture.hr-HR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hr.js">globalize.culture.hr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hsb-DE.js">globalize.culture.hsb-DE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hsb.js">globalize.culture.hsb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hu-HU.js">globalize.culture.hu-HU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hu.js">globalize.culture.hu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hy-AM.js">globalize.culture.hy-AM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.hy.js">globalize.culture.hy.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.id-ID.js">globalize.culture.id-ID.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.id.js">globalize.culture.id.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ig-NG.js">globalize.culture.ig-NG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ig.js">globalize.culture.ig.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ii-CN.js">globalize.culture.ii-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ii.js">globalize.culture.ii.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.is-IS.js">globalize.culture.is-IS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.is.js">globalize.culture.is.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.it-CH.js">globalize.culture.it-CH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.it-IT.js">globalize.culture.it-IT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.it.js">globalize.culture.it.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.iu-Cans-CA.js">globalize.culture.iu-Cans-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.iu-Cans.js">globalize.culture.iu-Cans.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.iu-Latn-CA.js">globalize.culture.iu-Latn-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.iu-Latn.js">globalize.culture.iu-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.iu.js">globalize.culture.iu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ja-JP.js">globalize.culture.ja-JP.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ja.js">globalize.culture.ja.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ka-GE.js">globalize.culture.ka-GE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ka.js">globalize.culture.ka.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kk-KZ.js">globalize.culture.kk-KZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kk.js">globalize.culture.kk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kl-GL.js">globalize.culture.kl-GL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kl.js">globalize.culture.kl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.km-KH.js">globalize.culture.km-KH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.km.js">globalize.culture.km.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kn-IN.js">globalize.culture.kn-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kn.js">globalize.culture.kn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ko-KR.js">globalize.culture.ko-KR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ko.js">globalize.culture.ko.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kok-IN.js">globalize.culture.kok-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.kok.js">globalize.culture.kok.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ky-KG.js">globalize.culture.ky-KG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ky.js">globalize.culture.ky.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lb-LU.js">globalize.culture.lb-LU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lb.js">globalize.culture.lb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lo-LA.js">globalize.culture.lo-LA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lo.js">globalize.culture.lo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lt-LT.js">globalize.culture.lt-LT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lt.js">globalize.culture.lt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lv-LV.js">globalize.culture.lv-LV.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.lv.js">globalize.culture.lv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mi-NZ.js">globalize.culture.mi-NZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mi.js">globalize.culture.mi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mk-MK.js">globalize.culture.mk-MK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mk.js">globalize.culture.mk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ml-IN.js">globalize.culture.ml-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ml.js">globalize.culture.ml.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mn-Cyrl.js">globalize.culture.mn-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mn-MN.js">globalize.culture.mn-MN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mn-Mong-CN.js">globalize.culture.mn-Mong-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mn-Mong.js">globalize.culture.mn-Mong.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mn.js">globalize.culture.mn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.moh-CA.js">globalize.culture.moh-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.moh.js">globalize.culture.moh.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mr-IN.js">globalize.culture.mr-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mr.js">globalize.culture.mr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ms-BN.js">globalize.culture.ms-BN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ms-MY.js">globalize.culture.ms-MY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ms.js">globalize.culture.ms.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mt-MT.js">globalize.culture.mt-MT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.mt.js">globalize.culture.mt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nb-NO.js">globalize.culture.nb-NO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nb.js">globalize.culture.nb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ne-NP.js">globalize.culture.ne-NP.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ne.js">globalize.culture.ne.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nl-BE.js">globalize.culture.nl-BE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nl-NL.js">globalize.culture.nl-NL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nl.js">globalize.culture.nl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nn-NO.js">globalize.culture.nn-NO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nn.js">globalize.culture.nn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.no.js">globalize.culture.no.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nso-ZA.js">globalize.culture.nso-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.nso.js">globalize.culture.nso.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.oc-FR.js">globalize.culture.oc-FR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.oc.js">globalize.culture.oc.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.or-IN.js">globalize.culture.or-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.or.js">globalize.culture.or.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pa-IN.js">globalize.culture.pa-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pa.js">globalize.culture.pa.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pl-PL.js">globalize.culture.pl-PL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pl.js">globalize.culture.pl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.prs-AF.js">globalize.culture.prs-AF.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.prs.js">globalize.culture.prs.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ps-AF.js">globalize.culture.ps-AF.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ps.js">globalize.culture.ps.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pt-BR.js">globalize.culture.pt-BR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pt-PT.js">globalize.culture.pt-PT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.pt.js">globalize.culture.pt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.qut-GT.js">globalize.culture.qut-GT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.qut.js">globalize.culture.qut.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.quz-BO.js">globalize.culture.quz-BO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.quz-EC.js">globalize.culture.quz-EC.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.quz-PE.js">globalize.culture.quz-PE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.quz.js">globalize.culture.quz.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.rm-CH.js">globalize.culture.rm-CH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.rm.js">globalize.culture.rm.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ro-RO.js">globalize.culture.ro-RO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ro.js">globalize.culture.ro.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ru-RU.js">globalize.culture.ru-RU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ru.js">globalize.culture.ru.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.rw-RW.js">globalize.culture.rw-RW.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.rw.js">globalize.culture.rw.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sa-IN.js">globalize.culture.sa-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sa.js">globalize.culture.sa.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sah-RU.js">globalize.culture.sah-RU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sah.js">globalize.culture.sah.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.se-FI.js">globalize.culture.se-FI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.se-NO.js">globalize.culture.se-NO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.se-SE.js">globalize.culture.se-SE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.se.js">globalize.culture.se.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.si-LK.js">globalize.culture.si-LK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.si.js">globalize.culture.si.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sk-SK.js">globalize.culture.sk-SK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sk.js">globalize.culture.sk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sl-SI.js">globalize.culture.sl-SI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sl.js">globalize.culture.sl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sma-NO.js">globalize.culture.sma-NO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sma-SE.js">globalize.culture.sma-SE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sma.js">globalize.culture.sma.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.smj-NO.js">globalize.culture.smj-NO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.smj-SE.js">globalize.culture.smj-SE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.smj.js">globalize.culture.smj.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.smn-FI.js">globalize.culture.smn-FI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.smn.js">globalize.culture.smn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sms-FI.js">globalize.culture.sms-FI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sms.js">globalize.culture.sms.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sq-AL.js">globalize.culture.sq-AL.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sq.js">globalize.culture.sq.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Cyrl-BA.js">globalize.culture.sr-Cyrl-BA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Cyrl-CS.js">globalize.culture.sr-Cyrl-CS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Cyrl-ME.js">globalize.culture.sr-Cyrl-ME.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Cyrl-RS.js">globalize.culture.sr-Cyrl-RS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Cyrl.js">globalize.culture.sr-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Latn-BA.js">globalize.culture.sr-Latn-BA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Latn-CS.js">globalize.culture.sr-Latn-CS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Latn-ME.js">globalize.culture.sr-Latn-ME.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Latn-RS.js">globalize.culture.sr-Latn-RS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr-Latn.js">globalize.culture.sr-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sr.js">globalize.culture.sr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sv-FI.js">globalize.culture.sv-FI.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sv-SE.js">globalize.culture.sv-SE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sv.js">globalize.culture.sv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sw-KE.js">globalize.culture.sw-KE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.sw.js">globalize.culture.sw.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.syr-SY.js">globalize.culture.syr-SY.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.syr.js">globalize.culture.syr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ta-IN.js">globalize.culture.ta-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ta.js">globalize.culture.ta.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.te-IN.js">globalize.culture.te-IN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.te.js">globalize.culture.te.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tg-Cyrl-TJ.js">globalize.culture.tg-Cyrl-TJ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tg-Cyrl.js">globalize.culture.tg-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tg.js">globalize.culture.tg.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.th-TH.js">globalize.culture.th-TH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.th.js">globalize.culture.th.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tk-TM.js">globalize.culture.tk-TM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tk.js">globalize.culture.tk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tn-ZA.js">globalize.culture.tn-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tn.js">globalize.culture.tn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tr-TR.js">globalize.culture.tr-TR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tr.js">globalize.culture.tr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tt-RU.js">globalize.culture.tt-RU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tt.js">globalize.culture.tt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tzm-Latn-DZ.js">globalize.culture.tzm-Latn-DZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tzm-Latn.js">globalize.culture.tzm-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.tzm.js">globalize.culture.tzm.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ug-CN.js">globalize.culture.ug-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ug.js">globalize.culture.ug.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uk-UA.js">globalize.culture.uk-UA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uk.js">globalize.culture.uk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ur-PK.js">globalize.culture.ur-PK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.ur.js">globalize.culture.ur.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uz-Cyrl-UZ.js">globalize.culture.uz-Cyrl-UZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uz-Cyrl.js">globalize.culture.uz-Cyrl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uz-Latn-UZ.js">globalize.culture.uz-Latn-UZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uz-Latn.js">globalize.culture.uz-Latn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.uz.js">globalize.culture.uz.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.vi-VN.js">globalize.culture.vi-VN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.vi.js">globalize.culture.vi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.wo-SN.js">globalize.culture.wo-SN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.wo.js">globalize.culture.wo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.xh-ZA.js">globalize.culture.xh-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.xh.js">globalize.culture.xh.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.yo-NG.js">globalize.culture.yo-NG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.yo.js">globalize.culture.yo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-CHS.js">globalize.culture.zh-CHS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-CHT.js">globalize.culture.zh-CHT.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-CN.js">globalize.culture.zh-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-Hans.js">globalize.culture.zh-Hans.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-Hant.js">globalize.culture.zh-Hant.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-HK.js">globalize.culture.zh-HK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-MO.js">globalize.culture.zh-MO.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-SG.js">globalize.culture.zh-SG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh-TW.js">globalize.culture.zh-TW.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zh.js">globalize.culture.zh.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zu-ZA.js">globalize.culture.zu-ZA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.culture.zu.js">globalize.culture.zu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="globalize.cultures.js">globalize.cultures.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="globalize.js">globalize.js</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="jquery-ui-1.10.0" TargetFolderName="jquery-ui-1.10.0">
+          <Folder Name="ui" TargetFolderName="ui">
+            <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+            <Folder Name="i18n" TargetFolderName="i18n">
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui-i18n.js">jquery-ui-i18n.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-af.js">jquery.ui.datepicker-af.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ar-DZ.js">jquery.ui.datepicker-ar-DZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ar.js">jquery.ui.datepicker-ar.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-az.js">jquery.ui.datepicker-az.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-be.js">jquery.ui.datepicker-be.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-bg.js">jquery.ui.datepicker-bg.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-bs.js">jquery.ui.datepicker-bs.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ca.js">jquery.ui.datepicker-ca.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-cs.js">jquery.ui.datepicker-cs.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-cy-GB.js">jquery.ui.datepicker-cy-GB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-da.js">jquery.ui.datepicker-da.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-de.js">jquery.ui.datepicker-de.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-el.js">jquery.ui.datepicker-el.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-AU.js">jquery.ui.datepicker-en-AU.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-GB.js">jquery.ui.datepicker-en-GB.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-NZ.js">jquery.ui.datepicker-en-NZ.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-eo.js">jquery.ui.datepicker-eo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-es.js">jquery.ui.datepicker-es.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-et.js">jquery.ui.datepicker-et.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-eu.js">jquery.ui.datepicker-eu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fa.js">jquery.ui.datepicker-fa.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fi.js">jquery.ui.datepicker-fi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fo.js">jquery.ui.datepicker-fo.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr-CA.js">jquery.ui.datepicker-fr-CA.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr-CH.js">jquery.ui.datepicker-fr-CH.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr.js">jquery.ui.datepicker-fr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-gl.js">jquery.ui.datepicker-gl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-he.js">jquery.ui.datepicker-he.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hi.js">jquery.ui.datepicker-hi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hr.js">jquery.ui.datepicker-hr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hu.js">jquery.ui.datepicker-hu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hy.js">jquery.ui.datepicker-hy.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-id.js">jquery.ui.datepicker-id.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-is.js">jquery.ui.datepicker-is.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-it.js">jquery.ui.datepicker-it.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ja.js">jquery.ui.datepicker-ja.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ka.js">jquery.ui.datepicker-ka.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-kk.js">jquery.ui.datepicker-kk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-km.js">jquery.ui.datepicker-km.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ko.js">jquery.ui.datepicker-ko.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ky.js">jquery.ui.datepicker-ky.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lb.js">jquery.ui.datepicker-lb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lt.js">jquery.ui.datepicker-lt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lv.js">jquery.ui.datepicker-lv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-mk.js">jquery.ui.datepicker-mk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ml.js">jquery.ui.datepicker-ml.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ms.js">jquery.ui.datepicker-ms.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nb.js">jquery.ui.datepicker-nb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nl-BE.js">jquery.ui.datepicker-nl-BE.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nl.js">jquery.ui.datepicker-nl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nn.js">jquery.ui.datepicker-nn.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-no.js">jquery.ui.datepicker-no.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pl.js">jquery.ui.datepicker-pl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pt-BR.js">jquery.ui.datepicker-pt-BR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pt.js">jquery.ui.datepicker-pt.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-rm.js">jquery.ui.datepicker-rm.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ro.js">jquery.ui.datepicker-ro.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ru.js">jquery.ui.datepicker-ru.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sk.js">jquery.ui.datepicker-sk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sl.js">jquery.ui.datepicker-sl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sq.js">jquery.ui.datepicker-sq.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sr-SR.js">jquery.ui.datepicker-sr-SR.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sr.js">jquery.ui.datepicker-sr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sv.js">jquery.ui.datepicker-sv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ta.js">jquery.ui.datepicker-ta.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-th.js">jquery.ui.datepicker-th.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-tj.js">jquery.ui.datepicker-tj.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-tr.js">jquery.ui.datepicker-tr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-uk.js">jquery.ui.datepicker-uk.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-vi.js">jquery.ui.datepicker-vi.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-CN.js">jquery.ui.datepicker-zh-CN.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-HK.js">jquery.ui.datepicker-zh-HK.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-TW.js">jquery.ui.datepicker-zh-TW.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui.js">jquery-ui.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.accordion.js">jquery.ui.accordion.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.autocomplete.js">jquery.ui.autocomplete.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.button.js">jquery.ui.button.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.core.js">jquery.ui.core.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker.js">jquery.ui.datepicker.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.dialog.js">jquery.ui.dialog.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.draggable.js">jquery.ui.draggable.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.droppable.js">jquery.ui.droppable.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-blind.js">jquery.ui.effect-blind.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-bounce.js">jquery.ui.effect-bounce.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-clip.js">jquery.ui.effect-clip.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-drop.js">jquery.ui.effect-drop.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-explode.js">jquery.ui.effect-explode.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-fade.js">jquery.ui.effect-fade.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-fold.js">jquery.ui.effect-fold.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-highlight.js">jquery.ui.effect-highlight.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-pulsate.js">jquery.ui.effect-pulsate.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-scale.js">jquery.ui.effect-scale.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-shake.js">jquery.ui.effect-shake.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-slide.js">jquery.ui.effect-slide.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-transfer.js">jquery.ui.effect-transfer.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect.js">jquery.ui.effect.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.menu.js">jquery.ui.menu.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.mouse.js">jquery.ui.mouse.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.position.js">jquery.ui.position.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.progressbar.js">jquery.ui.progressbar.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.resizable.js">jquery.ui.resizable.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.selectable.js">jquery.ui.selectable.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.slider.js">jquery.ui.slider.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.sortable.js">jquery.ui.sortable.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.spinner.js">jquery.ui.spinner.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.tabs.js">jquery.ui.tabs.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.tooltip.js">jquery.ui.tooltip.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.widget.js">jquery.ui.widget.js</ProjectItem>
+            <Folder Name="minified" TargetFolderName="minified">
+              <Folder Name="i18n" TargetFolderName="i18n">
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui-i18n.min.js">jquery-ui-i18n.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-af.min.js">jquery.ui.datepicker-af.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ar-DZ.min.js">jquery.ui.datepicker-ar-DZ.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ar.min.js">jquery.ui.datepicker-ar.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-az.min.js">jquery.ui.datepicker-az.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-be.min.js">jquery.ui.datepicker-be.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-bg.min.js">jquery.ui.datepicker-bg.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-bs.min.js">jquery.ui.datepicker-bs.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ca.min.js">jquery.ui.datepicker-ca.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-cs.min.js">jquery.ui.datepicker-cs.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-cy-GB.min.js">jquery.ui.datepicker-cy-GB.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-da.min.js">jquery.ui.datepicker-da.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-de.min.js">jquery.ui.datepicker-de.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-el.min.js">jquery.ui.datepicker-el.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-AU.min.js">jquery.ui.datepicker-en-AU.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-GB.min.js">jquery.ui.datepicker-en-GB.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-en-NZ.min.js">jquery.ui.datepicker-en-NZ.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-eo.min.js">jquery.ui.datepicker-eo.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-es.min.js">jquery.ui.datepicker-es.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-et.min.js">jquery.ui.datepicker-et.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-eu.min.js">jquery.ui.datepicker-eu.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fa.min.js">jquery.ui.datepicker-fa.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fi.min.js">jquery.ui.datepicker-fi.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fo.min.js">jquery.ui.datepicker-fo.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr-CA.min.js">jquery.ui.datepicker-fr-CA.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr-CH.min.js">jquery.ui.datepicker-fr-CH.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-fr.min.js">jquery.ui.datepicker-fr.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-gl.min.js">jquery.ui.datepicker-gl.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-he.min.js">jquery.ui.datepicker-he.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hi.min.js">jquery.ui.datepicker-hi.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hr.min.js">jquery.ui.datepicker-hr.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hu.min.js">jquery.ui.datepicker-hu.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-hy.min.js">jquery.ui.datepicker-hy.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-id.min.js">jquery.ui.datepicker-id.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-is.min.js">jquery.ui.datepicker-is.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-it.min.js">jquery.ui.datepicker-it.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ja.min.js">jquery.ui.datepicker-ja.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ka.min.js">jquery.ui.datepicker-ka.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-kk.min.js">jquery.ui.datepicker-kk.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-km.min.js">jquery.ui.datepicker-km.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ko.min.js">jquery.ui.datepicker-ko.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ky.min.js">jquery.ui.datepicker-ky.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lb.min.js">jquery.ui.datepicker-lb.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lt.min.js">jquery.ui.datepicker-lt.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-lv.min.js">jquery.ui.datepicker-lv.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-mk.min.js">jquery.ui.datepicker-mk.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ml.min.js">jquery.ui.datepicker-ml.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ms.min.js">jquery.ui.datepicker-ms.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nb.min.js">jquery.ui.datepicker-nb.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nl-BE.min.js">jquery.ui.datepicker-nl-BE.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nl.min.js">jquery.ui.datepicker-nl.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-nn.min.js">jquery.ui.datepicker-nn.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-no.min.js">jquery.ui.datepicker-no.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pl.min.js">jquery.ui.datepicker-pl.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pt-BR.min.js">jquery.ui.datepicker-pt-BR.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-pt.min.js">jquery.ui.datepicker-pt.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-rm.min.js">jquery.ui.datepicker-rm.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ro.min.js">jquery.ui.datepicker-ro.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ru.min.js">jquery.ui.datepicker-ru.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sk.min.js">jquery.ui.datepicker-sk.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sl.min.js">jquery.ui.datepicker-sl.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sq.min.js">jquery.ui.datepicker-sq.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sr-SR.min.js">jquery.ui.datepicker-sr-SR.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sr.min.js">jquery.ui.datepicker-sr.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-sv.min.js">jquery.ui.datepicker-sv.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-ta.min.js">jquery.ui.datepicker-ta.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-th.min.js">jquery.ui.datepicker-th.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-tj.min.js">jquery.ui.datepicker-tj.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-tr.min.js">jquery.ui.datepicker-tr.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-uk.min.js">jquery.ui.datepicker-uk.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-vi.min.js">jquery.ui.datepicker-vi.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-CN.min.js">jquery.ui.datepicker-zh-CN.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-HK.min.js">jquery.ui.datepicker-zh-HK.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker-zh-TW.min.js">jquery.ui.datepicker-zh-TW.min.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui.min.js">jquery-ui.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.accordion.min.js">jquery.ui.accordion.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.autocomplete.min.js">jquery.ui.autocomplete.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.button.min.js">jquery.ui.button.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.core.min.js">jquery.ui.core.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.datepicker.min.js">jquery.ui.datepicker.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.dialog.min.js">jquery.ui.dialog.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.draggable.min.js">jquery.ui.draggable.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.droppable.min.js">jquery.ui.droppable.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-blind.min.js">jquery.ui.effect-blind.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-bounce.min.js">jquery.ui.effect-bounce.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-clip.min.js">jquery.ui.effect-clip.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-drop.min.js">jquery.ui.effect-drop.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-explode.min.js">jquery.ui.effect-explode.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-fade.min.js">jquery.ui.effect-fade.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-fold.min.js">jquery.ui.effect-fold.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-highlight.min.js">jquery.ui.effect-highlight.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-pulsate.min.js">jquery.ui.effect-pulsate.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-scale.min.js">jquery.ui.effect-scale.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-shake.min.js">jquery.ui.effect-shake.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-slide.min.js">jquery.ui.effect-slide.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect-transfer.min.js">jquery.ui.effect-transfer.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.effect.min.js">jquery.ui.effect.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.menu.min.js">jquery.ui.menu.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.mouse.min.js">jquery.ui.mouse.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.position.min.js">jquery.ui.position.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.progressbar.min.js">jquery.ui.progressbar.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.resizable.min.js">jquery.ui.resizable.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.selectable.min.js">jquery.ui.selectable.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.slider.min.js">jquery.ui.slider.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.sortable.min.js">jquery.ui.sortable.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.spinner.min.js">jquery.ui.spinner.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.tabs.min.js">jquery.ui.tabs.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.tooltip.min.js">jquery.ui.tooltip.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jquery.ui.widget.min.js">jquery.ui.widget.min.js</ProjectItem>
+            </Folder>
+          </Folder>
+        </Folder>
+        <Folder Name="jquery-validation-1.11.0" TargetFolderName="jquery-validation-1.11.0">
+          <Folder Name="dist" TargetFolderName="dist">
+            <ProjectItem ReplaceParameters="false" TargetFileName="additional-methods.js">additional-methods.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="additional-methods.min.js">additional-methods.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.validate.js">jquery.validate.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="jquery.validate.min.js">jquery.validate.min.js</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.js">jquery.validate.js</ProjectItem>
+          <Folder Name="localization" TargetFolderName="localization">
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ar.js">messages_ar.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_bg.js">messages_bg.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ca.js">messages_ca.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_cs.js">messages_cs.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_da.js">messages_da.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_de.js">messages_de.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_el.js">messages_el.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_es.js">messages_es.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_et.js">messages_et.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_eu.js">messages_eu.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_fa.js">messages_fa.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_fi.js">messages_fi.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_fr.js">messages_fr.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_he.js">messages_he.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_hr.js">messages_hr.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_hu.js">messages_hu.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_it.js">messages_it.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ja.js">messages_ja.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ka.js">messages_ka.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_kk.js">messages_kk.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_lt.js">messages_lt.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_lv.js">messages_lv.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_my.js">messages_my.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_nl.js">messages_nl.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_no.js">messages_no.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_pl.js">messages_pl.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_pt_BR.js">messages_pt_BR.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_pt_PT.js">messages_pt_PT.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ro.js">messages_ro.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_ru.js">messages_ru.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_si.js">messages_si.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_sk.js">messages_sk.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_sl.js">messages_sl.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_sr.js">messages_sr.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_sv.js">messages_sv.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_th.js">messages_th.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_tr.js">messages_tr.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_uk.js">messages_uk.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_vi.js">messages_vi.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_zh.js">messages_zh.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="messages_zh_TW.js">messages_zh_TW.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="methods_de.js">methods_de.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="methods_nl.js">methods_nl.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="methods_pt.js">methods_pt.js</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="package.json">package.json</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.A.Intellisense.js">Template.A.Intellisense.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.A.js">Template.A.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Ajax.js">Template.Ajax.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.A.js">Template.Widget.A.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.AjaxProgress.js">Template.Widget.AjaxProgress.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Base.js">Template.Widget.Base.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Boolean.js">Template.Widget.Boolean.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.ButtonWrapper.js">Template.Widget.ButtonWrapper.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.DialogInline.js">Template.Widget.DialogInline.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Dialogs.js">Template.Widget.Dialogs.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Form.js">Template.Widget.Form.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Grid.js">Template.Widget.Grid.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.jQueryzer.js">Template.Widget.jQueryzer.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Base.js">Template.Widget.Menu.Base.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Cultures.js">Template.Widget.Menu.Cultures.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Nav.js">Template.Widget.Menu.Nav.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Themes.js">Template.Widget.Menu.Themes.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Page.js">Template.Widget.Page.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.UserOptions.js">Template.Widget.UserOptions.js</ProjectItem>
+        <Folder Name="ui-dateSelector" TargetFolderName="ui-dateSelector">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-dateSelector-doc.htm">ui-dateSelector-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-dateSelector-sample.htm">ui-dateSelector-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-dateSelector.css">ui-dateSelector.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-dateSelector.js">ui-dateSelector.js</ProjectItem>
+        </Folder>
+        <Folder Name="ui-gmap" TargetFolderName="ui-gmap">
+          <ProjectItem ReplaceParameters="true" TargetFileName="demos.css">demos.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-gMap-doc.htm">ui-gMap-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-gmap-sample.htm">ui-gmap-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-GMap.js">ui-GMap.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-gMapDirections.css">ui-gMapDirections.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-gMapDirections.js">ui-gMapDirections.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-gMapDirections.min.js">ui-gMapDirections.min.js</ProjectItem>
+        </Folder>
+        <Folder Name="ui-widgetMsg" TargetFolderName="ui-widgetMsg">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetMsg-doc.htm">ui-widgetMsg-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetMsg-sample.htm">ui-widgetMsg-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetMsg.css">ui-widgetMsg.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetMsg.js">ui-widgetMsg.js</ProjectItem>
+        </Folder>
+        <Folder Name="ui-widgetTreeList" TargetFolderName="ui-widgetTreeList">
+          <ProjectItem ReplaceParameters="true" TargetFileName="demo.css">demo.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeList-doc.htm">ui-widgetTreeList-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeList-sample.htm">ui-widgetTreeList-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeList.css">ui-widgetTreeList.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeList.js">ui-widgetTreeList.js</ProjectItem>
+        </Folder>
+        <Folder Name="ui-widgetTreeListNest" TargetFolderName="ui-widgetTreeListNest">
+          <ProjectItem ReplaceParameters="true" TargetFileName="demos.css">demos.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListNest-doc.htm">ui-widgetTreeListNest-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListNest-sample.htm">ui-widgetTreeListNest-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListNest.js">ui-widgetTreeListNest.js</ProjectItem>
+        </Folder>
+        <Folder Name="ui-widgetTreeListSort" TargetFolderName="ui-widgetTreeListSort">
+          <ProjectItem ReplaceParameters="true" TargetFileName="demos.css">demos.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListSort-doc.htm">ui-widgetTreeListSort-doc.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListSort-sample.htm">ui-widgetTreeListSort-sample.htm</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListSort.js">ui-widgetTreeListSort.js</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Views" TargetFolderName="Views" >
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
+        <Folder Name="Shared" TargetFolderName="Shared" >
+          <ProjectItem ReplaceParameters="true" TargetFileName="_Breadcrumb.cshtml">_Breadcrumb.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_LogOffButton.cshtml">_LogOffButton.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_LogOnButton.cshtml">_LogOnButton.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_LogOnPartial.cshtml">_LogOnPartial.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_MenuPreferencesPartial.cshtml">_MenuPreferencesPartial.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_MenuPreferencesSwitchersPartial.cshtml">_MenuPreferencesSwitchersPartial.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_MenuTopNavPartial.cshtml">_MenuTopNavPartial.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_ResourcesScriptsCommonRender.cshtml">_ResourcesScriptsCommonRender.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_ResourcesStyleSheetCommonRender.cshtml">_ResourcesStyleSheetCommonRender.cshtml</ProjectItem>
+          <Folder Name="DisplayTemplates" TargetFolderName="DisplayTemplates">
+            <ProjectItem ReplaceParameters="true" TargetFileName="Boolean.cshtml">Boolean.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="DateTime.cshtml">DateTime.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="WebGrid.cshtml">WebGrid.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="WebGridBody.cshtml">WebGridBody.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="WebGridColumnHeader.cshtml">WebGridColumnHeader.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="WebGridHeader.cshtml">WebGridHeader.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="WebGridPager.cshtml">WebGridPager.cshtml</ProjectItem>
+          </Folder>
+          <Folder Name="EditorTemplates" TargetFolderName="EditorTemplates">
+            <ProjectItem ReplaceParameters="true" TargetFileName="Boolean.cshtml">Boolean.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Date.cshtml">Date.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="DateTime.cshtml">DateTime.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Double.cshtml">Double.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="EmailAddress.cshtml">EmailAddress.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Float.cshtml">Float.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IEnumerable_CheckboxMultiple.cshtml">IEnumerable_CheckboxMultiple.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IEnumerable_DropdownList.cshtml">IEnumerable_DropdownList.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IEnumerable_HiddenFor.cshtml">IEnumerable_HiddenFor.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IEnumerable_RadioButtons.cshtml">IEnumerable_RadioButtons.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Password.cshtml">Password.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="String.cshtml">String.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Text.cshtml">Text.cshtml</ProjectItem>
+          </Folder>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="web.config">web.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Web.Debug.config">Web.Debug.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Web.Release.config">Web.Release.config</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Data" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging.Database" version="5.0.505.0" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+      <package id="Microsoft.AspNet.Web.Optimization" version="1.0.0" targetFramework="net40" />
+      <package id="WebGrease" version="1.1.0" targetFramework="net40" />
+      <package id="Microsoft.Web.Infrastructure" version="1.0.0.0" targetFramework="net40" />
+    </packages>
+  </WizardData>
+</VSTemplate>

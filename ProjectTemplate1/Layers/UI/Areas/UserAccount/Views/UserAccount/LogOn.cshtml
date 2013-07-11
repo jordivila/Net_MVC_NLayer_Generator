@@ -1,0 +1,63 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+@model $customNamespace$.UI.Web.Areas.UserAccount.Models.LogOnViewModel
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+    <script type="text/javascript">
+        (function ($) {
+            jQuery(document).ready(function () {
+                $customNamespace$.Widgets.Page.InitCallback = function () {  
+                    setTimeout("jQuery('#@Html.IdFor(model => model.Email)').focus();", 0);
+                };
+            });
+        })(jQuery);
+    </script>
+}
+
+@section InlineStyles{
+
+}
+
+
+@{
+    using (MvcForm form = Html.BeginWidgetForm())
+    {
+        using (MvcWidgetBox divBox = Html.BeginWidgetBox())
+        {
+            using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+            { 
+                @$customNamespace$.Resources.Account.AccountResources.SignIn
+            }
+            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+            {
+            <text>
+                <p>
+                    <a href="@Url.Account_Register()">@$customNamespace$.Resources.Account.AccountResources.Register</a> @$customNamespace$.Resources.Account.AccountResources.IfYouDontHaveAnAccount
+                </p>
+                <br />
+                <p>
+                    <a href="@Url.Account_CantAccessYourAccount()">@$customNamespace$.Resources.Account.AccountResources.CanNotAccessYourAccount</a>
+                </p>
+                <br />
+                @Html.HiddenFor(model => model.UrlReferer)
+                @Html.FormItem(model => model.Email)
+                @Html.FormItem(model => model.Password)
+                @using(MvcWidgetButtonsBox buttonsBox = Html.BeginWidgetButtonsBox())
+                {
+                    @Html.Button($customNamespace$.Resources.Account.AccountResources.SignIn,
+                                            jQueryHelpers.Icon.ui_icon_key,
+                                            ButtonType.Submit)
+                }
+                @if (!this.ViewData.ModelState.IsValid)
+                {
+                    <br />
+                    @Html.ValidationSummaryCustomized()
+                }
+            </text>
+            }
+        }
+    }
+}
+

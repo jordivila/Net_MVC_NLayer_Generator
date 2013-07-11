@@ -1,0 +1,28 @@
+
+    <script src="/scripts/ui-gmap/ui-GMap.js" type="text/javascript"></script>
+    
+    
+    <script src="/scripts/ui-gmap/ui-gMapDirections.js" type="text/javascript"></script>
+    <link href="/scripts/ui-gmap/ui-gMapDirections.css" rel="stylesheet" type="text/css" />
+
+    <link href="/scripts/ui-gmap/demos.css" rel="stylesheet" type="text/css" />
+    
+    
+    <script type="text/javascript">
+    (function ($) {
+        jQuery(document).ready(function () {
+
+            jQuery('#widgetContainer').GMapIt({
+                GApiKey: "AIzaSyAip2KGb-6g3BsjFs_e6znd8UGs5RKkSlU"
+                , latitude: 41.3948
+                , longitude: 2.171
+            });
+
+        });
+    })(jQuery);
+    </script>
+
+    
+
+    <div id="widgetContainer"></div>
+    

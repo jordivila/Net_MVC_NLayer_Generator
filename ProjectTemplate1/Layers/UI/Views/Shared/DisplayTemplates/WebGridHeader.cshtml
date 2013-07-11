@@ -1,0 +1,54 @@
+﻿@using System.Linq.Expressions;
+@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models;
+@using $customNamespace$.Models.Common;
+
+@{
+    IDataFilter dataFilter = (IDataFilter)ViewData["dataFilter"];
+    List<WebGridRow> Rows = (List<WebGridRow>)ViewData["Rows"];
+    WebGridColumn[] Columns = (WebGridColumn[])ViewData["Columns"];
+    WebGridStyle webGridStyle = (WebGridStyle)ViewData["WebGridStyle"];
+    
+    
+    TagBuilder tr = new TagBuilder(webGridStyle == WebGridStyle.Table ? "tr" : "div");
+    tr.AddCssClass("ui-widgetGrid-row");
+
+    foreach (var column in Columns)
+    {
+        TagBuilder th = new TagBuilder(webGridStyle == WebGridStyle.Table ? "th" : "div");
+        th.AddCssClass("ui-widgetGrid-column");
+
+        if (!string.IsNullOrEmpty(column.ColumnName))
+        {
+            th.AddCssClass(string.Format("ui-widgetGrid-{0}", column.ColumnName));
+        }
+        if (!string.IsNullOrEmpty(column.Style))
+        {
+            th.AddCssClass(column.Style);
+        }        
+
+        // uses header default when null, but clears header when empty
+        bool headerIsEmpty = (column.Header != null) && (column.Header.Length == 0);
+
+        if (/*!this.CanSort || */headerIsEmpty || String.IsNullOrEmpty(column.ColumnName) || !column.CanSort)
+        {
+            if (!String.IsNullOrEmpty(column.Header) || !String.IsNullOrEmpty(column.ColumnName))
+            {
+                th.InnerHtml = string.Format("<span class='ui-widgetGrid-column-contentText'>{0}</span>", column.Header);
+            }
+        }
+        else
+        {
+            th.InnerHtml = Html.Display(column.ColumnName,
+                                                            "WebGridColumnHeader", new
+                                                            {
+                                                                header = column.Header,
+                                                                columnName = column.ColumnName,
+                                                                dataFilter = dataFilter
+                                                            }).ToHtmlString();        
+        }
+        
+        tr.InnerHtml += th.ToString();
+    }
+    @MvcHtmlString.Create(tr.ToString())
+}

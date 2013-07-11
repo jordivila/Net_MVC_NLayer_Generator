@@ -1,0 +1,52 @@
+﻿
+    <link href="/scripts/ui-widgetMsg/ui-widgetMsg.css" rel="stylesheet" type="text/css" />
+    <script src="/scripts/ui-widgetMsg/ui-widgetMsg.js" type="text/javascript"></script>
+
+    <table>
+        <tr>
+            <td>
+                <div class="littleForm ui-widget-content ui-corner-all" style="width:350px;">
+                    <div id="warning">Please review your form</div>
+                    <div id="error">Not Implemented Exception</div>
+                    <div id="success">Everything OK</div>
+                    <div id="yesNoMsg">Please, confirm</div>
+                </div>
+                <script type="text/javascript">
+                    (function ($) {
+                        jQuery(document).ready(function () {
+                            jQuery("#warning").widgetMsg({ msgType: enumMsgType.Warning });
+                            jQuery("#error").widgetMsg({ msgType: enumMsgType.Error });
+                            jQuery("#success").widgetMsg({ msgType: enumMsgType.Success });
+                            jQuery("#yesNoMsg").widgetMsg({
+                                msgType: enumMsgType.ConfirmYesNo
+                                    , answered: function (e, args) {
+                                        alert(args.confirm);
+                                    }
+                            });
+                        });
+                    })(jQuery);
+                </script>
+            </td>
+            <td>
+                <div class="littleFormII ui-widget-content ui-corner-all" style="width:350px;">
+                    <div data-widget-msgType='1' data-widget-allowClose="true">Please review your form</div>
+                    <div data-widget-msgType='2' data-widget-allowClose="true">Not Implemented Exception</div>
+                    <div data-widget-msgType='0' data-widget-allowClose="true">Everything OK</div>
+                    <div data-widget-msgType='3' data-widget-allowClose="false">Please, confirm</div>
+                </div>
+                <script type="text/javascript">
+                    (function ($) {
+                        jQuery(document).ready(function () {
+                            jQuery("div.littleFormII").find('div').widgetMsg({
+                                answered: function (e, args) {
+                                    alert(args.confirm);
+                                }
+                            });
+                        });
+                    })(jQuery);
+                </script>
+            </td>
+        </tr>
+    </table>
+
+

@@ -1,0 +1,33 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ include file="Template_T4_BuildEvent_Base.tt" #>
+
+<# DirectoryInfo outputDirectory = new DirectoryInfo(this.Host.ResolvePath(string.Empty)).Parent.Parent.GetDirectories("Scripts", SearchOption.TopDirectoryOnly).First(); #>
+<# string outputFileName = "Template.A.Intellisense.js";  #>
+
+<# 
+    string[] filesCommon = $customNamespace$.Models.Configuration.ApplicationConfiguration.ClientResourcesSettingsSection.WebSiteCommonScripts.ToArray();
+    string[] fileJQueryDoc = new string[1] { "~/Scripts/jQuery/jquery-1.9.1-vsdoc.js" };
+    string[] files = fileJQueryDoc.Union(filesCommon.ToArray()).ToArray();
+
+    string currentDirectory = new DirectoryInfo(Host.ResolvePath(string.Empty)).Parent.Parent.FullName;
+    for (int i = 0; i < files.Length; i++)
+    {
+        files[i] = Path.Combine(currentDirectory, files[i].Replace("~/", string.Empty));
+        this.GenerationEnvironment.Append(File.ReadAllText(files[i]));
+        this.GenerationEnvironment.Append(Environment.NewLine);
+    }
+
+	this.Resources_Generate();
+
+	this.GenerationEnvironment.Append(File.ReadAllText(Path.Combine(outputDirectory.FullName, $customNamespace$.Models.Configuration.ApplicationConfiguration.ClientResourcesSettingsSection.WebSiteCommonAjax)));
+
+	files = $customNamespace$.Models.Configuration.ApplicationConfiguration.ClientResourcesSettingsSection.WebSitePageInitScripts.ToArray();
+    for (int i = 0; i < files.Length; i++)
+    {
+        files[i] = Path.Combine(currentDirectory, files[i].Replace("~/", string.Empty));
+        this.GenerationEnvironment.Append(File.ReadAllText(files[i]));
+        this.GenerationEnvironment.Append(Environment.NewLine);
+    }
+#>
+
+<# this.SaveOutput(outputDirectory.FullName, outputFileName); #>

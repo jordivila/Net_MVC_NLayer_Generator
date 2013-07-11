@@ -1,0 +1,47 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+@using $customNamespace$.UI.Web.Areas.UserProfile;
+
+@model $customNamespace$.UI.Web.Models.baseViewModel
+
+@{
+    if (this.Model.BaseViewModelInfo.IsUserIntendedController)
+    {
+        if (this.Model.BaseViewModelInfo.UserIsLoggedIn)
+        {
+            <text>
+	            <div class="ui-login-UserInfo">
+		            <ul class="ui-login-UserInfoBox ">
+                        <li>
+                            @Html.Button(string.IsNullOrEmpty(this.Model.BaseViewModelInfo.UserProfile.FirstName) ?
+                                                            this.Model.BaseViewModelInfo.UserFormsIdentityName :
+                                                            this.Model.BaseViewModelInfo.UserProfile.FirstName,
+                                                    jQueryHelpers.Icon.ui_icon_person,
+                                                    ButtonType.Button,
+                                                    new { })
+                        </li>
+                        <li>
+                            <div class="ui-login-userInfo-child" data-widget="menuSite">
+	                            <ul >
+                                    <li>
+                                        <ul>
+                                            <li data-action="@Url.UserProfile_Edit()">
+                                                    @$customNamespace$.Resources.Account.AccountResources.ProfileEdit
+                                            </li>
+                                            <li data-action="@Url.Account_ChangePassword()">
+                                                    @$customNamespace$.Resources.Account.AccountResources.ChangePassword
+                                            </li>
+		                                    <li data-action="@Url.Account_LogOff()">
+                                                    @$customNamespace$.Resources.Account.AccountResources.SignOut
+                                            </li>
+                                        </ul>
+                                    </li>
+	                            </ul>
+                            </div>
+                        </li>
+		            </ul>
+	            </div>
+          </text>
+        }
+    }
+}

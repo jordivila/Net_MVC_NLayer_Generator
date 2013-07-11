@@ -1,0 +1,64 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ include file="Template_T4_BuildEvent_Base.tt" #>
+
+<# DirectoryInfo outputDirectory = new DirectoryInfo(this.Host.ResolvePath(string.Empty)).Parent.Parent.GetDirectories("Scripts", SearchOption.TopDirectoryOnly).First(); #>
+<# string outputFileName = "Template.Ajax.js";  #>
+<# UrlHelper Url = this.UrlHelperGet(); #>
+
+
+jQuery(document).ready(function () {
+    jQuery.ajaxSetup({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+    });
+});
+
+$customNamespace$.Ajax = {};
+
+$customNamespace$.Ajax.ThemeSet = function (theme, onOK, onKO) {
+    var jqxhr = jQuery.ajax({
+        url: "<#= UrlHelperExtension.ThemeSet(Url) #>",
+        type: "POST",
+        data: JSON.stringify({ theme: theme })
+    })
+    .done(function (data, textStatus, jqXHR) {
+        onOK(data);
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        onKO(jqXHR);
+    });
+};
+$customNamespace$.Ajax.CultureSet = function (culture, onOK, onKO) {
+    var jqxhr = jQuery.ajax({
+        url: "<#= UrlHelperExtension.CultureSet(Url) #>",
+        type: "POST",
+        data: JSON.stringify({ culture: culture })
+    })
+    .done(function (data, textStatus, jqXHR) {
+        onOK(data);
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        onKO(jqXHR);
+    });
+};
+$customNamespace$.Ajax.UserBar = function (onOK, onKO, onComplete) {
+    var jqxhr = jQuery.ajax({
+			url: "<#= UserAccountUrlHelper.Account_UserAccountBar(Url) #>"
+            , type: "GET"
+            , data: {}
+            , dataType: "html"
+            , cache: false
+    })
+    .done(function (data, textStatus, jqXHR) {
+        onOK(data);
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        onKO(jqXHR);
+    })
+	.always(function (jqXHR, textStatus, errorThrown) {
+		onComplete();
+	});
+};
+
+<# this.SaveOutput(outputDirectory.FullName, outputFileName); #>

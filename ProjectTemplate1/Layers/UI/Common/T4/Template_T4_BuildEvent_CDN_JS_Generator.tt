@@ -1,0 +1,34 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ include file="Template_T4_BuildEvent_CDN_Base.tt" #>
+
+<# 
+	this.GenerationEnvironment.Clear();
+	foreach (var item in $customNamespace$.Models.Globalization.GlobalizationHelper.CultureInfoAvailableList())
+	{
+		System.Threading.Thread.CurrentThread.CurrentCulture = item;
+		System.Threading.Thread.CurrentThread.CurrentUICulture = item;
+
+		LocalizationResourcesHelper cc = new LocalizationResourcesHelper(item);		
+
+		List<string> scripts = ApplicationConfiguration.ClientResourcesSettingsSection.JQueryLibScripts;
+		scripts.Add(ApplicationConfiguration.ClientResourcesSettingsSection.jQueryUILocalizationPath(cc));
+		scripts.Add(ApplicationConfiguration.ClientResourcesSettingsSection.jQueryGlobalizeLozalizationPath(cc));
+		scripts.Add(ApplicationConfiguration.ClientResourcesSettingsSection.jQueryValidationLocalizationPath(cc));
+		scripts = scripts.Where(x=>(!string.IsNullOrEmpty(x))).ToList();
+        for (int i = 0; i < scripts.Count; i++)
+        {
+			scripts[i] = Path.Combine(rootDirectory.FullName, scripts[i].Replace("~/", string.Empty));
+        }
+		this.AppendAbsoluteFiles(scripts.ToArray());
+		// Web Site Common Scripts
+		this.AppendAbsoluteFiles(this.ConvertToAbsolutePath(rootDirectory.FullName, ApplicationConfiguration.ClientResourcesSettingsSection.WebSiteCommonScripts.ToArray()));
+		// Web Site Scripts Localization
+		this.Resources_Generate();
+		// Save File as Static for CDN downloading
+		this.SaveOutput(cdnJSRootDirectory.FullName, ApplicationConfiguration.ClientResourcesSettingsSection.CDN_JS_CommonFileName(cc.CultureInfo, MvcApplication.Version), true, MediaType.javascript);
+		// Dispose Libraries
+		cc.Dispose();
+		this.GenerationEnvironment.Clear();
+	}
+	this.GenerationEnvironment.Clear();
+#>

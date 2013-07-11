@@ -1,0 +1,14 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ include file="Template_T4_BuildEvent_CDN_Base.tt" #>
+
+<# 
+	this.GenerationEnvironment.Clear();
+	List<string> scripts = ApplicationConfiguration.ClientResourcesSettingsSection.WebSiteCommonStyleSheets;
+    for (int i = 0; i < scripts.Count; i++)
+    {
+		scripts[i] = Path.Combine(rootDirectory.FullName, scripts[i].Replace("~/", string.Empty));
+    }
+	this.AppendAbsoluteFiles(scripts.ToArray());
+	this.SaveOutput(cdnCSSRootDirectory.FullName, ApplicationConfiguration.ClientResourcesSettingsSection.CDN_CSS_CommonFileName(MvcApplication.Version), true, MediaType.stylesheet);
+	this.GenerationEnvironment.Clear();
+#>

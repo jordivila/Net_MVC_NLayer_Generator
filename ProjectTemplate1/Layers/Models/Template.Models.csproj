@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.505.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\ProviderAuthenticationInterface.cs" />
+    <Compile Include="Collections\CollectionHelpers.cs" />
+    <Compile Include="Common\BaseDataCommonResults.cs" />
+    <Compile Include="Configuration\ApplicationConfiguration.cs" />
+    <Compile Include="Common\BaseDataResult.cs" />
+    <Compile Include="Common\BaseModel.cs" />
+    <Compile Include="Configuration\ConfigSections\ClientResources\ClientResourcesConfiguration.cs" />
+    <Compile Include="Configuration\ConfigSections\DomainInfo\DomainInfoConfiguration.cs" />
+    <Compile Include="Configuration\ConfigSections\Mailing\MailingConfiguration.cs" />
+    <Compile Include="Configuration\ConfigSections\Unity\UnityConfiguration.cs" />
+    <Compile Include="Configuration\ConnectionProviders\ConnectionProvidersConfig.cs" />
+    <Compile Include="Cryptography\CryptoHelper.cs" />
+    <Compile Include="DataAnnotationsAttributes\DateAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\DateGreaterThanAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\DigitsAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\DisplayAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\EmailAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\EqualToAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\FileExtensionsAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\IntegerAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\MaxAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\MinAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\NumericAttribute.cs" />
+    <Compile Include="DataAnnotationsAttributes\UrlAttribute.cs" />
+    <Compile Include="Enumerations\EnumExtensions.cs" />
+    <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Globalization\GlobalizationHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logging\CustomTraceListenerRollingXml.cs" />
+    <Compile Include="Logging\CustomTraceListenerProxiedWCF.cs" />
+    <Compile Include="Logging\LoggingHelper.cs" />
+    <Compile Include="Logging\LogMessage.cs" />
+    <Compile Include="Logging\LogMessageFilter.cs" />
+    <Compile Include="Logging\ProviderLoggingInterface.cs" />
+    <Compile Include="Membership\DataFilterUserList.cs" />
+    <Compile Include="Membership\DataResultProviderSettings.cs" />
+    <Compile Include="Membership\DataResultUser.cs" />
+    <Compile Include="Membership\DataResultUserActivate.cs" />
+    <Compile Include="Membership\DataResultUserCantAccess.cs" />
+    <Compile Include="Membership\DataResultUserCreateResult.cs" />
+    <Compile Include="Membership\DataResultUserList.cs" />
+    <Compile Include="Membership\DataResultUserSearch.cs" />
+    <Compile Include="Membership\ProviderMembershipInterface.cs" />
+    <Compile Include="Membership\ProviderMembershipSettings.cs" />
+    <Compile Include="Profile\Profile.cs" />
+    <Compile Include="Profile\ProviderProfileInterface.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Syndication\ProviderProxySyndication.cs" />
+    <Compile Include="Authentication\ProviderProxyAuthentication.cs" />
+    <Compile Include="ProxyProviders\ProviderProxyBase.cs" />
+    <Compile Include="Logging\ProviderProxyLogging.cs" />
+    <Compile Include="Membership\ProviderProxyMembership.cs" />
+    <Compile Include="Profile\ProviderProxyProfiles.cs" />
+    <Compile Include="Roles\ProviderProxyRoleManager.cs" />
+    <Compile Include="Roles\ProviderProxyRoles.cs" />
+    <Compile Include="Roles\ProviderRoleManagerInterface.cs" />
+    <Compile Include="Roles\ProviderRolesInterface.cs" />
+    <Compile Include="RepositoryPattern\RepositoryPattern.cs" />
+    <Compile Include="SmtpModels\SmtpClientProxy.cs" />
+    <Compile Include="Syndication\DataFilterSyndication.cs" />
+    <Compile Include="Syndication\ProviderSyndicationInterface.cs" />
+    <Compile Include="Syndication\SyndicationEqualityComparer.cs" />
+    <Compile Include="Syndication\SyndicationHelpers.cs" />
+    <Compile Include="TokenPersistence\TokenPersistence.cs" />
+    <Compile Include="Unity\UnityHelper.cs" />
+    <Compile Include="UserRequestModel\UserRequest.cs" />
+    <Compile Include="UserSessionPersistence\UserSessionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAnnotationsAttributes\aa_Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SmtpModels\Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
+      <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>
+      <Name>$customNamespace$.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,35 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@{
+    ModelMetadata meta = ViewData.ModelMetadata;
+    bool isNullable = meta.ModelType.IsGenericType && meta.ModelType.GetGenericTypeDefinition() == typeof(Nullable<>);
+    string value = isNullable ? (((Nullable<DateTime>)meta.Model).HasValue ? ((Nullable<DateTime>)meta.Model).Value.ToShortDateString() : string.Empty)
+                            :
+                            ((DateTime)meta.Model).ToShortDateString();
+}
+    
+<div class="ui-dateSelector">
+    <input class="ui-dateSelector-hidden" 
+            data-value="@value" 
+            data-widget="dateSelector" 
+            data-isWrapped="true"
+            id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)" 
+            name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)" 
+            type="text" 
+            value="@value" />
+            
+    <a href="javascript:void(0);">
+    @{
+        if (string.IsNullOrEmpty(value))
+        { 
+            <text>Click here to pick a date</text>
+        }
+        else
+        {
+            @DateTime.Parse(value).ToLongDateString()
+        }
+    }
+    </a>
+    <div class="ui-dateSelector-clear ui-state-error @(string.IsNullOrEmpty(value)?"ui-dateSelector-hidden":string.Empty)">
+        <span class="ui-icon ui-icon-circle-close"></span>
+    </div>
+</div>

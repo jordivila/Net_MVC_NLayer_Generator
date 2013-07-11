@@ -1,0 +1,41 @@
+﻿@model $customNamespace$.UI.Web.Areas.LogViewer.Models.LogViewerModel
+
+@{
+    Layout = "~/Areas/LogViewer/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles
+{
+
+    <style type="text/css">
+        .ui-logViewer h3 .ui-icon {float:left;}
+    </style>
+}
+
+@section ScriptsToAdd
+{
+<script type="text/javascript">
+    (function ($) {
+        jQuery(document).ready(function () {
+            jQuery('div[data-widget="accordion"]').accordion({
+                collapsible: true
+                , active: false
+            });
+        });
+    } (jQuery));
+</script>
+}
+
+@section ErrorDescriptionContainer
+{
+    <div data-widget="accordion" class="ui-logViewer">
+        @{
+                for (int i = 0; i < this.Model.LogMessages.Data.Count; i++)
+                {
+                    <text>
+                        @Html.DisplayFor(x => this.Model.LogMessages.Data[i])
+                  </text>
+                }
+            }
+    </div>
+}

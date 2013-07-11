@@ -1,0 +1,58 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html
+@{
+    IHtmlString listHeader = ((IHtmlString)ViewData["listHeader"]);
+    IHtmlString listBody = ((IHtmlString)ViewData["listBody"]);
+    IHtmlString listPager = ((IHtmlString)ViewData["listPager"]);
+    IHtmlString emptyResultsMessage = ((IHtmlString)ViewData["EmptyResultsMessage"]);
+    WebGridStyle webGridStyle = ((WebGridStyle)ViewData["webGridStyle"]);
+    int columnsCount = ((int)ViewData["columnsCount"]);
+    bool isEmptyGrid = ((bool)ViewData["isEmptyGrid"]);
+
+    if (isEmptyGrid)
+    {
+        <text>
+            <br /><div class='ui-state-error ui-widget-header ui-corner-all'>@emptyResultsMessage</div>
+        </text>
+    }
+    else
+    {
+        if (webGridStyle == WebGridStyle.Table)
+        {
+            <text>
+                <table data-widget="widgetGrid" class='ui-widgetGrid ui-widget-content ui-corner-all' cellpadding="0" cellspacing="0">
+                    <thead class='ui-widgetGrid-header ui-widget-header ui-corner-top'>
+                        @listHeader
+                    </thead>
+                    <tfoot class='ui-widgetGrid-pager ui-state-default ui-corner-bottom'>
+                        <tr>
+                            <td colspan='@columnsCount'>
+                                @listPager
+                            </td>
+                        </tr>
+                        <div class='ui-carriageReturn'></div>
+                    </tfoot>
+                    <tbody class='ui-widgetGrid-body'>
+                        @listBody
+                    </tbody>
+                </table>
+            </text>
+        }
+        else
+        {
+            <text>
+                <div data-widget="widgetGrid" class='ui-widgetGrid ui-widgetGrid-tableLess ui-widget-content ui-corner-all'>
+                    <div class='ui-widgetGrid-header ui-widget-header ui-corner-top'>
+                        @listHeader
+                    </div>
+                    <div class='ui-widgetGrid-body'>
+                        @listBody
+                    </div>
+                    <div class='ui-widgetGrid-pager ui-state-default ui-corner-bottom'>
+                        @listPager
+                        <div class='ui-carriageReturn'></div>
+                    </div>
+                </div>
+            </text>
+        }
+    }
+}    

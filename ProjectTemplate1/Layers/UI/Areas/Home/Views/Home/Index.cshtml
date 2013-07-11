@@ -1,0 +1,100 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+@section InlineStyles{
+    <style type="text/css">
+        .ui-list {list-style-type:none;margin: 0 0 0 0em;padding:0;}
+        .ui-list li {padding: 0.2em; margin:.2em 0 0 0;}
+    </style>
+}
+
+@section ScriptsToAdd{
+
+}
+
+<div class="ui-home-content">
+    <ul class="ui-list">
+        <li>Asp.Net Authentication, Authorization, Membership, Role and Profile providers are used throughout n-tier web app using WCF.</li>
+        <li>WCF services are prepared to use NetTcp or Http bindings and UserContext is passed throughout messages.</li>
+        <li>All Asp.Net Mvc Areas are tested & documented & coded using <a href="http://wiki.asp.net/page.aspx/1014/aspnet-mvc-best-practices/">best practices</a>.</li>
+        <li>Asp.Net Globalization & jQuery Globalize & jQuery Validation combined together.</li>
+        <li>Asp.Net MVC site common exceptions like "Page not Found 404", "Session Expired", "Permission Denied" and "Communication Errors" are allready handled.</li>
+        <li>Enterprise Library Blocks are used for caching, data access, logging and unit testing.</li>
+    </ul>
+
+
+
+    <br /><br />
+    <h3>To do list</h3>
+    <ul class="ui-list">
+        <li class="">Bigger Icons</li>
+        <li>
+            Cómo conseguir clientes extranjeros:
+            <a target="_blank" href="@Server.HtmlEncode("http://cachirulovalley.com/wp-content/uploads/2012/07/Mark-Elluls-Experience-with-Foregin-Clients.pdf?utm_source=Bonilista&utm_campaign=3f6c47a102-Gaceta_15_07_2012&utm_medium=email")">Bonilista</a>
+        </li>
+        <li>
+            Explicar como utilizo la clase $customNamespace$.UI.Web.Tests.Controllers.ControllerFake para solucionar el problema de la validacion de Dataannotations a la hora de hacer testing de Controllers.
+            Esto es: la validacion no se ejecuta dentro del test porque esa validacion se realiza cuando se hace el binding del formulario con el tipo de modelo
+        </li>
+        <li>
+            Explicar como se habilita la comprobacion del codigo dentro de todas las views en tiempo de compilacion
+            http://blogs.msdn.com/b/jimlamb/archive/2010/04/20/turn-on-compile-time-view-checking-for-asp-net-mvc-projects-in-tfs-build-2010.aspx
+        </li>
+        <li>
+            Explicar el atributo NonValidateModelOnHttpGet 
+        </li>
+        <li>
+            Explicar como este site implementa autenticacion
+        </li>
+        <li>
+            Articulo: Rolling Flat File + Xml Text Formatter = Xml Rolling Flat file without custom listeners
+        </li>
+        <li>
+            Articulo: custom datetime format en rolling flat file. Ej.: mirar la configuration del template de Text Formatter Xml Output -> {timestamp(yyyy/MM/dd HH:mm:ss.fffffff)}
+        </li>
+        <li>
+            Explicar el proceso de creacion de resources. 
+            <blockquote>
+                <ul>
+                    <li>el T4Template</li>
+                    <li>la utilidad para construir archivos en el pre build event del proyecto $customNamespace$.Resources</li>
+                    <li>
+                        <pre>
+If, for whatever reason, you want to execute a command from a Visual Studio build event, and you don't care if that command returns an error, then do the following:
+[command to execute] 2>nul 1>nul
+                        </pre>
+                    </li>
+                    <li>y como se utiliza el resultado desde un atributo de un modelo</li>
+                </ul>
+            </blockquote>
+        </li>
+        <li>
+            Explicar Increasing Middle-Tier WCF Client Performance.
+            <a href="http://msdn.microsoft.com/en-us/library/aa738757.aspx">http://msdn.microsoft.com/en-us/library/aa738757.aspx</a>
+            <ul>
+                <li>Cache the WCF client object and reuse it for subsequent calls where possible</li>
+                <li>Create a ChannelFactory object and then use that object to create new WCF client channel objects for each call</li>
+            </ul>
+        </li>
+        <li>
+            Articulo. Paginacion con SQL
+        </li>
+        <li>
+            Articulo sobre CustomControllerFactory. Enfasis en como sacar el tipo de controlador a partir del objeto RequestContext
+        </li>
+        <li>
+            Logger por MSMQ ??
+        </li>
+        <li>
+            Explocar algo sobre Memory Profiler o JetBrains dotTrace memory 
+        </li>
+        <li>
+            Mensajeria/Paqueteria Unificada mediante API
+            <ul>
+                <li>UPS</li>
+                <li>TNT</li>
+                <li>FedEx</li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

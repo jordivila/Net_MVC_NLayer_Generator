@@ -1,0 +1,15 @@
+﻿.ui-feed-item { border:0em solid transparent !important;}
+.ui-feed-item .ui-feed-itemHeader{border:0em solid transparent !important;padding:1em 1em 1em 0em;}
+.ui-feed-item .ui-feed-itemHeader .ui-feed-itemHeaderDate {float:left;margin:0 0 0 0em;}
+.ui-feed-item .ui-feed-itemHeader .ui-feed-itemHeaderComents {float:left;margin:0 0 0 2em;}
+.ui-feed-item .ui-feed-itemHeader .ui-feed-itemHeaderCategories {float:left;margin:0 0 0 2em;}
+.ui-feed-item .ui-feed-itemContent {border:0em solid transparent !important;padding:1em 1em 1em 1em;}
+.ui-feed-item .ui-feed-itemFooter {}
+.ui-feed-item .ui-samples-snippetContainer { }
+.ui-feed-item .ui-samples-snippetContainer div.ui-samples-snippetCode { margin:1.5em 0 0 0;padding:1em; }
+.ui-feed-item .ui-widgetDocSection {}
+.ui-feed-item .ui-widgetDocSection h2 {margin: 1em 0 .5em 0;}
+.ui-feed-item .ui-widgetDocSection h3 {margin: 1em 0 .5em 1em;}
+.ui-feed-item .ui-widgetDocSection ul {margin: .5em 0 .5em 1em;}
+.ui-feed-item .ui-widgetDocSection dl {margin: .5em 0 .5em 1em;}
+.ui-feed-item .ui-widgetDocSection dl dd  {margin: 0 0 0 1em;}  

@@ -1,0 +1,147 @@
+<h3>jQuery Feedback Message widget</h3>
+<br />
+<ul >
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#options">Options</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#methods">Methods</a></li>
+    <li><a href="#theming">Theming</a></li>
+</ul>
+<div class="ui-widgetDocSection" id="overview">
+    <h2>Overview</h2>
+    jQuery UI API Developer Guide can be found <a href="http://docs.jquery.com/UI_Developer_Guide">here</a> and 
+    <a href="http://docs.jquery.com/UI/Upgrade_Guide_18">upgrading from 1.7 to 1.8 here</a>
+    .<br /><br />
+    I used the jQuery UI widget factory to create a very simple "feedback message" widget intended to be a simple tutorial to begin writing your own jQuery widgets.  <br />
+    The "feedback" widget wraps an element's content into a predefined template, applies jQuery UI stylesheet classes and provides a few types of messaging: 
+    warnging, error, success and confirm.<br />
+    The last one will expose an event called "answered" triggered when the user clicks OK or Cancel.
+
+    <h3>Dependencies:</h3>
+    jQuery ui.core.js<br />
+    jQuery ui.widget.js<br />
+    <small>
+        jQuery versions: 1.2.3 +<br />
+        jQuery UI versions: 1.6 +<br />
+    </small>
+</div>
+
+<div class="ui-widgetDocSection" id="options">
+    <h2>Options</h2>
+    <ul>
+        <li>
+            <h3><a href="#option-msgType">msgType</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>integer</dd>
+              <dt>Default:</dt>
+                <dd>(none)</dd>
+            </dl>
+            <div>
+                <p>Enhance Html content to be themable applying jQuery UI styles when created</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize a feedback message with the <code>msgType</code> option specified.
+                    </dt>
+                    <dt>
+                        Get or set the <code>msgType</code> option, after init.
+                    </dt>
+                </dl>
+            </div>
+        </li>    
+        <li>
+            <h3><a href="#option-msgType">allowClose</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>boolean</dd>
+              <dt>Default:</dt>
+                <dd>false</dd>
+            </dl>
+            <div>
+                <p>Adds close button</p>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize a feedback message with the <code>allowClose</code> option specified.<br />
+                      <pre><code>   jQuery('#foo').widgetMsg({ allowClose: true });</code></pre>
+                    </dt>
+                    <dt>
+                        Get or set the <code>allowClose</code> option, after init.
+                        <pre><code>   jQuery('#foo').widgetMsg('allowClose');</code></pre>
+                    </dt>
+                </dl>
+            </div>
+        </li>    
+    </ul>
+</div>
+<div class="ui-widgetDocSection" id="events">
+    <h2>Events</h2>
+    <ul>
+        <li>
+            <h3><a href="#event-answered">answered</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>answered</dd>
+            </dl>
+            <div>
+                <p>This event is triggered when the user clicks OK or Cancel</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl class="event-examples-list">
+                    <dt>
+                        Supply a callback function to handle the <code>answered</code> event as an init option.
+                        </dt>
+                        <dt>
+                        Bind to the <code>answered</code> event by type: <code>widgetMessageanswered</code>.
+                        </dt>
+                        <dd>
+                        <pre><code>jQuery('.selector').bind('widgetMessageanswered', function(event, ui) {...});</code></pre>
+                        </dd>
+                    </dl>
+            </div>
+        </li>    
+    </ul>
+</div>
+<div class="ui-widgetDocSection" id="methods">
+    <h2>Methods</h2>
+    <ul>
+        <li>
+            <h3><a href="#method-destroy">destroy</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.widgetMessage('destroy')</dd>
+            </dl>
+            <div>
+                <p>Remove the widgetMessage functionality completely. This will return the element back to its pre-init state.</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="ui-widgetDocSection" id="theming">
+    <h2 class="top-header">Theming</h2>
+    <p>
+        This widget uses the jQuery UI CSS Framework to style its look and feel. 
+        Use the ThemeRoller tool to create and download custom themes that are easy to build and maintain.
+    </p>
+    <p>
+        If a deeper level of customization is needed, there are widget-specific classes referenced within 
+        the widgetTreeList.css stylesheet that can be modified. These classes are shown below.
+    </p>
+    <h3>Sample markup with jQuery UI CSS Framework classes</h3>
+        <pre>
+            <code>
+.ui-message {position:relative;margin:5px;}
+.ui-message a{ margin:0px 5px 0px auto;} 
+.ui-message .widgetMsgStyleContent{padding:1em .5em 1em .5em;}
+.ui-message .widgetIcon {margin:0px 15px 0px 1px;float:left;}
+.ui-message .widgetYesNoButtons {clear:both;text-align:right;margin:10px;position:relative;padding:0px 2px 0px 5px;}
+.ui-message .ui-widget-close {margin:-2.6em 1em 0 0;}
+            </code>
+        </pre>
+</div>
+
+

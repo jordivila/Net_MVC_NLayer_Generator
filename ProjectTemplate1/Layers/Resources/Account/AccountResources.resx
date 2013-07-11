@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountActivated" xml:space="preserve">
+    <value>User account activated</value>
+  </data>
+  <data name="AccountInformation" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="CanNotAccessYourAccount" xml:space="preserve">
+    <value>Can't access your account?</value>
+  </data>
+  <data name="CantAccessYourAccount_Email" xml:space="preserve">
+    <value>We received a request to reset the password associated with this e-mail address. If you made this request, please follow the instructions below.
+
+Click the link below to reset your password using our secure server:
+
+{0}
+
+If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.
+
+If clicking the link doesn't seem to work, you can copy and paste the link into your browser's address window, or retype it there. Once you have returned to {1}, we will give instructions for resetting your password.</value>
+  </data>
+  <data name="CantAccessYourAccount_EmailNotFound" xml:space="preserve">
+    <value>No user found mathing the email address provided</value>
+  </data>
+  <data name="CantAccessYourAccount_EmailSent" xml:space="preserve">
+    <value>An email was sent to the email address provided</value>
+  </data>
+  <data name="CantAccessYourAccount_EmailTitle" xml:space="preserve">
+    <value>{0} Password Assistance</value>
+  </data>
+  <data name="CantAccessYourAccount_PasswordChanged" xml:space="preserve">
+    <value>Your password has been successfully changed</value>
+  </data>
+  <data name="CantAccessYourAccount_TokenExpired" xml:space="preserve">
+    <value>Token has expired and you need to start process in order to change your password</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePassword_EmailBody" xml:space="preserve">
+    <value>Thanks for visiting {0}! Per your request, we have successfully changed your password.</value>
+  </data>
+  <data name="ChangePassword_EmailTitle" xml:space="preserve">
+    <value>Revision to your {0} Account</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>Create a New Account</value>
+  </data>
+  <data name="CreateNewAccount_EmailBody" xml:space="preserve">
+    <value>Welcome to {0}. To activate {0} you must first verify your email address by clicking the link below:
+
+{1}
+  
+If clicking the link above does not work, copy and paste the URL in a new browser window instead.
+
+If you believe that you have received this email in error, just do nothing.
+
+Thank you for choosing {0} as your cloud based file sharing service provider.
+
+Sincerely, Your {0} Support Team</value>
+  </data>
+  <data name="CreateNewAccount_EmailSent" xml:space="preserve">
+    <value>An email was sent to the email address provided. Please, activate your account</value>
+  </data>
+  <data name="CreateNewAccount_EmailSubject" xml:space="preserve">
+    <value>{0} Email Verification</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="ForgotPasswordQuestion" xml:space="preserve">
+    <value>Forgot your password ?</value>
+  </data>
+  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
+    <value>if you don't have an account</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>The password provided is invalid. Please enter a valid password value.</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Log On</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="NewPasswordConfirm" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="NewPasswordConfirmError" xml:space="preserve">
+    <value>The new password and confirmation password do not match</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordCouldNotBeChanged" xml:space="preserve">
+    <value>Password could not be changed</value>
+  </data>
+  <data name="PasswordRequireToHaveXCharsLength" xml:space="preserve">
+    <value>Passwords are required to be a minimum of {0} characters in length</value>
+  </data>
+  <data name="PleaseEnterYourUsernameAndPassword" xml:space="preserve">
+    <value>Please enter your username and password</value>
+  </data>
+  <data name="ProfileEdit" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="ProfileView" xml:space="preserve">
+    <value>View Profile</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="ThereAreErrorsInForm_SeeDetails" xml:space="preserve">
+    <value>There are errors in your form, see details below</value>
+  </data>
+  <data name="ToResetYourPassword" xml:space="preserve">
+    <value>To reset your password, type the full email address you use to sign in.</value>
+  </data>
+  <data name="UserFormBelowToCreateAccount" xml:space="preserve">
+    <value>Use the form below to create a new account</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="UserNameOrPasswordInvalid" xml:space="preserve">
+    <value>Invalid credentials</value>
+  </data>
+  <data name="UserProfile" xml:space="preserve">
+    <value>User profile</value>
+  </data>
+</root>

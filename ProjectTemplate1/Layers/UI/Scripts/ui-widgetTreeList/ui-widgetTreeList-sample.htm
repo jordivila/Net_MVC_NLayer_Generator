@@ -1,0 +1,127 @@
+﻿
+    <script type="text/javascript" src="/scripts/ui-widgetTreeList/ui-widgetTreeList.js"></script>
+    <link rel="Stylesheet" href="/scripts/ui-widgetTreeList/ui-widgetTreeList.css" />
+    <link rel="Stylesheet" href="/scripts/ui-widgetTreeList/demo.css" />
+
+    <script type="text/javascript">
+        (function ($) {
+            jQuery(document).ready(function () {
+                jQuery("input[type='button']").button();
+                initTrees();
+            });
+
+            function initTrees() {
+                var d = new Date();
+                jQuery('#treeList').treeList();
+                var dd = new Date();
+
+                jQuery('#renderResult').html('Found ' + jQuery('li').length.toString() + ' nodes. ' + (dd - d).toString() + ' ms to render the list');
+
+
+                jQuery('#treeList').treeList('closeNode', jQuery('#treeList').find('li'));
+            }
+        })(jQuery);
+    </script>
+    
+    <div id="renderResult"></div>
+    <div class="treeListDemoContainer">    
+        <br />
+        <table>
+            <thead>
+                <th>Basic Tree List</th>
+            </thead>
+            <tr class="treeListDemoExplained">
+                <td>Tree list base widget including basic features: 
+                    <ul>
+                        <li>apply jQuery UI css styles</li>
+                        <li>expand nodes with <code>class="ui-treeList-open"</code></li>
+                        <li>append toggle button functionality</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Destroy"  onclick="jQuery('#treeList').treeList('destroy');" />
+                    <input type="button" value="Create"  onclick="jQuery('#treeList').treeList();" />
+                    <br /><br />
+                    <input type="button" value="Select first"  onclick="jQuery('#treeList').treeList('selected', jQuery('#treeList').find('li:nth-child(1):first'));" />
+                    <input type="button" value="Get Selected"  onclick="jQuery('#treeList').treeList();" />
+                    
+                    <input type="button" value="Expand All"  onclick="jQuery('#treeList').treeList('openNode', jQuery('#treeList').find('li'));" />
+                    <input type="button" value="Collapse All"  onclick="jQuery('#treeList').treeList('closeNode', jQuery('#treeList').find('li'));" />
+                    <br /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul id="treeList">
+                          <li>Node 1
+                            <ul>
+                                <li>Node 12</li>
+                                <li>Node 9</li>
+                                <li>Node 7
+                                    <ul>
+                                        <li>Node 6</li>
+                                        <li>Node 11</li>
+                                        <li>Node 10</li>
+                                        <li class="ui-treeList-open">Node 8
+                                        <ul>
+                                            <li>Node 5</li>
+                                            <li>Node 2</li>
+                                            <li>Node 4</li>
+                                            <li>Node 3</li>
+                                        </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Node 13</li>
+                            </ul>
+                          </li>                          <li>Node 1
+                            <ul>
+                                <li>Node 12</li>
+                                <li>Node 9</li>
+                                <li>Node 7
+                                    <ul>
+                                        <li>Node 6</li>
+                                        <li>Node 11</li>
+                                        <li>Node 10</li>
+                                        <li class="ui-treeList-open">Node 8
+                                        <ul>
+                                            <li>Node 5</li>
+                                            <li>Node 2</li>
+                                            <li>Node 4</li>
+                                            <li>Node 3</li>
+                                        </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Node 13</li>
+                            </ul>
+                          </li>                          <li>Node 1
+                            <ul>
+                                <li>Node 12</li>
+                                <li>Node 9</li>
+                                <li>Node 7
+                                    <ul>
+                                        <li>Node 6</li>
+                                        <li>Node 11</li>
+                                        <li>Node 10</li>
+                                        <li class="ui-treeList-open">Node 8
+                                        <ul>
+                                            <li>Node 5</li>
+                                            <li>Node 2</li>
+                                            <li>Node 4</li>
+                                            <li>Node 3</li>
+                                        </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Node 13</li>
+                            </ul>
+                          </li>
+                    </ul>                
+                </td>
+            </tr>
+        </table>
+    </div>
+

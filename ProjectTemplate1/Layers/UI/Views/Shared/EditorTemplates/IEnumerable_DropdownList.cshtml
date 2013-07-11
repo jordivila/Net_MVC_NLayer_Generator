@@ -1,0 +1,20 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+@using System.Text;
+
+@{
+    IEnumerable<SelectListItem> listItems = (IEnumerable<SelectListItem>)ViewData["listItems"];
+    object htmlAttributes = (object)ViewData["htmlAttributes"];
+
+    IDictionary<string, object> attributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+    attributes.Add("class", "ui-widget-content ui-corner-all");
+    
+    
+    Func<MvcHtmlString> createDropDownList = delegate()
+    {
+        MvcHtmlString result = Html.DropDownList(string.Empty, listItems, attributes);
+        return result;
+    };
+
+    @createDropDownList()
+}

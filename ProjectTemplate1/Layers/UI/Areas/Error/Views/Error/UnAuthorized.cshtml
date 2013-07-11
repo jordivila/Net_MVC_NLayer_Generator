@@ -1,0 +1,22 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@model $customNamespace$.UI.Web.Areas.Error.Models.ErrorInfoModel
+
+@{
+    Layout = "~/Areas/Error/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles{
+
+}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section ErrorDescriptionContainer
+{
+    <p>@$customNamespace$.Resources.General.GeneralTexts.UnAuthorizedError_TryLoginAsDifferentUser</p><br />
+
+    @Html.LogOnButton()
+}

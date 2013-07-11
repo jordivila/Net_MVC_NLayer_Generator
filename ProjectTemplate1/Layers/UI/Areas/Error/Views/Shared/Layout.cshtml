@@ -1,0 +1,25 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section InlineStyles{
+    <style type="text/css">
+        .ui-error-page {/*display: table;*/ /*height: 20em;*/ overflow: hidden;margin:1em auto 0 auto;text-align:center;}
+        .ui-error-page .ui-error-container {/*display: table-cell; */vertical-align: middle;}
+        .ui-error-container .ui-message-textOnly {font-size:2em !important;font-weight:bold;padding:2em;}
+    </style>
+    @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
+}
+
+@section ScriptsToAdd
+{
+    @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, true)
+}
+
+<div class="ui-error-page">
+    <div  class="ui-error-container">
+        @RenderSection("ErrorDescriptionContainer",true)
+    </div>
+</div>

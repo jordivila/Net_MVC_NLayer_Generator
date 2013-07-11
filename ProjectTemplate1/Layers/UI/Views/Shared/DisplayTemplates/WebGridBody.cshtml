@@ -1,0 +1,69 @@
+﻿@using System.Linq.Expressions
+@using System.Linq;
+@using $customNamespace$.UI.Web.Common.Mvc.Html
+@{
+    
+    List<WebGridRow> Rows = (List<WebGridRow>)ViewData["Rows"];
+    WebGridColumn[] Columns = (WebGridColumn[])ViewData["Columns"];
+    WebGridStyle webGridStyle = (WebGridStyle)ViewData["WebGridStyle"];
+
+    Func<Func<dynamic, object>, dynamic, HelperResult> Format = delegate(Func<dynamic, object> format, dynamic arg)
+        {
+            var result = format(arg);
+            return new HelperResult(tw =>
+            {
+                var helper = result as HelperResult;
+                if (helper != null)
+                {
+                    helper.WriteTo(tw);
+                    return;
+                }
+                IHtmlString htmlString = result as IHtmlString;
+                if (htmlString != null)
+                {
+                    tw.Write(htmlString);
+                    return;
+                }
+                if (result != null)
+                {
+                    tw.Write(HttpUtility.HtmlEncode(result));
+                }
+            });
+        };
+
+    Func<WebGridColumn, string, dynamic, string> GetTableCellHtml = delegate(WebGridColumn column, string innerHtml, dynamic columnOriginalValue)
+    {
+        TagBuilder td = new TagBuilder(webGridStyle == WebGridStyle.Table ? "td" : "div");
+        td.AddCssClass("ui-widgetGrid-column");
+        if (!string.IsNullOrEmpty(column.ColumnName))
+        {
+            td.AddCssClass(string.Format("ui-widgetGrid-{0}", column.ColumnName));
+        }
+        if(!string.IsNullOrEmpty(column.Style))
+        {
+            td.AddCssClass(column.Style);    
+        }
+        td.InnerHtml = string.Format("<div class='ui-widgetGrid-column-content' title='{1}'>{0}</div>", innerHtml, columnOriginalValue);
+        return td.ToString();
+    };
+        
+    int r = 0;
+    foreach (WebGridRow row in Rows)
+    {
+        TagBuilder tr = new TagBuilder(webGridStyle == WebGridStyle.Table ? "tr" : "div");
+        tr.AddCssClass("ui-widgetGrid-row");
+        tr.AddCssClass("ui-widget-content");
+        //tr.AddCssClass(string.Format("{0}", r % 2 == 0 ? "ui-priority-primary" : "ui-priority-secondary"));
+
+        foreach (WebGridColumn column in Columns)
+        {
+            Expression<Func<dynamic, dynamic>> expressionField = model => row[column.ColumnName];
+            var value = (column.Format == null) ? Html.DisplayFor(expressionField).ToHtmlString() : Format(column.Format, row).ToString();
+            tr.InnerHtml += GetTableCellHtml(column, 
+                                            value ?? string.Empty, 
+                                            string.IsNullOrEmpty(column.ColumnName) ? string.Empty : row[column.ColumnName]);
+        }
+        @MvcHtmlString.Create(tr.ToString())
+        r++;
+    }
+}

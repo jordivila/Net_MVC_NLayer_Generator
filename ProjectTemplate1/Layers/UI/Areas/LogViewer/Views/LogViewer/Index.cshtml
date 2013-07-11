@@ -1,0 +1,40 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@model $customNamespace$.UI.Web.Areas.LogViewer.Models.LogViewerModel
+
+@{
+    Layout = "~/Areas/LogViewer/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles
+{
+<style type="text/css">
+    .ui-error-page .ui-logViewer * {text-align:left;}
+    .ui-error-page .ui-logViewer ul li {clear:both;margin:1em 0 0 0;padding:.5em 0 0 0;}
+</style>
+}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section ErrorDescriptionContainer
+{
+<div class="ui-logViewer">
+    <h3>@$customNamespace$.Resources.General.GeneralTexts.SelectSourceToGetDetails</h3>
+    <br />
+    <ul>
+    @{
+        foreach (var item in this.Model.LogTraceSources)
+        {
+            <text>
+                <li>
+                    <a href="@$customNamespace$.UI.Web.Areas.LogViewer.LogViewerUrlHelper.LogViewerBySourceName(Url, item.Name)">@item.Name</a>
+                </li>
+            </text>
+        }
+    }
+    </ul>
+</div>
+}
+

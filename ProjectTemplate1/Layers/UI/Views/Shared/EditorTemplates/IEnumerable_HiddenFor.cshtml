@@ -1,0 +1,10 @@
+﻿@{
+    string result = string.Empty;
+    IEnumerable<object> items = ViewData.Model;
+    foreach (var item in items)
+    {
+        <text>
+            <input type="hidden" name="@ViewData.ModelMetadata.PropertyName" id="@item" value="@item" />
+        </text>
+    }
+}

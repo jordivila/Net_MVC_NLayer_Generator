@@ -1,0 +1,88 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.DAL</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.DAL</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.DAL.csproj" File="Template.DAL.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="BaseDAL.cs">BaseDAL.cs</ProjectItem>
+      <Folder Name="LoggingServices" TargetFolderName="LoggingServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDAL.cs">LoggingDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDALInterface.cs">LoggingDALInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDALMock.cs">LoggingDALMock.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipProfileServices" TargetFolderName="MembershipProfileServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProfileDAL.cs">MembershipProfileDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProfileDALInterface.cs">MembershipProfileDALInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProfileDALMock.cs">MembershipProfileDALMock.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipRoleServices" TargetFolderName="MembershipRoleServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipRoleDAL.cs">MembershipRoleDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipRoleDALInterface.cs">MembershipRoleDALInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipRoleDALMock.cs">MembershipRoleDALMock.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MembershipServices" TargetFolderName="MembershipServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipDAL.cs">MembershipDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipDALInterface.cs">MembershipDALInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipDALMock.cs">MembershipDALMock.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <Folder Name="AspNetServices" TargetFolderName="AspNetServices">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipDatabase.sql">AspNetMembershipDatabase.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipInitAdminUser.sql">AspNetMembershipInitAdminUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipUserSearch.sql">AspNetMembershipUserSearch.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
+        </Folder>
+        <Folder Name="EnterpriseLibrary" TargetFolderName="EnterpriseLibrary">
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDatabase.sql">LoggingDatabase.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetAll.sql">LoggingExceptionGetAll.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetById.sql">LoggingExceptionGetById.sql</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Install.cmd">Install.cmd</ProjectItem>
+      </Folder>
+      <Folder Name="SyndicationServices" TargetFolderName="SyndicationServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationDAL.cs">SyndicationDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationDALInterface.cs">SyndicationDALInterface.cs</ProjectItem>
+      </Folder>
+      <Folder Name="TockenPersistenceServices" TargetFolderName="TockenPersistenceServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistenceDAL.cs">TokenPersistenceDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistenceDALInterface.cs">TokenPersistenceDALInterface.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistenceDALMock.cs">TokenPersistenceDALMock.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Data" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging.Database" version="5.0.505.0" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+    </packages>
+  </WizardData>
+</VSTemplate>

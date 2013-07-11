@@ -1,0 +1,44 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@{
+    ModelMetadata meta = ViewData.ModelMetadata;
+    bool isNullable = meta.ModelType.IsGenericType && meta.ModelType.GetGenericTypeDefinition() == typeof(Nullable<>);
+    bool value = isNullable ? ((Nullable<bool>)meta.Model).GetValueOrDefault() : (bool)ViewData.Model;
+    string modelIdSanitized = System.Web.Mvc.TagBuilder.CreateSanitizedId(ViewData.TemplateInfo.HtmlFieldPrefix);
+    string modelId = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+
+<div data-widget="ui-widgetBoolean" class="ui-widgetBoolean" data-widget-nullable="@isNullable.ToString().ToLower()">
+    @{
+        Dictionary<string, object> attributes = new Dictionary<string, object>();
+        //attributes.Add("data-checkboxId", modelIdSanitized);
+        attributes.Add("data-textOnly", "true");
+        jQueryHelpers.Icon icon;
+        
+        Func<jQueryHelpers.Icon> getNonNullableIcon = delegate()
+        {
+            return (bool)ViewData.Model ? jQueryHelpers.Icon.ui_icon_check : jQueryHelpers.Icon.ui_icon_closethick;
+        };
+        
+        if(isNullable)
+        {
+            if(((Nullable<bool>)meta.Model).HasValue)
+            {
+                icon = getNonNullableIcon();
+            }
+            else
+            {
+                icon = jQueryHelpers.Icon.ui_icon_help;
+            }
+        }
+        else
+        {
+            icon = getNonNullableIcon();
+        }
+        
+        @Html.Button(string.Empty,icon, ButtonType.Button,attributes)
+    }   
+
+    <input id="@modelIdSanitized" name="@modelId" type="checkbox" value="true" @string.Format("{0}", icon == jQueryHelpers.Icon.ui_icon_check?"checked=true":string.Empty) />
+    <input name="@modelId" type="hidden" value="@string.Format("{0}", icon == jQueryHelpers.Icon.ui_icon_help ? string.Empty : "false")" />
+</div>
+

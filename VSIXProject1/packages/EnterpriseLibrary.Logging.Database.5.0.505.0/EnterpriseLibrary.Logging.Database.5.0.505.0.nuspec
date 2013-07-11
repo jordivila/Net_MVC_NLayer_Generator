@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>EnterpriseLibrary.Logging.Database</id>
+    <version>5.0.505.0</version>
+    <title>Enterprise Library 5.0 - Logging Application Block Database Provider</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.opensource.org/licenses/ms-pl</licenseUrl>
+    <projectUrl>http://msdn.microsoft.com/en-us/library/ff664543(PandP.50).aspx</projectUrl>
+    <iconUrl>http://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This logging provider lets developer use the Data Access Application Block to store log entries.</description>
+    <summary>This logging provider lets developer use the Data Access Application Block to store log entries.</summary>
+    <tags>entlib Enterprise Library data daab dab logging lab LOB</tags>
+    <dependencies>
+      <dependency id="EnterpriseLibrary.Logging" version="5.0" />
+      <dependency id="EnterpriseLibrary.Data" version="5.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework=".NETFramework3.5, .NETFramework4.0" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll" />
+    </references>
+  </metadata>
+</package>

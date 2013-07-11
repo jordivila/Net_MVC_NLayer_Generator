@@ -1,0 +1,97 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.Blog;
+@using System.ServiceModel.Syndication;
+@using System.Linq.Expressions;
+@using $customNamespace$.UI.Web.Areas.Blog.Models;
+@using $customNamespace$.Models.Syndication;
+@model BlogModel
+
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+    <script type="text/javascript">
+        (function ($) {
+            jQuery(document).ready(function () {
+                jQuery('div[data-widget="accordion"]').accordion({
+                    collapsible: true
+                    , active: false
+                });
+            });
+        } (jQuery));
+    </script>
+}
+
+@section InlineStyles{
+    <link href="@Url.Content("~/Areas/Blog/Content/blog.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .ui-widgetGrid-PublishDate { width:10em !important; }
+        .ui-widgetGrid-column-content { text-align:left; }
+    </style>
+}
+
+
+@if (string.IsNullOrEmpty(this.Model.FeedId))
+{
+    <text>
+        <ul>
+            @foreach (var item in this.Model.FeedFormatter.Feed.Categories)
+            {
+                <li><a href="@Url.Category(item.Name)">@item.Name</a></li>
+            }
+        </ul>
+    </text>
+}
+else
+{
+    <text>
+    <p>
+    @$customNamespace$.Resources.Blog.BlogTexts.BrowseBy <a href="@Url.Category(string.Empty)">@$customNamespace$.Resources.Blog.BlogTexts.Category</a>
+    </p>
+    </text>
+    
+    if (this.Model.FeedFormatter != null)
+    {
+        WebGridColumn[] columns = new List<WebGridColumn>().ToArray();
+
+        if (this.Model.FeedFormatter.Feed != null)
+        {
+            if (this.Model.FeedFormatter.Feed.Items.Count() > 0)
+            {
+                columns = new List<WebGridColumn>(){
+                            new WebGridColumn(){ Style="ui-widgetGrid-PublishDate",
+                                                Header=$customNamespace$.Resources.Blog.BlogTexts.PublishDate, 
+                                                Format=@<text>
+                                                            @{
+                                                                SyndicationItemFormatter tmp = (SyndicationItemFormatter)item.Value;
+                                                            }
+                                                            @tmp.Item.PublishDate.DateTime.ToShortDateString()
+                                                            @tmp.Item.PublishDate.DateTime.ToShortTimeString()
+                                                        </text>
+                                                                    }
+                            , new WebGridColumn(){ Header=string.Empty, 
+                                                    Format=@<text>
+                                                                @{
+                                                                    SyndicationItemFormatter tmp = (SyndicationItemFormatter)item.Value;
+                                                                    Uri link = (tmp).Item.Links[0].Uri;
+                                                                }
+                                                                <a href="@link.ToString()">@tmp.Item.Title.Text</a>
+                                                            </text>
+                                                    }
+                        }.ToArray();
+            }
+
+
+            var gridHtml = Html.WebGrid<SyndicationItemFormatter, BlogModel, DataFilterSyndication>(
+                                                                                    model => this.Model.FeedItems,
+                                                                                    model => this.Model.FeedFilter,
+                                                                                    columns,
+                                                                                    webGridStyle: WebGridStyle.TableLess,
+                                                                                    emptyResultsMessage: $customNamespace$.Resources.General.GeneralTexts.NoDataFound);
+                        <text>
+                        <br />
+                        @gridHtml.Render()
+                        </text>
+        }
+    }
+}

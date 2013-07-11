@@ -1,0 +1,39 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@{
+    IEnumerable<string> itemsSelected = ViewData.Model == null ? new string[0] : ViewData.Model;
+    IEnumerable<SelectListItem> listItems = (IEnumerable<SelectListItem>)ViewData["listItems"];
+    bool hasModelError = false;
+
+    foreach (SelectListItem item in listItems)
+    {
+        Dictionary<string, object> attributes = new Dictionary<string, object>();
+        attributes.Add("data-checkboxId", string.Format("{0}_{1}", ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty), item.Value));
+        attributes.Add("data-textOnly", "true");
+        
+        
+        @MvcHtmlString.Create(string.Format(@"<div data-widget='widgetModelItem' class='ui-widgetFormItem ui-widgetForm-{5} {2}'>
+                                                <div class='ui-widgetForm-inputLabel'><label>{0}</label></div>
+                                                <div class='ui-widgetForm-inputValue '>
+                                                    <div data-widget='ui-widgetBoolean' class='ui-widgetBoolean'>
+                                                        <input type='checkbox' id='{5}_{9}' name='{4}' value='{9}' {6} />
+                                                        {8}
+                                                    </div>
+                                                </div>
+                                                <div class='ui-widgetForm-inputError {3}'>{1}</div>
+                                                <div class='ui-carriageReturn'></div>
+                                            </div>"
+                                            , item.Text
+                                            , string.Empty//hasModelError ? htmlHelper.ValidationMessageCustomizedFor(expression).ToString() : string.Empty
+                                            , hasModelError ? "ui-state-error ui-corner-all" : string.Empty
+                                            , hasModelError ? string.Empty : "ui-hidden"
+                                            , ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)
+                                            , ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)
+                                            , itemsSelected.Contains(item.Value) ? " checked=\"checked\" " : string.Empty
+                                            , itemsSelected.Contains(item.Value) ? "ui-icon-check" : "ui-icon-closethick"
+                                            , Html.Button(string.Empty,
+                                                            itemsSelected.Contains(item.Value) ? jQueryHelpers.Icon.ui_icon_check : jQueryHelpers.Icon.ui_icon_closethick,
+                                                            ButtonType.Button,
+                                                            attributes)
+                                            , item.Value));
+    }
+}

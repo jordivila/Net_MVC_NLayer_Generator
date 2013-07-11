@@ -1,0 +1,34 @@
+﻿<#@ template language="C#" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Import Namespace="System.Text" #>
+<#@ Import Namespace="System.Web" #>
+<#@ Import Namespace="System.IO" #>
+<#@ Import Namespace="$customNamespace$.UI.Web.Controllers" #>
+<#@ Import Namespace="$customNamespace$.Models.Enumerations" #>
+
+<#@ include file="BaseInclude.tt" #>
+
+<#
+	Type controllerType = this.Session[$customNamespace$.UI.Web.Controllers.ResourceDispatcherController.TTSessionContext_ControllerType] as Type;
+
+	string[] files = null;
+	object instanceObj = Activator.CreateInstance(controllerType);
+	IControllerWithClientResources userIntendedControllerInstance = instanceObj as IControllerWithClientResources;
+	IDisposable disposableInstance = instanceObj as IDisposable;
+
+    if (userIntendedControllerInstance != null)
+    {
+		files = userIntendedControllerInstance.GetControllerJavascriptResources;
+	}
+
+	if (disposableInstance != null)
+	{
+		disposableInstance.Dispose();
+	}
+
+    if (files != null)
+    {
+	   this.AppendFiles(files);
+	}
+#>

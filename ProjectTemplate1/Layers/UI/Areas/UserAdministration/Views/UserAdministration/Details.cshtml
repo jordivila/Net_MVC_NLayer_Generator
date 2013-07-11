@@ -1,0 +1,119 @@
+﻿@using System.Linq.Expressions
+@using System.Web.Script.Serialization
+@using $customNamespace$.UI.Web.Areas.UserAdministration.Models
+@using $customNamespace$.Models.Membership
+@using $customNamespace$.UI.Web.Common.Mvc.Html
+@using $customNamespace$.Models.Enumerations;
+
+@model $customNamespace$.UI.Web.Areas.UserAdministration.Models.DetailsViewModel
+
+@{Layout = "~/Areas/UserAdministration/Views/Shared/_LayOut.cshtml";}
+
+@section InlineStyles
+{
+}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section UserAdminContent{
+
+    @{
+        using (MvcForm formMain = Html.BeginWidgetForm())
+        {
+            Expression<Func<DetailsViewModel, MembershipUserWrapper>> exp = model => this.Model.UserOriginal;
+            JavaScriptSerializer jser = new JavaScriptSerializer();
+                @Html.Hidden(ExpressionHelper.GetExpressionText(exp), jser.Serialize(this.Model.UserOriginal))
+                @Html.HiddenFor_IEnumerable(model => this.Model.Roles)
+                @Html.HiddenFor(m => Model.UserUpdated.ProviderUserKey)
+
+        
+        
+            using (MvcWidgetBox divBox = Html.BeginWidgetBox())
+            {
+                using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+                { 
+                    <text>
+                        @$customNamespace$.Resources.UserAdministration.UserAdminTexts.UserDetails
+			            <span class="ui-model-displayName">@this.Model.UserOriginal.UserName</span> 
+			            <em>
+                        @{
+                    if (this.Model.UserOriginal.IsOnline)
+                    {
+                                @$customNamespace$.Resources.UserAdministration.UserAdminTexts.Online
+                    }
+                    else
+                    {
+                                @$customNamespace$.Resources.UserAdministration.UserAdminTexts.Offline
+                    }
+                        }
+			            </em>
+                    </text> 
+                }
+                using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+                {
+                    <text>
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.Account, new { @class = "ui-widgetForm-account" }))
+                        { 
+                            <ul>
+                                <li><div>@$customNamespace$.Resources.UserAdministration.UserAdminTexts.Created</div><label>@this.Model.UserOriginal.CreateDate</label></li>
+								<li><div>@$customNamespace$.Resources.UserAdministration.UserAdminTexts.LastLogin</div><label>@this.Model.UserOriginal.LastLoginDate</label></li>
+                                <li><div>@$customNamespace$.Resources.UserAdministration.UserAdminTexts.LastActive</div><label>@this.Model.UserOriginal.LastActivityDate</label></li>
+							</ul>
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.UserStatus, new { @class = "ui-widgetForm-status" }))
+                        {
+                            <ul>
+                                <li><div>@$customNamespace$.Resources.UserAdministration.UserAdminTexts.Approved</div><label>@Html.DisplayFor(model => model.UserOriginal.IsApproved)</label></li>
+                                <li><div>@$customNamespace$.Resources.UserAdministration.UserAdminTexts.Locked</div><label>@Html.DisplayFor(model => model.UserOriginal.IsLockedOut)</label></li>
+                            </ul>
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.Comments, new { @class = "ui-widgetForm-comments" }))
+                        {
+                            @Html.FormItem(Model => Model.UserUpdated.Comment)
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.ManageUserRoles, new { @class = "ui-widgetForm-roles" }))
+                        {
+                            @Html.CheckBoxMultiple(model => this.Model.UserRoles, ((Enum)SiteRoles.Administrator).ToSelectList(typeof(SiteRoles)))
+                        }
+                        <br />
+                    </text>
+        
+                        using (MvcWidgetButtonsBox divButtonsBox = Html.BeginWidgetButtonsBox())
+                        {
+                            if (this.Model.UserOriginal.IsApproved)
+                            {
+                                @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.UnApproveAccount, jQueryHelpers.Icon.ui_icon_closethick, ButtonType.Submit, true, new { name = "formAction", value = Actions.UnApprove })
+                            }
+                            else
+                            {
+                                @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.ApproveAccount, jQueryHelpers.Icon.ui_icon_check, ButtonType.Submit, true, new { name = "formAction", value = Actions.Approve })
+                            }
+
+                            if (this.Model.UserOriginal.IsLockedOut)
+                            {
+                                @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.UnLockUser, jQueryHelpers.Icon.ui_icon_unlocked, ButtonType.Submit, new { name = "formAction", value = Actions.UnLock })
+                            }
+
+                            @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.DeleteAccount, jQueryHelpers.Icon.ui_icon_trash, ButtonType.Submit, true, new { name = "formAction", value = Actions.Delete })
+                            @Html.Button($customNamespace$.Resources.General.GeneralTexts.Update, jQueryHelpers.Icon.ui_icon_transfer_e_w, ButtonType.Submit, new { name = "formAction", value = Actions.Update })
+                        }
+                        
+                        if (this.Model.ResultLastAction != null)
+                        {
+                            if (this.Model.ResultLastAction.IsValid == true)
+                            {
+                                @Html.WidgetMessage($customNamespace$.Models.Enumerations.DataResultMessageType.Success, this.Model.ResultLastAction.Message, true, true);
+                            }
+                        }
+                }
+            }
+        }
+    }
+}

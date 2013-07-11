@@ -1,0 +1,180 @@
+<h3>jQuery Tree List widget</h3>
+<br />
+<div id="overview" class="ui-widgetDocSection">
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#theming">Theming</a></li>
+    </ul>    
+    <h2>Overview</h2>
+    jQuery UI widget for creating themable tree view lists or hierachical menus. 
+    This widget is intended to be a very lightweight base class for treeList functionality. 
+    Therefore, I provide the minimum methods, properties and events needed for basic usage. <br /><br />
+    Although there is an appropiate method called <code>openNode</code> this widget provides an "<code>ui-treeList-open</code>" 
+    style class which opens the node and its parents during widget initialization.
+    Just decorate a node like this: <br /><code>&lt;li class="ui-treeList-open"&gt;Node&lt;/li&gt;</code>
+
+    <h3>Dependencies:</h3>
+    ui.core.js<br />
+    ui.widget.js<br />
+    <br />
+    <small>
+    jQuery versions: 1.2.3 +<br />
+    jQuery UI versions: 1.8 (as it uses jQuery UI widget Factory)<br />
+    </small>
+    <br />
+    <h3>Example</h3>
+    <ul id="example">
+        <li><a href="/code/js/jquery/ui-widgetTreeList/widgetTreeList.aspx" target="_blank">Demo</a></li>
+        <li><a href="/code/js/jquery/ui-widgetTreeList/widgetTreeList.js" target="_blank">View Source</a></li>
+    </ul>
+
+</div>
+<div id="options" class="ui-widgetDocSection">
+    <h2>Options</h2>
+    <ul>
+        <li>
+            <h3><a href="#option-selectable">selectable</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>Boolean</dd>
+              <dt>Default:</dt>
+                <dd>true</dd>
+            </dl>
+            <div>
+                <p>Enhance LI items to be selectable applying <code>ui-state-active</code> style when click </p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl>
+                    <dt>
+                      Initialize a tree List with the <code>selectable</code> option specified.
+                    </dt>
+                    <dd><pre><code>jQuery('.selector').treeList({ selectable: false });</code></pre>
+                    </dd>
+                    <dt>
+                        Get or set the <code>selectable</code> option, after init.
+                    </dt>
+                    <dd>
+<pre>
+<code>
+//getter
+var isSelectable = jQuery('.selector').treeList('option', 'selectable');
+//setter
+jQuery('.selector').treeList('option', 'selectable', false );
+</code>
+</pre>
+                    </dd>
+                </dl>
+            </div>
+        </li>    
+    </ul>
+</div>
+<div id="events" class="ui-widgetDocSection">
+    <h2>Events</h2>
+    <ul>
+        <li>
+            <h3><a href="#event-onSelect">onSelect</a></h3>
+            <dl>
+              <dt>Type:</dt>
+                <dd>onSelect</dd>
+            </dl>
+            <div>
+                <p>This event is triggered when the user clicks an item</p>
+            </div>
+            <div>
+                <h4>Code examples</h4>
+                <dl class="event-examples-list">
+                    <dt>
+                        Supply a callback function to handle the <code>onSelect</code> event as an init option.
+                        </dt>
+                        <dd>
+                        <pre><code>jQuery('.selector').treeList({ onSelect: function(e, ui) { ... }});</code></pre>
+                        </dd>
+                        <dt>
+                        Bind to the <code>change</code> event by type: <code>treeListchange</code>.
+                        </dt>
+                        <dd>
+                        <pre><code>jQuery('.selector').bind('treeListonSelect', function(event, ui) {...});</code></pre>
+                        </dd>
+                    </dl>
+            </div>
+        </li>    
+    </ul>
+</div>
+<div id="methods" class="ui-widgetDocSection">
+    <h2>Methods</h2>
+    <ul>
+        <li>
+            <h3><a href="#method-destroy">destroy</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.treeList('destroy')</dd>
+            </dl>
+            <div>
+                <p>Remove the treeList functionality completely. This will return the element back to its pre-init state.</p>
+            </div>
+        </li>    
+        <li>
+            <h3><a href="#method-selected">selected</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.treeList('selected', [jQueryObject])</dd>
+            </dl>
+            <div>
+                <p>Sets selected item/s. If no value is specified, will act as a getter.</p>
+            </div>
+        </li>   
+        
+        <li>
+            <h3><a href="#method-openNode">openNode</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.treeList('openNode', jQueryObject)</dd>
+            </dl>
+            <div>
+                <p>Sets nodes to be opened.</p>
+            </div>
+        </li>                        
+
+        <li>
+            <h3><a href="#method-closeNode">closeNode</a></h3>
+            <dl>
+              <dt>Signature:</dt>
+                <dd>.treeList('closeNode', jQueryObject)</dd>
+            </dl>
+            <div>
+                <p>Sets nodes to be closed.</p>
+            </div>
+        </li>                        
+         
+    </ul>
+</div>
+<div id="theming" class="ui-widgetDocSection">
+    <h2 class="top-header">Theming</h2>
+    <p>
+        This widget uses the jQuery UI CSS Framework to style its look and feel. 
+        Use the ThemeRoller tool to create and download custom themes that are easy to build and maintain.
+    </p>
+    <p>
+        If a deeper level of customization is needed, there are widget-specific classes referenced within 
+        the widgetTreeList.css stylesheet that can be modified. These classes are shown below.
+    </p>
+    <h3>Sample markup with jQuery UI CSS Framework classes</h3>
+        <pre>
+            <code>
+.ui-treeList {list-style-type:none;position:relative;margin:0px 0px 0px 0px;padding:5px 5px 5px 5px;}
+.ui-treeList ul{list-style-type:none;margin:0px 0px 0px 0px;padding:5px 5px 5px 5px;}
+.ui-treeList li {margin:5px 0px 0px 0px;padding:1px 1px 1px 1px;position:relative;}
+.ui-treeList li:first-letter {margin:0px 0px 0px 20px;}
+.ui-treeList li div.ui-treeList-toggle {width:16px;height:16px;margin:5px 0px 0px 0px;position:absolute;top:0px;left:2px;}
+.ui-treeList .ui-treeList-childs {}
+.ui-treeList .ui-treeList-open { }
+.ui-treeList .ui-treeList-item { }
+.ui-treeList .ui-treeList-itemEmpty {height:10px;}
+.ui-treeList .ui-sortable-placeholder {border-style:dashed; border-width:thin; min-height:20px;}                        
+            </code>
+        </pre>
+</div>

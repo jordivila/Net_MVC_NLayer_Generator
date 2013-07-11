@@ -1,0 +1,62 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserProfile;
+@using $customNamespace$.Models.Enumerations
+@model $customNamespace$.UI.Web.Areas.UserProfile.Models.UserProfileIndexModel
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section InlineStyles{ 
+    <style type="text/css">
+        .ui-editProfile-buttons  {border:0 solid transparent;margin:1em 0 0 0;}
+        .ui-editProfile-buttons .ui-widgetForm-buttons {text-align:right;}
+    </style>
+}
+
+@section ScriptsToAdd
+{
+    <script type="text/javascript">
+        (function ($) {
+            jQuery(document).ready(function () {
+                $customNamespace$.Widgets.Page.InitCallback = function () {
+                    jQuery("#@Html.IdFor(model => model.UserProfileResult.Data.BirthDate)").datepicker("option", "yearRange", "@DateTime.Now.AddYears(-100).Year:@DateTime.Now.Year");
+                };
+            });
+        })(jQuery);
+    </script>
+}
+
+@{
+    using (MvcForm form = Html.BeginWidgetForm())
+    {
+        <text>
+            @Html.EditorFor(x => x.UserProfileResult.Data)
+        </text>
+        <br />
+        using(MvcWidgetBox divBox = Html.BeginWidgetBox())
+        {
+            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent(new { @class = "ui-corner-all ui-editProfile-buttons" }))
+            {    
+                <text>
+                    <div class="ui-widgetFormItem ui-widgetForm-buttons">
+                        @Html.Button($customNamespace$.Resources.Account.AccountResources.Send,
+                                                jQueryHelpers.Icon.ui_icon_disk,
+                                                ButtonType.Submit)
+                    </div>
+                </text>
+            
+                if (!this.ViewData.ModelState.IsValid)
+                {
+                    <br />
+                    @Html.ValidationSummaryCustomized()
+                }
+
+                if (this.Model.UserProfileResultUpdated != null)
+                {
+                    if (this.Model.UserProfileResultUpdated.IsValid == true)
+                    {
+                        @Html.WidgetMessage($customNamespace$.Models.Enumerations.DataResultMessageType.Success, this.Model.UserProfileResultUpdated.Message, true, true);
+                    }
+                }
+            }
+        }
+    }
+}

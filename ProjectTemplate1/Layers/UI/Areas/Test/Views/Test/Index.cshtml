@@ -1,0 +1,63 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+@model $customNamespace$.UI.Web.Areas.Test.Models.TestViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section InlineStyles{
+
+}
+
+@section ScriptsToAdd{
+
+<script type="text/javascript">
+
+    jQuery('#formWidgetFormItems')
+		    .validate({
+		        errorClass: 'ui-state-error'
+			    //, errorContainer: '#ui-mvcMembership-register-errorSummary, #ui-mvcMembership-register-errorAdvise'
+			    //, errorLabelContainer: '#ui-mvcMembership-register-errorSummary'
+			    , errorElement: 'div'
+			    , invalidHandler: function (form, validator) {
+			        var errors = validator.numberOfInvalids();
+			        if (errors) {
+			            jQuery(self.element).find('#ui-mvcMembership-register-errorSummary, #ui-mvcMembership-register-errorAdvise').show();
+			        }
+			        else {
+			            jQuery(self.element).find('#ui-mvcMembership-register-errorSummary, #ui-mvcMembership-register-errorAdvise').hide();
+			        }
+			    }
+			    , submitHandler: function () {
+			        jQuery('#formWidgetFormItems')[0].submit();
+			        //return false;
+			        //return true;
+			    }
+                , debug: true
+		    });
+
+		    jQuery("#SomeDouble")
+                .blur(function () {
+                    jQuery(this).val(Globalize.parseFloat(jQuery(this).val()));
+                })
+                .rules("add", {
+                    required: true,
+                    number: true
+                });
+
+</script>
+}
+
+
+
+@PartialExtensions.Partial(Html, "~/Areas/Test/Views/Shared/Test_WidgetFormItem.cshtml")
+<br />
+@PartialExtensions.Partial(Html, "~/Areas/Test/Views/Shared/Test_WidgetTree.cshtml")
+<br />
+@PartialExtensions.Partial(Html, "~/Areas/Test/Views/Shared/Test_WidgetTreeSortable.cshtml")
+<br />
+@PartialExtensions.Partial(Html, "~/Areas/Test/Views/Shared/Test_WidgetTreeNest.cshtml")
+<br />
+@PartialExtensions.Partial(Html, "~/Areas/Test/Views/Shared/Test_WidgetMessages.cshtml")
+

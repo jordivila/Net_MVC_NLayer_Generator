@@ -1,0 +1,90 @@
+﻿@using $customNamespace$.Models.Logging;
+@using $customNamespace$.UI.Web.Areas.LogViewer.Models;
+@using System.Linq.Expressions
+@using $customNamespace$.UI.Web.Common.Mvc.Html
+@using $customNamespace$.Models.Enumerations;
+@using $customNamespace$.Models;
+@using $customNamespace$.Models.Logging;
+
+@model $customNamespace$.UI.Web.Areas.LogViewer.Models.LogViewerModel
+
+@{
+    Layout = "~/Areas/LogViewer/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles
+{
+    <style type="text/css">
+        .ui-logMessageViewer h2 {text-align:left;}
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Timestamp {text-align:left !important;width:9em !important;vertical-align:middle;}
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title {text-align:left !important;}
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title .ui-icon {float:left;}
+    </style>
+}
+
+@section ScriptsToAdd
+{
+<script type="text/javascript">
+    (function ($) {
+        jQuery(document).ready(function () {
+            jQuery('div[data-widget="accordion"]').accordion({
+                collapsible: true
+                , active: false
+            });
+        });
+    } (jQuery));
+</script>
+}
+
+@section ErrorDescriptionContainer
+{
+
+    <div class="ui-logMessageViewer">
+    
+            <h2>@this.Model.LogTraceListenerSelected</h2>
+
+            @if (this.ViewData.ModelState.IsValid)
+            {
+                WebGridColumn[] columns = new List<WebGridColumn>().ToArray();
+
+                if (this.Model.LogMessages != null)
+                {
+                    if (this.Model.LogMessages.Data.Count > 0)
+                    {
+                        Expression<Func<LogViewerModel, DateTime>> expressionCreationDate = m => this.Model.LogMessages.Data[0].Timestamp;
+                        Expression<Func<LogViewerModel, string>> expressionTitle = m => this.Model.LogMessages.Data[0].Title;
+                        Expression<Func<LogViewerModel, LogMessageModel>> expressionObject = m => this.Model.LogMessages.Data[0];
+
+                        columns = new List<WebGridColumn>(){
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).DisplayName, 
+                                                                    CanSort=false,
+                                                                    Format=@<text>@item.Timestamp</text>
+                                                                    },
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).DisplayName, 
+                                                                    CanSort=false,
+                                                                    Format=@<text>
+                                                                                        @{
+                                                                                                    LogMessageModel temp = item.Value;
+                                                                                                    <div data-widget="accordion" class="ui-logViewer">@Html.DisplayFor(x => temp)</div>
+                                                                                            }
+                                                                                    </text>
+                                                                    },
+                        }.ToArray();
+                    }
+
+                    var gridHtml = Html.WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>(
+                                                                                                    model => this.Model.LogMessages,
+                                                                                                    model => this.Model.Filter,
+                                                                                                    columns,
+                                                                                                    webGridStyle: WebGridStyle.Table,
+                                                                                                    emptyResultsMessage: $customNamespace$.Resources.General.GeneralTexts.NoDataFound);
+                        <text>
+                        <br />
+                        @gridHtml.Render()
+                        </text>
+                }
+            }
+            </div>
+}

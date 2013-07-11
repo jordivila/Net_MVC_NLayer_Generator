@@ -1,0 +1,14 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+@section InlineStyles{
+    @RenderSection(HtmlHelperExtensions.SectionInlineStyles, false)
+}
+
+@section ScriptsToAdd{
+    @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, false)
+}
+
+
+@RenderSection("UserAdminContent", false)

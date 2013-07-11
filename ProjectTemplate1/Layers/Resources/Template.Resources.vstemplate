@@ -1,0 +1,82 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.Resources</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.Resources</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Resources.csproj" File="Template.Resources.csproj" ReplaceParameters="true">
+      <Folder Name="Account" TargetFolderName="Account">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AccountResources.es.resx">AccountResources.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AccountResources.es.Designer.cs">AccountResources.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AccountResources.resx">AccountResources.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AccountResources.Designer.cs">AccountResources.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Blog" TargetFolderName="Blog">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BlogTexts.es.resx">BlogTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BlogTexts.es.Designer.cs">BlogTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BlogTexts.resx">BlogTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BlogTexts.Designer.cs">BlogTexts.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="DataAnnotations" TargetFolderName="DataAnnotations">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAnnotationsResources.es.resx">DataAnnotationsResources.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAnnotationsResources.es.Designer.cs">DataAnnotationsResources.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAnnotationsResources.resx">DataAnnotationsResources.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAnnotationsResources.Designer.cs">DataAnnotationsResources.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Enumerations" TargetFolderName="Enumerations">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnumerationsTexts.es.resx">EnumerationsTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnumerationsTexts.es.Designer.cs">EnumerationsTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnumerationsTexts.resx">EnumerationsTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnumerationsTexts.Designer.cs">EnumerationsTexts.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="General" TargetFolderName="General">
+        <ProjectItem ReplaceParameters="true" TargetFileName="GeneralTexts.es.resx">GeneralTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GeneralTexts.es.Designer.cs">GeneralTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GeneralTexts.resx">GeneralTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GeneralTexts.Designer.cs">GeneralTexts.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Javascript" TargetFolderName="Javascript">
+        <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.es.resx">JavascriptTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.es.Designer.cs">JavascriptTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.resx">JavascriptTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.Designer.cs">JavascriptTexts.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ResourceHelpers" TargetFolderName="ResourceHelpers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ResourceHelperPre.cs">ResourceHelperPre.cs</ProjectItem>
+      </Folder>
+      <Folder Name="T4Templates" TargetFolderName="T4Templates">
+        <ProjectItem ReplaceParameters="false" TargetFileName="ResourceBuildEventPre.cmd">ResourceBuildEventPre.cmd</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ResourceBuildEventPre.tt">ResourceBuildEventPre.tt</ProjectItem>
+      </Folder>
+      <Folder Name="UserAdministration" TargetFolderName="UserAdministration">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserAdminTexts.es.resx">UserAdminTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserAdminTexts.es.Designer.cs">UserAdminTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserAdminTexts.resx">UserAdminTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserAdminTexts.Designer.cs">UserAdminTexts.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="UserProfile" TargetFolderName="UserProfile">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileTexts.es.resx">UserProfileTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileTexts.es.Designer.cs">UserProfileTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileTexts.resx">UserProfileTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileTexts.Designer.cs">UserProfileTexts.Designer.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+</VSTemplate>

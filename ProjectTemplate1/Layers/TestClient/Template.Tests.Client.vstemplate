@@ -1,0 +1,67 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>$customNamespace$.Tests.Client</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>$customNamespace$.Tests.Client</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Tests.Client.csproj" File="Template.Tests.Client.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Proxies" TargetFolderName="Proxies" />
+      <Folder Name="TestCases" TargetFolderName="TestCases">
+        <Folder Name="AuthorizeAttribute" TargetFolderName="AuthorizeAttribute">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeAttributeTests.cs">AuthorizeAttributeTests.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizedAttributeAdminOnlyController.cs">AuthorizedAttributeAdminOnlyController.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Configuration" TargetFolderName="Configuration">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationTests.cs">ConfigurationTests.cs</ProjectItem>
+        </Folder>
+        <Folder Name="GenericTests" TargetFolderName="GenericTests">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Ensure_AuthorizeAttribute.cs">Ensure_AuthorizeAttribute.cs</ProjectItem>
+        </Folder>
+        <Folder Name="UserAccount" TargetFolderName="UserAccount">
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserAccountControllerTest.cs">UserAccountControllerTest.cs</ProjectItem>
+        </Folder>
+        <Folder Name="UserProfile" TargetFolderName="UserProfile">
+          <ProjectItem ReplaceParameters="true" TargetFileName="UserProfileControllerTests.cs">UserProfileControllerTests.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="TestProxies" TargetFolderName="TestProxies">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProxyTests.cs">MembershipProxyTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RoleProxyTests.cs">RoleProxyTests.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="Moq" version="4.0.10827" targetFramework="net40" />
+      <package id="CommonServiceLocator" version="1.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Caching" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Common" version="5.0.505.0" targetFramework="net40" />
+      <package id="EnterpriseLibrary.Logging" version="5.0.505.1" targetFramework="net40" />
+      <package id="Unity" version="2.1.505.2" targetFramework="net40" />
+      <package id="Unity.Interception" version="2.1.505.2" targetFramework="net40" />
+    </packages>
+  </WizardData>
+</VSTemplate>

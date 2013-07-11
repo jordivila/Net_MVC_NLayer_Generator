@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+  <Identifier Id="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+    <Name>NET_DEV_ALL_IN_READY</Name>
+    <Author>Jordi Vila</Author>
+    <Version>4.0</Version>
+    <Description xml:space="preserve">Set up a layered architecture project with Membership, Roles and Profile management using a jQuery themable user interface</Description>
+    <Locale>1033</Locale>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Pro</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+  </Identifier>
+  <References>
+    <Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="1.5.20902.9026">
+      <Name>NuGet Package Manager</Name>
+      <MoreInfoUrl>http://docs.nuget.org/</MoreInfoUrl>
+    </Reference>
+  </References>
+  <Content>
+    <Assembly AssemblyName="|Wizard;AssemblyName|">|Wizard|</Assembly>
+    <CustomExtension Type="CommonServiceLocator.1.0.nupkg">packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Caching.5.0.505.0.nupkg">packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Common.5.0.505.0.nupkg">packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Data.5.0.505.0.nupkg">packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Logging.5.0.505.1.nupkg">packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg">packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg</CustomExtension>
+    <CustomExtension Type="Unity.2.1.505.2.nupkg">packages\Unity.2.1.505.2\Unity.2.1.505.2.nupkg</CustomExtension>
+    <CustomExtension Type="Unity.Interception.2.1.505.2.nupkg">packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nupkg</CustomExtension>
+    <CustomExtension Type="Microsoft.AspNet.Web.Optimization.1.0.0.nupkg">packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nupkg</CustomExtension>
+    <CustomExtension Type="WebGrease.1.1.0.nupkg">packages\WebGrease.1.1.0\WebGrease.1.1.0.nupkg</CustomExtension>
+    <CustomExtension Type="Microsoft.Web.Infrastructure.1.0.0.0.nupkg">packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg</CustomExtension>
+    <CustomExtension Type="Moq.4.0.10827.nupkg">packages\Moq.4.0.10827\Moq.4.0.10827.nupkg</CustomExtension>
+    <ProjectTemplate>ProjectTemplates</ProjectTemplate>
+  </Content>
+</Vsix>

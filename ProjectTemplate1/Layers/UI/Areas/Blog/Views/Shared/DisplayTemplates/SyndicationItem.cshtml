@@ -1,0 +1,38 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.Blog;
+@using System.ServiceModel.Syndication;
+@model System.ServiceModel.Syndication.SyndicationItem
+
+
+<div class="ui-feed-item ">
+    <div class="ui-widget-header ui-corner-all">
+        <h2><a href="@this.Model.Links.First().Uri.ToString()">@this.Model.Title.Text</a></h2>
+        <div class="ui-feed-itemHeader">
+            <div class="ui-feed-itemHeaderDate">
+                @this.Model.PublishDate.LocalDateTime.ToLongDateString()
+            </div>
+            <div class="ui-feed-itemHeaderComents">
+                <a href="javascript:void(0);">Comments: 18</a>
+            </div>
+            <div class="ui-feed-itemHeaderCategories">
+                @{
+                    if (this.Model.Categories.Count() > 0)
+                    {
+                        <text>
+                        Posted in 
+                        @MvcHtmlString.Create(string.Join(" | ", this.Model.Categories.Select(p => 
+                                                            {
+                                                                return string.Format("<a href=\"{1}\">{0}</a>", p.Name, Url.Category(p.Name));
+                                                            }).ToArray()))
+                        </text>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="ui-feed-itemContent ui-widget-content">
+        @MvcHtmlString.Create(this.Model.Summary.Text)
+    </div>
+    <div class="ui-feed-itemFooter ">
+    </div>
+</div>

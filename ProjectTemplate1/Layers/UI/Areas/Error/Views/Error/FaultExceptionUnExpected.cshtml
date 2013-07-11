@@ -1,0 +1,25 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@model $customNamespace$.UI.Web.Areas.Error.Models.ErrorInfoModel
+
+@{
+    Layout = "~/Areas/Error/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles{
+
+   
+}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section ErrorDescriptionContainer
+{
+        @Html.WidgetMessage($customNamespace$.Models.Enumerations.DataResultMessageType.Error, 
+                            string.Format("{0} <br/><br/><a href='{2}'>{1}</a>",
+                                            $customNamespace$.Resources.General.GeneralTexts.UnexpectedErrorIdAssigned, 
+                                            Request.QueryString["id"],
+                                            $customNamespace$.UI.Web.Areas.LogViewer.LogViewerUrlHelper.LogGetById(Url, Request.QueryString["id"])))
+}

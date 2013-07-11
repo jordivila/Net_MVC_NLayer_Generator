@@ -1,0 +1,29 @@
+﻿@model $customNamespace$.UI.Web.Models.baseViewModel
+
+@if (this.Model.BaseViewModelInfo.Breadcrumb.IsVisible)
+{
+    <text> 
+        <div class="ui-breadcrumb">
+            <div class="ui-widget-content ui-corner-all ui-state-default">
+                
+                <ul>
+                    <li>
+                        @$customNamespace$.Resources.General.GeneralTexts.BreadcrumbNavigation
+                    </li>
+                    @{
+                            for (int i = 0; i < this.Model.BaseViewModelInfo.Breadcrumb.BreadcrumbPaths.Count; i++)
+                            {
+                                <text>
+                                    <li>
+                                        <span class="ui-icon ui-icon-play"></span>
+                                        <a href="@this.Model.BaseViewModelInfo.Breadcrumb.BreadcrumbPaths[i].Value">@this.Model.BaseViewModelInfo.Breadcrumb.BreadcrumbPaths[i].Key</a>
+                                    </li>
+                                </text>
+                            }
+                        }
+                </ul>
+                <div class="ui-carriageReturn"></div>
+            </div>
+        </div>
+    </text>
+}

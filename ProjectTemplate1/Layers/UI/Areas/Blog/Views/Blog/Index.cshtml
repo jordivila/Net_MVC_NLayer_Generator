@@ -1,0 +1,24 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.Blog;
+@using System.ServiceModel.Syndication;
+@model $customNamespace$.UI.Web.Areas.Blog.Models.BlogModel
+
+@{Layout = "~/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section InlineStyles{
+    
+}
+
+<p>
+@$customNamespace$.Resources.Blog.BlogTexts.BrowseBy <a href="@Url.Category(string.Empty)">@$customNamespace$.Resources.Blog.BlogTexts.Category</a>
+</p>
+<br />
+@foreach (var item in this.Model.FeedItems.Data)
+{
+        @Html.DisplayFor(x => item.Item)
+}

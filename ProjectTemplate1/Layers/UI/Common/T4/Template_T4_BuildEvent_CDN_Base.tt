@@ -1,0 +1,22 @@
+﻿<#@ include file="Template_T4_BuildEvent_Base.tt" #>
+<#@ Import Namespace="$customNamespace$.UI.Web.Models" #>
+<#@ Import Namespace="$customNamespace$.Models.UserRequestModel" #>
+<#@ Import Namespace="$customNamespace$.Models.Configuration.ConfigSections.ClientResources" #>
+<#@ import namespace="$customNamespace$.Models.Configuration" #>
+
+<# 
+    Func<DirectoryInfo, string, DirectoryInfo> checkDirectory = delegate(DirectoryInfo dir, string directory)
+    {
+        if (dir.GetDirectories(directory).Count() == 0)
+        {
+            throw new Exception(string.Format("T4 CDN Generator could not find output path {0}/{1}", dir.FullName, directory));
+        }
+
+        return dir.GetDirectories(directory, SearchOption.TopDirectoryOnly).First();
+    };
+
+	DirectoryInfo rootDirectory = new DirectoryInfo(this.Host.ResolvePath(string.Empty)).Parent.Parent; 
+	DirectoryInfo cdnRootDirectory = checkDirectory(rootDirectory, ApplicationConfiguration.ClientResourcesSettingsSection.CDN_RootFolderName);
+	DirectoryInfo cdnJSRootDirectory = checkDirectory(cdnRootDirectory, ApplicationConfiguration.ClientResourcesSettingsSection.CDN_JS_RootFolderName);
+	DirectoryInfo cdnCSSRootDirectory = checkDirectory(cdnRootDirectory, ApplicationConfiguration.ClientResourcesSettingsSection.CDN_CSS_RootFolderName);
+#>

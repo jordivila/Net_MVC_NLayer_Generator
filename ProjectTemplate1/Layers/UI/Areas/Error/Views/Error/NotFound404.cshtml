@@ -1,0 +1,20 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@model $customNamespace$.UI.Web.Areas.Error.Models.NotFound404Model
+
+@{
+    Layout = "~/Areas/Error/Views/Shared/LayOut.cshtml";
+}
+
+@section InlineStyles{
+
+}
+
+@section ScriptsToAdd
+{
+
+}
+
+@section ErrorDescriptionContainer
+{
+        @Html.WidgetMessage($customNamespace$.Models.Enumerations.DataResultMessageType.Error, $customNamespace$.Resources.General.GeneralTexts.NotFound404)
+}

@@ -1,0 +1,4 @@
+﻿.ui-dateSelector {}
+.ui-dateSelector a {}
+.ui-dateSelector-clear {width: 17px; height: 17px; margin-right: 10px; float: left; cursor: pointer; }
+.ui-dateSelector .ui-dateSelector-hidden {display:none;}

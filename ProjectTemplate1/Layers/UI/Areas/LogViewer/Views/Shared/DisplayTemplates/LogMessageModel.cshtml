@@ -1,0 +1,39 @@
+﻿@model $customNamespace$.Models.Logging.LogMessageModel
+
+<h3><a href="#" class="ui-wordWrap">@*@this.Model.Timestamp : *@ @this.Model.Title</a></h3>
+<div>
+    <ul>
+        <li><div class="ui-logViewer-itemLabel">Timestamp:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Timestamp</div></li>
+        <li><div class="ui-logViewer-itemLabel">Message:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Message</div></li>
+        <li><div class="ui-logViewer-itemLabel">Category:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Category</div></li>
+        <li><div class="ui-logViewer-itemLabel">Priority:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Priority</div></li>
+        <li><div class="ui-logViewer-itemLabel">EventId:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.EventId</div></li>
+        <li><div class="ui-logViewer-itemLabel">Severity:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Severity</div></li>
+        <li><div class="ui-logViewer-itemLabel">Title:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Title</div></li>
+        <li><div class="ui-logViewer-itemLabel">Machine:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Machine</div></li>
+        <li><div class="ui-logViewer-itemLabel">App_Domain:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.AppDomain</div></li>
+        <li><div class="ui-logViewer-itemLabel">ProcessId:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.ProcessId</div></li>
+        <li><div class="ui-logViewer-itemLabel">Process_Name:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.ProcessName</div></li>
+        <li><div class="ui-logViewer-itemLabel">Thread_Name:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.ThreadName</div></li>
+        <li><div class="ui-logViewer-itemLabel">Win32_ThreadId:</div><div class="ui-logViewer-itemValue ui-wordWrap">@this.Model.Win32ThreadId</div></li>
+        <li>
+            <div class="ui-logViewer-itemLabel">Formatted Message:</div>
+            <div class="ui-logViewer-formattedMessage">
+                <br />
+            @{
+                if(this.Model.FormattedMessage!=null){
+                    for (int j = 0; j < this.Model.FormattedMessage.Length; j++)
+                    {
+                        <text>
+                            <div class="ui-logViewer-keyValuePair">
+                                <div class="ui-logViewer-key">@this.Model.FormattedMessage[j].Name:</div>
+                                <div class="ui-logViewer-Value ui-wordWrap">@this.Model.FormattedMessage[j].Value</div>
+                            </div>
+                        </text>
+                    }
+                }
+            }
+            </div>
+        </li>
+    </ul>
+</div>

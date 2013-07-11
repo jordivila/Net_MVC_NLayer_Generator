@@ -1,0 +1,62 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models;
+@using $customNamespace$.Models.Common;
+
+@{
+        string header = (string)ViewData["header"];
+        string columnName = (string)ViewData["columnName"];
+        IDataFilter dataFilter = (IDataFilter)ViewData["dataFilter"];
+        
+        Func<jQueryHelpers.Icon> getSortableIcon = delegate()
+        {
+            if (columnName == dataFilter.SortBy)
+            {
+                return dataFilter.SortAscending ? jQueryHelpers.Icon.ui_icon_circle_triangle_n : jQueryHelpers.Icon.ui_icon_circle_triangle_s;
+            }
+            else
+            {
+                return jQueryHelpers.Icon.None;
+            }
+        };
+
+        Func<IDataFilter, string> getFormSerialized = delegate(IDataFilter dataFilterTemp)
+        {
+            string currentSortBy = dataFilter.SortBy;
+            bool currentSortAscending = dataFilter.SortAscending;
+            // if dataFilter values change will be changed in the whole life cicle
+            dataFilter.SortBy = columnName;
+            dataFilter.SortAscending = (!dataFilter.SortAscending);
+            string dataFilterSerialized = HttpUtility.HtmlEncode(((baseModel)dataFilter).SerializeToJson());
+            dataFilter.SortBy = currentSortBy;
+            dataFilter.SortAscending = currentSortAscending;
+            return dataFilterSerialized;
+        };
+                
+    }
+
+<form method='post'>
+    <div class="ui-widgetGrid-column-content">
+        <div>
+            @{
+                
+                
+                
+                if (getSortableIcon() != jQueryHelpers.Icon.None)
+                    {
+                        <span class="ui-icon @jQueryHelpers.IconToCssClass(getSortableIcon())"></span>
+                    }
+                }
+            <input type='hidden'  name='@((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldFilterSerializedKey)' value="@getFormSerialized(dataFilter)" />
+            <input type='hidden'  name='@((string)WebGrid<dynamic, dynamic, dynamic>.WebGrid_HiddenFieldEventKey)' value="WebGrid_Sort" />
+            @{
+                Dictionary<string, object> attributes = new Dictionary<string, object>();
+                attributes.Add("class", "ui-widget-header");
+            }
+            @Html.Button(header,
+                        jQueryHelpers.Icon.None,
+                        ButtonType.Submit,
+                        attributes)
+
+        </div>
+    </div>
+</form>

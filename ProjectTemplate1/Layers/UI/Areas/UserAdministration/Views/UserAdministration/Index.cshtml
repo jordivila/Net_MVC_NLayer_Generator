@@ -1,0 +1,165 @@
+﻿@using System.Linq.Expressions
+@using $customNamespace$.UI.Web.Areas.UserAdministration.Models
+@using $customNamespace$.Models.Membership
+@using $customNamespace$.UI.Web.Common.Mvc.Html
+@using $customNamespace$.UI.Web.Areas.UserAdministration;
+@using $customNamespace$.Models.Enumerations;
+@using $customNamespace$.Models;
+@model IndexViewModel
+@{Layout = "~/Areas/UserAdministration/Views/Shared/_LayOut.cshtml";}
+
+@section ScriptsToAdd
+{
+    @{
+        Expression<Func<IndexViewModel, bool>> expIsFilterVisible = model => this.Model.Filter.IsClientVisible;
+        string filterVisibleHiddenId = TagBuilder.CreateSanitizedId(ExpressionHelper.GetExpressionText(expIsFilterVisible));
+    }
+
+    <script type="text/javascript">
+        function userListFilterOnCollapse() {
+            jQuery('#@filterVisibleHiddenId').val(isVisible == true ? 'true' : 'false');
+        }
+    </script>
+}
+
+@section InlineStyles{
+
+}
+
+@section UserAdminContent{
+    
+    @{
+        using (MvcForm form = Html.BeginWidgetForm())
+        {
+            using (MvcWidgetBox divBox = Html.BeginWidgetBox(true, true, (!this.Model.Filter.IsClientVisible), "userListFilterOnCollapse();", new { @class = "ui-widgetForm-userListFilter" }))
+            {
+                using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+                { 
+                    @$customNamespace$.Resources.UserAdministration.UserAdminTexts.UserSearch
+                }
+                using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+                {
+                    <text>
+                        @Html.HiddenFor(model => Model.Filter.Page)
+                        @Html.HiddenFor(Model => Model.Filter.PageSize)
+                        @Html.HiddenFor(model => Model.Filter.SortBy)
+                        @Html.HiddenFor(model => Model.Filter.SortAscending)
+                        @Html.HiddenFor(Model => Model.Filter.IsClientVisible)
+                        @{
+                            if (!this.ViewData.ModelState.IsValid)
+                            {   
+                                @Html.ValidationSummaryCustomized()
+                            }
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.UserInfo, new { @class = "ui-widgetForm-UserInfo" }))
+                        {
+                            @Html.FormItem(Model => Model.Filter.UserName)
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.UserStatus, new { @class = "ui-widgetForm-UserStatus" }))
+                        {
+                            @Html.FormItem(Model => Model.Filter.Approved)
+                            @Html.FormItem(Model => Model.Filter.IsOnline)
+                            @Html.FormItem(Model => Model.Filter.Locked)
+                        }
+
+                        
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.Created, new { @class = "ui-widgetForm-UserCrated" }))
+                        { 
+                            @Html.FormItem(Model => Model.Filter.CreationDateFrom)
+                            @Html.FormItem(Model => Model.Filter.CreationDateTo)
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.Roles, new { @class = "ui-widgetForm-UserRoles" }))
+                        {
+                            @Html.CheckBoxMultiple(Model => Model.Filter.IsInRoleName, ((Enum)SiteRoles.Administrator).ToSelectList(typeof(SiteRoles)))
+                        }
+                    </text>
+
+                    using (MvcWidgetButtonsBox divButtonsBox = Html.BeginWidgetButtonsBox(new { @class = "ui-widgetForm-ButtonSearch" }))
+                    {
+                        Expression<Func<IndexViewModel, Actions>> expressionFormAction = model => this.Model.Action;
+
+                            @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.Search,
+                                                    jQueryHelpers.Icon.ui_icon_search,
+                                                    ButtonType.Submit,
+                                                    new { name = ExpressionHelper.GetExpressionText(expressionFormAction), value = Actions.Search })
+                    }
+                    
+                    if (!this.ViewData.ModelState.IsValid)
+                    {
+                        <text><br /></text>
+                        @Html.ValidationSummaryCustomized()
+                    }
+
+                }
+            }
+
+
+
+        }  
+    }
+    
+
+    <div class="ui-userList">
+            @if (this.ViewData.ModelState.IsValid)
+            {
+                WebGridColumn[] columns = new List<WebGridColumn>().ToArray();
+
+                if (this.Model.UserListResult != null)
+                {
+                    if (this.Model.UserListResult.Data.Count > 0)
+                    {
+                        Expression<Func<IndexViewModel, DateTime>> expressionCreationDate = m => this.Model.UserListResult.Data[0].CreateDate;
+                        Expression<Func<IndexViewModel, string>> expressionEmail = m => this.Model.UserListResult.Data[0].Email;
+                        Expression<Func<IndexViewModel, bool>> expressionApproved = m => this.Model.UserListResult.Data[0].IsApproved;
+                        Expression<Func<IndexViewModel, bool>> expressionLocked = m => this.Model.UserListResult.Data[0].IsLockedOut;
+                        Expression<Func<IndexViewModel, bool>> expressionOnline = m => this.Model.UserListResult.Data[0].IsOnline;
+
+                        columns = new List<WebGridColumn>(){
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionEmail,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionEmail,ViewData).DisplayName, 
+                                                                    CanSort=true,
+                                                                    Format=@<text>
+                                                                                        <a href="@Url.UserAdminDetails((Guid)@item.ProviderUserKey)">@item.Email</a>
+                                                                                        <a href="mailto:@item.Email;" class="ui-userList-sendMail"><span class="ui-icon ui-icon-mail-closed"></span></a>
+                                                                                    </text>
+                                                                    },
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).DisplayName, 
+                                                                    CanSort=true,
+                                                                    Format= @<text>@item.CreateDate.ToShortDateString()</text>
+                                                                    },
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionApproved,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionApproved,ViewData).DisplayName, 
+                                                                    CanSort=true
+                                                                    },
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionLocked,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionLocked,ViewData).DisplayName, 
+                                                                    CanSort=true
+                                                                    },
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionOnline,ViewData).PropertyName, 
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionOnline,ViewData).DisplayName, 
+                                                                    CanSort=false
+                                                                    },
+                        }.ToArray();
+                    }
+
+                    var gridHtml = Html.WebGrid<MembershipUserWrapper, IndexViewModel, DataFilterUserList>(
+                                                                                                                                                        model => this.Model.UserListResult,
+                                                                                                                                                        model => this.Model.Filter,
+                                                                                                                                                        columns,
+                                                                                                                                                        webGridStyle: WebGridStyle.TableLess,
+                                                                                                                                                        emptyResultsMessage: $customNamespace$.Resources.UserAdministration.UserAdminTexts.UsersNotFound);
+                        <text>
+                        <br />
+                        @gridHtml.Render()
+                        </text>
+                }
+            }
+            </div>
+}
+
+

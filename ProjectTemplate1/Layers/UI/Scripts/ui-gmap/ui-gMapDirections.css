@@ -1,0 +1,13 @@
+.ui-gMapDirections { padding:5px;overflow:hidden;}
+.ui-gMapDirections .ui-gMapDirections-dragHandler { height:20px;padding:5px 0px 0px 10px; position:relative;}
+.ui-gMapDirections .ui-gMapDirections-closeHandler { cursor:pointer;height:16px; width:16px;margin:-2px 0px 0px -20px;left:100%;top:5px;position:absolute; }
+.ui-gMapDirections .ui-gMapDirections-inputs { margin:5px 5px 0px 5px;  padding:5px 5px 5px 5px;}
+.ui-gMapDirections .ui-gMapDirections-inputs ul {  list-style-type: none;  margin: 0px 0px 10px 0px;  padding: 0;}
+.ui-gMapDirections .ui-gMapDirections-inputs ul .ui-gMapDirections-label {  font-weight: bold;  padding-right: 3px;  text-align: right;  width: 40px;  float:left;}
+.ui-gMapDirections .ui-gMapDirections-inputs li input, .ui-gMapDirections .ui-gMapDirections-inputs li select {  width: 70px;}
+.ui-gMapDirections .ui-gMapDirections-inputs input[type=button] {    margin:0px 0px 0px 110px;}
+.ui-gMapDirections .ui-gMapDirections-info {margin:5px 5px 0px 5px;  padding:5px 5px 5px 5px;overflow:auto;position:relative;height:90px;}
+.ui-gMapDirections .ui-gMapDirections-info .ui-gMapDirections table {  width: 100%;}
+.ui-gMapDirections .ui-gMapDirections-buttons {text-align:right;padding:5px 5px 0px 5px;margin:0px 0px 0px 0px;}
+.ui-gMapDirections .ui-gMapDirections-buttons button{margin:0px 0px 0px 5px;}
+.ui-gMapDirections .ui-gMap-iPrint {width:0px;height:0px;position:absolute;left:2000px;}

@@ -1,0 +1,60 @@
+﻿<# GenerationEnvironment.Clear(); #>
+
+<#+
+	
+	public void AppendFiles(string[] filesVirtualPath)
+    {
+		foreach (string item in filesVirtualPath)
+		{
+            string filePath = System.Web.HttpContext.Current.Server.MapPath(item);
+            if (System.IO.File.Exists(filePath))
+            {
+                this.GenerationEnvironment.Append(System.IO.File.ReadAllText(filePath));
+            }
+		}
+    }
+
+	public void AppendAbsoluteFiles(string[] filesFullPath)
+    {
+		foreach (string item in filesFullPath)
+		{
+			this.GenerationEnvironment.Append(System.IO.File.ReadAllText(item));
+		}
+    }
+
+	public string[] ConvertToAbsolutePath(string rootDirectory, string[] virtualPaths)
+    {
+		int i = 0;
+        foreach (var item in virtualPaths)
+        {
+			virtualPaths[i] = System.IO.Path.Combine(rootDirectory, item.Replace("~/", string.Empty));
+			i++;
+        }
+		return virtualPaths;
+	}
+
+	public void Resources_Generate()
+    {
+
+		$customNamespace$.Resources.Helpers.GeneratedResxClasses.JavascriptTextsViewModelHelper jsTexts = new $customNamespace$.Resources.Helpers.GeneratedResxClasses.JavascriptTextsViewModelHelper();
+		System.Reflection.PropertyInfo[] thisObjectProperties = jsTexts.GetType().GetProperties();
+		this.GenerationEnvironment.Append("// This file is just for intellisense purposes. Runtime file is build on the fly depending on users culture");
+		this.GenerationEnvironment.Append(Environment.NewLine);
+		this.GenerationEnvironment.Append("$customNamespace$.Resources = {");
+		this.GenerationEnvironment.Append(Environment.NewLine);
+		for (int i = 0; i < thisObjectProperties.Length; i++)
+		{
+			System.Reflection.PropertyInfo info = thisObjectProperties[i];
+			this.GenerationEnvironment.Append("\t");
+			this.GenerationEnvironment.Append(info.Name);
+			this.GenerationEnvironment.Append(": ");
+			this.GenerationEnvironment.Append(string.Format("\"{0}\"", info.GetValue(jsTexts, null).ToString()));
+			if (i < (thisObjectProperties.Length - 1))
+			{
+				this.GenerationEnvironment.Append(",");
+			}
+			this.GenerationEnvironment.Append(Environment.NewLine);
+		}
+		this.GenerationEnvironment.Append("};");
+    }
+#>

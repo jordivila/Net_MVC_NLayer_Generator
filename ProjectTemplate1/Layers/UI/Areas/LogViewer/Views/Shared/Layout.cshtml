@@ -1,0 +1,43 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section InlineStyles{
+    <style type="text/css">
+        .ui-error-page {/*display: table;*/ /*height: 20em;*/ overflow: hidden;margin:1em auto 0 auto;text-align:center;}
+        .ui-error-page .ui-error-container {/*display: table-cell; */vertical-align: middle;}
+        
+        .ui-error-page {display: block;height: auto; }
+        .ui-error-page .ui-error-container {display: block;}
+        .ui-error-page .ui-logViewer * {text-align:left;}
+        
+        .ui-error-page .ui-logViewer div ul li {clear:both;margin:.5em 0 0 0;padding:0em 0 0 0;}
+        .ui-error-page .ui-logViewer div ul li div {float:left;}
+        .ui-error-page .ui-logViewer div ul li div.ui-logViewer-itemLabel {font-weight:bold;}
+        .ui-error-page .ui-logViewer .ui-accordion-content .ui-logViewer-itemValue {width:100%;padding:0 0 0 2em;}
+        
+        
+        
+        .ui-error-page .ui-logViewer div ul li .ui-logViewer-formattedMessage {overflow:hidden;}
+        .ui-error-page .ui-logViewer div ul li .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair {clear:both;padding:0em 1em 0em 2em;}
+        .ui-error-page .ui-logViewer div ul li .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair .ui-logViewer-key {font-weight:bold;text-transform:lowercase;}
+        .ui-error-page .ui-logViewer div ul li .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair .ui-logViewer-Value {padding:0 0 0 2em;clear:both;}
+        
+        .ui-error-container .ui-message {font-size:2em !important;font-weight:bold;}
+        .ui-error-container .ui-message .ui-icon {display:none;}
+    </style>
+    @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
+}
+
+@section ScriptsToAdd
+{
+    @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, true)
+}
+
+<div class="ui-error-page">
+    <div  class="ui-error-container">
+        @RenderSection("ErrorDescriptionContainer",true)
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+@using $customNamespace$.UI.Web.Areas.Error;
+@model $customNamespace$.UI.Web.Models.baseViewModel
+@{ Layout = null; }
+
+    <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all">
+        <div class="ui-siteVersion">
+            @$customNamespace$.UI.Web.MvcApplication.Version
+        </div>
+        @Html.PartialMenuPreferences()
+        @Html.PartialLogOnPartial()
+    </div>
+    <div class="ui-carriageReturn"></div>
+    @Html.PartialMenuPreferencesSwitchers()

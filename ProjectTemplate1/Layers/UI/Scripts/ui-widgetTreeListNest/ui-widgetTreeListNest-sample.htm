@@ -1,0 +1,88 @@
+﻿    
+    <script src="/scripts/ui-widgetTreeList/ui-widgetTreeList.js" type="text/javascript"></script>
+    <link   href="/scripts/ui-widgetTreeList/ui-widgetTreeList.css" rel="stylesheet" type="text/css" />
+
+    <script src="/scripts/ui-widgetTreeListNest/ui-widgetTreeListNest.js" type="text/javascript"></script>
+    <link href="/scripts/ui-widgetTreeList/demo.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+    (function ($) {
+        jQuery(document).ready(function () {
+            jQuery("input").button();
+            initTrees();
+        });
+
+        function initTrees() {
+            var d = new Date();
+            jQuery('#treeListNest').treeListNest();
+            var dd = new Date();
+
+            jQuery('#renderResult').html('Found ' + jQuery('li').length.toString() + ' nodes. ' + (dd - d).toString() + ' ms to render the list');
+
+            jQuery('#treeListNest').treeListNest('closeNode', jQuery('#treeListNest').find('li'));
+        }
+    })(jQuery);
+    </script>
+
+    <div id="styleSelector"></div>    
+
+    <br />
+    <div id="renderResult"></div>
+    <div class="treeListDemoContainer">
+        <table>
+            <thead>
+                <tr>
+                    <td>"Nestable" Tree List</td>
+                </tr>
+            </thead>
+            <tr class="treeListDemoExplained">
+                <td>This list widget allows us to add/remove node or node groups:
+                    <ul>
+                        <li>base widget features</li>
+                        <li>droppable + draggable nested items allows to add/remove child items</li>
+                        <li>recalculate toggle button's state</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Destroy"  onclick="jQuery('#treeListNest').treeListNest('destroy');" />
+                    <input type="button" value="Create"  onclick="jQuery('#treeListNest').treeListNest();" />
+                    <br /><br />
+                    <input type="button" value="Select first"  onclick="jQuery('#treeListNest').treeListNest('selected', jQuery('#treeListNest').find('li:nth-child(1):first'));" />
+                    <input type="button" value="Expand All"  onclick="jQuery('#treeListNest').treeListNest('openNode', jQuery('#treeListNest').find('li'));" />
+                    <input type="button" value="Collapse All"  onclick="jQuery('#treeListNest').treeListNest('closeNode', jQuery('#treeListNest').find('li'));" />
+                    <br /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul id="treeListNest">
+                          <li>Node 1
+                            <ul>
+                                <li>Node 12</li>
+                                <li>Node 9</li>
+                                <li>Node 7
+                                    <ul>
+                                        <li>Node 6</li>
+                                        <li>Node 11</li>
+                                        <li>Node 10</li>
+                                        <li class="ui-treeList-open">Node 8
+                                        <ul>
+                                            <li>Node 5</li>
+                                            <li>Node 2</li>
+                                            <li>Node 4</li>
+                                            <li>Node 3</li>
+                                        </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Node 13</li>
+                            </ul>
+                          </li>
+                    </ul>        
+                </td>
+            </tr>
+        </table>
+
+    </div>

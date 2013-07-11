@@ -1,0 +1,32 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+@using $customNamespace$.UI.Web.Areas.Error;
+@using $customNamespace$.Models.Enumerations;
+@using $customNamespace$.UI.Web.Controllers;
+
+@model $customNamespace$.UI.Web.Models.baseViewModel
+
+<link href="@this.Model.BaseViewModelInfo.UserProfile.Theme.Value.ToUri()" rel="Stylesheet" type="text/css" />
+<link href="@Url.StylesheetDispatcher(ResourceDispatcherController.ResourceDispatchParamCommonKey, this.Model.BaseViewModelInfo) " rel="stylesheet" type="text/css"  />
+<link href="@Url.StylesheetDispatcher(this.ViewContext.Controller.GetType().ToString(), this.Model.BaseViewModelInfo) " rel="stylesheet" type="text/css"  />
+@{
+
+    if (HttpContext.Current.Request.Browser.IsMobileDevice)
+    {
+        <text>
+            <link href="@Url.Content("~/Content/Site.mobile.css")" rel="stylesheet" type="text/css"  />        
+        </text>
+    }
+    else
+    {
+        if (HttpContext.Current.Request.Browser.Browser == "IE")
+        {
+            if (HttpContext.Current.Request.Browser.MajorVersion == 7)
+            {
+                //this.AppendFiles(new string[1] { "~/Content/SiteIE7.css" });
+            }
+        }
+    }
+}
+
+
