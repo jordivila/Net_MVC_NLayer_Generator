@@ -15,16 +15,16 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Template.WCF.ServicesHost.csproj" File="Template.WCF.ServicesHost.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true" TargetFileName="app.config">app.config</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="Host.cs">Host.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="HostService.cs">HostService.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="HostService.designer.cs">HostService.designer.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="app.config">app.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="Host.cs">Host.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.cs">HostService.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.designer.cs">HostService.designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="packages.config">packages.config</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="postBuild.bat">postBuild.bat</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="preBuild.bat">preBuild.bat</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.cs">ProjectInstaller.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.designer.cs">ProjectInstaller.designer.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ProjectInstaller.resx">ProjectInstaller.resx</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.cs">ProjectInstaller.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.designer.cs">ProjectInstaller.designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.resx">ProjectInstaller.resx</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>

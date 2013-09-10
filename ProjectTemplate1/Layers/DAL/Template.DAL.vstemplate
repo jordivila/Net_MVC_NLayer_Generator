@@ -52,7 +52,8 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetAll.sql">LoggingExceptionGetAll.sql</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetById.sql">LoggingExceptionGetById.sql</ProjectItem>
         </Folder>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Install.cmd">Install.cmd</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="InstallDatabase.bat">InstallDatabase.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="InstallDatabaseDefault.bat">InstallDatabaseDefault.bat</ProjectItem>
       </Folder>
       <Folder Name="SyndicationServices" TargetFolderName="SyndicationServices">
         <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationDAL.cs">SyndicationDAL.cs</ProjectItem>

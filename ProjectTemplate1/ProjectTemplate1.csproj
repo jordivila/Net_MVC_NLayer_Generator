@@ -53,7 +53,8 @@
   <ItemGroup>
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
-    <None Include="Layers\DAL\Scripts\Install.cmd" />
+    <None Include="Layers\DAL\Scripts\InstallDatabase.bat" />
+    <None Include="Layers\DAL\Scripts\InstallDatabaseDefault.bat" />
     <None Include="Layers\Models\packages.config" />
     <None Include="Layers\Resources\Blog\BlogTexts.Designer.cs" />
     <None Include="Layers\Resources\Blog\BlogTexts.es.Designer.cs" />

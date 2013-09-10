@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.TemplateWizard;
 using EnvDTE80;
 using System.IO;
 using System.Linq;
+using Wizard;
+using System.Diagnostics;
 
 namespace CustomWizard
 {
@@ -21,6 +23,7 @@ namespace CustomWizard
 
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
         {
+
         }
 
         public void RunFinished()
@@ -29,24 +32,25 @@ namespace CustomWizard
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
-            EnvDTE.DTE dte = (DTE)automationObject;
-            Solution solution = (Solution)dte.Solution;
-            //List<string> projects = solution.SolutionBuild.StartupProjects;
-            //this.dte.ActiveSolutionProjects
-
-
-
             try
             {
                 DirectoryInfo currentDirectory = new DirectoryInfo(replacementsDictionary["$destinationdirectory$"]);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.DatabaseServerNameKey, IWizardImplementation.GlobalData.DBInfo.ServerName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.MembershipDBNameKey, IWizardImplementation.GlobalData.DBInfo.MembershipDBName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.LoggingDBNameKey, IWizardImplementation.GlobalData.DBInfo.LoggingDBName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.WebSiteAdminEmailAddressKey, IWizardImplementation.GlobalData.DBInfo.WebSiteAdminEmailAddress);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.WebSiteAdminPasswordKey, IWizardImplementation.GlobalData.DBInfo.WebSiteAdminPassword);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.WebSiteApplictionNameKey, IWizardImplementation.GlobalData.CustomNamespace);
+
                 replacementsDictionary.Add("$customPackagesRelativeLevelPath$", IWizardImplementation.GlobalData.DirectoryGetPackagesLevel(currentDirectory));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                IWizardImplementation.GlobalData.LogWriter.Write(new LogMessageModel(ex));
             }
         }
+
 
         public bool ShouldAddProjectItem(string filePath)
         {

@@ -12,6 +12,7 @@
 .ui-widgetForm  .ui-widgetForm-userListFilter .ui-widgetForm-UserRoles    .ui-widgetFormItem div.ui-widgetForm-inputValue,
 .ui-widgetForm  .ui-widgetForm-userListFilter .ui-widgetForm-UserCrated  .ui-widgetFormItem div.ui-widgetForm-inputValue {float:left;width:auto;min-width:1em;margin:0 0 0 1em;}
 .ui-widgetForm  .ui-widgetForm-userListFilter .ui-widgetForm-buttons {margin-top:.5em !important;}
+.ui-widgetForm  .ui-widgetForm-userListFilter .ui-widgetForm-UserCrated  .ui-widgetFormItem div.ui-widgetForm-inputValue {width:auto;min-width:17em;}
 
 .ui-userList div.ui-widgetGrid .ui-widgetGrid-row .ui-widgetGrid-column .ui-icon {margin:0 auto 0 auto;}
 .ui-userList div.ui-widgetGrid .ui-widgetGrid-Email {text-align:left !important;width:50% !important;}

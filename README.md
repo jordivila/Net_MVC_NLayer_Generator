@@ -1,17 +1,17 @@
 .Net MVC NLayered Web Site Generator
 ====================================
 
-Uses Visual Studio 2010 VSIX to generate a .Net MVC N-Layered site with built-in Authentication, Membership, Roles, Profile and Exception Logging.
+Uses Visual Studio 2010 VSIX to generate a .Net MVC N-Layered site.
 
 The main purpose is to facilitate MVC developers to create new web sites that use built-in best practices. 
 
-VSIX will guide through:
+**VSIX will guide through**:
 
 1.- initialize Membership, Roles, Profiles and Logging databases. 
 
 2.- configure NetTcpBinding or HttpBinding for WCF services. This can be easily changed without recompiling the application.
 
-Once the application is created you will get an MVC site with:
+**Once the application is created you will get an MVC site with**:
 
 1.- WCF Authentication 
 
@@ -23,4 +23,4 @@ Once the application is created you will get an MVC site with:
 
 
 
-
+The solution uses Enterprise Library, Moq and jQuery all of them available as Nuget preinstalled packages.

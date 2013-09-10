@@ -117,4 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminPassword" xml:space="preserve">
+    <value>123456</value>
+  </data>
+  <data name="DatabaseCreateLaterHow" xml:space="preserve">
+    <value>You can create database later at "/DAL/Scripts/InstallDatabaseDefault.cmd"</value>
+  </data>
+  <data name="DatabaseCreateNow" xml:space="preserve">
+    <value>Would you like to create database now ?</value>
+  </data>
+  <data name="DatabaseInvalidName" xml:space="preserve">
+    <value>Invalid database name</value>
+  </data>
+  <data name="DatabaseName" xml:space="preserve">
+    <value>Database Name_Valid</value>
+  </data>
+  <data name="EmailAddressInvalid" xml:space="preserve">
+    <value>Invalid email address</value>
+  </data>
+  <data name="EmailAddressValid" xml:space="preserve">
+    <value>admin@admin.com</value>
+  </data>
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="LoggingDatabaseName" xml:space="preserve">
+    <value>Logging Valid Database_Name</value>
+  </data>
+  <data name="MembershipDatabaseName" xml:space="preserve">
+    <value>Membership Valid Database_Name</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>Invalid password</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Remember</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Server_Valid_Name</value>
+  </data>
+  <data name="ServerNameInvalid" xml:space="preserve">
+    <value>Invalid database server name</value>
+  </data>
+  <data name="WizardCaption" xml:space="preserve">
+    <value>NTier MVC Application Wizard</value>
+  </data>
 </root>

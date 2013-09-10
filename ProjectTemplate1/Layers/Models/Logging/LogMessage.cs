@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.XPath;
 using $safeprojectname$.Common;
 using $safeprojectname$.Globalization;
+
 
 namespace $safeprojectname$.Logging
 {
@@ -60,6 +63,21 @@ namespace $safeprojectname$.Logging
             }
             this.FormattedMessage = keyValuePairsList.ToArray();
         }
+        public LogMessageModel(object message, string category, int priority, int eventId, TraceEventType severity, string title, IDictionary<string, object> properties)
+        {
+            this.messageField = message.ToString();
+            this.categoryField = category;
+            this.priorityField = priority;
+            this.eventIdField = eventId;
+            this.severityField = severity.ToString();
+            this.titleField = title;
+            this.formattedMessageField = (from p in properties
+                                         select new LogMessageKeyValuePair() { 
+                                            Name = p.Key,
+                                            Value = p.Value.ToString()
+                                         }).ToArray(); 
+        }
+
 
         private DateTime timestampField;
         
