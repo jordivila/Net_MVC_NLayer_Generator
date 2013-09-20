@@ -281,7 +281,9 @@
     <None Include="Layers\UI\Views\Shared\_ResourcesStyleSheetCommonRender.cshtml" />
     <None Include="Layers\UI\Views\Web.config" />
     <None Include="Layers\UI\Views\_ViewStart.cshtml" />
-    <None Include="Layers\UI\web.config" />
+    <None Include="Layers\UI\web.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Layers\UI\Web.Debug.config" />
     <None Include="Layers\UI\Web.Release.config" />
     <None Include="Layers\WCFHost\app.config" />
@@ -334,7 +336,6 @@
     <None Include="Layers\UI\Areas\UserProfile\Models\UserProfileModels.cs" />
     <None Include="Layers\UI\Areas\UserProfile\UserProfileAreaRegistration.cs" />
     <None Include="Layers\UI\Areas\UserProfile\UserProfileUrlHelper.cs" />
-    <None Include="Layers\UI\Common\ApplicationServicesProvider\CookieManagerBehaviourExtension.cs" />
     <None Include="Layers\UI\Common\ApplicationServicesProvider\MembershipUpdateLastActivityAttribute.cs" />
     <None Include="Layers\UI\Common\MvcAttributes\AuthorizeAttibuteExtended.cs" />
     <None Include="Layers\UI\Common\MvcAttributes\CacheFilter.cs" />
@@ -389,6 +390,7 @@
     <None Include="Layers\TestPerformance\LoadMultiThreadTest.cs" />
     <None Include="Layers\TestPerformance\MultiThreadResults.cs" />
     <None Include="Layers\TestPerformance\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\UI\Common\ApplicationServicesProvider\MessageInspectorBehaviorExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFLibrary\app.config" />
     <None Include="Layers\WCFLibrary\packages.config" />
@@ -430,7 +432,9 @@
     <Content Include="Layers\BL\Template.BL.vstemplate" />
     <Content Include="Layers\BL\Template.BL.csproj" />
     <Content Include="Layers\BL\__TemplateIcon.ico" />
-    <Content Include="Layers\DAL\Template.DAL.vstemplate" />
+    <Content Include="Layers\DAL\Template.DAL.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Layers\DAL\Scripts\AspNetServices\AspNetMembershipDatabase.sql" />
     <Content Include="Layers\DAL\Scripts\AspNetServices\AspNetMembershipInitAdminUser.sql" />
     <Content Include="Layers\DAL\Scripts\AspNetServices\AspNetMembershipUserSearch.sql" />
@@ -471,7 +475,9 @@
     <Content Include="Layers\UI\Content\Site.css" />
     <Content Include="Layers\UI\Content\Site.mobile.css" />
     <Content Include="Layers\UI\Global.asax" />
-    <Content Include="Layers\UI\Template.UI.Web.vstemplate" />
+    <Content Include="Layers\UI\Template.UI.Web.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Layers\UI\Scripts\jquery-globalize\lib\cultures\globalize.culture.af-ZA.js" />
     <Content Include="Layers\UI\Scripts\jquery-globalize\lib\cultures\globalize.culture.af.js" />
     <Content Include="Layers\UI\Scripts\jquery-globalize\lib\cultures\globalize.culture.am-ET.js" />

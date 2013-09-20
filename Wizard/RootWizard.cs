@@ -26,7 +26,7 @@ namespace CustomWizard
 
         public void ProjectFinishedGenerating(Project project)
         {
-            this.DatabaseInfo_CreateExecute();
+            this.FormInfo_CreateExecute();
         }
 
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
@@ -53,9 +53,9 @@ namespace CustomWizard
 
 
                 // Append Custom Dictionary Entries
-                replacementsDictionary.Add(IWizardImplementation.GlobalData.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
 
-                this.DatabaseInfo_FormShow();
+                this.FormInfo_FormShow();
             }
             catch (Exception ex)
             {
@@ -110,53 +110,39 @@ namespace CustomWizard
         }
 
 
-        #region DBInstallSteps
+        #region Web Site Configuration customize
 
-        private void DatabaseInfo_FormShow()
+        private void FormInfo_FormShow()
         {
-            DialogResult dialogResult = MessageBox.Show(string.Format("{0}\n\n{1}", 
-                                                        FormsWizardGeneralResources.DatabaseCreateNow, 
-                                                        FormsWizardGeneralResources.DatabaseCreateLaterHow),
-                                                        FormsWizardGeneralResources.WizardCaption,
-                                                        MessageBoxButtons.YesNo);
-
-            FormDatabaseInstallInput dbInstallForm = new FormDatabaseInstallInput();
-
-            if (dialogResult == DialogResult.Yes)
-            {
-                dbInstallForm.onCompleted += new FormDatabaseInstallInput.CompletedEventHandler(DatabaseInfo_onCompleted);
-                dbInstallForm.onCancelled += new FormDatabaseInstallInput.CompletedEventHandler(DatabaseInfo_onCancelled);
-                dbInstallForm.ShowDialog();
-            }
-            else
-            {
-                this.DatabaseInfo_onCancelled(dbInstallForm, new DatabaseInstallEventArgs() { DBInfo = dbInstallForm.GetFake() });
-            }
+            FormInfo formInfo = new FormInfo();
+            formInfo.onCompleted += new FormInfo.CompletedEventHandler(FormInfo_onCompleted);
+            formInfo.onCancelled += new FormInfo.CompletedEventHandler(FormInfo_onCancelled);
+            formInfo.ShowDialog();
         }
 
-        private void DatabaseInfo_FormRelease(object sender, EventArgs e)
+        private void FormInfo_FormRelease(object sender, EventArgs e)
         {
-            ((FormDatabaseInstallInput)sender).Close();
-            ((FormDatabaseInstallInput)sender).Dispose();
+            ((FormInfo)sender).Close();
+            ((FormInfo)sender).Dispose();
         }
 
-        protected void DatabaseInfo_onCancelled(object sender, DatabaseInstallEventArgs e)
+        protected void FormInfo_onCancelled(object sender, FormInfoEventArgs e)
         {
-            this.DatabaseInfo_FormRelease(sender, e);
-            IWizardImplementation.GlobalData.DBInfo = e.DBInfo;
+            this.FormInfo_FormRelease(sender, e);
+            IWizardImplementation.GlobalData.WebSiteConfig = e.WebSiteConfig;
         }
 
-        protected void DatabaseInfo_onCompleted(object sender, DatabaseInstallEventArgs e)
+        protected void FormInfo_onCompleted(object sender, FormInfoEventArgs e)
         {
-            this.DatabaseInfo_FormRelease(sender, e);
-            IWizardImplementation.GlobalData.DBInfo = e.DBInfo;
+            this.FormInfo_FormRelease(sender, e);
+            IWizardImplementation.GlobalData.WebSiteConfig = e.WebSiteConfig;
         }
 
-        private void DatabaseInfo_CreateExecute()
+        private void FormInfo_CreateExecute()
         {
             try
             {
-                if (IWizardImplementation.GlobalData.DBInfo.CreateDatabaseAccepted)
+                if (IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.CreateDatabaseAccepted)
                 {
                     string command = string.Format(@"{0}\{1}.DAL\Scripts\InstallDatabase.bat", IWizardImplementation.GlobalData.SolutionDirectory, IWizardImplementation.GlobalData.CustomNamespace);
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -167,11 +153,11 @@ namespace CustomWizard
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;
                     startInfo.FileName = command;
                     startInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ",
-                                                IWizardImplementation.GlobalData.DBInfo.ServerName,
-                                                IWizardImplementation.GlobalData.DBInfo.MembershipDBName,
-                                                IWizardImplementation.GlobalData.DBInfo.LoggingDBName,
-                                                IWizardImplementation.GlobalData.DBInfo.WebSiteAdminEmailAddress,
-                                                IWizardImplementation.GlobalData.DBInfo.WebSiteAdminPassword,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.ServerName,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.MembershipDBName,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.LoggingDBName,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword,
                                                 IWizardImplementation.GlobalData.CustomNamespace,
                                                 string.Format(@"{0}\{1}.DAL\Scripts\", IWizardImplementation.GlobalData.SolutionDirectory, IWizardImplementation.GlobalData.CustomNamespace));
                     process.StartInfo = startInfo;

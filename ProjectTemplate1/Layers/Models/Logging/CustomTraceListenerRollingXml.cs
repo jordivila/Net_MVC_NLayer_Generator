@@ -37,6 +37,7 @@ namespace $safeprojectname$.Logging
             try
             {
                 string filePath = RollingXmlTraceListener.RollingXmlFileListenerFilePath(listenerName, LogginConfigurationSectionName);
+                
                 string directoryName = Path.GetDirectoryName(filePath);
                 string pattern = string.Format("*{0}*", Path.GetFileNameWithoutExtension(filePath));
                 string[] logFiles = Directory.GetFiles(directoryName, pattern);
@@ -81,7 +82,7 @@ namespace $safeprojectname$.Logging
             return result;
         }
 
-        public static string RollingXmlFileListenerFilePath(string listenerName, string LogginConfigurationSectionName)
+        private static string RollingXmlFileListenerFilePath(string listenerName, string LogginConfigurationSectionName)
         {
             string filePath = string.Empty;
             LoggingSettings log = ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings;
@@ -94,8 +95,26 @@ namespace $safeprojectname$.Logging
                     break;
                 }
             }
+            return CheckEnvironmentVarInLogFilePath(filePath);
+        }
+
+        private static string CheckEnvironmentVarInLogFilePath(string filePath)
+        {
+            // Environment Variables are enclosed "%" characters.
+            // This routine checks if exists some environment variable in log file path
+            if (filePath.Contains("%"))
+            {
+                string environmentVarKey = filePath.Substring(filePath.IndexOf('%', 0), filePath.IndexOf('%', filePath.IndexOf('%', 0) + 1) + 1);
+                string environmentVarValue = Environment.GetEnvironmentVariable(environmentVarKey.Replace("%", string.Empty));
+
+                if (!string.IsNullOrEmpty(environmentVarValue))
+                {
+                    filePath = filePath.Replace(environmentVarKey, environmentVarValue);
+                }
+            }
             return filePath;
         }
+
     }
 
     [ConfigurationElementType(typeof(CustomFormatterData))]

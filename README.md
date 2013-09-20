@@ -3,7 +3,7 @@
 
 Uses Visual Studio 2010 VSIX to generate a .Net MVC N-Layered site.
 
-The main purpose is to facilitate MVC developers to create new web sites that use built-in best practices. 
+The main purpose is to facilitate developers to create scalable web sites or applications that use built-in best practices. 
 
 **VSIX will guide through**:
 

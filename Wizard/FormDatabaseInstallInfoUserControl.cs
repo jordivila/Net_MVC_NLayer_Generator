@@ -1,35 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace Wizard
 {
-    public partial class FormDatabaseInstallInput : FormBase
+    public partial class FormDatabaseInstallInfoUserControl : UserControl
     {
-        
-
-        public delegate void CompletedEventHandler(object sender, DatabaseInstallEventArgs e);
-        public event CompletedEventHandler onCompleted;
-        public event CompletedEventHandler onCancelled;
-
-        public FormDatabaseInstallInput()
+        public FormDatabaseInstallInfoUserControl()
         {
             InitializeComponent();
-
-            this.DevButton.Visible = this.IsDebugMode;
 
             this.ServerTextBox_Init();
             this.MembershipDBNameTextbox_Init();
             this.LoggingDBNameTextbox_Init();
-            this.MembershipAdminEmailTextbox_Init();
-            this.MembershipAdminPasswordTextbox_Init();
         }
 
         private bool IsValidServerName(string value)
@@ -54,8 +44,6 @@ namespace Wizard
                 return false;
             }
         }
-
-
 
         private void ErrorClear(object sender)
         {
@@ -139,98 +127,51 @@ namespace Wizard
                                     });
         }
 
-        private void MembershipAdminEmailTextbox_Init()
+        public FormDatabaseInstallInfoData ValueFake(object sender, EventArgs e)
         {
-            this.TextBoxRequiredCommonInit(this.MembershipAdminEmailTextbox,
-                                    FormDatabaseInstallInputResources.EmailAddressValid,
-                                    FormDatabaseInstallInputResources.EmailAddressInvalid,
-                                    typeof(System.String),
-                                    delegate(object sender, TypeValidationEventArgs e)
-                                    {
-                                        if (!this.IsValidEmailAddress(e.ReturnValue.ToString()))
-                                        {
-                                            errorProvider1.SetError((Control)sender, FormDatabaseInstallInputResources.EmailAddressInvalid);
-                                            e.Cancel = true;
-                                        }
-                                    });
-        }
-        
-        private void MembershipAdminPasswordTextbox_Init()
-        {
-            this.TextBoxRequiredCommonInit(this.MembershipAdminPasswordTextbox,
-                                    FormDatabaseInstallInputResources.AdminPassword,
-                                    FormDatabaseInstallInputResources.PasswordInvalid,
-                                    typeof(System.String),
-                                    null);
-        }
-
-        public DatabaseInstallInfo GetFake()
-        {
-            return new DatabaseInstallInfo()
+            return new FormDatabaseInstallInfoData()
             {
                 CreateDatabaseAccepted = false,
                 ServerName = FormDatabaseInstallInputResources.ServerName,
                 MembershipDBName = FormDatabaseInstallInputResources.MembershipDatabaseName,
-                LoggingDBName = FormDatabaseInstallInputResources.LoggingDatabaseName,
-                WebSiteAdminEmailAddress = FormDatabaseInstallInputResources.EmailAddressValid,
-                WebSiteAdminPassword = FormDatabaseInstallInputResources.AdminPassword
+                LoggingDBName = FormDatabaseInstallInputResources.LoggingDatabaseName
             };
         }
 
-        private void DatabaseInstallCancelButton_Click(object sender, EventArgs e)
+        public FormDatabaseInstallInfoData Value(object sender, EventArgs e)
         {
-            this.Hide();
-
-            if (this.onCancelled != null)
+            return new FormDatabaseInstallInfoData()
             {
-                this.onCancelled(this, new DatabaseInstallEventArgs()
-                {
-                    DBInfo = this.GetFake()
-                });
-
-            }
+                CreateDatabaseAccepted = true,
+                ServerName = this.ServerTextBox.Text,
+                MembershipDBName = this.MembershipDBNameTextbox.Text,
+                LoggingDBName = this.LoggingDBNameTextbox.Text,
+            };
         }
 
-        private void DatabaseInstallNextButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            if (this.ValidateChildren(ValidationConstraints.ImmediateChildren))
-            {
-                if (this.onCompleted != null)
-                {
-                    this.onCompleted(this, new DatabaseInstallEventArgs()
-                    {
-                        DBInfo = new DatabaseInstallInfo()
-                        {
-                            CreateDatabaseAccepted = true,
-                            ServerName = this.ServerTextBox.Text,
-                            MembershipDBName = this.MembershipDBNameTextbox.Text,
-                            LoggingDBName = this.LoggingDBNameTextbox.Text,
-                            WebSiteAdminEmailAddress = this.MembershipAdminEmailTextbox.Text,
-                            WebSiteAdminPassword = this.MembershipAdminPasswordTextbox.Text
-                        }
-                    });
-                }
-            }
-        }
-
-        private void DevButton_Click(object sender, EventArgs e)
+        public void DevButton_Click2()
         {
             this.ServerTextBox.Text = "IO_JV";
             this.MembershipDBNameTextbox.Text = "CurlyDevelopmentMembership";
-            this.MembershipAdminEmailTextbox.Text = "admin@admin.com";
-            this.MembershipAdminPasswordTextbox.Text = "123456";
+            this.LoggingDBNameTextbox.Text = "CurlyDevelopmentLogging";
+        }
+
+
+        public void DevButton_Click(object sender, EventArgs e)
+        {
+            this.ServerTextBox.Text = "IO_JV";
+            this.MembershipDBNameTextbox.Text = "CurlyDevelopmentMembership";
             this.LoggingDBNameTextbox.Text = "CurlyDevelopmentLogging";
         }
     }
 
-
-    public class DatabaseInstallEventArgs : EventArgs
+    public class FormDatabaseInstallInfoData
     {
-        public DatabaseInstallInfo DBInfo { get; set; }
+        public bool CreateDatabaseAccepted { get; set; }
 
-        public DatabaseInstallEventArgs() : base() { }
+        public string ServerName { get; set; }
+        public string MembershipDBName { get; set; }
+        public string LoggingDBName { get; set; }
     }
 
 }

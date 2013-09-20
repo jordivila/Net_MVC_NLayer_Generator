@@ -232,8 +232,8 @@
       </Folder>
       <Folder Name="Common" TargetFolderName="Common">
         <Folder Name="ApplicationServicesProvider" TargetFolderName="ApplicationServicesProvider">
-          <ProjectItem ReplaceParameters="true" TargetFileName="CookieManagerBehaviourExtension.cs">CookieManagerBehaviourExtension.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="MembershipUpdateLastActivityAttribute.cs">MembershipUpdateLastActivityAttribute.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MessageInspectorBehaviorExtension.cs">MessageInspectorBehaviorExtension.cs</ProjectItem>
         </Folder>
         <Folder Name="MvcAttributes" TargetFolderName="MvcAttributes">
           <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeAttibuteExtended.cs">AuthorizeAttibuteExtended.cs</ProjectItem>

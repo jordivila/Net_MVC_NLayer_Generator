@@ -131,8 +131,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\ApplicationServicesProvider\CookieManagerBehaviourExtension.cs" />
     <Compile Include="Common\ApplicationServicesProvider\MembershipUpdateLastActivityAttribute.cs" />
+    <Compile Include="Common\ApplicationServicesProvider\MessageInspectorBehaviorExtension.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Areas\Blog\BlogUrlHelper.cs" />
     <Compile Include="Areas\Blog\Controllers\BlogController.cs" />

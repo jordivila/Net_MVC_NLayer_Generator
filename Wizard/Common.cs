@@ -16,24 +16,24 @@ namespace Wizard
     {
         public GlobalData(object automationObjet, Dictionary<string, string> replacementsDictionary, object[] customParams)
         {
-            this.CustomNamespace = replacementsDictionary["$projectname$"].Replace(" ", "_");
-            this.SolutionDirectory = new DirectoryInfo((string)replacementsDictionary["$destinationdirectory$"]);
-            if (this.SolutionDirectory.Parent.GetDirectories(this.NuGetPackagesFolderName).Count() == 0)
+            this.TemplateConstants = new TemplateConstants();
+            this.CustomNamespace = replacementsDictionary[this.TemplateConstants.ProjectNameKey].Replace(" ", "_");
+            this.SolutionDirectory = new DirectoryInfo((string)replacementsDictionary[this.TemplateConstants.DestinationDirectory]);
+            if (this.SolutionDirectory.Parent.GetDirectories(this.TemplateConstants.NuGetPackagesFolderName).Count() == 0)
             {
-                this.PackagesDirectory = this.SolutionDirectory.Parent.CreateSubdirectory(this.NuGetPackagesFolderName);
+                this.PackagesDirectory = this.SolutionDirectory.Parent.CreateSubdirectory(this.TemplateConstants.NuGetPackagesFolderName);
             }
             else
             {
-                this.PackagesDirectory = this.SolutionDirectory.Parent.GetDirectories(this.NuGetPackagesFolderName).First();
+                this.PackagesDirectory = this.SolutionDirectory.Parent.GetDirectories(this.TemplateConstants.NuGetPackagesFolderName).First();
             }
 
             this.PackagesDirectoryRepository = this.DirectoryGetPackagesRepository(customParams);
-            this.LogWriter = new LogWriter(Path.Combine(this.SolutionDirectory.FullName, "SolutionGeneration.log"));
+            this.LogWriter = new LogWriter(Path.Combine(this.SolutionDirectory.FullName, this.TemplateConstants.SolutionGenerationLogFileName));
         }
 
-        public string NuGetPackagesFolderName = "packages";
+        public TemplateConstants TemplateConstants { get; set; }
         public string CustomNamespace { get; set; }
-        public readonly string CustomNamespaceKey = "$customNamespace$";
         public DirectoryInfo PackagesDirectory { get; private set; }
         public DirectoryInfo SolutionDirectory { get; private set; }
         public DirectoryInfo PackagesDirectoryRepository { get; private set; }
@@ -42,7 +42,7 @@ namespace Wizard
 
         private bool DirectoryHasPackages(DirectoryInfo current)
         {
-            return (current.GetDirectories(this.NuGetPackagesFolderName).Count() == 1);
+            return (current.GetDirectories(this.TemplateConstants.NuGetPackagesFolderName).Count() == 1);
         }
         public string DirectoryGetPackagesLevel(DirectoryInfo current)
         {
@@ -81,7 +81,7 @@ namespace Wizard
                 }
                 else
                 {
-                    result = current.Parent.GetDirectories(this.NuGetPackagesFolderName).First();
+                    result = current.Parent.GetDirectories(this.TemplateConstants.NuGetPackagesFolderName).First();
                     break;
                 }
             }
@@ -121,7 +121,18 @@ namespace Wizard
             }
         }
 
-        public DatabaseInstallInfo DBInfo { get; set; }
+        public WebSiteConfigurationCustomized WebSiteConfig { get; set; }
+        public LogWriter LogWriter { get; set; }
+    }
+
+    public class TemplateConstants
+    {
+        public string NuGetPackagesFolderName = "packages";
+        public readonly string SolutionGenerationLogFileName = "SolutionGeneration.log";
+        public readonly string CustomNamespaceKey = "$customNamespace$";
+        public readonly string ProjectNameKey = "$projectname$";
+        public readonly string CustomPackagesRelativeLevelPath = "$customPackagesRelativeLevelPath$";
+        public readonly string DestinationDirectory = "$destinationdirectory$";
         public readonly string DatabaseServerNameKey = "$DatabaseServerName$";
         public readonly string MembershipDBNameKey = "$MembershipDBName$";
         public readonly string LoggingDBNameKey = "$LoggingDBName$";
@@ -129,18 +140,18 @@ namespace Wizard
         public readonly string WebSiteAdminPasswordKey = "$WebSiteAdminPassword$";
         public readonly string WebSiteApplictionNameKey = "$WebSiteApplicationName$";
 
-        public LogWriter LogWriter { get; set; }
-    }
+        public readonly string BindingIsNetTcp = "$customBindingIsNetTcp$";
+        public readonly string BindingIsBasicHttp = "$customBindingIsBasicHttp$";
+        public readonly string BindingProtocol = "$customBindingProtocol$";
+        public readonly string BindingTypeNameKey = "$customBindingTypeName$";
+        public readonly string BindingConfigurationKey = "$customBindingConfigurationName$";
+        public readonly string BindingConfigurationValue = "currentBinding";
+        public readonly string BindingDeactivated = "$customBindingDeactivated$";
+        public readonly string BindingDeactivatedName = "currentBindingDeactivated";
+        public readonly string BindingUserRequestModelAtServer = "$customBindingUserRequestModelAtServer$";
+        public readonly string BindingUserRequestModelNetTcpAliasName = "$customBindingUserRequestModelNetTcpAliasName$";
+        public readonly string BindingUserRequestModelHttpAliasName = "$customBindingUserRequestModelHttpAliasName$";
 
-    public class DatabaseInstallInfo
-    {
-        public bool CreateDatabaseAccepted { get; set; }
-
-        public string ServerName { get; set; }
-        public string MembershipDBName { get; set; }
-        public string LoggingDBName { get; set; }
-        public string WebSiteAdminEmailAddress { get; set; }
-        public string WebSiteAdminPassword { get; set; }
     }
 
     #region Logging

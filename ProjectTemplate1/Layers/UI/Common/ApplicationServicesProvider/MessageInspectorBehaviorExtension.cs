@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -7,24 +8,98 @@ using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Web;
+using System.Web.Configuration;
+using Microsoft.Practices.Unity;
 using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Models.Unity;
+
 
 namespace $safeprojectname$.Common.AspNetApplicationServices
 {
-    public class CookieManagerBehaviorExtension<TBinding> : BehaviorExtensionElement
+    public class MessageInspectorBehaviorExtension : BehaviorExtensionElement
     {
+        private static Type BehaviorTypeCurrent = null;
+        private string currentBindingKey = "$customBindingConfigurationName$";
+        private string currentVirtualPath = "/";
+
+        public MessageInspectorBehaviorExtension()
+            : base()
+        {
+            using (DependencyFactory dependencyFactory = new DependencyFactory())
+            {
+                if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == null)
+                {
+                    Binding b = this.ResolveBinding(this.currentBindingKey, this.currentVirtualPath);
+
+                    if (b == null)
+                    {
+                        throw new Exception(string.Format("Could not find binding with name '{0}'", currentBindingKey));
+                    }
+
+                    MessageInspectorBehaviorExtension.BehaviorTypeCurrent = b.GetType();
+                }
+            }
+        }
+
+        private BindingsSection GetBindingsSection(string virtualPath)
+        {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration(virtualPath);
+            ServiceModelSectionGroup section = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
+            var serviceModel = ServiceModelSectionGroup.GetSectionGroup(config);
+            return serviceModel.Bindings;
+        }
+
+        private Binding ResolveBinding(string bindingName, string virtualPath)
+        {
+            BindingsSection section = this.GetBindingsSection(virtualPath);
+
+            foreach (var bindingCollection in section.BindingCollections)
+            {
+                if (bindingCollection.ConfiguredBindings.Count > 0 && bindingCollection.ConfiguredBindings[0].Name == bindingName)
+                {
+                    var bindingElement = bindingCollection.ConfiguredBindings[0];
+                    var binding = (Binding)Activator.CreateInstance(bindingCollection.BindingType);
+                    binding.Name = bindingElement.Name;
+                    bindingElement.ApplyConfiguration(binding);
+                    return binding;
+                }
+            }
+
+            return null;
+        }
+
         public override Type BehaviorType
         {
-            get { return typeof(CookieManagerEndpointBehavior<TBinding>); }
+            get
+            {
+                return typeof(MessageInspectorEndpointBehavior<NetTcpBinding>);
+            }
         }
 
         protected override object CreateBehavior()
         {
-            return new CookieManagerEndpointBehavior<TBinding>();
+            object result = null;
+
+            if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == typeof(NetTcpBinding))
+            {
+                result = new MessageInspectorEndpointBehavior<NetTcpBinding>();
+            }
+
+            if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == typeof(BasicHttpBinding))
+            {
+                result = new MessageInspectorEndpointBehavior<BasicHttpBinding>();
+            }
+
+            if (result == null)
+            {
+                throw new Exception("MessageInspector: this type of binding is not supported. Please add it yourself at MessageInspectorBehaviorExtension or use one of the supported types.");
+            }
+
+            return result;
         }
     }
 
-    public class CookieManagerEndpointBehavior<TBinding> : IEndpointBehavior
+    public class MessageInspectorEndpointBehavior<TBinding> : IEndpointBehavior
     {
         public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
         {
@@ -33,7 +108,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
 
         public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
         {
-            clientRuntime.MessageInspectors.Add(CookieManagerMessageInspector<TBinding>.Instance);
+            clientRuntime.MessageInspectors.Add(MessageInspectorClient<TBinding>.Instance);
         }
 
         public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
@@ -47,21 +122,21 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
         }
     }
 
-    public class CookieManagerMessageInspector<TBinding> : IClientMessageInspector
+    public class MessageInspectorClient<TBinding> : IClientMessageInspector
     {
-        private static CookieManagerMessageInspector<TBinding> instance;
+        private static MessageInspectorClient<TBinding> instance;
 
-        public CookieManagerMessageInspector()
+        public MessageInspectorClient()
         {
         }
 
-        public static CookieManagerMessageInspector<TBinding> Instance
+        public static MessageInspectorClient<TBinding> Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new CookieManagerMessageInspector<TBinding>();
+                    instance = new MessageInspectorClient<TBinding>();
                 }
 
                 return instance;
@@ -103,10 +178,10 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
                 {
                     //if (UserRequest != null)
                     //{
-                        //UserRequest.Dispose();
+                    //UserRequest.Dispose();
                     //}
                 }
-                
+
             }
         }
         public void AfterReceiveReply_Http(ref Message reply, object correlationState)
@@ -185,11 +260,11 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
         }
         private object BeforeSend_NetTCPRequest(ref Message request, IClientChannel channel)
         {
-                request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.WcfAuthenticationCookieValue));
-                request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfClientCultureSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.UserProfile.Culture.ToString()));
-                request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfClientThemeSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.UserProfile.Theme.Value.ToString()));
-                request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfSessionIdKey, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.WcfSessionIdKeyValue));
-                return null;
+            request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.WcfAuthenticationCookieValue));
+            request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfClientCultureSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.UserProfile.Culture.ToString()));
+            request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfClientThemeSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.UserProfile.Theme.Value.ToString()));
+            request.Headers.Add(MessageHeader.CreateHeader(UserRequestModel_Keys.WcfSessionIdKey, UserRequestModel_Keys.WcfCustomBehaviourName, MvcApplication.UserRequest.WcfSessionIdKeyValue));
+            return null;
         }
         private object BeforeSend_HttpRequest(ref Message request, IClientChannel channel)
         {
@@ -225,7 +300,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
             {
                 //if (UserRequest != null)
                 //{
-                    //UserRequest.Dispose();
+                //UserRequest.Dispose();
                 //}
             }
             return null;
