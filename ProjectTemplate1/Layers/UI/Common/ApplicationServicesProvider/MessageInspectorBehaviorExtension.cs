@@ -9,9 +9,11 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Hosting;
 using Microsoft.Practices.Unity;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.Unity;
+
 
 
 namespace $safeprojectname$.Common.AspNetApplicationServices
@@ -20,7 +22,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
     {
         private static Type BehaviorTypeCurrent = null;
         private string currentBindingKey = "$customBindingConfigurationName$";
-        private string currentVirtualPath = "/";
+        //private string currentVirtualPath = "/";
 
         public MessageInspectorBehaviorExtension()
             : base()
@@ -29,7 +31,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
             {
                 if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == null)
                 {
-                    Binding b = this.ResolveBinding(this.currentBindingKey, this.currentVirtualPath);
+                    Binding b = this.ResolveBinding(this.currentBindingKey/*, this.currentVirtualPath*/);
 
                     if (b == null)
                     {
@@ -41,17 +43,41 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
             }
         }
 
-        private BindingsSection GetBindingsSection(string virtualPath)
+        private BindingsSection GetBindingsSection(/*string virtualPath*/)
         {
-            Configuration config = WebConfigurationManager.OpenWebConfiguration(virtualPath);
-            ServiceModelSectionGroup section = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
-            var serviceModel = ServiceModelSectionGroup.GetSectionGroup(config);
-            return serviceModel.Bindings;
+            if (String.IsNullOrEmpty(HostingEnvironment.ApplicationPhysicalPath))
+            {
+                // Most likely to be under te4sting environment
+                Configuration appConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ServiceModelSectionGroup serviceModel = ServiceModelSectionGroup.GetSectionGroup(appConfig);
+                BindingsSection bindings = serviceModel.Bindings;
+                return bindings;
+
+
+                //var configFile = new FileInfo(@"c:\somePath\web.config");
+                //var vdm = new VirtualDirectoryMapping(configFile.DirectoryName, true, configFile.Name);
+                //var wcfm = new WebConfigurationFileMap();
+                //wcfm.VirtualDirectories.Add("/", vdm);
+                //Configuration config = WebConfigurationManager.OpenMappedWebConfiguration(wcfm, "/");
+                //ServiceModelSectionGroup section = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
+                //var serviceModel = ServiceModelSectionGroup.GetSectionGroup(config);
+                //return serviceModel.Bindings;
+
+            }
+            else
+            {
+                // Most likely to be under asp net hosting environment
+                Configuration config = WebConfigurationManager.OpenWebConfiguration(HttpRuntime.AppDomainAppVirtualPath);
+                ServiceModelSectionGroup section = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
+                var serviceModel = ServiceModelSectionGroup.GetSectionGroup(config);
+                return serviceModel.Bindings;
+            }
+
         }
 
-        private Binding ResolveBinding(string bindingName, string virtualPath)
+        private Binding ResolveBinding(string bindingName/*, string virtualPath*/)
         {
-            BindingsSection section = this.GetBindingsSection(virtualPath);
+            BindingsSection section = this.GetBindingsSection(/*virtualPath*/);
 
             foreach (var bindingCollection in section.BindingCollections)
             {
