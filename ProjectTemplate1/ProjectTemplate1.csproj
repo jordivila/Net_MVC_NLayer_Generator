@@ -475,10 +475,6 @@
     <Content Include="Layers\UI\Content\Site.css" />
     <Content Include="Layers\UI\Content\Site.mobile.css" />
     <Content Include="Layers\UI\Global.asax" />
-    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\additional-methods.js" />
-    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\additional-methods.min.js" />
-    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\jquery.validate.js" />
-    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\jquery.validate.min.js" />
     <Content Include="Layers\UI\Template.UI.Web.vstemplate">
       <SubType>Designer</SubType>
     </Content>
@@ -1054,6 +1050,10 @@
     <Content Include="Layers\UI\Scripts\jquery-ui-1.10.0\ui\minified\jquery.ui.tabs.min.js" />
     <Content Include="Layers\UI\Scripts\jquery-ui-1.10.0\ui\minified\jquery.ui.tooltip.min.js" />
     <Content Include="Layers\UI\Scripts\jquery-ui-1.10.0\ui\minified\jquery.ui.widget.min.js" />
+    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\additional-methods.js" />
+    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\additional-methods.min.js" />
+    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\jquery.validate.js" />
+    <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\dist\jquery.validate.min.js" />
     <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\jquery.validate.js" />
     <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\localization\messages_ar.js" />
     <Content Include="Layers\UI\Scripts\jquery-validation-1.11.0\localization\messages_bg.js" />
