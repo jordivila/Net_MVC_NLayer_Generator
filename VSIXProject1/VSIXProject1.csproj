@@ -61,6 +61,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="packages\WebGrease.1.1.0\tools\WG.exe" />
+    <Content Include="Readme.txt" />
     <None Include="packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nuspec" />
     <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nuspec" />
     <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\tools\install.ps1" />
