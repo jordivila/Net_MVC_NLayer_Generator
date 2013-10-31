@@ -47,7 +47,7 @@
     <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
   </WizardExtension>
   <WizardData>
-    <packages repository="extension" repositoryId="VSIXProject1.Hewlett-Packard.751e31c4-9883-40b9-9df5-bb726126ebd6">
+    <packages repository="extension" repositoryId="VSIX_MVC_Layered.Jordi-Vila.751e31c4-9883-40b9-9df5-bb726126ebd6">
       <package id="Moq" version="4.0.10827" targetFramework="net40" />
     </packages>
   </WizardData>

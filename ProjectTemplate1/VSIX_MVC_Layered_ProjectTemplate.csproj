@@ -7,8 +7,8 @@
     <ProjectGuid>{C6FF170E-1B92-470C-A829-1FA834899A76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProjectTemplate1</RootNamespace>
-    <AssemblyName>ProjectTemplate1</AssemblyName>
+    <RootNamespace>VSIX_MVC_Layered_ProjectTemplate</RootNamespace>
+    <AssemblyName>VSIX_MVC_Layered_ProjectTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>

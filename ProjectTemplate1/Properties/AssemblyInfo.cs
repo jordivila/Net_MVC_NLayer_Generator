@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProjectTemplate1")]
+[assembly: AssemblyTitle("VSIX_MVC_Layered_ProjectTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("ProjectTemplate1")]
+[assembly: AssemblyProduct("VSIX_MVC_Layered_ProjectTemplate")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
