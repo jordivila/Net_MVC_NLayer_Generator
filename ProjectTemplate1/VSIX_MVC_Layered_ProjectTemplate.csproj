@@ -238,13 +238,17 @@
     <None Include="Layers\UI\Common\T4\Template_T4_BuildEvent_JS_Ajax.tt" />
     <None Include="Layers\UI\Common\T4\Template_T4_BuildEvent_JS_Intellisense.tt" />
     <None Include="Layers\UI\Common\T4\Template_T4_Runtime_CSS_ControllerStylesheets.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Template_T4_Runtime_CSS_ControllerStylesheets.cs</LastGenOutput>
       <TransformOnBuild>False</TransformOnBuild>
+      <Parameters>&lt;%3fxml version="1.0" encoding="utf-16"%3f&gt;
+&lt;ArrayOfParameterStorage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Parameters>
+      <CustomToolNamespace>%24customNamespace%24.UI.Web.Common.T4</CustomToolNamespace>
     </None>
     <None Include="Layers\UI\Common\T4\Template_T4_Runtime_JS_ControllerScripts.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Template_T4_Runtime_JS_ControllerScripts.cs</LastGenOutput>
+      <CustomToolNamespace>%24customNamespace%24.UI.Web.Common.T4</CustomToolNamespace>
     </None>
     <None Include="Layers\UI\packages.config" />
     <None Include="Layers\UI\Scripts\jquery-ui-1.10.0\ui\.jshintrc" />
