@@ -16,9 +16,9 @@
     <script type="text/javascript">
         (function ($) {
             jQuery(document).ready(function () {
-                $customNamespace$.Widgets.Page.InitCallback = function () {
+                $customNamespace$.Widgets.Page.onInit(function () {
                     jQuery("#@Html.IdFor(model => model.UserProfileResult.Data.BirthDate)").datepicker("option", "yearRange", "@DateTime.Now.AddYears(-100).Year:@DateTime.Now.Year");
-                };
+                });
             });
         })(jQuery);
     </script>

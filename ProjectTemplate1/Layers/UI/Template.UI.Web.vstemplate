@@ -946,9 +946,9 @@
           <ProjectItem ReplaceParameters="false" TargetFileName="package.json">package.json</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.A.Intellisense.js">Template.A.Intellisense.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.A.js">Template.A.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Ajax.js">Template.Ajax.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.A.js">Template.Widget.A.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Init.js">Template.Init.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Init.Ajax.js">Template.Init.Ajax.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Init.Widget.js">Template.Init.Widget.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.AjaxProgress.js">Template.Widget.AjaxProgress.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Base.js">Template.Widget.Base.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Boolean.js">Template.Widget.Boolean.js</ProjectItem>

@@ -46,8 +46,9 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label7);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 40);
@@ -58,7 +59,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 10);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(148, 13);
+            this.label7.Size = new System.Drawing.Size(176, 13);
             this.label7.TabIndex = 2;
             this.label7.Text = "Web Site Admin Configuration";
             // 

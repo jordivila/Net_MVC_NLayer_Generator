@@ -1,23 +1,12 @@
 ﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
     <Name>ASP.NET MVC 4 Layered Application</Name>
-    <Description>Create an ASP.NET MVC 4 project based on best practices.
-    
-Integrates dependency injection framework and was implemented in a test-driven manner.
-
-Solves Globalization, making your application able to support many languages and locales.
-
-Implements unobstrusive client validation and publishes javascript required files as a CDN deliverable files.
-
-Uses WCF Authentication, Authorization based on User/Roles, Administration zone with user management and logging viewer.
-
-The solution uses Enterprise Library, Moq and jQuery as Nuget preinstalled packages.
-    </Description>
+    <Description xml:space="preserve">Creates N-Layered solution with MVC 4 project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Icon></Icon>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
     <TemplateGroupID>Web</TemplateGroupID>
-    <SortOrder>90</SortOrder>
+    <SortOrder>90</SortOrder> 
     <EnableEditOfLocationField>true</EnableEditOfLocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>

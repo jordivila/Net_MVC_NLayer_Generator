@@ -2,7 +2,7 @@
 <#@ include file="Template_T4_BuildEvent_Base.tt" #>
 
 <# DirectoryInfo outputDirectory = new DirectoryInfo(this.Host.ResolvePath(string.Empty)).Parent.Parent.GetDirectories("Scripts", SearchOption.TopDirectoryOnly).First(); #>
-<# string outputFileName = "Template.Ajax.js";  #>
+<# string outputFileName = "Template.Init.Ajax.js";  #>
 <# UrlHelper Url = this.UrlHelperGet(); #>
 
 

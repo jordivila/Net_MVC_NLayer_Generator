@@ -3,14 +3,8 @@
   <Identifier Id="VSIX_MVC_Layered.Jordi-Vila.751e31c4-9883-40b9-9df5-bb726126ebd6">
     <Name>ASP_NET_MVC4_LAYERED</Name>
     <Author>Jordi Vila</Author>
-    <Version>5.0</Version>
-    <Description xml:space="preserve">Create an ASP.NET MVC 4 project based on best practices.
-      Integrates dependency injection framework and was implemented in a test-driven manner.
-      Solves Globalization, making your application able to support many languages and locales.
-      Implements unobstrusive client validation and publishes javascript required files as a CDN deliverable files.
-      Uses WCF Authentication, Authorization based on User/Roles, Administration zone with user management and logging viewer.
-      The solution uses Enterprise Library, Moq and jQuery as Nuget preinstalled packages.
-    </Description>
+    <Version>8.0</Version>
+    <Description xml:space="preserve">Creates N-Layered solution with MVC 4 project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Locale>1033</Locale>
     <SupportedProducts>
       <VisualStudio Version="10.0">

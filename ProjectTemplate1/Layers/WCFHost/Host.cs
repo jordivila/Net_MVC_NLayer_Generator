@@ -11,26 +11,13 @@ namespace $safeprojectname$
     {
         static void Main()
         {
-            // UNCOMMENT TO USE WINDOWS SERVICE HOST !!!!!
-
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[] 
-            //{ 
-            //    new HostService() 
-            //};
-            //ServiceBase.Run(ServicesToRun);
-
-            
-            
-            // COMMENT TO USE WINDOWS SERVICE HOST !!!!!
-
             Func<Type, ServiceHost> createHost = delegate(Type serviceType)
             {
                 ServiceHost host = new ServiceHost(serviceType);
                 host.Open();
                 foreach (var item in host.BaseAddresses)
                 {
-                    Console.WriteLine("Service #{0} listening on {1}.", item.AbsolutePath, item.AbsoluteUri);
+                    Console.WriteLine("Service listening at {0}.", item.AbsoluteUri);
                 }
                 host.Closed += new EventHandler(host_Closed);
                 host.Closing += new EventHandler(host_Closing);

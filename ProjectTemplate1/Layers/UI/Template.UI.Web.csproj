@@ -296,11 +296,11 @@
     <None Include="Common\T4\Template_T4_BuildEvent_JS_Intellisense.tt" />
     <None Include="Scripts\jquery-ui-1.10.0\ui\.jshintrc" />
     <None Include="Scripts\jquery-validation-1.11.0\package.json" />
-    <Content Include="Scripts\Template.Widget.A.js" />
-    <Content Include="Scripts\Template.A.js" />
+    <Content Include="Scripts\Template.Init.Widget.js" />
+    <Content Include="Scripts\Template.Init.js" />
     <Content Include="Scripts\jquery-validation-1.11.0\jquery.validate.js" />
     <Content Include="Scripts\Template.A.Intellisense.js" />
-    <Content Include="Scripts\Template.Ajax.js" />
+    <Content Include="Scripts\Template.Init.Ajax.js" />
     <Content Include="Scripts\Template.Widget.Boolean.js" />
     <Content Include="Scripts\Template.Widget.jQueryzer.js" />
     <Content Include="Scripts\jquery-ui-1.10.0\ui\i18n\jquery-ui-i18n.js" />

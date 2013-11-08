@@ -8,9 +8,9 @@
     <script type="text/javascript">
         (function ($) {
             jQuery(document).ready(function () {
-                $customNamespace$.Widgets.Page.InitCallback = function () {  
-                    setTimeout("jQuery('#@Html.IdFor(model => model.Email)').focus();", 0);
-                };
+                $customNamespace$.Widgets.Page.onInit(function () {  
+                    jQuery('#@Html.IdFor(model => model.Email)').focus();
+                });
             });
         })(jQuery);
     </script>

@@ -1,4 +1,11 @@
 ﻿/// <reference path="$customNamespace$.A.Intellisense.js" />
+if (!window.console) {
+    console = {
+        log: function (msg) {
+
+        }
+    };
+};
 
 String.prototype.toDateFromAspNet = function () {
     var dte = eval("new " + this.replace(/\//g, '') + ";");

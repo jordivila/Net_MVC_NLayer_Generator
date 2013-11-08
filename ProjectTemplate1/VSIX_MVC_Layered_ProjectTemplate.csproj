@@ -1111,9 +1111,9 @@
     <Content Include="Layers\UI\Scripts\jquery\jquery-ui.min.js" />
     <Content Include="Layers\UI\Scripts\jquery\jquery.min.js" />
     <Content Include="Layers\UI\Scripts\Template.A.Intellisense.js" />
-    <Content Include="Layers\UI\Scripts\Template.A.js" />
-    <Content Include="Layers\UI\Scripts\Template.Ajax.js" />
-    <Content Include="Layers\UI\Scripts\Template.Widget.A.js" />
+    <Content Include="Layers\UI\Scripts\Template.Init.js" />
+    <Content Include="Layers\UI\Scripts\Template.Init.Ajax.js" />
+    <Content Include="Layers\UI\Scripts\Template.Init.Widget.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.AjaxProgress.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.Base.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.Boolean.js" />

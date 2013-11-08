@@ -77,9 +77,9 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
         {
             get
             {
-                return new List<string>() { "~/Scripts/Template.A.js",
+                return new List<string>() { "~/Scripts/Template.Init.js",
                                             string.Format("~/Scripts/{0}",WebSiteCommonAjax),
-                                            "~/Scripts/Template.Widget.A.js",
+                                            "~/Scripts/Template.Init.Widget.js",
                                             "~/Scripts/Template.Widget.Base.js",
                                             "~/Scripts/Template.Widget.jQueryzer.js",
                                             "~/Scripts/Template.Widget.Form.js",
@@ -107,7 +107,7 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
         {
             get
             {
-                return "Template.Ajax.js";
+                return "Template.Init.Ajax.js";
             }
             set { }
         }

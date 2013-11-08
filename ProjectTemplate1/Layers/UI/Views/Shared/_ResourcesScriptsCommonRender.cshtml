@@ -63,8 +63,15 @@
 @if ($customNamespace$.Models.Configuration.ApplicationConfiguration.IsDebugMode)
 {
     <text>
-        <div id="mootoolsLoaded"></div>
-        <div id="prototypeLoaded"></div>
+        <style type="text/css">
+            .ui-mootoolsLoaded {top : 10em;}
+            .ui-prototypeLoaded {top : 20em;}
+            .ui-unobstrusive-tests { position: absolute; left: 50%; }
+            .ui-unobstrusive-tests div { position: relative; left: -50%; width:20em;padding:1em; text-align:center;}
+        </style>
+        <div id="mootoolsLoaded" class="ui-mootoolsLoaded ui-unobstrusive-tests"><div class="ui-widget ui-widget-content ui-state-error">If you can read this, mootools library was not loaded or Some obstrusive library has loaded or your browser is not supported</div></div>
+        <div id="prototypeLoaded" class="ui-prototypeLoaded ui-unobstrusive-tests"><div class="ui-widget ui-widget-content ui-state-error">If you can read this, prototype library was not loaded or Some obstrusive library has loaded or your browser is not supported</div></div>
+
         <script type="text/javascript">
             try {
                 window.addEvent('domready', function () {
@@ -72,7 +79,7 @@
                 });
             }
             catch (e) {
-                CreateErrorFloatingMessage("Mootools was NOT loaded. Some obstrusive library has loaded");
+                //CreateErrorFloatingMessage("Mootools was NOT loaded. Some obstrusive library has loaded");
             }
 
             try {
@@ -81,7 +88,7 @@
                 });
             }
             catch (e) {
-                CreateErrorFloatingMessage("Prototype was NOT loaded. Some obstrusive library has loaded");
+                //CreateErrorFloatingMessage("Prototype was NOT loaded. Some obstrusive library has loaded");
             }
         </script>
     </text>
