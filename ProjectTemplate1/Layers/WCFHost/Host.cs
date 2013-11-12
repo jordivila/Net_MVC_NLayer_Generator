@@ -11,32 +11,15 @@ namespace $safeprojectname$
     {
         static void Main()
         {
-            Func<Type, ServiceHost> createHost = delegate(Type serviceType)
-            {
-                ServiceHost host = new ServiceHost(serviceType);
-                host.Open();
-                foreach (var item in host.BaseAddresses)
-                {
-                    Console.WriteLine("Service listening at {0}.", item.AbsoluteUri);
-                }
-                host.Closed += new EventHandler(host_Closed);
-                host.Closing += new EventHandler(host_Closing);
-                host.Faulted += new EventHandler(host_Faulted);
-                host.Opened += new EventHandler(host_Opened);
-                host.Opening += new EventHandler(host_Opening);
-                host.UnknownMessageReceived += new EventHandler<UnknownMessageReceivedEventArgs>(host_UnknownMessageReceived);
-                return host;
-            };
+            ServiceHost svcAuthentication = Host_Create(typeof(AuthenticationService));
+            ServiceHost svcMembership = Host_Create(typeof(MembershipServices));
+            ServiceHost svcRolesManager = Host_Create(typeof(RoleServiceAdmin));
+            ServiceHost svcProfiles = Host_Create(typeof(ProfileService));
+            ServiceHost svcRoles = Host_Create(typeof(RoleService));
+            ServiceHost svcLogging = Host_Create(typeof(LoggingService));
+            ServiceHost svcSyndication = Host_Create(typeof(SyndicationService));
 
-            ServiceHost svcAuthentication = createHost(typeof(AuthenticationService));
-            ServiceHost svcMembership = createHost(typeof(MembershipServices));
-            ServiceHost svcRolesManager = createHost(typeof(RoleServiceAdmin));
-            ServiceHost svcProfiles = createHost(typeof(ProfileService));
-            ServiceHost svcRoles = createHost(typeof(RoleService));
-            ServiceHost svcLogging = createHost(typeof(LoggingService));
-            ServiceHost svcSyndication = createHost(typeof(SyndicationService));
-
-            Console.WriteLine("Press <ENTER> to terminate services.");
+            Console.WriteLine("Press <ENTER> to stop services...");
             Console.ReadLine();
 
             svcAuthentication.Close();
@@ -48,37 +31,63 @@ namespace $safeprojectname$
             svcSyndication.Close();
         }
 
-        static void host_UnknownMessageReceived(object sender, UnknownMessageReceivedEventArgs e)
+        static MethodBase GetCurrentMethod()
+        {
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(1);
+            return sf.GetMethod();
+        }
+
+        static ServiceHost Host_Create(Type serviceType)
+        {
+            ServiceHost host = new ServiceHost(serviceType);
+            host.Open();
+            foreach (var item in host.BaseAddresses)
+            {
+                Console.WriteLine("Service listening at {0}", item.AbsoluteUri);
+            }
+            host.Closed += new EventHandler(Host_Closed);
+            host.Closing += new EventHandler(Host_Closing);
+            host.Faulted += new EventHandler(Host_Faulted);
+            host.Opened += new EventHandler(Host_Opened);
+            host.Opening += new EventHandler(Host_Opening);
+            host.UnknownMessageReceived += new EventHandler<UnknownMessageReceivedEventArgs>(Host_UnknownMessageReceived);
+            return host;
+        }
+
+        static void Host_EventTrace(string eventName, ServiceHost service)
+        {
+            Console.WriteLine(string.Format("{0} {1}", eventName, service.BaseAddresses[0]));
+        }
+
+        static void Host_UnknownMessageReceived(object sender, UnknownMessageReceivedEventArgs e)
         {
             Console.WriteLine(e.Message);
         }
 
-        static void host_Opening(object sender, EventArgs e)
+        static void Host_Opening(object sender, EventArgs e)
         {
-            Console.WriteLine(string.Format("{0} opening", ((ServiceHost)sender).BaseAddresses));
+            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
 
-        static void host_Opened(object sender, EventArgs e)
+        static void Host_Opened(object sender, EventArgs e)
         {
-            Console.WriteLine(string.Format("{0} opened", ((ServiceHost)sender).BaseAddresses));
+            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
 
-        static void host_Faulted(object sender, EventArgs e)
+        static void Host_Faulted(object sender, EventArgs e)
         {
-            Console.WriteLine(string.Format("{0} faulted", ((ServiceHost)sender).BaseAddresses));
+            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
 
-        static void host_Closing(object sender, EventArgs e)
+        static void Host_Closing(object sender, EventArgs e)
         {
-            Console.WriteLine(string.Format("{0} closing", ((ServiceHost)sender).BaseAddresses));
+            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
 
-        static void host_Closed(object sender, EventArgs e)
+        static void Host_Closed(object sender, EventArgs e)
         {
-            Console.WriteLine(string.Format("{0} closed", ((ServiceHost)sender).BaseAddresses));
+            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
-
-
-
     }
 }
