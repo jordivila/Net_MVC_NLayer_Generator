@@ -31,8 +31,8 @@ namespace $safeprojectname$.TestCases.UserProfile
 
 
         static ControllerFake<UserAccountController> controllerLogin;
-        //static string UserNameValid = "jordi.vila@gmail.com";
-        //static string UserEmailValid = "jordi.vila@gmail.com";
+        //static string UserNameValid = "xxx@gmail.com";
+        //static string UserEmailValid = "xxx@gmail.com";
         //static string UserPassword = "123456";
 
         [ClassInitialize()]

@@ -164,7 +164,7 @@ namespace $safeprojectname$.Controllers
                 //context.Setup(ctx => ctx.User).Returns(user.Object);
                 //user.Setup(ctx => ctx.Identity).Returns(identity.Object);
                 //identity.Setup(id => id.IsAuthenticated).Returns(true);
-                //identity.Setup(id => id.Name).Returns("jordi.vila@gmail.com");
+                //identity.Setup(id => id.Name).Returns("xxx@gmail.com");
                 ////context.Setup(ctx => ctx.Response.Cache).Returns(CreateCachePolicy());
 
                 
