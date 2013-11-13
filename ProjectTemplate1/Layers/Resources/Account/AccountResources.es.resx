@@ -201,7 +201,7 @@ Atentamente, el equipo de soporte de {0}</value>
     <value>si no dispones de una cuenta</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
-    <value>La contraseña proporcionada es inválida</value>
+    <value>La contraseña proporcionada no es válida</value>
   </data>
   <data name="LogOn" xml:space="preserve">
     <value>Entrar</value>
