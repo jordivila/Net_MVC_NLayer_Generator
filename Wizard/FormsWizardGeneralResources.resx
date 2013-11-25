@@ -126,8 +126,14 @@
   <data name="DatabaseCreateNow" xml:space="preserve">
     <value>Would you like to create database now ?</value>
   </data>
+  <data name="DatabaseInitializing" xml:space="preserve">
+    <value>Initializing database</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="PlaseWaitMinute" xml:space="preserve">
+    <value>Please wait... this can take a couple of minutes</value>
   </data>
   <data name="Remember" xml:space="preserve">
     <value>Remember</value>

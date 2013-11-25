@@ -53,7 +53,6 @@ namespace CustomWizard
                 // Append Custom Dictionary Entries
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
                 //IWizardImplementation.GlobalData.DirectoryCopy(IWizardImplementation.GlobalData.PackagesDirectoryRepository.FullName, IWizardImplementation.GlobalData.PackagesDirectory.FullName, true);
-
                 this.FormInfo_FormShow();
             }
             catch (Exception ex)
@@ -139,6 +138,8 @@ namespace CustomWizard
 
         private void FormInfo_CreateExecute()
         {
+            IWizardImplementation.GlobalData.dte.StatusBar.Text = string.Format("{0} . {1}...", FormsWizardGeneralResources.DatabaseInitializing, FormsWizardGeneralResources.PlaseWaitMinute);
+
             try
             {
                 if (IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.CreateDatabaseAccepted)
@@ -148,8 +149,11 @@ namespace CustomWizard
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
                     startInfo.RedirectStandardOutput = true;
+                    startInfo.RedirectStandardError = true;
                     startInfo.UseShellExecute = false;
-                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.CreateNoWindow = true;
+                    
                     startInfo.FileName = command;
                     startInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ",
                                                 IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.ServerName,
