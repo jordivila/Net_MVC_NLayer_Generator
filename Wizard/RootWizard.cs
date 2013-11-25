@@ -48,16 +48,13 @@ namespace CustomWizard
                 // Initilize GlobalData to be used by child template projects
                 IWizardImplementation.GlobalData = new GlobalData(automationObject, replacementsDictionary, customParams);
                 IWizardImplementation.GlobalData.dte = (DTE2)automationObject;
-                
                 IWizardImplementation.GlobalData.dte.Events.SolutionEvents.ProjectAdded += new _dispSolutionEvents_ProjectAddedEventHandler(SolutionEvents_ProjectAdded);
-
 
                 // Append Custom Dictionary Entries
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
+                //IWizardImplementation.GlobalData.DirectoryCopy(IWizardImplementation.GlobalData.PackagesDirectoryRepository.FullName, IWizardImplementation.GlobalData.PackagesDirectory.FullName, true);
 
                 this.FormInfo_FormShow();
-
-                IWizardImplementation.GlobalData.DirectoryCopy(IWizardImplementation.GlobalData.PackagesDirectoryRepository.FullName, IWizardImplementation.GlobalData.PackagesDirectory.FullName, true);
             }
             catch (Exception ex)
             {

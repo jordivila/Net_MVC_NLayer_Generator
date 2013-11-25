@@ -28,7 +28,7 @@ namespace Wizard
                 this.PackagesDirectory = this.SolutionDirectory.Parent.GetDirectories(this.TemplateConstants.NuGetPackagesFolderName).First();
             }
 
-            this.PackagesDirectoryRepository = this.DirectoryGetPackagesRepository(customParams);
+            //this.PackagesDirectoryRepository = this.DirectoryGetPackagesRepository(customParams);
             this.LogWriter = new LogWriter(Path.Combine(this.SolutionDirectory.FullName, this.TemplateConstants.SolutionGenerationLogFileName));
         }
 
@@ -36,7 +36,7 @@ namespace Wizard
         public string CustomNamespace { get; set; }
         public DirectoryInfo PackagesDirectory { get; private set; }
         public DirectoryInfo SolutionDirectory { get; private set; }
-        public DirectoryInfo PackagesDirectoryRepository { get; private set; }
+        //public DirectoryInfo PackagesDirectoryRepository { get; private set; }
         public DTE2 dte { get; set; }
 
 

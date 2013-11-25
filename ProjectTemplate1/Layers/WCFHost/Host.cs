@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
+using System.Reflection;
+using System.Diagnostics;
+
 using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices;
 using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin;
 using $customNamespace$.WCF.ServicesLibrary.LoggingServices;
