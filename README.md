@@ -1,7 +1,7 @@
 .Net MVC NLayered Web Site Generator
 ====================================
 
-Uses Visual Studio 2010 VSIX to generate a .Net MVC N-Layered site.
+Uses Visual Studio 2013 VSIX to generate a .Net MVC N-Layered site.
 
 The main purpose is to facilitate developers to create scalable web sites or applications that use built-in best practices. 
 

@@ -22,7 +22,7 @@ namespace $customNamespace$.UI.Web.Common.T4
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\jv.io\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\Template_T4_Runtime_JS_ControllerScripts.tt"
+    #line 1 "C:\Users\jordiUser\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\Template_T4_Runtime_JS_ControllerScripts.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class Template_T4_Runtime_JS_ControllerScripts : Template_T4_Runtime_JS_ControllerScriptsBase
     {
@@ -34,7 +34,7 @@ namespace $customNamespace$.UI.Web.Common.T4
         {
             this.Write("\r\n");
             
-            #line 1 "C:\Users\jv.io\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\BaseInclude.tt"
+            #line 1 "C:\Users\jordiUser\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\BaseInclude.tt"
  GenerationEnvironment.Clear(); 
             
             #line default
@@ -42,7 +42,7 @@ namespace $customNamespace$.UI.Web.Common.T4
             this.Write("\r\n");
             this.Write("\r\n\r\n");
             
-            #line 12 "C:\Users\jv.io\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\Template_T4_Runtime_JS_ControllerScripts.tt"
+            #line 12 "C:\Users\jordiUser\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\Template_T4_Runtime_JS_ControllerScripts.tt"
 
 	Type controllerType = this.Session[$customNamespace$.UI.Web.Controllers.ResourceDispatcherController.TTSessionContext_ControllerType] as Type;
 
@@ -72,7 +72,7 @@ namespace $customNamespace$.UI.Web.Common.T4
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 3 "C:\Users\jv.io\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\BaseInclude.tt"
+        #line 3 "C:\Users\jordiUser\Documents\GitHub\Net_MVC_NLayer_Generator\ProjectTemplate1\Layers\UI\Common\T4\BaseInclude.tt"
 
 	
 	public void AppendFiles(string[] filesVirtualPath)
