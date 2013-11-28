@@ -1,6 +1,6 @@
 set ttFilePath=%1
 set targetName=%2
-set ttExeFile="C:\Program Files (x86)\Common Files\microsoft shared\TextTemplating\10.0\TextTransform.exe"
+set ttExeFile="C:\Program Files\Common Files\microsoft shared\TextTemplating\12.0\TextTransform.exe"
 
 %ttExeFile% %ttFilePath% -a !!targetName!%targetName% 
 
