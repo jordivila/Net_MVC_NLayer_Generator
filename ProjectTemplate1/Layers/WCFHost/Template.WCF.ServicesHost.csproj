@@ -113,6 +113,12 @@
     </EmbeddedResource>-->
   </ItemGroup>
   <ItemGroup>
+    <Content Include="blogrss.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

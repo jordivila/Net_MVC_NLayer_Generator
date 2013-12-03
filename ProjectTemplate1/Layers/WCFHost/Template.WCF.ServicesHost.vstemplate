@@ -25,6 +25,7 @@
       <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.cs">ProjectInstaller.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.designer.cs">ProjectInstaller.designer.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.resx">ProjectInstaller.resx</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="blogrss.xml">blogrss.xml</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>

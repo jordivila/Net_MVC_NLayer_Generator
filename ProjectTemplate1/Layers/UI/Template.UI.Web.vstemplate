@@ -22,7 +22,6 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="BlogUrlHelper.cs">BlogUrlHelper.cs</ProjectItem>
           <Folder Name="Content" TargetFolderName="Content">
             <ProjectItem ReplaceParameters="true" TargetFileName="blog.css">blog.css</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="blogrss.xml">blogrss.xml</ProjectItem>
           </Folder>
           <Folder Name="Controllers" TargetFolderName="Controllers">
             <ProjectItem ReplaceParameters="true" TargetFileName="BlogController.cs">BlogController.cs</ProjectItem>
@@ -292,13 +291,9 @@
       </Folder>
       <Folder Name="Scripts" TargetFolderName="Scripts">
         <Folder Name="jquery" TargetFolderName="jquery">
-          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.7.2-vsdoc.js">jquery-1.7.2-vsdoc.js</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1-vsdoc.js">jquery-1.9.1-vsdoc.js</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1.js">jquery-1.9.1.js</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="jquery-1.9.1.min.js">jquery-1.9.1.min.js</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui-i18n.min.js">jquery-ui-i18n.min.js</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="jquery-ui.min.js">jquery-ui.min.js</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="jquery.min.js">jquery.min.js</ProjectItem>
         </Folder>
         <Folder Name="jquery-globalize" TargetFolderName="jquery-globalize">
           <Folder Name="lib" TargetFolderName="lib">

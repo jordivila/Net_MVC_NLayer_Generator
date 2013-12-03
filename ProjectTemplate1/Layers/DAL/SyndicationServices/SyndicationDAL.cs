@@ -13,7 +13,7 @@ namespace $safeprojectname$.SyndicationServices
 {
     public class SyndicationDAL : BaseDAL, ISyndicationDAL
     {
-        private static string BlogRssFeedPath = @"C:\Proyectos2010\Pruebas\TTFiles\Template\src\Template.Solution\Template.UI.Web\Areas\Blog\Content\blogrss.xml";
+        private static string BlogRssFeedPath = Path.Combine(Environment.CurrentDirectory, "blogrss.xml");
         private static string BlogCacheManagerName = "CacheManagerForBlogFile";
         private static string BlogCacheFeedKey = "BlogCacheFeedKey";
 

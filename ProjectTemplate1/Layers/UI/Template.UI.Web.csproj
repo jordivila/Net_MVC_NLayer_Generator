@@ -214,7 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Blog\Content\blog.css" />
-    <Content Include="Areas\Blog\Content\blogrss.xml" />
     <Content Include="Areas\Error\Content\ErrorLogged.jpg" />
     <Content Include="Areas\Error\Views\Error\Index.cshtml" />
     <Content Include="Areas\Error\Views\Shared\Layout.cshtml">
@@ -575,7 +574,6 @@
     <Content Include="Scripts\jquery\jquery-1.9.1.min.js" />
     <Content Include="Scripts\Template.Widget.DialogInline.js" />
     <Content Include="Scripts\Template.Widget.UserOptions.js" />
-    <Content Include="Scripts\jquery\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\Template.Widget.Dialogs.js" />
     <Content Include="Scripts\Template.Widget.ButtonWrapper.js" />
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector.css" />
@@ -986,9 +984,6 @@
     <Content Include="Scripts\jquery-globalize\lib\cultures\globalize.culture.zu.js" />
     <Content Include="Scripts\jquery-globalize\lib\cultures\globalize.cultures.js" />
     <Content Include="Scripts\jquery-globalize\lib\globalize.js" />
-    <Content Include="Scripts\jquery\jquery-ui-i18n.min.js" />
-    <Content Include="Scripts\jquery\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery\jquery.min.js" />
     <Content Include="Scripts\Template.Widget.AjaxProgress.js" />
     <Content Include="Scripts\Template.Widget.Base.js" />
     <Content Include="Scripts\Template.Widget.Form.js" />
