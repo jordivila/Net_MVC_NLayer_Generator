@@ -1171,6 +1171,7 @@
     <Content Include="Layers\UI\Scripts\ui-widgetTreeList\ui-widgetTreeList.js" />
     <Content Include="Layers\UI\Template.UI.Web.csproj" />
     <Content Include="Layers\UI\__TemplateIcon.ico" />
+    <Content Include="Layers\WCFHost\blogrss.xml" />
     <Content Include="Layers\WCFHost\Template.WCF.ServicesHost.vstemplate" />
     <Content Include="Layers\WCFHost\Template.WCF.ServicesHost.csproj" />
     <Content Include="Layers\WCFHost\__TemplateIcon.ico" />
