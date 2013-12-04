@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Runtime.Serialization;
+using System.Linq;
+
 
 namespace $safeprojectname$.Enumerations
 {
@@ -49,5 +52,44 @@ namespace $safeprojectname$.Enumerations
         {
             return string.Format("http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/{0}/jquery-ui.css", themeSelected.ToString().Replace("_", "-").ToLower());
         }
+
+        public static string ToEnumMemberString(this Enum valueSelected)
+        {
+            return EnumExtension.ToEnumMemberString(valueSelected.GetType());
+        }
+        public static string ToEnumMemberString<T>(T type)
+        {
+            var enumType = typeof(T);
+            var name = Enum.GetName(enumType, type);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            return enumMemberAttribute.Value;
+        }
+        public static Nullable<T> ToEnumMember<T>(string str) where T : struct
+        {
+            var enumType = typeof(T);
+            foreach (var name in Enum.GetNames(enumType))
+            {
+                var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                if (enumMemberAttribute.Value == str)
+                {
+                    return (T)Enum.Parse(enumType, name);
+                }
+            }
+
+            return null;
+        }
+        public static Nullable<T> ToEnumMember<T>(string str, bool useDefaultValue) where T : struct
+        {
+            Nullable<T> result = EnumExtension.ToEnumMember<T>(str);
+            
+            if ((!result.HasValue) && useDefaultValue)
+            {
+                result = default(T);
+            }
+
+            return result;
+        }
+
+
     }
 }
