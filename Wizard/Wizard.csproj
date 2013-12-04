@@ -141,6 +141,9 @@ rem "c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\gac
 "C:\Program Files\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe" -i "$(TargetPath)"
 "C:\Program Files\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe" /l "$(TargetName)"
 
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe" -i "$(TargetPath)"
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\gacutil.exe" /l "$(TargetName)"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
