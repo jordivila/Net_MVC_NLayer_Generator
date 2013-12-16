@@ -1,6 +1,6 @@
 rem %~1 --> remove quotes from ProjectDir Path
 set projectDir=%~1
-set ttExePath="C:\Program Files\Common Files\microsoft shared\TextTemplating\12.0\TextTransform.exe"
+set ttExePath="%CommonProgramFiles%\microsoft shared\TextTemplating\12.0\TextTransform.exe"
 set ttFolderName=Common\T4
 set listItems=Template_T4_BuildEvent_JS_Ajax.tt;Template_T4_BuildEvent_JS_Intellisense.tt;Template_T4_BuildEvent_CDN_JS_Generator.tt;Template_T4_BuildEvent_CDN_CSS_Generator.tt;
 
