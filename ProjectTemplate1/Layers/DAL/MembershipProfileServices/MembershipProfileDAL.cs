@@ -1,5 +1,5 @@
 ﻿using System.Web.Profile;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
+using System.Runtime.Caching;
 using $customNamespace$.Models;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Profile;
@@ -8,9 +8,12 @@ namespace $safeprojectname$.MembershipServices
 {
     public class ProfileDAL : BaseDAL, IProfileDAL
     {
-        public ProfileDAL()
+        private const string CacheManagerName = "CacheManagerForProfileDAL";
+        private ObjectCache _objCacheManager = new MemoryCache(CacheManagerName);
+        private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
+        private string CacheManager_GetKey()
         {
-
+            return string.Format("Cache_DataResultUserProfile_{0}", this.UserRequest.UserFormsIdentity.Name);
         }
 
         public virtual DataResultUserProfile Create(string userName)
@@ -33,12 +36,6 @@ namespace $safeprojectname$.MembershipServices
             };
 
             return result;
-
-            //UserProfileDALHelper p = (UserProfileDALHelper)UserProfileDALHelper.Create(username);
-            //p.Culture = this.UserRequest.CultureSelected;
-            //p.Theme = this.UserRequest.ThemeSelected;
-            //p.Save();
-            //return p;
         }
 
         public override void Dispose()
@@ -46,15 +43,8 @@ namespace $safeprojectname$.MembershipServices
             base.Dispose();
         }
 
-        private string CacheManagerName = "CacheManagerForProfileDAL";
-        private string CacheManager_GetKey()
-        {
-            return string.Format("Cache_DataResultUserProfile_{0}", this.UserRequest.UserFormsIdentity.Name);
-        }
-
         public virtual DataResultUserProfile Get()
         {
-            ICacheManager _objCacheManager = CacheFactory.GetCacheManager(CacheManagerName);
             if (!_objCacheManager.Contains(this.CacheManager_GetKey()))
             {
                 ProfileBase p = ProfileBase.Create(this.UserRequest.UserFormsIdentity.Name, this.UserRequest.UserFormsIdentity.IsAuthenticated);
@@ -66,14 +56,13 @@ namespace $safeprojectname$.MembershipServices
                     MessageType = DataResultMessageType.Success
                 };
 
-                _objCacheManager.Add(this.CacheManager_GetKey(), result);
+                _objCacheManager.Add(this.CacheManager_GetKey(), result, _objCachePolicy);
             }
-            return (DataResultUserProfile)_objCacheManager.GetData(this.CacheManager_GetKey());
+            return (DataResultUserProfile)_objCacheManager.Get(this.CacheManager_GetKey());
         }
 
         public virtual DataResultUserProfile Update(UserProfileModel userProfile)
         {
-            ICacheManager _objCacheManager = CacheFactory.GetCacheManager(CacheManagerName);
             if (_objCacheManager.Contains(this.CacheManager_GetKey()))
             {
                 _objCacheManager.Remove(this.CacheManager_GetKey());

@@ -11,8 +11,6 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
-
 
 namespace $safeprojectname$
 {
@@ -40,18 +38,21 @@ namespace $safeprojectname$
 
         private static PropertyInfo[] GetTypeProperties(object o)
         {
-            PropertyInfo[] propertyInfos;
-            //propertyInfos = o.GetType().GetProperties(BindingFlags.Public | BindingFlags.Static);
-            string key = string.Format("Cache_Type_Properties_{0}", o.ToString());
-            string CacheManagerName = "CacheManagerForBaseModel";
-            ICacheManager _objCacheManager = CacheFactory.GetCacheManager(CacheManagerName);
-            if (!_objCacheManager.Contains(key))
-            {
-                _objCacheManager.Add(key, o.GetType().GetProperties());
-            }
+            ///TODO: Cache this ?
+            return o.GetType().GetProperties();
 
-            propertyInfos = propertyInfos = (PropertyInfo[])_objCacheManager.GetData(key);
-            return propertyInfos;
+            //PropertyInfo[] propertyInfos;
+            ////propertyInfos = o.GetType().GetProperties(BindingFlags.Public | BindingFlags.Static);
+            //string key = string.Format("Cache_Type_Properties_{0}", o.ToString());
+            //string CacheManagerName = "CacheManagerForBaseModel";
+            //ICacheManager _objCacheManager = CacheFactory.GetCacheManager(CacheManagerName);
+            //if (!_objCacheManager.Contains(key))
+            //{
+            //    _objCacheManager.Add(key, o.GetType().GetProperties());
+            //}
+
+            //propertyInfos = propertyInfos = (PropertyInfo[])_objCacheManager.GetData(key);
+            //return propertyInfos;
         }
 
         public static MemberInfo GetInfo<P>(Expression<Func<P>> action)
@@ -180,8 +181,6 @@ namespace $safeprojectname$
             byte[] byteArray = encoding.GetBytes(pXmlString);
             return byteArray;
         }
-
-
     }
 }
 

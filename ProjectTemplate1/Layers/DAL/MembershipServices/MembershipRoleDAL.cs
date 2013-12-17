@@ -1,5 +1,4 @@
 ﻿using System.Web.Security;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
 using $customNamespace$.Models.Common;
 
 namespace $safeprojectname$.MembershipServices

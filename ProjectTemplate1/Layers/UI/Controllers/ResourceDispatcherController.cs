@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Caching;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
 using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Cryptography;
 using $customNamespace$.Models.Enumerations;
@@ -12,27 +12,21 @@ using $safeprojectname$.Common.Mvc.Attributes;
 using $safeprojectname$.Common.T4;
 
 
-
 namespace $safeprojectname$.Controllers
 {
     [CacheFilterAttribute(Duration=9000000)]
     public class ResourceDispatcherController : Controller
     {
-        public static readonly string TTSessionContext_ControllerType = "SessionContext_ControllerType";
-        public static readonly string ResourceDispatchParamCommonKey = "Common";
-        public static readonly string ResourceDispatchCryptoPasswordKey = "ResourceDispatchCryptoPasswordKey";
-        public static readonly string ResourceDispatchParamControllerKey = "controller";
-        public static readonly string ResourceDispatchParamVersionKey = "version";
-        public static readonly string ResourceDispatchParamCultureKey = "culture";
-        public static readonly string ResourceDispatchParamIsMobileDevice = "IsMobileDevice";
+        public const string TTSessionContext_ControllerType = "SessionContext_ControllerType";
+        public const string ResourceDispatchParamCommonKey = "Common";
+        public const string ResourceDispatchCryptoPasswordKey = "ResourceDispatchCryptoPasswordKey";
+        public const string ResourceDispatchParamControllerKey = "controller";
+        public const string ResourceDispatchParamVersionKey = "version";
+        public const string ResourceDispatchParamCultureKey = "culture";
+        public const string ResourceDispatchParamIsMobileDevice = "IsMobileDevice";
+        private ObjectCache _objCacheManager = new MemoryCache("CacheManagerFoeClientResources");
+        private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
 
-        private ICacheManager _objCacheManager
-        {
-            get
-            {
-                return CacheFactory.GetCacheManager("CacheManagerForClientResources");
-            }
-        }
         private string GenerateCacheKey(string id, MediaType mediaType)
         {
             string controller = id;
@@ -40,7 +34,7 @@ namespace $safeprojectname$.Controllers
             if (mediaType == MediaType.javascript)
             {
                 cacheKey = string.Format("{0}.{1}.{2}", controller,
-                                                        MvcApplication.UserRequest.UserProfile.Culture.Name, 
+                                                        MvcApplication.UserRequest.UserProfile.Culture.Name,
                                                         mediaType == MediaType.javascript ? "js" : "css");
             }
             else
@@ -57,11 +51,15 @@ namespace $safeprojectname$.Controllers
             if (media == MediaType.javascript)
             {
                 CodeSettings c = new CodeSettings();
-                this._objCacheManager.Add(cacheKey, ApplicationConfiguration.IsDebugMode ? lFilesContent.ToString() : m.MinifyJavaScript(lFilesContent.ToString(), c));
+                this._objCacheManager.Add(cacheKey,
+                                        ApplicationConfiguration.IsDebugMode ? lFilesContent.ToString() : m.MinifyJavaScript(lFilesContent.ToString(), c)
+                                        , _objCachePolicy);
             }
             else
             {
-                this._objCacheManager.Add(cacheKey, ApplicationConfiguration.IsDebugMode ? lFilesContent.ToString() : m.MinifyStyleSheet(lFilesContent.ToString()));
+                this._objCacheManager.Add(cacheKey,
+                                        ApplicationConfiguration.IsDebugMode ? lFilesContent.ToString() : m.MinifyStyleSheet(lFilesContent.ToString())
+                                        , _objCachePolicy);
             }
         }
         private bool FileIsCached(string cacheKey)
@@ -86,7 +84,7 @@ namespace $safeprojectname$.Controllers
                 {
                     sb.Append(System.IO.File.ReadAllText(Server.MapPath(string.Format("{0}{1}",
                                                                         ApplicationConfiguration.ClientResourcesSettingsSection.CDN_JS_VirtualRoot,
-                                                                        ApplicationConfiguration.ClientResourcesSettingsSection.CDN_JS_CommonFileName($safeprojectname$.MvcApplication.UserRequest.UserProfile.Culture, MvcApplication.Version)))));
+                                                                        ApplicationConfiguration.ClientResourcesSettingsSection.CDN_JS_CommonFileName($customNamespace$.UI.Web.MvcApplication.UserRequest.UserProfile.Culture, MvcApplication.Version)))));
                 }
                 else
                 {
@@ -108,7 +106,7 @@ namespace $safeprojectname$.Controllers
             }
 
             JavaScriptResult jsResult = new JavaScriptResult();
-            jsResult.Script = (string)this._objCacheManager.GetData(cacheKeyJs);
+            jsResult.Script = (string)this._objCacheManager.Get(cacheKeyJs);
             return jsResult;
         }
         public FileStreamResult StyleSheet()
@@ -144,8 +142,8 @@ namespace $safeprojectname$.Controllers
                 this.FileSetCache(sb, cacheKeyCss, MediaType.stylesheet);
             }
 
-            FileStreamResult fsr = new FileStreamResult(new MemoryStream(UTF8Encoding.UTF8.GetBytes((string)this._objCacheManager.GetData(cacheKeyCss))), "text/css");
+            FileStreamResult fsr = new FileStreamResult(new MemoryStream(UTF8Encoding.UTF8.GetBytes((string)this._objCacheManager.Get(cacheKeyCss))), "text/css");
             return fsr;
-        } 
+        }
     }
 }

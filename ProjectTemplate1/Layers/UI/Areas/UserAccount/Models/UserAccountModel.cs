@@ -28,7 +28,7 @@ namespace $safeprojectname$.Areas.UserAccount.Models
 
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof($customNamespace$.Resources.Account.AccountResources), Name = AccountResourcesKeys.NewPasswordConfirm)]
-        [Compare("NewPassword", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
         public string ConfirmPassword { get; set; }
 
         public int MinPasswordLength { get; set; }
@@ -74,7 +74,7 @@ namespace $safeprojectname$.Areas.UserAccount.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
         [Display(ResourceType = typeof($customNamespace$.Resources.Account.AccountResources), Name = AccountResourcesKeys.ConfirmPassword)]
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         public string ConfirmPassword { get; set; }
@@ -112,7 +112,7 @@ namespace $safeprojectname$.Areas.UserAccount.Models
 
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof($customNamespace$.Resources.Account.AccountResources), Name = AccountResourcesKeys.NewPasswordConfirm)]
-        [Compare("NewPassword", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceType = typeof($customNamespace$.Resources.Account.AccountResources), ErrorMessageResourceName = AccountResourcesKeys.NewPasswordConfirmError)]
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         public string ConfirmPassword { get; set; }
 

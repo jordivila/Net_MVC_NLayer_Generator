@@ -4,6 +4,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
+
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.UserSessionPersistence;
 using $safeprojectname$.Common.AspNetApplicationServices;
@@ -60,6 +63,16 @@ namespace $safeprojectname$
             AreaRegistration.RegisterAllAreas();
             MvcApplication.RegisterRoutes(RouteTable.Routes);
             ControllerBuilder.Current.SetControllerFactory(new CustomControllerFactory());
+
+            Application_InitEnterpriseLibrary();
+        }
+
+        public void Application_InitEnterpriseLibrary()
+        {
+            //DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
+            DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
+            LogWriterFactory logWriterFactory = new LogWriterFactory();
+            Logger.SetLogWriter(logWriterFactory.Create());
         }
 
         public void Application_End()

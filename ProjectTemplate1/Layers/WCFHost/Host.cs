@@ -2,7 +2,8 @@
 using System.ServiceModel;
 using System.Reflection;
 using System.Diagnostics;
-
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices;
 using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin;
 using $customNamespace$.WCF.ServicesLibrary.LoggingServices;
@@ -14,6 +15,8 @@ namespace $safeprojectname$
     {
         static void Main()
         {
+            Host_InitEnterpriseLibrary();
+
             ServiceHost svcAuthentication = Host_Create(typeof(AuthenticationService));
             ServiceHost svcMembership = Host_Create(typeof(MembershipServices));
             ServiceHost svcRolesManager = Host_Create(typeof(RoleServiceAdmin));
@@ -39,6 +42,14 @@ namespace $safeprojectname$
             StackTrace st = new StackTrace();
             StackFrame sf = st.GetFrame(1);
             return sf.GetMethod();
+        }
+
+        static void Host_InitEnterpriseLibrary()
+        {
+            //DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
+            DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
+            LogWriterFactory logWriterFactory = new LogWriterFactory();
+            Logger.SetLogWriter(logWriterFactory.Create());
         }
 
         static ServiceHost Host_Create(Type serviceType)

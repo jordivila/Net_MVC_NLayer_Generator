@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Caching;
 using System.ServiceModel.Syndication;
 using System.Xml;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
 using $customNamespace$.Models.ExtensionMethods;
 using $customNamespace$.Models.Syndication;
 
@@ -13,14 +13,12 @@ namespace $safeprojectname$.SyndicationServices
 {
     public class SyndicationDAL : BaseDAL, ISyndicationDAL
     {
-        private static string BlogRssFeedPath = Path.Combine(Environment.CurrentDirectory, "blogrss.xml");
-        private static string BlogCacheManagerName = "CacheManagerForBlogFile";
-        private static string BlogCacheFeedKey = "BlogCacheFeedKey";
+        private string _blogRssFeedPath = Path.Combine(Environment.CurrentDirectory, "blogrss.xml");
+        private const string _blogCacheManagerName = "CacheManagerForBlogFile";
+        private const string _blogCacheFeedKey = "BlogCacheFeedKey";
+        private ObjectCache _objCacheManager = new MemoryCache(_blogCacheManagerName);
+        private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
 
-        /// <summary>
-        /// Get All Blog. Use it as private member
-        /// </summary>
-        /// <returns></returns>
         private SyndicationFeedFormatter GetAll()
         {
             FileStream fs = null;
@@ -29,19 +27,18 @@ namespace $safeprojectname$.SyndicationServices
 
             try
             {
-                ICacheManager cache = CacheFactory.GetCacheManager(SyndicationDAL.BlogCacheManagerName);
-                if (cache.GetData(SyndicationDAL.BlogCacheFeedKey) == null)
+                if (_objCacheManager.Get(SyndicationDAL._blogCacheFeedKey) == null)
                 {
-                    fs = System.IO.File.OpenRead(SyndicationDAL.BlogRssFeedPath);
+                    fs = System.IO.File.OpenRead(_blogRssFeedPath);
                     xr = XmlTextReader.Create((Stream)fs);
-                    cache.Add(SyndicationDAL.BlogCacheFeedKey, SyndicationFeed.Load(xr), CacheItemPriority.NotRemovable, null, null);
+                    _objCacheManager.Add(SyndicationDAL._blogCacheFeedKey, SyndicationFeed.Load(xr), _objCachePolicy);
                 }
-                
-                feed = ((SyndicationFeed)cache.GetData(SyndicationDAL.BlogCacheFeedKey)).Clone(true);
+
+                feed = ((SyndicationFeed)_objCacheManager.Get(SyndicationDAL._blogCacheFeedKey)).Clone(true);
 
                 if ($customNamespace$.Models.Configuration.ApplicationConfiguration.IsDebugMode)
                 {
-                    cache.Remove(SyndicationDAL.BlogCacheFeedKey);
+                    _objCacheManager.Remove(SyndicationDAL._blogCacheFeedKey);
                 }
             }
             catch (Exception)
@@ -91,7 +88,7 @@ namespace $safeprojectname$.SyndicationServices
             List<SyndicationItem> items = feed.Feed.Items
                                             .Where(x => x.Links.Where(p => p.Uri.ToString().Contains(filter.Uri)).Count() > 0)
                                             .ToList();
-            
+
             return this.GetDataResult(items, filter);
         }
 

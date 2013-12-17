@@ -1,5 +1,4 @@
 ﻿using System.Web.Profile;
-using Microsoft.Practices.EnterpriseLibrary.Caching;
 using $customNamespace$.Models;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Profile;

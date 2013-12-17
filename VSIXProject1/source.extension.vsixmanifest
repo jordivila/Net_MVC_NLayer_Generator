@@ -22,13 +22,12 @@
   <Content>
     <Assembly AssemblyName="|Wizard;AssemblyName|">|Wizard|</Assembly>
     <CustomExtension Type="CommonServiceLocator.1.0.nupkg">packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg</CustomExtension>
-    <CustomExtension Type="EnterpriseLibrary.Caching.5.0.505.0.nupkg">packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nupkg</CustomExtension>
-    <CustomExtension Type="EnterpriseLibrary.Common.5.0.505.0.nupkg">packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nupkg</CustomExtension>
-    <CustomExtension Type="EnterpriseLibrary.Data.5.0.505.0.nupkg">packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nupkg</CustomExtension>
-    <CustomExtension Type="EnterpriseLibrary.Logging.5.0.505.1.nupkg">packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nupkg</CustomExtension>
-    <CustomExtension Type="EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg">packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg</CustomExtension>
-    <CustomExtension Type="Unity.2.1.505.2.nupkg">packages\Unity.2.1.505.2\Unity.2.1.505.2.nupkg</CustomExtension>
-    <CustomExtension Type="Unity.Interception.2.1.505.2.nupkg">packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Common.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Data.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Data.6.0.1304.0\EnterpriseLibrary.Data.6.0.1304.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Logging.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Logging.6.0.1304.0\EnterpriseLibrary.Logging.6.0.1304.0.nupkg</CustomExtension>
+    <CustomExtension Type="EnterpriseLibrary.Logging.Database.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\EnterpriseLibrary.Logging.Database.6.0.1304.0.nupkg</CustomExtension>
+    <CustomExtension Type="Unity.3.0.1304.1.nupkg">packages\Unity.3.0.1304.1\Unity.3.0.1304.1.nupkg</CustomExtension>
+    <CustomExtension Type="Unity.Interception.3.0.1304.0.nupkg">packages\Unity.Interception.3.0.1304.0\Unity.Interception.3.0.1304.0.nupkg</CustomExtension>
     <CustomExtension Type="Microsoft.AspNet.Web.Optimization.1.0.0.nupkg">packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nupkg</CustomExtension>
     <CustomExtension Type="WebGrease.1.1.0.nupkg">packages\WebGrease.1.1.0\WebGrease.1.1.0.nupkg</CustomExtension>
     <CustomExtension Type="Microsoft.Web.Infrastructure.1.0.0.0.nupkg">packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg</CustomExtension>

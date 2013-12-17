@@ -97,7 +97,7 @@ namespace $safeprojectname$.TestCases.UserAccount
             Assert.AreEqual(true, Helper<RegisterViewModel, string>.PropertyHasAttribute(model, expConfirm, typeof(DisplayAttribute)));
             Assert.AreEqual(true, Helper<RegisterViewModel, string>.PropertyHasAttribute(model, expConfirm, typeof(RequiredAttribute)));
             Assert.AreEqual(true, Helper<RegisterViewModel, string>.PropertyHasDataType(model, expConfirm, DataType.Password));
-            Assert.AreEqual(true, Helper<RegisterViewModel, string>.PropertyHasAttribute(model, expConfirm, typeof(CompareAttribute)));
+            Assert.AreEqual(true, Helper<RegisterViewModel, string>.PropertyHasAttribute(model, expConfirm, typeof(System.ComponentModel.DataAnnotations.CompareAttribute)));
         }
 
         [TestMethod]
@@ -227,7 +227,7 @@ namespace $safeprojectname$.TestCases.UserAccount
             Expression<Func<ResetPasswordClientModel, string>> expConfirmPassword = m => model.ConfirmPassword;
             Assert.AreEqual(true, model.GetType().GetProperty(ExpressionHelper.GetExpressionText(expConfirmPassword)).GetCustomAttributes(typeof(DisplayAttribute), false).Count() > 0);
             Assert.AreEqual(true, model.GetType().GetProperty(ExpressionHelper.GetExpressionText(expConfirmPassword)).GetCustomAttributes(typeof(RequiredAttribute), false).Count() > 0);
-            Assert.AreEqual(true, model.GetType().GetProperty(ExpressionHelper.GetExpressionText(expConfirmPassword)).GetCustomAttributes(typeof(CompareAttribute), false).Count() > 0);
+            Assert.AreEqual(true, model.GetType().GetProperty(ExpressionHelper.GetExpressionText(expConfirmPassword)).GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.CompareAttribute), false).Count() > 0);
             Assert.AreEqual(true, Helper<ResetPasswordClientModel, string>.PropertyHasDataType(model, expConfirmPassword, DataType.Password));
         }
 

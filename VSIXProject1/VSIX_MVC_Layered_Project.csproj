@@ -49,6 +49,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+    <Content Include="packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
+    <Content Include="packages\EnterpriseLibrary.Data.6.0.1304.0\Readme.txt" />
+    <Content Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.xml" />
+    <Content Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\Readme.txt" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.Database.xml" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\Readme.txt" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDatabase.sql" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDatabaseObjects.sql" />
     <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -64,6 +85,24 @@
     <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Moq.Silverlight.pdb" />
     <Content Include="packages\Moq.4.0.10827\lib\Silverlight4\Moq.Silverlight.xml" />
     <Content Include="packages\Moq.4.0.10827\License.txt" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.xml" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.xml" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\NetCore45\Microsoft.Practices.Unity.NetCore.dll" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\NetCore45\Microsoft.Practices.Unity.NetCore.xml" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\wp8\Microsoft.Practices.Unity.WindowsPhone.dll" />
+    <Content Include="packages\Unity.3.0.1304.1\lib\wp8\Microsoft.Practices.Unity.WindowsPhone.xml" />
+    <Content Include="packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.xml" />
+    <Content Include="packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Unity.Interception.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Interception.xml" />
     <Content Include="packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -72,37 +111,38 @@
     </Content>
     <Content Include="packages\WebGrease.1.1.0\tools\WG.exe" />
     <Content Include="Readme.txt" />
-    <None Include="packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\tools\install.ps1" />
-    <None Include="packages\EnterpriseLibrary.Caching.5.0.505.0\tools\Utils.psm1" />
-    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\EnterpriseLibrary.Common.5.0.505.0.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\tools\install.ps1" />
-    <None Include="packages\EnterpriseLibrary.Common.5.0.505.0\tools\Utils.psm1" />
-    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\EnterpriseLibrary.Data.5.0.505.0.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\tools\install.ps1" />
-    <None Include="packages\EnterpriseLibrary.Data.5.0.505.0\tools\Utils.psm1" />
-    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\EnterpriseLibrary.Logging.5.0.505.1.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\tools\install.ps1" />
-    <None Include="packages\EnterpriseLibrary.Logging.5.0.505.1\tools\Utils.psm1" />
-    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\EnterpriseLibrary.Logging.Database.5.0.505.0.nuspec" />
-    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\tools\install.ps1" />
-    <None Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\tools\Utils.psm1" />
     <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\tools\Utils.psm1" />
+    <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\Update-EntlibConfiguration.ps1" />
+    <Content Include="packages\EnterpriseLibrary.Data.6.0.1304.0\EnterpriseLibrary.Data.6.0.1304.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Data.6.0.1304.0\EnterpriseLibrary.Data.6.0.1304.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Data.6.0.1304.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Data.6.0.1304.0\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\EnterpriseLibrary.Logging.6.0.1304.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\EnterpriseLibrary.Logging.6.0.1304.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Logging.6.0.1304.0\tools\Utils.psm1" />
+    <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\EnterpriseLibrary.Logging.Database.6.0.1304.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\EnterpriseLibrary.Logging.Database.6.0.1304.0.nuspec" />
+    <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDb.cmd" />
+    <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\tools\install.ps1" />
+    <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\tools\Utils.psm1" />
     <None Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nuspec" />
     <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -113,27 +153,29 @@
     </Content>
     <None Include="packages\Moq.4.0.10827\Moq.4.0.10827.nuspec" />
     <None Include="packages\Moq.4.0.10827\Moq.chm" />
-    <None Include="packages\Unity.2.1.505.2\tools\install.ps1" />
-    <None Include="packages\Unity.2.1.505.2\tools\Utils.psm1" />
     <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="packages\Unity.2.1.505.2\Unity.2.1.505.2.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\Unity.2.1.505.2\Unity.2.1.505.2.nuspec" />
-    <None Include="packages\Unity.Interception.2.1.505.2\tools\install.ps1" />
-    <None Include="packages\Unity.Interception.2.1.505.2\tools\Utils.psm1" />
-    <Content Include="packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="packages\Unity.Interception.2.1.505.2\Unity.Interception.2.1.505.2.nuspec" />
     <Content Include="packages\WebGrease.1.1.0\WebGrease.1.1.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <None Include="packages\Unity.3.0.1304.1\lib\NetCore45\Microsoft.Practices.Unity.NetCore.pri" />
+    <None Include="packages\Unity.3.0.1304.1\tools\install.ps1" />
+    <Content Include="packages\Unity.3.0.1304.1\Unity.3.0.1304.1.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Unity.3.0.1304.1\Unity.3.0.1304.1.nuspec" />
+    <None Include="packages\Unity.3.0.1304.1\UnityConfiguration30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\Unity.Interception.3.0.1304.0\tools\install.ps1" />
+    <Content Include="packages\Unity.Interception.3.0.1304.0\Unity.Interception.3.0.1304.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="packages\Unity.Interception.3.0.1304.0\Unity.Interception.3.0.1304.0.nuspec" />
     <None Include="packages\WebGrease.1.1.0\WebGrease.1.1.0.nuspec" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -155,68 +197,6 @@
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <VSIXSubPath>Web</VSIXSubPath>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.pdb" />
-    <Content Include="packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.XML" />
-    <Content Include="packages\CommonServiceLocator.1.0\lib\SL30\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="packages\CommonServiceLocator.1.0\lib\SL30\Microsoft.Practices.ServiceLocation.XML" />
-    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\EnterpriseLibrary.Caching.5.0.505.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Caching.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Caching.xml" />
-    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Caching.Silverlight.dll" />
-    <Content Include="packages\EnterpriseLibrary.Caching.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Caching.Silverlight.xml" />
-    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
-    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Common.Silverlight.dll" />
-    <Content Include="packages\EnterpriseLibrary.Common.5.0.505.0\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Common.Silverlight.xml" />
-    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
-    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.xml" />
-    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Logging.Silverlight.dll" />
-    <Content Include="packages\EnterpriseLibrary.Logging.5.0.505.1\lib\SL40\Microsoft.Practices.EnterpriseLibrary.Logging.Silverlight.XML" />
-    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.Database.xml" />
-    <Content Include="packages\EnterpriseLibrary.Logging.Database.5.0.505.0\scripts\LoggingDatabase.sql" />
-    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.xml" />
-    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.xml" />
-    <Content Include="packages\Unity.2.1.505.2\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll" />
-    <Content Include="packages\Unity.2.1.505.2\lib\SL30\Microsoft.Practices.Unity.Silverlight.xml" />
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.xml" />
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.xml" />
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\SL40\Microsoft.Practices.Unity.Interception.Silverlight.dll" />
-    <Content Include="packages\Unity.Interception.2.1.505.2\lib\SL40\Microsoft.Practices.Unity.Interception.Silverlight.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
