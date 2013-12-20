@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
     <None Include="Layers\DAL\Scripts\InstallDatabase.bat" />
