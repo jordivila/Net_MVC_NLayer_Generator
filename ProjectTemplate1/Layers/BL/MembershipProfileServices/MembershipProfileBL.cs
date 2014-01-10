@@ -5,20 +5,14 @@ using $customNamespace$.Models.Unity;
 
 namespace $safeprojectname$.MembershipServices
 {
-    public interface IProfileBL : IProviderProfile
+    public class ProfileBL : BaseBL, IProviderProxyProfileServices
     {
-        DataResultUserProfile Create(string userName);
-    }
+        private IProviderProfileDAL _dal;
 
-    public class ProfileBL : BaseBL, IProfileBL
-    {
-        private IProfileDAL _dal;
         public ProfileBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<IProfileDAL>();
-            }
+            _dal = DependencyFactory.Resolve<IProviderProfileDAL>();
+
         }
         public override void Dispose()
         {
@@ -73,17 +67,17 @@ namespace $safeprojectname$.MembershipServices
 
         public DataResultUserProfile Create(string userName)
         {
-            return this._dal.Create(userName);
+            return this._dal.Create(userName, this.UserRequest);
         }
 
         public DataResultUserProfile Get()
         {
-            return this._dal.Get();
+            return this._dal.Get(this.UserRequest);
         }
 
         public DataResultUserProfile Update(UserProfileModel userProfile)
         {
-            DataResultUserProfile result = this._dal.Update(userProfile);
+            DataResultUserProfile result = this._dal.Update(userProfile, this.UserRequest);
             result.Message = Resources.UserAdministration.UserAdminTexts.UserSaved;
             return result;
         }

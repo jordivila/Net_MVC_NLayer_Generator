@@ -1,88 +1,30 @@
 ﻿using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 using $safeprojectname$.Configuration;
 
 namespace $safeprojectname$.Unity
 {
-
-    public class DependencyFactory : IDisposable
+    public static class DependencyFactory
     {
         private static IUnityContainer _unity;
 
-        public static void ConfigurationSet(IUnityContainer container)
+        public static void SetUnityContainerProviderFactory(IUnityContainer container)
         {
-            // Used at testing runtime to set Mock objects 
-            DependencyFactory._unity = container;
-        }
-
-        public IUnityContainer Unity
-        {
-            get
+            if (DependencyFactory._unity == null)
             {
-                if (DependencyFactory._unity == null)
-                {
-                    DependencyFactory._unity = DependencyFactory.ConfigurationLoadDefault(new UnityContainer());
-                }
-                return DependencyFactory._unity;
-            }
-        }
-
-        public static IUnityContainer ConfigurationLoadDefault(IUnityContainer container)
-        {
-            if (string.IsNullOrEmpty(ApplicationConfiguration.UnitySettingsSection.CurrentContainer))
-            {
-                container.LoadConfiguration();
+                DependencyFactory._unity = container;
             }
             else
             {
-                container.LoadConfiguration(ApplicationConfiguration.UnitySettingsSection.CurrentContainer);
+                // No se puede cambiar el container de dependencias una vez iniciado
+                // Eso seria un foyong que no sabe ni dooonde se ha metido
+                throw new Exception("DependencyFactory cannot be changed once intialized");
             }
-            return container;
         }
 
-        public virtual void Dispose()
+        public static T Resolve<T>()
         {
-            if (DependencyFactory._unity != null)
-            {
-                DependencyFactory._unity.Dispose();
-            }
+            return DependencyFactory._unity.Resolve<T>();
         }
     }
-
-
-    //public class DependencyFactory : IDisposable
-    //{
-    //    private IUnityContainer _unity;
-
-    //    public IUnityContainer Unity
-    //    {
-    //        get
-    //        {
-    //            if (this._unity == null)
-    //            {
-    //                this._unity = new UnityContainer();
-
-    //                if (string.IsNullOrEmpty(ApplicationConfiguration.UnitySettingsSection.CurrentContainer))
-    //                {
-    //                    this._unity.LoadConfiguration();
-    //                }
-    //                else
-    //                {
-    //                    this._unity.LoadConfiguration(ApplicationConfiguration.UnitySettingsSection.CurrentContainer);
-    //                }
-    //            }
-    //            return this._unity;
-    //        }
-    //    }
-
-    //    public virtual void Dispose()
-    //    {
-    //        if (this._unity != null)
-    //        {
-    //            this._unity.Dispose();
-    //        }
-    //    }
-    //}
-
 }

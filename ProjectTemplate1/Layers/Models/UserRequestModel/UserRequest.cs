@@ -53,49 +53,49 @@ namespace $safeprojectname$.UserRequestModel
         string WcfSessionIdKeyValue { get; }
     }
 
-    public static class UserRequestHelper<TContext, TObjectCollection>
-    {
-        private static IUserRequestModel<HttpContext, HttpCookieCollection> httpUserRequest = null;
-        private static IUserRequestModel<OperationContext, MessageHeaders> ntpTcpUserRequest = null;
+    //public static class UserRequestHelper<TContext, TObjectCollection>
+    //{
+    //    private static IUserRequestModel<HttpContext, HttpCookieCollection> httpUserRequest = null;
+    //    private static IUserRequestModel<OperationContext, MessageHeaders> ntpTcpUserRequest = null;
 
-        public static object CreateUserRequest()
-        {
-            object result = null;
+    //    public static object CreateUserRequest()
+    //    {
+    //        object result = null;
 
-            if (typeof(TContext) == typeof(HttpContext))
-            {
-                if (UserRequestHelper<TContext, TObjectCollection>.httpUserRequest == null)
-                {
-                    using (DependencyFactory dependencyFactory = new DependencyFactory())
-                    {
-                        UserRequestHelper<TContext, TObjectCollection>.httpUserRequest = (IUserRequestModel<HttpContext, HttpCookieCollection>)dependencyFactory.Unity.Resolve<IUserRequestModel<HttpContext, HttpCookieCollection>>();
-                    }
-                }
-                result = UserRequestHelper<TContext, TObjectCollection>.httpUserRequest;
-            }
+    //        if (typeof(TContext) == typeof(HttpContext))
+    //        {
+    //            if (UserRequestHelper<TContext, TObjectCollection>.httpUserRequest == null)
+    //            {
+    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
+    //                {
+    //                    UserRequestHelper<TContext, TObjectCollection>.httpUserRequest = (IUserRequestModel<HttpContext, HttpCookieCollection>)dependencyFactory.Unity.Resolve<IUserRequestModel<HttpContext, HttpCookieCollection>>();
+    //                }
+    //            }
+    //            result = UserRequestHelper<TContext, TObjectCollection>.httpUserRequest;
+    //        }
 
-            if (typeof(TContext) == typeof(OperationContext))
-            {
-                if (UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest == null)
-                {
-                    using (DependencyFactory dependencyFactory = new DependencyFactory())
-                    {
-                        UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest = (IUserRequestModel<OperationContext, MessageHeaders>)dependencyFactory.Unity.Resolve<IUserRequestModel<OperationContext, MessageHeaders>>();
-                    }
-                }
-                result = UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest;
-            }
+    //        if (typeof(TContext) == typeof(OperationContext))
+    //        {
+    //            if (UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest == null)
+    //            {
+    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
+    //                {
+    //                    UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest = (IUserRequestModel<OperationContext, MessageHeaders>)dependencyFactory.Unity.Resolve<IUserRequestModel<OperationContext, MessageHeaders>>();
+    //                }
+    //            }
+    //            result = UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest;
+    //        }
 
-            if (result == null)
-            {
-                throw new NotImplementedException("UserRequest Not supported");
-            }
-            else
-            {
-                return result;
-            }
-        }
-    }
+    //        if (result == null)
+    //        {
+    //            throw new NotImplementedException("UserRequest Not supported");
+    //        }
+    //        else
+    //        {
+    //            return result;
+    //        }
+    //    }
+    //}
 
     public class UserRequestModelHttpClient : UserRequestModelHttp, IUserRequestClientModel
     {
@@ -103,15 +103,15 @@ namespace $safeprojectname$.UserRequestModel
         private IProviderMembership MembershipProvider;
         private IProviderAuthentication ProviderAuthentication;
 
-        public UserRequestModelHttpClient()
+        public UserRequestModelHttpClient(IProviderRoles providerRoles, 
+                                            IProviderMembership providerMembership, 
+                                            IProviderAuthentication providerAuth)
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                this.RolesProvider = dependencyFactory.Unity.Resolve<IProviderRoles>();
-                this.MembershipProvider = dependencyFactory.Unity.Resolve<IProviderMembership>();
-                this.ProviderAuthentication = dependencyFactory.Unity.Resolve<IProviderAuthentication>();
-            }
+            this.RolesProvider = providerRoles;
+            this.MembershipProvider = providerMembership;
+            this.ProviderAuthentication = providerAuth;
         }
+
         public override FormsIdentity UserFormsIdentity
         {
             get
@@ -183,7 +183,7 @@ namespace $safeprojectname$.UserRequestModel
         }
     }
 
-    public class UserRequestModelHttp : IUserRequestModel<HttpContext, HttpCookieCollection>
+    public abstract class UserRequestModelHttp : IUserRequestModel<HttpContext, HttpCookieCollection>
     {
         public HttpContext Context
         {
@@ -274,8 +274,8 @@ namespace $safeprojectname$.UserRequestModel
             {
                 if (!this.ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfClientCultureSelectedCookieName))
                 {
-                    List<string> cultureNamesAvailable = GlobalizationHelper.CultureInfoAvailableList().Select(p=>p.Name).ToList();
-                    List<string> cultureNameBrowserDetected = this.Context.Request.UserLanguages.Select(p=>p.Split(';')[0]).ToList();
+                    List<string> cultureNamesAvailable = GlobalizationHelper.CultureInfoAvailableList().Select(p => p.Name).ToList();
+                    List<string> cultureNameBrowserDetected = this.Context.Request.UserLanguages.Select(p => p.Split(';')[0]).ToList();
                     List<string> cultureNameSelected = cultureNamesAvailable.Intersect(cultureNameBrowserDetected).ToList();
                     CultureInfo culture = GlobalizationHelper.CultureInfoGetOrDefault(cultureNameSelected.Count() > 0 ? cultureNameSelected.First() : string.Empty);
                     this.Context.Response.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfClientCultureSelectedCookieName, culture.Name));
@@ -311,7 +311,7 @@ namespace $safeprojectname$.UserRequestModel
                 }
                 else
                 {
-                    ThemesAvailable themeSelected = (ThemesAvailable)Enum.Parse(typeof(ThemesAvailable), this.ContextBag[UserRequestModel_Keys.WcfClientThemeSelectedCookieName].Value.ToString().Replace("-","_"));
+                    ThemesAvailable themeSelected = (ThemesAvailable)Enum.Parse(typeof(ThemesAvailable), this.ContextBag[UserRequestModel_Keys.WcfClientThemeSelectedCookieName].Value.ToString().Replace("-", "_"));
                     return themeSelected;
                 }
             }
@@ -329,7 +329,7 @@ namespace $safeprojectname$.UserRequestModel
         }
         public UserProfileModel UserProfile
         {
-            get 
+            get
             {
                 if (!this.Context.Items.Contains(UserRequestModel_Keys.UserContextProfileKey))
                 {
@@ -447,7 +447,7 @@ namespace $safeprojectname$.UserRequestModel
             }
             set
             {
-                
+
             }
         }
         public void Dispose()
@@ -483,9 +483,9 @@ namespace $safeprojectname$.UserRequestModel
                 }
 
                 return m;
-                
+
                 //return this.Context.RequestContext.RequestMessage.Headers;
-                
+
             }
             set
             {
@@ -582,5 +582,4 @@ namespace $safeprojectname$.UserRequestModel
 
         }
     }
-
 }

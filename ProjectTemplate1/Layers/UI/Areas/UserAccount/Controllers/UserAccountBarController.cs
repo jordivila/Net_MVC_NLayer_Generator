@@ -19,14 +19,11 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
             get { return new string[0]; }
         }
 
-        private IProviderProfile providerProfile;
+        private IProviderProxyProfileServices providerProfile;
 
-        public UserAccountBarController() 
+        public UserAccountBarController()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                providerProfile = dependencyFactory.Unity.Resolve<IProviderProfile>();
-            }
+            this.providerProfile = DependencyFactory.Resolve<IProviderProxyProfileServices>();
         }
 
         protected override void Dispose(bool disposing)
@@ -43,12 +40,7 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
         {
             baseViewModel model = new baseViewModel();
 
-            //if ($customNamespace$.Models.Configuration.ApplicationConfiguration.IsDebugMode)
-            //{
-                //System.Threading.Thread.Sleep(5000);
-            //}
-
-            if(model.BaseViewModelInfo.UserIsLoggedIn)
+            if (model.BaseViewModelInfo.UserIsLoggedIn)
             {
                 model.BaseViewModelInfo.UserProfile = this.providerProfile.Get().Data;
             }

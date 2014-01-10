@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Layers\WCFHost\Unity\UnityContainerProvider.cs" />
+    <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDAL.cs" />
+    <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDALDevelopment.cs" />
+    <None Include="Layers\WCFHost\Unity\UnityContainerProviderReal.cs" />
+    <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
+    <None Include="Layers\UI\Unity\UnityContainerProviderReal.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -93,7 +99,6 @@
     <None Include="Layers\Models\Configuration\ConfigSections\ClientResources\ClientResourcesConfiguration.cs" />
     <None Include="Layers\Models\Configuration\ConfigSections\DomainInfo\DomainInfoConfiguration.cs" />
     <None Include="Layers\Models\Configuration\ConfigSections\Mailing\MailingConfiguration.cs" />
-    <None Include="Layers\Models\Configuration\ConfigSections\Unity\UnityConfiguration.cs" />
     <None Include="Layers\Models\Configuration\ConnectionProviders\ConnectionProvidersConfig.cs" />
     <None Include="Layers\Models\Cryptography\CryptoHelper.cs" />
     <None Include="Layers\Models\DataAnnotationsAttributes\DateAttribute.cs" />

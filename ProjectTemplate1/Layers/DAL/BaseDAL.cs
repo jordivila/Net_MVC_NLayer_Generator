@@ -11,19 +11,11 @@ using $customNamespace$.Models.UserRequestModel;
 
 namespace $safeprojectname$
 {
-    public abstract class BaseDAL: IDisposable
+    public abstract class BaseDAL : IDisposable
     {
         public BaseDAL()
         {
 
-        }
-
-        internal IUserRequestModel<OperationContext, MessageHeaders> UserRequest
-        {
-            get
-            {
-                return UserRequestHelper<OperationContext, MessageHeader>.CreateUserRequest() as IUserRequestModel<OperationContext, MessageHeaders>;
-            }
         }
 
         public virtual void Dispose()
@@ -92,7 +84,7 @@ namespace $safeprojectname$
                 if (rdr != null) { rdr.Close(); rdr.Dispose(); }
             }
         }
-        internal IDataResultPaginatedModel<T> ExecuteReaderForPagedResult<T>(IDataResultPaginatedModel<T> resultInstance, Database db, DbTransaction dbTrans, DbCommand cmd, Func<IDataReader,T> customConstructor)where T : new()
+        internal IDataResultPaginatedModel<T> ExecuteReaderForPagedResult<T>(IDataResultPaginatedModel<T> resultInstance, Database db, DbTransaction dbTrans, DbCommand cmd, Func<IDataReader, T> customConstructor) where T : new()
         {
             IDataReader rdr = null;
             try
@@ -131,7 +123,7 @@ namespace $safeprojectname$
                 if (rdr != null) { rdr.Close(); rdr.Dispose(); }
             }
         }
-        internal IDataResultPaginatedModel<T> ExecuteReaderForPagedResult<T>(IDataResultPaginatedModel<T> resultInstance, Database db, DbTransaction dbTrans, DbCommand cmd)where T : new()
+        internal IDataResultPaginatedModel<T> ExecuteReaderForPagedResult<T>(IDataResultPaginatedModel<T> resultInstance, Database db, DbTransaction dbTrans, DbCommand cmd) where T : new()
         {
             Func<IDataReader, T> defaultContructor = (rdr) => ((T)baseModel.readerToObject(rdr, new T()));
             return this.ExecuteReaderForPagedResult<T>(resultInstance, db, dbTrans, cmd, defaultContructor);

@@ -3,25 +3,28 @@ using System.Runtime.Caching;
 using $customNamespace$.Models;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Profile;
+using $customNamespace$.Models.UserRequestModel;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace $safeprojectname$.MembershipServices
 {
-    public class ProfileDAL : BaseDAL, IProfileDAL
+    public class ProfileDAL : BaseDAL, IProviderProfileDAL
     {
         private const string CacheManagerName = "CacheManagerForProfileDAL";
         private ObjectCache _objCacheManager = new MemoryCache(CacheManagerName);
         private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
-        private string CacheManager_GetKey()
+        private string CacheManager_GetKey(IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
-            return string.Format("Cache_DataResultUserProfile_{0}", this.UserRequest.UserFormsIdentity.Name);
+            return string.Format("Cache_DataResultUserProfile_{0}", userRequest.UserFormsIdentity.Name);
         }
 
-        public virtual DataResultUserProfile Create(string userName)
+        public virtual DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
             UserProfileModel userProfile = new UserProfileModel();
             userProfile.UserName = userName;
-            userProfile.Culture = this.UserRequest.UserProfile.Culture;
-            userProfile.Theme = this.UserRequest.UserProfile.Theme;
+            userProfile.Culture = userRequest.UserProfile.Culture;
+            userProfile.Theme = userRequest.UserProfile.Theme;
 
             ProfileBase p = ProfileBase.Create(userName);
             p.SetPropertyValue(baseModel.GetInfo(() => userProfile.Culture).Name, userProfile.Culture.Name.ToString());
@@ -43,11 +46,11 @@ namespace $safeprojectname$.MembershipServices
             base.Dispose();
         }
 
-        public virtual DataResultUserProfile Get()
+        public virtual DataResultUserProfile Get(IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
-            if (!_objCacheManager.Contains(this.CacheManager_GetKey()))
+            if (!_objCacheManager.Contains(this.CacheManager_GetKey(userRequest)))
             {
-                ProfileBase p = ProfileBase.Create(this.UserRequest.UserFormsIdentity.Name, this.UserRequest.UserFormsIdentity.IsAuthenticated);
+                ProfileBase p = ProfileBase.Create(userRequest.UserFormsIdentity.Name, userRequest.UserFormsIdentity.IsAuthenticated);
                 UserProfileModel userProfile = new UserProfileModel(p);
                 DataResultUserProfile result = new DataResultUserProfile()
                 {
@@ -56,19 +59,19 @@ namespace $safeprojectname$.MembershipServices
                     MessageType = DataResultMessageType.Success
                 };
 
-                _objCacheManager.Add(this.CacheManager_GetKey(), result, _objCachePolicy);
+                _objCacheManager.Add(this.CacheManager_GetKey(userRequest), result, _objCachePolicy);
             }
-            return (DataResultUserProfile)_objCacheManager.Get(this.CacheManager_GetKey());
+            return (DataResultUserProfile)_objCacheManager.Get(this.CacheManager_GetKey(userRequest));
         }
 
-        public virtual DataResultUserProfile Update(UserProfileModel userProfile)
+        public virtual DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
-            if (_objCacheManager.Contains(this.CacheManager_GetKey()))
+            if (_objCacheManager.Contains(this.CacheManager_GetKey(userRequest)))
             {
-                _objCacheManager.Remove(this.CacheManager_GetKey());
+                _objCacheManager.Remove(this.CacheManager_GetKey(userRequest));
             }
 
-            ProfileBase p = ProfileBase.Create(this.UserRequest.UserFormsIdentity.Name);
+            ProfileBase p = ProfileBase.Create(userRequest.UserFormsIdentity.Name);
             userProfile.SetProfileBasePropertyValues(ref p);
             p.Save();
             DataResultUserProfile result = new DataResultUserProfile()

@@ -97,6 +97,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Unity\UnityContainerProvider.cs" />
+    <Compile Include="Unity\UnityContainerProviderMockDAL.cs" />
+    <Compile Include="Unity\UnityContainerProviderMockDALDevelopment.cs" />
+    <Compile Include="Unity\UnityContainerProviderReal.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <!--<EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>-->
@@ -108,9 +114,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <!--
     <None Include="postBuild.bat" />
@@ -118,6 +122,10 @@
     -->
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
+      <Project>{EDC045DC-A310-426E-B714-61967C41383F}</Project>
+      <Name>$customNamespace$.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\$customNamespace$.Models\$customNamespace$.Models.csproj">
       <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
       <Name>$customNamespace$.Models</Name>

@@ -12,6 +12,8 @@ using $customNamespace$.Models.UserSessionPersistence;
 using $safeprojectname$.Common.AspNetApplicationServices;
 using $safeprojectname$.Controllers;
 using $safeprojectname$.Common.Mvc.Attributes;
+using $customNamespace$.Models.Unity;
+using $safeprojectname$.Unity;
 
 namespace $safeprojectname$
 {
@@ -32,19 +34,33 @@ namespace $safeprojectname$
             set { }
         }
 
+        private static IUserRequestModel<HttpContext, HttpCookieCollection> _userRequest = null;
+
         public static IUserRequestModel<HttpContext, HttpCookieCollection> UserRequest
         {
             get
             {
-                return UserRequestHelper<HttpContext, HttpCookieCollection>.CreateUserRequest() as IUserRequestModel<HttpContext, HttpCookieCollection>;
+                if (_userRequest == null)
+                {
+                    _userRequest = DependencyFactory.Resolve<IUserRequestModel<HttpContext, HttpCookieCollection>>();
+                }
+
+                return _userRequest;
             }
         }
+
+        private static IUserSessionModel<HttpContext, HttpSessionState> _userSession = null;
 
         public static IUserSessionModel<HttpContext, HttpSessionState> UserSession
         {
             get
             {
-                return UserSessionHelper<HttpContext, HttpSessionState>.CreateUserSession() as IUserSessionModel<HttpContext, HttpSessionState>;
+                if (_userSession == null)
+                {
+                    _userSession = DependencyFactory.Resolve<IUserSessionModel<HttpContext, HttpSessionState>>();
+                }
+
+                return _userSession;
             }
         }
 
@@ -54,7 +70,7 @@ namespace $safeprojectname$
             {
                 return "$safeprojectname$";
             }
-        }   
+        }
 
         public void Application_Start()
         {
@@ -69,7 +85,7 @@ namespace $safeprojectname$
 
         public void Application_InitEnterpriseLibrary()
         {
-            //DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
+            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());
@@ -101,7 +117,7 @@ namespace $safeprojectname$
             filters.Add(new MembershipUpdateLastActivityActionAttribute());
             //filters.Add(new CacheFilterAttribute());  // Warning !!! all pages will be cached in case this line is uncomented
         }
-        
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -112,7 +128,7 @@ namespace $safeprojectname$
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
         }
-        
+
         protected static void RegisterViewEngines()
         {
             /* Performance tip */
@@ -120,9 +136,9 @@ namespace $safeprojectname$
             ViewEngines.Engines.Add(new RazorViewEngine());
             //ViewEngines.Engines.Add(new RazorCustomizedViewEngine());
             //ViewEngines.Engines.Add(new MobileViewEngine());
-            //ViewEngines.Engines.Add(new $safeprojectname$.ViewEngines_Custom.Samples.jQueryRazorViewEngine());
+            //ViewEngines.Engines.Add(new MvcApplication3.UI.Web.ViewEngines_Custom.Samples.jQueryRazorViewEngine());
         }
-  
+
         private void RegisterValueProviderFactories()
         {
             // this allow automatic Json Model Binding--> read more about JsonValueProviderFactory on msdn 

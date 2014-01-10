@@ -31,10 +31,7 @@ namespace $safeprojectname$.MembershipServices
         private IMembershipDAL _dal;
         public MembershipBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<IMembershipDAL>();
-            }
+            _dal = DependencyFactory.Resolve<IMembershipDAL>();
         }
         public override void Dispose()
         {
@@ -108,9 +105,10 @@ namespace $safeprojectname$.MembershipServices
 
             if (!this.ValidatePasswordStrength(newPassword))
             {
-                result = new DataResultUserCantAccess() { 
+                result = new DataResultUserCantAccess()
+                {
                     IsValid = false,
-                    Message =  Resources.Account.AccountResources.InvalidPassword,
+                    Message = Resources.Account.AccountResources.InvalidPassword,
                     MessageType = DataResultMessageType.Error
                 };
             }
@@ -240,7 +238,7 @@ namespace $safeprojectname$.MembershipServices
                             DataResultBoolean newUserRole = _roleBl.AddToRoles(newUser.UserName, new string[1] { SiteRoles.Guest.ToString() });
                             _roleBl.Dispose();
 
-                            IProfileBL _profileBL = new ProfileBL();
+                            ProfileBL _profileBL = new ProfileBL();
                             UserProfileModel usrProfile = _profileBL.Create(username).Data;
                             _profileBL.Dispose();
 
@@ -290,7 +288,7 @@ namespace $safeprojectname$.MembershipServices
                         MessageType = DataResultMessageType.Error,
                         Data = new CreatedAccountResultModel(MembershipCreateStatus.InvalidPassword)
                     };
-                
+
                 }
             }
             return result;
@@ -303,7 +301,7 @@ namespace $safeprojectname$.MembershipServices
         {
             return this._dal.GetUserByGuid(providerUserKey, userIsOnline);
         }
-        public DataResultUser  GetUserByName(string username, bool userIsOnline)
+        public DataResultUser GetUserByName(string username, bool userIsOnline)
         {
             return this._dal.GetUserByName(username, userIsOnline);
         }
@@ -343,7 +341,7 @@ namespace $safeprojectname$.MembershipServices
             // 2.- they should re-activate its account by a token sent to their email address
             return this._dal.UpdateUser(user);
         }
-        public  bool ValidatePasswordStrength(string password)
+        public bool ValidatePasswordStrength(string password)
         {
             if (string.IsNullOrEmpty(password))
             {
@@ -353,8 +351,8 @@ namespace $safeprojectname$.MembershipServices
             MembershipProviderSettings memebrshipSettings = this.Settings().Data;
 
             int nonAlphaNumericCharacters = (from c in password.ToCharArray()
-                                                where !char.IsLetterOrDigit(c)
-                                                select c).Count();
+                                             where !char.IsLetterOrDigit(c)
+                                             select c).Count();
 
             return ((nonAlphaNumericCharacters >= memebrshipSettings.MinRequiredNonAlphanumericCharacters)
                         &&

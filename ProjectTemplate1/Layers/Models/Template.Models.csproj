@@ -43,10 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=3.0.1304.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll</HintPath>
@@ -82,7 +78,6 @@
     <Compile Include="Configuration\ConfigSections\ClientResources\ClientResourcesConfiguration.cs" />
     <Compile Include="Configuration\ConfigSections\DomainInfo\DomainInfoConfiguration.cs" />
     <Compile Include="Configuration\ConfigSections\Mailing\MailingConfiguration.cs" />
-    <Compile Include="Configuration\ConfigSections\Unity\UnityConfiguration.cs" />
     <Compile Include="Configuration\ConnectionProviders\ConnectionProvidersConfig.cs" />
     <Compile Include="Cryptography\CryptoHelper.cs" />
     <Compile Include="DataAnnotationsAttributes\DateAttribute.cs" />

@@ -26,10 +26,7 @@ namespace $safeprojectname$.Areas.Blog.Controllers
 
         public BlogController()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                this.ProviderSyndication = dependencyFactory.Unity.Resolve<IProviderSyndication>();
-            }
+            this.ProviderSyndication = DependencyFactory.Resolve<IProviderSyndication>();
         }
 
         protected override void Dispose(bool disposing)

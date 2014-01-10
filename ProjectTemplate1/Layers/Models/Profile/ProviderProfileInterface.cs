@@ -1,15 +1,16 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
+using $safeprojectname$.UserRequestModel;
 
 namespace $safeprojectname$.Profile
 {
-    [ServiceContract]
-    public interface IProviderProfile: IDisposable
+    public interface IProviderProfileDAL : IDisposable
     {
-        [OperationContract]
-        DataResultUserProfile Get();
+        DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest);
 
-        [OperationContract]
-        DataResultUserProfile Update(UserProfileModel userProfile);
+        DataResultUserProfile Get(IUserRequestModel<OperationContext, MessageHeaders> userRequest);
+
+        DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel<OperationContext, MessageHeaders> userRequest);
     }
 }

@@ -3,8 +3,6 @@ using System.Configuration;
 using $safeprojectname$.Configuration.ConfigSections.ClientResources;
 using $safeprojectname$.Configuration.ConfigSections.DomainInfo;
 using $safeprojectname$.Configuration.ConfigSections.Mailing;
-using $safeprojectname$.Configuration.ConfigSections.Unity;
-
 
 namespace $safeprojectname$.Configuration
 {
@@ -40,8 +38,6 @@ namespace $safeprojectname$.Configuration
 
         public static IDomainInfoConfiguration DomainInfoSettingsSection = new DomainInfoConfiguration();
                 
-        public static IUnityConfiguration UnitySettingsSection = new UnityConfiguration();
-
         public static IClientResourcesConfiguration ClientResourcesSettingsSection = new ClientResourcesConfiguration();
     }
 }

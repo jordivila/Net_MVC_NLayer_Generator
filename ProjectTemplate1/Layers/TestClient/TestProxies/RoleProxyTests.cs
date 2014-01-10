@@ -25,8 +25,8 @@ namespace $safeprojectname$.TestProxies
 
         public RoleServiceAdminTests()
         {
-            
-            
+
+
         }
 
         private TestContext testContextInstance;
@@ -60,11 +60,11 @@ namespace $safeprojectname$.TestProxies
         {
             TestProxyBase.SetHttpContext();
 
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _memberShipeServices = dependencyFactory.Unity.Resolve<IProviderMembership>();
-                _rolesServices = dependencyFactory.Unity.Resolve<IProviderRoleManager>();
-            }
+
+
+            _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
+            _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
+
 
 
             if (_listUsers.Count == 0)
@@ -104,7 +104,7 @@ namespace $safeprojectname$.TestProxies
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            
+
         }
 
         [TestMethod]

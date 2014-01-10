@@ -8,6 +8,8 @@ using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices;
 using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin;
 using $customNamespace$.WCF.ServicesLibrary.LoggingServices;
 using $customNamespace$.WCF.ServicesLibrary.SyndicationServices;
+using $customNamespace$.Models.Unity;
+using $customNamespace$.WCF.Unity;
 
 namespace $safeprojectname$
 {
@@ -46,7 +48,7 @@ namespace $safeprojectname$
 
         static void Host_InitEnterpriseLibrary()
         {
-            //DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
+            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());

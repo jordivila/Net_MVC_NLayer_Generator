@@ -3,9 +3,9 @@ using $customNamespace$.Models.Profile;
 
 namespace $safeprojectname$.AspNetApplicationServices
 {
-    public class ProfileService : BaseService, IProviderProfile
+    public class ProfileService : BaseService, IProviderProxyProfileServices
     {
-        IProfileBL _bl = null;
+        ProfileBL _bl = null;
 
         public ProfileService()
         {

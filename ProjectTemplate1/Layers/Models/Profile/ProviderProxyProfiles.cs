@@ -1,8 +1,21 @@
 ﻿using $safeprojectname$.ProxyProviders;
+using System;
+using System.ServiceModel;
 
 namespace $safeprojectname$.Profile
 {
-    public class ProviderProxyProfileServices : ProviderBaseChannel<IProviderProfile>, IProviderProfile
+    [ServiceContract]
+    public interface IProviderProxyProfileServices : IDisposable
+    {
+        [OperationContract]
+        DataResultUserProfile Get();
+
+        [OperationContract]
+        DataResultUserProfile Update(UserProfileModel userProfile);
+    }
+
+
+    public class ProviderProxyProfileServices : ProviderBaseChannel<IProviderProxyProfileServices>, IProviderProxyProfileServices
     {
         public DataResultUserProfile Get()
         {

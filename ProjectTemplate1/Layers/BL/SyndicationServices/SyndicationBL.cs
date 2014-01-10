@@ -11,10 +11,7 @@ namespace $safeprojectname$.SyndicationServices
         private ISyndicationDAL _dal;
         public SyndicationBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<ISyndicationDAL>();
-            }
+            _dal = DependencyFactory.Resolve<ISyndicationDAL>();
         }
         public override void Dispose()
         {

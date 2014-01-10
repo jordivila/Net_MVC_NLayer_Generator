@@ -194,7 +194,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Template_T4_Runtime_JS_ControllerScripts.tt</DependentUpon>
     </Compile>
-
+    <Compile Include="Unity\UnityContainerProvider.cs" />
+    <Compile Include="Unity\UnityContainerProviderReal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,6 +2,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Models.Unity;
 
 namespace $safeprojectname$
 {
@@ -12,11 +13,18 @@ namespace $safeprojectname$
 
         }
 
+        private static IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
+
         internal IUserRequestModel<OperationContext, MessageHeaders> UserRequest
         {
             get
             {
-                return UserRequestHelper<OperationContext, MessageHeader>.CreateUserRequest() as IUserRequestModel<OperationContext, MessageHeaders>;
+                if (_userRequest == null)
+                {
+                    _userRequest = DependencyFactory.Resolve<IUserRequestModel<OperationContext, MessageHeaders>>();
+                }
+
+                return _userRequest;
             }
         }
 

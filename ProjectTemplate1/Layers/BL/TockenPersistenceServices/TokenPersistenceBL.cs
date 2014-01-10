@@ -15,10 +15,7 @@ namespace $safeprojectname$.TokenTemporaryPersistenceServices
 
         public TokenTemporaryPersistenceBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<ITokenTemporaryPersistenceDAL>();
-            }
+            _dal = DependencyFactory.Resolve<ITokenTemporaryPersistenceDAL>();
         }
 
         public override void Dispose()

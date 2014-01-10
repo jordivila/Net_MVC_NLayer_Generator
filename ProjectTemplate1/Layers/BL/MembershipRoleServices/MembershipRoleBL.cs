@@ -20,10 +20,7 @@ namespace $safeprojectname$.MembershipServices
         private IRoleAdminDAL _dal;
         public RoleAdminBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<IRoleAdminDAL>();
-            }
+            _dal = DependencyFactory.Resolve<IRoleAdminDAL>();
         }
         public override void Dispose()
         {

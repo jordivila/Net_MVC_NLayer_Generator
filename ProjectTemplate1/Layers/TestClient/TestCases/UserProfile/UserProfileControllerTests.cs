@@ -13,15 +13,6 @@ using $customNamespace$.UI.Web.Areas.UserProfile;
 using $customNamespace$.UI.Web.Areas.UserProfile.Controllers;
 using $customNamespace$.UI.Web.Areas.UserProfile.Models;
 
-
-
-
-
-
-
-
-
-
 namespace $safeprojectname$.TestCases.UserProfile
 {
     [TestClass]
@@ -115,10 +106,5 @@ namespace $safeprojectname$.TestCases.UserProfile
             bool invalidFound = ((UserProfileIndexModel)((ViewResult)resultInvalid).Model).UserProfileResultUpdated.IsValid == true;
             Assert.AreEqual(true, invalidFound);
         }
-
-
-
-
     }
-
 }

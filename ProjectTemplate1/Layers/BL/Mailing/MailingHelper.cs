@@ -12,10 +12,7 @@ namespace $safeprojectname$.Mailing
     {
         static MailingHelper()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _SmtpClient = dependencyFactory.Unity.Resolve<ISmtpClient>();
-            }
+            _SmtpClient = DependencyFactory.Resolve<ISmtpClient>();
             _MailingConfig = $customNamespace$.Models.Configuration.ApplicationConfiguration.MailingSettingsSection; //new MailingConfiguration();  // DependencyFactory.Unity.Resolve<IMailingConfiguration>(); 
             _DomainConfig = $customNamespace$.Models.Configuration.ApplicationConfiguration.DomainInfoSettingsSection;  // new DomainInfoConfiguration(); // DependencyFactory.Unity.Resolve<IDomainInfoConfiguration>();
         }

@@ -2,8 +2,5 @@
 
 namespace $safeprojectname$.MembershipServices
 {
-    public interface IProfileDAL : IProviderProfile
-    {
-        DataResultUserProfile Create(string userName);
-    }
+
 }

@@ -39,9 +39,6 @@
           <Folder Name="Mailing" TargetFolderName="Mailing">
             <ProjectItem ReplaceParameters="true" TargetFileName="MailingConfiguration.cs">MailingConfiguration.cs</ProjectItem>
           </Folder>
-          <Folder Name="Unity" TargetFolderName="Unity">
-            <ProjectItem ReplaceParameters="true" TargetFileName="UnityConfiguration.cs">UnityConfiguration.cs</ProjectItem>
-          </Folder>
         </Folder>
         <Folder Name="ConnectionProviders" TargetFolderName="ConnectionProviders">
           <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionProvidersConfig.cs">ConnectionProvidersConfig.cs</ProjectItem>

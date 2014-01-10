@@ -1000,6 +1000,10 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="ui-widgetTreeListSort.js">ui-widgetTreeListSort.js</ProjectItem>
         </Folder>
       </Folder>
+      <Folder Name="Unity" TargetFolderName="Unity">
+        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProvider.cs">UnityContainerProvider.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderReal.cs">UnityContainerProviderReal.cs</ProjectItem>
+      </Folder>
       <Folder Name="Views" TargetFolderName="Views" >
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
         <Folder Name="Shared" TargetFolderName="Shared" >

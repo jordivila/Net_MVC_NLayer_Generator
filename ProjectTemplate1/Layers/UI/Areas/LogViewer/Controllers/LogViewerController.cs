@@ -17,7 +17,7 @@ using $safeprojectname$.Common.Mvc.Html;
 namespace $safeprojectname$.Areas.LogViewer.Controllers
 {
     [$safeprojectname$.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
-    public class LogViewerController : Controller, IControllerWithClientResources
+        public class LogViewerController : Controller, IControllerWithClientResources
     {
         public string[] GetControllerJavascriptResources
         {
@@ -42,7 +42,7 @@ namespace $safeprojectname$.Areas.LogViewer.Controllers
         private LogViewerModel LogViewerModel_GetBaseModel(string sourceName, string listenerName)
         {
             LogViewerModel model = new LogViewerModel();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.LogViewer;
+            model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
             model.LogTraceSources = (ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings).TraceSources;
             if (!string.IsNullOrEmpty(sourceName))
             {
@@ -100,17 +100,15 @@ namespace $safeprojectname$.Areas.LogViewer.Controllers
         {
             LogViewerModel model = new LogViewerModel();
 
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
+            using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
             {
-                using (IProviderLogging provider = dependencyFactory.Unity.Resolve<IProviderLogging>())
+                model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
+                model.LogMessages = new DataResultLogMessageList()
                 {
-                    model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.LogViewer;
-                    model.LogMessages = new DataResultLogMessageList()
-                    {
-                        Data = provider.LoggingExceptionGetById(Guid.Parse(guid)).Data
-                    };
-                }
+                    Data = provider.LoggingExceptionGetById(Guid.Parse(guid)).Data
+                };
             }
+
 
             return View(LogViewerViewHelper.LogViewerById, model);
         }
@@ -136,24 +134,22 @@ namespace $safeprojectname$.Areas.LogViewer.Controllers
                 model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
             }
 
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
+            using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
             {
-                using (IProviderLogging provider = dependencyFactory.Unity.Resolve<IProviderLogging>())
+                DataResultLogMessageList resultSearch = provider.LoggingExceptionGetAll(model.Filter);
+                model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
+                model.LogMessages = new DataResultLogMessageList()
                 {
-                    DataResultLogMessageList resultSearch = provider.LoggingExceptionGetAll(model.Filter);
-                    model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
-                    model.LogMessages = new DataResultLogMessageList()
-                    {
-                        Data = resultSearch.Data,
-                        Page = resultSearch.Page,
-                        PageSize = resultSearch.PageSize,
-                        SortAscending = resultSearch.SortAscending,
-                        SortBy = resultSearch.SortBy,
-                        TotalPages = resultSearch.TotalPages,
-                        TotalRows = resultSearch.TotalRows
-                    };
-                }
+                    Data = resultSearch.Data,
+                    Page = resultSearch.Page,
+                    PageSize = resultSearch.PageSize,
+                    SortAscending = resultSearch.SortAscending,
+                    SortBy = resultSearch.SortBy,
+                    TotalPages = resultSearch.TotalPages,
+                    TotalRows = resultSearch.TotalRows
+                };
             }
+
 
             return View(LogViewerViewHelper.LogViewerDisplay, model);
         }
@@ -201,4 +197,5 @@ namespace $safeprojectname$.Areas.LogViewer.Controllers
             return View(LogViewerViewHelper.LogViewerDisplay, model);
         }
     }
+
 }

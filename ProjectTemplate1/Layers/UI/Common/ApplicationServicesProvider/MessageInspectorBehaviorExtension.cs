@@ -21,14 +21,14 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
     public class MessageInspectorBehaviorExtension : BehaviorExtensionElement
     {
         private static Type BehaviorTypeCurrent = null;
-        private string currentBindingKey = "$customBindingConfigurationName$";
+        private string currentBindingKey = "currentBinding";
         //private string currentVirtualPath = "/";
 
         public MessageInspectorBehaviorExtension()
             : base()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
+            //using (DependencyFactory dependencyFactory = new DependencyFactory())
+            //{
                 if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == null)
                 {
                     Binding b = this.ResolveBinding(this.currentBindingKey/*, this.currentVirtualPath*/);
@@ -40,7 +40,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
 
                     MessageInspectorBehaviorExtension.BehaviorTypeCurrent = b.GetType();
                 }
-            }
+            //}
         }
 
         private BindingsSection GetBindingsSection(/*string virtualPath*/)

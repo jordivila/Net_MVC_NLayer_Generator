@@ -11,6 +11,7 @@ using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.Tests.Common.MembershipServices;
 using $customNamespace$.UI.Web.Areas.Error;
+using $customNamespace$.Models.Enumerations;
 
 namespace $safeprojectname$.TestCases.AuthorizeAttribute
 {
@@ -20,15 +21,7 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-         
-            //IUnityContainer unityContainerMock = new UnityContainer();
-            //unityContainerMock.RegisterType(typeof(ISmtpClient), typeof(SmtpClientMock), new InjectionMember[0]);
-            //unityContainerMock.RegisterType(typeof(IMembershipDAL), typeof(MembershipDALMock), new InjectionMember[0]);
-            //unityContainerMock.RegisterType(typeof(IRoleAdminDAL), typeof(RoleAdminDALMock), new InjectionMember[0]);
-            //unityContainerMock.RegisterType(typeof(IProfileDAL), typeof(ProfileDALMock), new InjectionMember[0]);
-            //unityContainerMock.RegisterType(typeof(ILoggingDAL), typeof(LoggingDALMock), new InjectionMember[0]);
-            //unityContainerMock.RegisterType(typeof(ISyndicationDAL), typeof(SyndicationDAL), new InjectionMember[0]);
-            //$customNamespace$.Models.Unity.DependencyFactory.ConfigurationSet(unityContainerMock);
+
         }
 
         [ClassCleanup()]
@@ -45,10 +38,10 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            
+
         }
 
-        private void User_Check_Access(ControllerFake<AdminOnlyControllerController> controller, 
+        private void User_Check_Access(ControllerFake<AdminOnlyControllerController> controller,
                                         Func<ActionResult, ActionResult, bool> resultComparer,
                                         ActionResult actionResultExpected)
         {
@@ -95,17 +88,12 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
                 return (result1.GetType() == result2.GetType()) && (result2.GetType() == typeof(JsonResult));
             };
 
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                IProviderRoleManager providerRoles = dependencyFactory.Unity.Resolve<IProviderRoleManager>();
-                providerRoles.AddToRoles(userTesting.Email, new string[1] { $customNamespace$.Models.Enumerations.SiteRoles.Administrator.ToString() });
-                providerRoles.Dispose();
-            }
+            IProviderRoleManager providerRoles = DependencyFactory.Resolve<IProviderRoleManager>();
+            providerRoles.AddToRoles(userTesting.Email, new string[1] { SiteRoles.Administrator.ToString() });
+            providerRoles.Dispose();
+
 
             this.User_Check_Access(controller, resultComparer, AdminOnlyControllerController.IndexResult);
         }
     }
 }
-
-
-

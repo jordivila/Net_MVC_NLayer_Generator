@@ -9,7 +9,7 @@ namespace $safeprojectname$.LoggingServices
 {
     public interface ILoggingBL : IProviderLogging
     {
-        
+
     }
 
     public class LoggingBL : BaseBL, ILoggingBL
@@ -18,10 +18,7 @@ namespace $safeprojectname$.LoggingServices
 
         public LoggingBL()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _dal = dependencyFactory.Unity.Resolve<ILoggingDAL>();
-            }
+            _dal = DependencyFactory.Resolve<ILoggingDAL>();
         }
         public override void Dispose()
         {

@@ -27,7 +27,7 @@ namespace $safeprojectname$.TestProxies
 
         public MembershipUnitTests()
         {
-            
+
         }
 
         private TestContext testContextInstance;
@@ -65,11 +65,9 @@ namespace $safeprojectname$.TestProxies
         {
             base.MyTestInitialize();
 
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                _memberShipeServices = dependencyFactory.Unity.Resolve<IProviderMembership>();
-                _rolesServices = dependencyFactory.Unity.Resolve<IProviderRoleManager>();
-            }
+            _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
+            _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
+
 
             MembershipProviderSettings settings = _memberShipeServices.Settings().Data;
             int nPasswordCharactersLength = settings.MinRequiredPasswordLength;

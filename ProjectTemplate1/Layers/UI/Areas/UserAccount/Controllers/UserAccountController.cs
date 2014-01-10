@@ -24,12 +24,9 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
     {
         public UserAccountController() 
         {
-            using(DependencyFactory dependencyFactory = new DependencyFactory())
-	        {
-                this.FormsAuthenticationService = dependencyFactory.Unity.Resolve<IProviderAuthentication>();
-                this.FormsMembershipService = dependencyFactory.Unity.Resolve<IProviderMembership>();
-                this.FormsProfileService = dependencyFactory.Unity.Resolve<IProviderProfile>();
-	        }
+            this.FormsAuthenticationService = DependencyFactory.Resolve<IProviderAuthentication>();
+            this.FormsMembershipService = DependencyFactory.Resolve<IProviderMembership>();
+            this.FormsProfileService = DependencyFactory.Resolve<IProviderProxyProfileServices>();
         }
 
         public string[] GetControllerJavascriptResources
@@ -72,7 +69,7 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
 
         public IProviderAuthentication FormsAuthenticationService;
         public IProviderMembership FormsMembershipService;
-        public IProviderProfile FormsProfileService;
+        public IProviderProxyProfileServices FormsProfileService;
 
         public RedirectResult RedirectResultOnLogIn()
         {

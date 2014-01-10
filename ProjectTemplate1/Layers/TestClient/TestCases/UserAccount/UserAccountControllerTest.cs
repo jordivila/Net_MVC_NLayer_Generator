@@ -33,7 +33,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-            
+
         }
 
         [ClassCleanup()]
@@ -113,7 +113,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void Register_InvalidPassword()
         {
-            
+
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = string.Empty;
@@ -138,7 +138,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void Register_CreateUnActivatedAccount()
         {
-            
+
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValidUnActivated;
             model.Object.Password = UserPassword;
@@ -151,7 +151,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void Register_Duplicated()
         {
-            
+
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = UserPassword;
@@ -164,7 +164,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void Register_ActivateAccount_UnexistingToken()
         {
-            
+
             ActionResult resultInvalid = controller.Controller.Activate(Guid.NewGuid().ToString());
             MembershipUserWrapper user = ((AccountActivationClientModel)((ViewResult)resultInvalid).Model).Result.Data.User;
             bool invalidFound = user == null;
@@ -174,7 +174,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void Register_ActivateAccount()
         {
-            $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_ActivateAccount(controller, UserAccountControllerTest.UserNameValidActivationToken); 
+            $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_ActivateAccount(controller, UserAccountControllerTest.UserNameValidActivationToken);
             //ActionResult resultValid = controller.Controller.Activate(UserAccountControllerTest.UserNameValidActivationToken.ToString());
             //Assert.AreEqual(true, resultValid.GetType() == typeof(RedirectResult));
             //Assert.AreEqual(true, (((RedirectResult)resultValid).Url == controller.Controller.RedirectResultOnLogIn().Url));
@@ -197,7 +197,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void CantAccessMyAccount_UnexistingEmail()
         {
-            
+
             ActionResult resultInvalid = controller.Controller.CantAccessYourAccount(new CantAccessYourAccountViewModel()
             {
                 EmailAddress = "someUnexistingEmail@gmail.com"
@@ -243,7 +243,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void ResetPassword_InvalidConfirmPassword()
         {
-            ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456"};
+            ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456" };
             ActionResult actionResult = controller.Controller.ResetPassword(Guid.NewGuid().ToString(), model);
             Assert.AreEqual(false, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.IsValid);
             Assert.AreEqual(true, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.Message == Resources.Account.AccountResources.NewPasswordConfirmError);
@@ -252,7 +252,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void ResetPassword_InvalidToken()
         {
-            ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456", ConfirmPassword="123456" };
+            ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456", ConfirmPassword = "123456" };
             ActionResult actionResult = controller.Controller.ResetPassword(Guid.NewGuid().ToString(), model);
             Assert.AreEqual(false, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.IsValid);
             Assert.AreEqual(true, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.Message == Resources.Account.AccountResources.CantAccessYourAccount_TokenExpired);

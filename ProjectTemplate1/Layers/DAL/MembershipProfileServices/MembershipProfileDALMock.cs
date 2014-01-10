@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Profile;
 
+using $customNamespace$.Models.UserRequestModel;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+
 namespace $safeprojectname$.MembershipServices
 {
-    public class ProfileDALMock : ProfileDAL, IProfileDAL
+    public class ProfileDALMock : ProfileDAL, IProviderProfileDAL
     {
         public static Dictionary<string, UserProfileModel> source = new Dictionary<string, UserProfileModel>();
         public static Dictionary<string, string> sourcePassword = new Dictionary<string, string>();
 
-        public override DataResultUserProfile Create(string userName)
+        public override DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
             UserProfileModel userProfile = new UserProfileModel();
             userProfile.UserName = userName;
-            userProfile.Culture = this.UserRequest.UserProfile.Culture;
-            userProfile.Theme = this.UserRequest.UserProfile.Theme;
+            userProfile.Culture = userRequest.UserProfile.Culture;
+            userProfile.Theme = userRequest.UserProfile.Theme;
 
             if (source.ContainsKey(userName))
             {
@@ -36,11 +40,11 @@ namespace $safeprojectname$.MembershipServices
             return result;
         }
 
-        public override DataResultUserProfile Update(UserProfileModel userProfile)
+        public override DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
-            if (source.ContainsKey(this.UserRequest.UserFormsIdentity.Name))
+            if (source.ContainsKey(userRequest.UserFormsIdentity.Name))
             {
-                source[this.UserRequest.UserFormsIdentity.Name] = userProfile;
+                source[userRequest.UserFormsIdentity.Name] = userProfile;
 
                 DataResultUserProfile result = new DataResultUserProfile()
                 {
@@ -57,14 +61,14 @@ namespace $safeprojectname$.MembershipServices
             }
         }
 
-        public override DataResultUserProfile Get()
+        public override DataResultUserProfile Get(IUserRequestModel<OperationContext, MessageHeaders> userRequest)
         {
-            if (source.ContainsKey(this.UserRequest.UserFormsIdentity.Name))
+            if (source.ContainsKey(userRequest.UserFormsIdentity.Name))
             {
                 DataResultUserProfile result = new DataResultUserProfile()
                 {
                     IsValid = true,
-                    Data = source[this.UserRequest.UserFormsIdentity.Name],
+                    Data = source[userRequest.UserFormsIdentity.Name],
                     MessageType = DataResultMessageType.Success
                 };
 

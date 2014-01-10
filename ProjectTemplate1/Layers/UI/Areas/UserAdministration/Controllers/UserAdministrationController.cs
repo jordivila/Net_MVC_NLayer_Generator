@@ -48,11 +48,8 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
 
         public UserAdministrationController()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
-            {
-                this._providerMembership = dependencyFactory.Unity.Resolve<IProviderMembership>();
-                this._providerRoles = dependencyFactory.Unity.Resolve<IProviderRoleManager>();
-            }
+            this._providerMembership = DependencyFactory.Resolve<IProviderMembership>();
+            this._providerRoles = DependencyFactory.Resolve<IProviderRoleManager>();
 
             if (!ModelBinders.Binders.ContainsKey(typeof(DetailsViewModel)))
             {
@@ -116,9 +113,9 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
                     model.Filter.IsClientVisible = true;
                     result = View(model);
                 }
-                
+
             }
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UserAdmin;
+            model.BaseViewModelInfo.Title = GeneralTexts.UserAdmin;
             return result;
         }
         private ViewResult Index_Search(IndexViewModel model)
@@ -146,16 +143,16 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
             switch (formAction)
             {
                 case Actions.ViewDetail:
-                        var user = _providerMembership.GetUserByGuid(Guid.Parse((string)id), false).Data;
-                        var userRoles = _providerRoles.FindByUserName(user.UserName);
+                    var user = _providerMembership.GetUserByGuid(Guid.Parse((string)id), false).Data;
+                    var userRoles = _providerRoles.FindByUserName(user.UserName);
 
-                        model = new DetailsViewModel()
-                        {
-                            UserOriginal = user,
-                            UserUpdated = user,
-                            UserRoles = userRoles.Data,
-                            Roles = _providerRoles.FindAll().Data
-                        };
+                    model = new DetailsViewModel()
+                    {
+                        UserOriginal = user,
+                        UserUpdated = user,
+                        UserRoles = userRoles.Data,
+                        Roles = _providerRoles.FindAll().Data
+                    };
                     break;
                 case Actions.Approve:
                     model = this.Details_ChangeAproval(model, model.UserOriginal, true);
@@ -206,10 +203,11 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
             DataResultBoolean result = this._providerMembership.UpdateUser(user);
             if (result.Data)
             {
-                model.ResultLastAction = new DataResultBoolean() { 
-                     IsValid = true,
-                     MessageType = DataResultMessageType.Success,
-                     Message = result.Message
+                model.ResultLastAction = new DataResultBoolean()
+                {
+                    IsValid = true,
+                    MessageType = DataResultMessageType.Success,
+                    Message = result.Message
                 };
             }
             else

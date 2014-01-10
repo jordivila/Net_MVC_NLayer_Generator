@@ -17,46 +17,46 @@ namespace $safeprojectname$.UserSessionPersistence
         DataFilterUserList UserAdministrationController_LastSearch { get; set; }
     }
 
-    public static class UserSessionHelper<TContext, TObjectCollection>
-    {
-        private static IUserSessionModel<HttpContext, HttpSessionState> httpUserSessionPersistence = null;
-        //private static IUserSessionModel<OperationContext, MessageHeaders> ntpTcpUserSessionPersistence = null;
+    //public static class UserSessionHelper<TContext, TObjectCollection>
+    //{
+    //    private static IUserSessionModel<HttpContext, HttpSessionState> httpUserSessionPersistence = null;
+    //    //private static IUserSessionModel<OperationContext, MessageHeaders> ntpTcpUserSessionPersistence = null;
 
-        public static object CreateUserSession()
-        {
-            object result = null;
+    //    public static object CreateUserSession()
+    //    {
+    //        object result = null;
 
-            if (typeof(TContext) == typeof(HttpContext))
-            {
-                if (UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence == null)
-                {
-                    using (DependencyFactory dependencyFactory = new DependencyFactory())
-                    {
-                        UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence = (IUserSessionModel<HttpContext, HttpSessionState>)dependencyFactory.Unity.Resolve<IUserSessionModel<HttpContext, HttpSessionState>>();
-                    }
-                }
-                result = UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence;
-            }
+    //        if (typeof(TContext) == typeof(HttpContext))
+    //        {
+    //            if (UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence == null)
+    //            {
+    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
+    //                {
+    //                    UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence = (IUserSessionModel<HttpContext, HttpSessionState>)dependencyFactory.Unity.Resolve<IUserSessionModel<HttpContext, HttpSessionState>>();
+    //                }
+    //            }
+    //            result = UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence;
+    //        }
 
-            //if (typeof(TContext) == typeof(OperationContext))
-            //{
-            //    if (UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence == null)
-            //    {
-            //        UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence = (IUserSessionModel<OperationContext, MessageHeaders>)DependencyFactory.Unity.Resolve<IUserSessionModel<OperationContext, MessageHeaders>>();
-            //    }
-            //    result = UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence;
-            //}
+    //        //if (typeof(TContext) == typeof(OperationContext))
+    //        //{
+    //        //    if (UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence == null)
+    //        //    {
+    //        //        UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence = (IUserSessionModel<OperationContext, MessageHeaders>)DependencyFactory.Unity.Resolve<IUserSessionModel<OperationContext, MessageHeaders>>();
+    //        //    }
+    //        //    result = UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence;
+    //        //}
 
-            if (result == null)
-            {
-                throw new NotImplementedException("IUserSessionModel Not supported");
-            }
-            else
-            {
-                return result;
-            }
-        }
-    }
+    //        if (result == null)
+    //        {
+    //            throw new NotImplementedException("IUserSessionModel Not supported");
+    //        }
+    //        else
+    //        {
+    //            return result;
+    //        }
+    //    }
+    //}
 
     [Serializable]
     public class UserSessionHttp : IUserSessionModel<HttpContext, HttpSessionState>

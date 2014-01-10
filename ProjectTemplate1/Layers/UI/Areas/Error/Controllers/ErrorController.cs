@@ -12,7 +12,7 @@ using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Unity;
 using $safeprojectname$.Areas.Error.Models;
 using $safeprojectname$.Areas.UserAccount;
-
+using $customNamespace$.Resources.General;
 
 
 namespace $safeprojectname$.Areas.Error.Controllers
@@ -22,37 +22,35 @@ namespace $safeprojectname$.Areas.Error.Controllers
         public ActionResult UnAuthorized()
         {
             ErrorInfoModel model = new ErrorInfoModel();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UnAuthorizedError;
+            model.BaseViewModelInfo.Title = GeneralTexts.UnAuthorizedError;
             return View(model);
         }
 
         public ActionResult Index()
         {
             ErrorInfoModel model = new ErrorInfoModel();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UnexpectedError;
+            model.BaseViewModelInfo.Title = GeneralTexts.UnexpectedError;
             return View(model);
         }
 
         public ActionResult FaultExceptionUnExpected()
         {
             ErrorInfoModel model = new ErrorInfoModel();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UnexpectedError;
+            model.BaseViewModelInfo.Title = GeneralTexts.UnexpectedError;
             return View(model);
         }
 
         public ActionResult SessionExpired()
         {
-            using (DependencyFactory dependencyFactory = new DependencyFactory())
+            using (IProviderAuthentication authServices = DependencyFactory.Resolve<IProviderAuthentication>())
             {
-                using (IProviderAuthentication authServices = dependencyFactory.Unity.Resolve<IProviderAuthentication>())
-                {
-                    authServices.LogOut();
-                }
+                authServices.LogOut();
             }
+
             Session.Abandon();
 
             SessionExpiredModel m = new SessionExpiredModel();
-            m.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.SessionExpired;
+            m.BaseViewModelInfo.Title = GeneralTexts.SessionExpired;
             m.LoginUrl = UserAccountUrlHelper.Account_LogOn(Url);
             return View(m);
         }
@@ -60,14 +58,14 @@ namespace $safeprojectname$.Areas.Error.Controllers
         public ActionResult NotFound404()
         {
             NotFound404Model model = new NotFound404Model();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UnexpectedError;
+            model.BaseViewModelInfo.Title = GeneralTexts.UnexpectedError;
             return View(model);
         }
 
         public ActionResult Communication()
         {
             ErrorInfoModel model = new ErrorInfoModel();
-            model.BaseViewModelInfo.Title = $customNamespace$.Resources.General.GeneralTexts.UnexpectedError;
+            model.BaseViewModelInfo.Title = GeneralTexts.UnexpectedError;
             return View(model);
         }
 
