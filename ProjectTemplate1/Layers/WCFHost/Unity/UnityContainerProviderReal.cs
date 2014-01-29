@@ -29,9 +29,10 @@ namespace $customNamespace$.WCF.Unity
             unityContainerReal.RegisterType(typeof(ILoggingDAL), typeof(LoggingDAL), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(ISyndicationDAL), typeof(SyndicationDAL), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(ITokenTemporaryPersistenceDAL), typeof(TokenTemporaryPersistenceDAL), new InjectionMember[0]);
-            ///TODO: check binding configuration and use Http or NetTcp instance based on config values
-            unityContainerReal.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelNetTcp), new InjectionMember[0]);
+            
+            //unityContainerReal.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelNetTcp), new InjectionMember[0]);
             //unityContainerReal.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelHttpServer), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof($customBindingUserRequestModelAtServer$), new InjectionMember[0]);
             return unityContainerReal;
         }
     }

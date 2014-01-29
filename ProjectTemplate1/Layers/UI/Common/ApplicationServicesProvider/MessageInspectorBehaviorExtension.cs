@@ -22,16 +22,13 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
     {
         private static Type BehaviorTypeCurrent = null;
         private string currentBindingKey = "currentBinding";
-        //private string currentVirtualPath = "/";
 
         public MessageInspectorBehaviorExtension()
             : base()
         {
-            //using (DependencyFactory dependencyFactory = new DependencyFactory())
-            //{
                 if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == null)
                 {
-                    Binding b = this.ResolveBinding(this.currentBindingKey/*, this.currentVirtualPath*/);
+                    Binding b = this.ResolveBinding(this.currentBindingKey);
 
                     if (b == null)
                     {
@@ -40,10 +37,9 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
 
                     MessageInspectorBehaviorExtension.BehaviorTypeCurrent = b.GetType();
                 }
-            //}
         }
 
-        private BindingsSection GetBindingsSection(/*string virtualPath*/)
+        private BindingsSection GetBindingsSection()
         {
             if (String.IsNullOrEmpty(HostingEnvironment.ApplicationPhysicalPath))
             {
@@ -52,17 +48,6 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
                 ServiceModelSectionGroup serviceModel = ServiceModelSectionGroup.GetSectionGroup(appConfig);
                 BindingsSection bindings = serviceModel.Bindings;
                 return bindings;
-
-
-                //var configFile = new FileInfo(@"c:\somePath\web.config");
-                //var vdm = new VirtualDirectoryMapping(configFile.DirectoryName, true, configFile.Name);
-                //var wcfm = new WebConfigurationFileMap();
-                //wcfm.VirtualDirectories.Add("/", vdm);
-                //Configuration config = WebConfigurationManager.OpenMappedWebConfiguration(wcfm, "/");
-                //ServiceModelSectionGroup section = config.GetSectionGroup("system.serviceModel") as ServiceModelSectionGroup;
-                //var serviceModel = ServiceModelSectionGroup.GetSectionGroup(config);
-                //return serviceModel.Bindings;
-
             }
             else
             {
@@ -75,9 +60,9 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
 
         }
 
-        private Binding ResolveBinding(string bindingName/*, string virtualPath*/)
+        private Binding ResolveBinding(string bindingName)
         {
-            BindingsSection section = this.GetBindingsSection(/*virtualPath*/);
+            BindingsSection section = this.GetBindingsSection();
 
             foreach (var bindingCollection in section.BindingCollections)
             {
@@ -98,7 +83,24 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
         {
             get
             {
-                return typeof(MessageInspectorEndpointBehavior<NetTcpBinding>);
+                Type result = null;
+
+                if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == typeof(NetTcpBinding))
+                {
+                    result = typeof(MessageInspectorEndpointBehavior<NetTcpBinding>);
+                }
+
+                if (MessageInspectorBehaviorExtension.BehaviorTypeCurrent == typeof(BasicHttpBinding))
+                {
+                    result = typeof(MessageInspectorEndpointBehavior<BasicHttpBinding>);
+                }
+
+                if (result == null)
+                {
+                    throw new Exception("MessageInspector: this type of binding is not supported. Please add it yourself at MessageInspectorBehaviorExtension or use one of the supported types.");
+                }
+
+                return result;
             }
         }
 
@@ -202,12 +204,8 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
                 }
                 finally
                 {
-                    //if (UserRequest != null)
-                    //{
-                    //UserRequest.Dispose();
-                    //}
-                }
 
+                }
             }
         }
         public void AfterReceiveReply_Http(ref Message reply, object correlationState)
@@ -324,10 +322,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
             }
             finally
             {
-                //if (UserRequest != null)
-                //{
-                //UserRequest.Dispose();
-                //}
+
             }
             return null;
         }

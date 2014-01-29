@@ -38,7 +38,6 @@ namespace Wizard
         {
             this.radioButtonNetTcpBinding.Checked = true;
         }
-
     }
 
     public class FormsWcfInfoData
@@ -47,11 +46,10 @@ namespace Wizard
         public bool IsNetTcpBinding { get; private set; }
         public bool IsBasicHttpBinding { get; private set; }
         public string Protocol { get; private set; }
-        public string BindingTypeName { get; private set; }
-        public string BindingUserRequestModelAtServer { get; private set; }
-        public string BindingUserRequestModelSelected { get; private set; }
-        public readonly string BindingUserRequestModelNetTcpAliasName = "UserRequestModelNetTcp";
-        public readonly string BindingUserRequestModelHttpAliasName = "UserRequestModelHttp";
+        public string BindingTypeNameConfigValue { get; private set; }
+        public string BindingUserRequestModelAtServerClassNameSelected { get; private set; }
+        public readonly string BindingUserRequestModelAtServerNetTcpClassName = "UserRequestModelNetTcp";
+        public readonly string BindingUserRequestModelAtServerHttpClassName = "UserRequestModelHttpServer";
 
         public FormsWcfInfoData(Type bindingSelected)
         {
@@ -59,9 +57,8 @@ namespace Wizard
             this.IsNetTcpBinding = bindingSelected == typeof(NetTcpBinding);
             this.IsBasicHttpBinding = bindingSelected == typeof(BasicHttpBinding);
             this.Protocol = this.IsNetTcpBinding ? "net.tcp" : "http";
-            this.BindingTypeName = this.IsNetTcpBinding ? "netTcpBinding" : "basicHttpBinding";
-            this.BindingUserRequestModelSelected = this.IsNetTcpBinding ? this.BindingUserRequestModelNetTcpAliasName : this.BindingUserRequestModelHttpAliasName;
+            this.BindingTypeNameConfigValue = this.IsNetTcpBinding ? "netTcpBinding" : "basicHttpBinding";
+            this.BindingUserRequestModelAtServerClassNameSelected = this.IsNetTcpBinding ? this.BindingUserRequestModelAtServerNetTcpClassName : this.BindingUserRequestModelAtServerHttpClassName;
         }
     }
-
 }

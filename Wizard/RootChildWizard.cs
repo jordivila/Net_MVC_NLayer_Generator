@@ -47,12 +47,12 @@ namespace CustomWizard
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingIsNetTcp, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.IsNetTcpBinding ? IWizardImplementation.GlobalData.TemplateConstants.BindingConfigurationValue : IWizardImplementation.GlobalData.TemplateConstants.BindingDeactivatedName);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingIsBasicHttp, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.IsBasicHttpBinding ? IWizardImplementation.GlobalData.TemplateConstants.BindingConfigurationValue : IWizardImplementation.GlobalData.TemplateConstants.BindingDeactivatedName);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingProtocol, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.Protocol);
-                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingTypeNameKey, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingTypeName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingTypeNameKey, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingTypeNameConfigValue);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingConfigurationKey, IWizardImplementation.GlobalData.TemplateConstants.BindingConfigurationValue);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingDeactivated, IWizardImplementation.GlobalData.TemplateConstants.BindingDeactivatedName);
-                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelAtServer, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelSelected);
-                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelHttpAliasName, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelHttpAliasName);
-                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelNetTcpAliasName, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelNetTcpAliasName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelAtServer, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelAtServerClassNameSelected);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelHttpAliasName, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelAtServerHttpClassName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.BindingUserRequestModelNetTcpAliasName, IWizardImplementation.GlobalData.WebSiteConfig.WcfInfo.BindingUserRequestModelAtServerNetTcpClassName);
             }
             catch (Exception ex)
             {
