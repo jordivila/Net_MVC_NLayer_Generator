@@ -4,16 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
+using $customNamespace$.Models.Unity;
 
 namespace $customNamespace$.WCF.Unity
 {
-    public enum UnityContainerAvailable
-    {
-        Real,
-        MockDAL,
-        MockDALDevelopment
-    }
-
     public abstract class UnityContainerProvider
     {
         private static UnityContainerProviderMockDALDevelopment unityContainerProviderMockDALDevelopment = new UnityContainerProviderMockDALDevelopment();

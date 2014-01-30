@@ -26,7 +26,6 @@ namespace $safeprojectname$.TestProxies
         public RoleServiceAdminTests()
         {
 
-
         }
 
         private TestContext testContextInstance;
@@ -58,7 +57,9 @@ namespace $safeprojectname$.TestProxies
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
+            TestProxyBase.Application_InitEnterpriseLibrary();
             TestProxyBase.SetHttpContext();
+
 
 
 
@@ -106,6 +107,19 @@ namespace $safeprojectname$.TestProxies
         {
 
         }
+
+        //[TestMethod]
+        //public void RoleServiceAdminTests_ShouldPass()
+        //{
+        //    this.Create();
+        //    this.AddToRoles();
+        //    this.FindUserNamesByRole();
+        //    this.FindAll();
+        //    this.IsInRole();
+        //    this.RemoveFromRole();
+        //    this.Delete();
+        //    this.FindByUserName();
+        //}
 
         [TestMethod]
         public void Create()

@@ -6,6 +6,7 @@ namespace $safeprojectname$.Unity
 {
     public static class DependencyFactory
     {
+        public static UnityContainerAvailable UnityContainerDefault = UnityContainerAvailable.MockDALDevelopment;
         private static IUnityContainer _unity;
 
         public static void SetUnityContainerProviderFactory(IUnityContainer container)
@@ -16,9 +17,7 @@ namespace $safeprojectname$.Unity
             }
             else
             {
-                // No se puede cambiar el container de dependencias una vez iniciado
-                // Eso seria un foyong que no sabe ni dooonde se ha metido
-                throw new Exception("DependencyFactory cannot be changed once intialized");
+                //throw new Exception("DependencyFactory should not be changed once intialized");
             }
         }
 
@@ -26,5 +25,12 @@ namespace $safeprojectname$.Unity
         {
             return DependencyFactory._unity.Resolve<T>();
         }
+    }
+
+    public enum UnityContainerAvailable
+    {
+        Real,
+        MockDAL,
+        MockDALDevelopment
     }
 }

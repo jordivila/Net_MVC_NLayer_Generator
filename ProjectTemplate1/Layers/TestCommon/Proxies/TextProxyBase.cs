@@ -5,18 +5,22 @@ using System.Web.Hosting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using $customNamespace$.Models.Globalization;
 using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Models.Unity;
+using $customNamespace$.UI.Web.Unity;
 
 namespace $safeprojectname$.Proxies
 {
     [TestClass]
     public abstract class TestProxyBase
     {
-        //private CulturesAvailable currentCulture = $customNamespace$.Models.Enumerations.CulturesAvailable.es;
+        //private CulturesAvailable currentCulture = MvcApplication30.Models.Enumerations.CulturesAvailable.es;
         //private string currentCulture = "es-ES";
         public static string currentCultureName = TestCommon.CultureDefault;
 
+
         public virtual void MyTestInitialize()
         {
+            TestProxyBase.Application_InitEnterpriseLibrary();
             TestProxyBase.SetHttpContext();
         }
 
@@ -28,6 +32,16 @@ namespace $safeprojectname$.Proxies
             //HttpContext.Current.Request.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, "sdsdsd"));
             Thread.CurrentThread.CurrentCulture = GlobalizationHelper.CultureInfoGetOrDefault(currentCultureName);
         }
+
+
+        public static void Application_InitEnterpriseLibrary()
+        {
+            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(DependencyFactory.UnityContainerDefault));
+            //DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
+            //LogWriterFactory logWriterFactory = new LogWriterFactory();
+            //Logger.SetLogWriter(logWriterFactory.Create());
+        }
+
 
     }
 }

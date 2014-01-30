@@ -15,7 +15,7 @@ namespace $safeprojectname$
     {
         static TestContext testContextInstance;
         static EventWaitHandle _mainThreadWaitHandle = new AutoResetEvent(false);
-        static int NumTrheads = 500;
+        static int NumTrheads = 10;
         static int NumIterationsPerThread = 1;
 
         [ClassInitialize()]

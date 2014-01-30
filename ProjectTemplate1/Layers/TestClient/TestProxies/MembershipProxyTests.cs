@@ -85,6 +85,17 @@ namespace $safeprojectname$.TestProxies
         }
 
         [TestMethod]
+        public void MembershipUnitTests_ShouldPass()
+        {
+            this.CreateUserTest();
+            this.CantAccessTest();
+            this.ChangePasswordTest();
+            this.GetUserTests();
+            this.UpdateUserTests();
+            this.UnlockUserTests();
+            this.DeleteUserTest();
+        }
+
         public void CreateUserTest()
         {
             //Test invalida email address
@@ -110,8 +121,6 @@ namespace $safeprojectname$.TestProxies
             //DataResultUserCreateResult createdUserStatusDuplicateEmail = _memberShipeServices.CreateUser("123" + _userName, _userPwd, _userEmail, string.Empty, string.Empty, "/useraccount/activate");
             //Assert.AreEqual(createdUserStatusDuplicateEmail.Data.CreateStatus, MembershipCreateStatus.DuplicateEmail);            
         }
-
-        [TestMethod]
         public void CantAccessTest()
         {
             //Test unexisting email address
@@ -147,8 +156,6 @@ namespace $safeprojectname$.TestProxies
             Assert.AreEqual(cantAccessTestTokenSuccess.Message, AccountResources.CantAccessYourAccount_PasswordChanged);
             //}
         }
-
-        [TestMethod]
         public void ChangePasswordTest()
         {
             //test password do not match
@@ -171,8 +178,6 @@ namespace $safeprojectname$.TestProxies
             Assert.AreEqual(ChangePasswordFailureIV.IsValid, true);
             Assert.AreEqual(ChangePasswordFailureIV.Message, AccountResources.CantAccessYourAccount_PasswordChanged);
         }
-
-        [TestMethod]
         public void GetUserTests()
         {
             //test correct user is retrieved by username
@@ -205,8 +210,6 @@ namespace $safeprojectname$.TestProxies
             Assert.AreEqual(userResultIV.Data.UserName, _userName);
             Assert.AreEqual(userResultIV.Data.LastActivityDate > userResultIII.Data.LastActivityDate, true);
         }
-
-        [TestMethod]
         public void UpdateUserTests()
         {
             DataResultUser userResult = _memberShipeServices.GetUserByName(_userName, true);
@@ -221,8 +224,6 @@ namespace $safeprojectname$.TestProxies
             Assert.AreEqual(userResultII.Data.Comment, userResult.Data.Comment);
             Assert.AreEqual(userResultII.Data.IsApproved, userResult.Data.IsApproved);
         }
-
-        [TestMethod]
         public void UnlockUserTests()
         {
             MembershipProviderSettings mSettings = _memberShipeServices.Settings().Data;
@@ -239,7 +240,6 @@ namespace $safeprojectname$.TestProxies
             MembershipUserWrapper userResultAfterUnlock = _memberShipeServices.GetUserByName(_userName, false).Data;
             Assert.AreEqual(userResultAfterUnlock.IsLockedOut, false);
         }
-
         //[TestMethod]
         //public void GetUserListTests()
         //{
@@ -265,8 +265,6 @@ namespace $safeprojectname$.TestProxies
         //    // WARNING !!! EL TEST ENTRA EN TRANSACTION LOCK !!!!!
 
         //}
-
-        [TestMethod]
         public void DeleteUserTest()
         {
             DataResultBoolean resultDelete = _memberShipeServices.DeleteUser(_userName, true);
