@@ -7,6 +7,7 @@ using $customNamespace$.Models;
 using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
+using $customNamespace$.Tests.Common.MembershipServices;
 
 namespace $safeprojectname$
 {
@@ -39,7 +40,7 @@ namespace $safeprojectname$
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            
+
         }
 
         [TestMethod]
@@ -69,10 +70,10 @@ namespace $safeprojectname$
             if (resume.Errors.Count > 0) { Assert.IsTrue(false, resume.ToString()); }
             else
             {
-                Console.WriteLine(string.Format("Concurrent Users:{4} , Iterations: {3}, Starts:{0} -- Ends:{1} -- Difference:{2}", 
-                                                                        starts.ToString("HH:mm:ss"), 
-                                                                        ends.ToString("HH:mm:ss"), 
-                                                                        ends.Subtract(starts).TotalSeconds, NumIterationsPerThread * NumTrheads, 
+                Console.WriteLine(string.Format("Concurrent Users:{4} , Iterations: {3}, Starts:{0} -- Ends:{1} -- Difference:{2}",
+                                                                        starts.ToString("HH:mm:ss"),
+                                                                        ends.ToString("HH:mm:ss"),
+                                                                        ends.Subtract(starts).TotalSeconds, NumIterationsPerThread * NumTrheads,
                                                                         NumTrheads));
                 Console.WriteLine(resume.ToString());
                 Assert.IsTrue(true);
@@ -101,7 +102,6 @@ namespace $safeprojectname$
             {
                 this.MyTestInitialize();
 
-                ControllerFake<UserAccountController> controller;
                 string UserNameValid = Guid.NewGuid().ToString();
                 string UserEmailValid = string.Format("{0}@valid.com", UserNameValid);
                 string UserPassword = "123456";
@@ -111,15 +111,13 @@ namespace $safeprojectname$
                 string UserEmailValidUnActivated = string.Format("{0}@valid.com", UserNameValidUnActivated);
 
                 DateTime starts = DateTime.Now;
-                controller = new ControllerFake<UserAccountController>();
                 UserNameValid = Guid.NewGuid().ToString();
                 UserEmailValid = string.Format("{0}@valid.com", UserNameValid);
-                $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_Succeed(controller, UserEmailValid, UserPassword, ref UserNameValidActivationToken);
-                $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_ActivateAccount(controller, UserNameValidActivationToken);
-                $customNamespace$.Tests.Common.MembershipServices.CommonTests.CantAccessMyAccount_Succeed(controller, UserEmailValid, ref CantAccessMyAccountToken);
-                $customNamespace$.Tests.Common.MembershipServices.CommonTests.ResetPassword_Succeed(controller, UserEmailValid, CantAccessMyAccountToken, UserPassword);
-                $customNamespace$.Tests.Common.MembershipServices.CommonTests.Login_Succeed(controller, UserEmailValid, UserPassword);
-                controller.Dispose();
+                CommonTests.Register_Succeed(UserEmailValid, UserPassword, ref UserNameValidActivationToken);
+                CommonTests.Register_ActivateAccount(UserNameValidActivationToken);
+                CommonTests.CantAccessMyAccount_Succeed(UserEmailValid, ref CantAccessMyAccountToken);
+                CommonTests.ResetPassword_Succeed(UserEmailValid, CantAccessMyAccountToken, UserPassword);
+                CommonTests.Login_Succeed(UserEmailValid, UserPassword);
                 DateTime ends = DateTime.Now;
 
                 ThreadList.Results_Add(new ThreadResult()

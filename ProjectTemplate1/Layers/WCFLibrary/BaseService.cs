@@ -13,14 +13,11 @@ namespace $safeprojectname$
     {
         public BaseService()
         {
-            //if (System.ServiceModel.OperationContext.Current != null)
-            //{
             Thread.CurrentThread.CurrentCulture = this.UserRequest.UserProfile.Culture;
             Thread.CurrentThread.CurrentUICulture = this.UserRequest.UserProfile.Culture;
-            //}
         }
 
-        private static IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
+        private IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
 
         internal IUserRequestModel<OperationContext, MessageHeaders> UserRequest
         {

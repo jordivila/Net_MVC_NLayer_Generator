@@ -42,7 +42,7 @@ namespace $safeprojectname$.Globalization
         }
         public static CultureInfo CultureInfoGetOrDefault(string culture)
         {
-            CultureInfo defaultCulture = CultureInfo.GetCultureInfo(GlobalizationHelper.EnglishUS);
+            CultureInfo defaultCulture = CultureInfo.GetCultureInfo(GlobalizationHelper.SpanishInternacional);
 
             if (string.IsNullOrEmpty(culture))
             {

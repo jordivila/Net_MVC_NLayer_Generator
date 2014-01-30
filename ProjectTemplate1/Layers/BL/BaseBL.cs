@@ -13,7 +13,7 @@ namespace $safeprojectname$
 
         }
 
-        private static IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
+        private IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
 
         internal IUserRequestModel<OperationContext, MessageHeaders> UserRequest
         {

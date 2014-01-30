@@ -12,20 +12,16 @@ using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 using $customNamespace$.UI.Web.Areas.UserProfile;
 using $customNamespace$.UI.Web.Areas.UserProfile.Controllers;
 using $customNamespace$.UI.Web.Areas.UserProfile.Models;
+using $customNamespace$.Tests.Common.MembershipServices;
+using $customNamespace$.Models.Profile;
+using $customNamespace$.Models.Enumerations;
+
 
 namespace $safeprojectname$.TestCases.UserProfile
 {
     [TestClass]
     public class UserProfileControllerTest : TestControllerBase<UserProfileAreaRegistration>
     {
-        static ControllerFake<UserProfileController> controller;
-
-
-        static ControllerFake<UserAccountController> controllerLogin;
-        //static string UserNameValid = "xxx@gmail.com";
-        //static string UserEmailValid = "xxx@gmail.com";
-        //static string UserPassword = "123456";
-
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
@@ -42,15 +38,12 @@ namespace $safeprojectname$.TestCases.UserProfile
         public override void MyTestInitialize()
         {
             base.MyTestInitialize();
-
-            UserProfileControllerTest.controller = new ControllerFake<UserProfileController>();
-            UserProfileControllerTest.controllerLogin = new ControllerFake<UserAccountController>();
         }
 
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            controller.Dispose();
+            
         }
 
         [TestMethod]
@@ -70,38 +63,34 @@ namespace $safeprojectname$.TestCases.UserProfile
 
             UserNameValid = Guid.NewGuid().ToString();
             UserEmailValid = string.Format("{0}@valid.com", UserNameValid);
-            $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_Succeed(controllerLogin, UserEmailValid, UserPassword, ref UserNameValidActivationToken);
-            $customNamespace$.Tests.Common.MembershipServices.CommonTests.Register_ActivateAccount(controllerLogin, UserNameValidActivationToken);
+            CommonTests.Register_Succeed(UserEmailValid, UserPassword, ref UserNameValidActivationToken);
+            CommonTests.Register_ActivateAccount(UserNameValidActivationToken);
             LogOnViewModel logOnModel = new LogOnViewModel();
             logOnModel.Email = UserEmailValid;
             logOnModel.Password = UserPassword;
 
-
+            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controllerLogin = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
             ActionResult resultPost = controllerLogin.Controller.LogOn(logOnModel);
             Assert.AreEqual(true, string.IsNullOrEmpty(HttpContext.Current.Response.Cookies[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value) != true);
             Assert.AreEqual(true, resultPost.GetType() == typeof(RedirectResult));
             Assert.AreEqual(true, (((RedirectResult)resultPost).Url == controllerLogin.Controller.RedirectResultOnLogIn().Url));
 
-
             Mock<UserProfileIndexModel> model = new Mock<UserProfileIndexModel>();
-
-
-
-            model.Object.UserProfileResult = new $customNamespace$.Models.Profile.DataResultUserProfile()
+            model.Object.UserProfileResult = new DataResultUserProfile()
             {
-                Data = new $customNamespace$.Models.Profile.UserProfileModel()
+                Data = new UserProfileModel()
                 {
-                    Gender = $customNamespace$.Models.Enumerations.Gender.Female,
+                    Gender = Gender.Female,
                     FirstName = "Jordi",
                     BirthDate = DateTime.Now,
-                    Culture = GlobalizationHelper.CultureInfoGetOrDefault(this.currentCultureName), // $customNamespace$.Models.Enumerations.CulturesAvailable.es,
-                    Theme = $customNamespace$.Models.Enumerations.ThemesAvailable.Flick,
+                    Culture = GlobalizationHelper.CultureInfoGetOrDefault(this.currentCultureName),
+                    Theme = ThemesAvailable.Flick,
                     LastName = "Vila"
                 }
             };
 
-
-            model.Object.UserProfileResult.Data.Gender = $customNamespace$.Models.Enumerations.Gender.Female;
+            ControllerFake_WithModelValidation<UserProfileController, UserProfileIndexModel> controller = new ControllerFake_WithModelValidation<UserProfileController, UserProfileIndexModel>();
+            model.Object.UserProfileResult.Data.Gender = Gender.Female;
             ActionResult resultInvalid = controller.Controller.Edit(model.Object);
             bool invalidFound = ((UserProfileIndexModel)((ViewResult)resultInvalid).Model).UserProfileResultUpdated.IsValid == true;
             Assert.AreEqual(true, invalidFound);

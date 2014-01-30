@@ -41,7 +41,7 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
 
         }
 
-        private void User_Check_Access(ControllerFake<AdminOnlyControllerController> controller,
+        private void User_Check_Access<TModel>(ControllerFake_WithModelValidation<AdminOnlyControllerController, TModel> controller,
                                         Func<ActionResult, ActionResult, bool> resultComparer,
                                         ActionResult actionResultExpected)
         {
@@ -65,14 +65,14 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         [TestMethod]
         public void User_Unauthenticated_GetsRedirect()
         {
-            this.User_Check_Access(new ControllerFake<AdminOnlyControllerController>(), null, null);
+            this.User_Check_Access(new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>(), null, null);
         }
 
         [TestMethod]
         public void User_Authenticated_WithNOAccess_GetsRedirected()
         {
             UserForTesting userTesting = new UserForTesting(Guid.NewGuid().ToString(), "123456");
-            ControllerFake<AdminOnlyControllerController> controller = new ControllerFake<AdminOnlyControllerController>();
+            ControllerFake_WithModelValidation<AdminOnlyControllerController, object> controller = new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>();
             controller.Controller.Request.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, userTesting.AuthenticationToken));
             this.User_Check_Access(controller, null, null);
         }
@@ -81,7 +81,7 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         public void User_Authenticated_WithAccess_GetsController()
         {
             UserForTesting userTesting = new UserForTesting(Guid.NewGuid().ToString(), "123456");
-            ControllerFake<AdminOnlyControllerController> controller = new ControllerFake<AdminOnlyControllerController>();
+            ControllerFake_WithModelValidation<AdminOnlyControllerController, object> controller = new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>();
             controller.Controller.Request.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, userTesting.AuthenticationToken));
             Func<ActionResult, ActionResult, bool> resultComparer = delegate(ActionResult result1, ActionResult result2)
             {

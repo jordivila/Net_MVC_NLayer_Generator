@@ -108,20 +108,19 @@ namespace $safeprojectname$.TestProxies
 
         }
 
-        //[TestMethod]
-        //public void RoleServiceAdminTests_ShouldPass()
-        //{
-        //    this.Create();
-        //    this.AddToRoles();
-        //    this.FindUserNamesByRole();
-        //    this.FindAll();
-        //    this.IsInRole();
-        //    this.RemoveFromRole();
-        //    this.Delete();
-        //    this.FindByUserName();
-        //}
-
         [TestMethod]
+        public void RoleServiceAdminTests_ShouldPass()
+        {
+            this.Create();
+            this.AddToRoles();
+            this.FindUserNamesByRole();
+            this.FindAll();
+            this.IsInRole();
+            this.RemoveFromRole();
+            this.Delete();
+            this.FindByUserName();
+        }
+
         public void Create()
         {
             string existingRole = SiteRoles.Guest.ToString();
@@ -132,8 +131,6 @@ namespace $safeprojectname$.TestProxies
             DataResultBoolean resultSuccess = _rolesServices.Create(_tempRoleName);
             Assert.AreEqual(resultSuccess.Data, true);
         }
-
-        [TestMethod]
         public void AddToRoles()
         {
             // Test adding role to a user already in
@@ -150,16 +147,12 @@ namespace $safeprojectname$.TestProxies
                 Assert.AreEqual(_rolesServices.IsInRole(item.UserName, _tempRoleName).Data, true);
             }
         }
-
-        [TestMethod]
         public void FindUserNamesByRole()
         {
             DataResultStringArray result = _rolesServices.FindUserNamesByRole(_tempRoleName);
             Assert.AreEqual(result.IsValid, true);
             Assert.AreEqual(result.Data.Count() == _listUsers.Count, true);
         }
-
-        [TestMethod]
         public void FindAll()
         {
             // Test roles contain at least roles existing in SiteRoles enum
@@ -170,8 +163,6 @@ namespace $safeprojectname$.TestProxies
                 Assert.AreEqual(result.Data.Contains(((SiteRoles)item).ToString()), true);
             }
         }
-
-        [TestMethod]
         public void IsInRole()
         {
             DataResultBoolean resultFail = _rolesServices.IsInRole(_listUsers[0].UserName, SiteRoles.Administrator.ToString());
@@ -180,8 +171,6 @@ namespace $safeprojectname$.TestProxies
             DataResultBoolean result = _rolesServices.IsInRole(_listUsers[0].UserName, SiteRoles.Guest.ToString());
             Assert.AreEqual(result.Data, true);
         }
-
-        [TestMethod]
         public void RemoveFromRole()
         {
             DataResultBoolean resultFail = _rolesServices.RemoveFromRoles(_listUsers[0].UserName, new string[1] { "someUnexistingRoleName" });
@@ -196,8 +185,6 @@ namespace $safeprojectname$.TestProxies
                 Assert.AreEqual(_rolesServices.IsInRole(item.UserName, _tempRoleName).Data, false);
             }
         }
-
-        [TestMethod]
         public void Delete()
         {
             // Test deleting unexisting role 
@@ -214,8 +201,6 @@ namespace $safeprojectname$.TestProxies
             DataResultBoolean resultSuccess = _rolesServices.Delete(_tempRoleName);
             Assert.AreEqual(resultSuccess.Data, true);
         }
-
-        [TestMethod]
         public void FindByUserName()
         {
             DataResultStringArray result = _rolesServices.FindByUserName(_listUsers[0].UserName);

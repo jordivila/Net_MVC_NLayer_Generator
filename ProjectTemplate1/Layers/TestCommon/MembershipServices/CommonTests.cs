@@ -14,8 +14,9 @@ namespace $safeprojectname$.MembershipServices
     public class CommonTests
     {
         #region Methods to test
-        public static void Register_Succeed(ControllerFake<UserAccountController> controller, string UserEmailValid, string UserPassword, ref Guid UserNameValidActivationToken)
+        public static void Register_Succeed(string UserEmailValid, string UserPassword, ref Guid UserNameValidActivationToken)
         {
+            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = UserPassword;
@@ -24,15 +25,16 @@ namespace $safeprojectname$.MembershipServices
             Assert.AreEqual(true, validFound);
             UserNameValidActivationToken = ((RegisterViewModel)((ViewResult)resultValid).Model).Result.ActivateUserToken;
         }
-        public static void Register_ActivateAccount(ControllerFake<UserAccountController> controller, Guid UserNameValidActivationToken)
+        public static void Register_ActivateAccount(Guid UserNameValidActivationToken)
         {
+            ControllerFake_WithModelValidation<UserAccountController, object> controller = new ControllerFake_WithModelValidation<UserAccountController, object>();
             ActionResult resultValid = controller.Controller.Activate(UserNameValidActivationToken.ToString());
             Assert.AreEqual(true, resultValid.GetType() == typeof(RedirectResult));
             Assert.AreEqual(true, (((RedirectResult)resultValid).Url == controller.Controller.RedirectResultOnLogIn().Url));
         }
-        public static void CantAccessMyAccount_Succeed(ControllerFake<UserAccountController> controller, string UserEmailValid, ref Guid CantAccessMyAccountToken)
+        public static void CantAccessMyAccount_Succeed(string UserEmailValid, ref Guid CantAccessMyAccountToken)
         {
-
+            ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel>();
             ActionResult resultInvalid = controller.Controller.CantAccessYourAccount(new CantAccessYourAccountViewModel()
             {
                 EmailAddress = UserEmailValid
@@ -42,15 +44,17 @@ namespace $safeprojectname$.MembershipServices
 
             CantAccessMyAccountToken = ((CantAccessYourAccountViewModel)((ViewResult)resultInvalid).Model).Result.Data.ChangePasswordToken;
         }
-        public static void ResetPassword_Succeed(ControllerFake<UserAccountController> controller, string UserEmailValid, Guid CantAccessMyAccountToken, string NewPassword)
+        public static void ResetPassword_Succeed(string UserEmailValid, Guid CantAccessMyAccountToken, string NewPassword)
         {
+            ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel>();
             ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = NewPassword, ConfirmPassword = NewPassword };
             ActionResult actionResult = controller.Controller.ResetPassword(CantAccessMyAccountToken.ToString(), model);
             Assert.AreEqual(true, actionResult.GetType() == typeof(RedirectResult));
             Assert.AreEqual(true, (((RedirectResult)actionResult).Url == controller.Controller.RedirectResultOnLogIn().Url));
         }
-        public static void Login_Succeed(ControllerFake<UserAccountController> controller, string UserEmailValid, string UserPassword)
+        public static void Login_Succeed(string UserEmailValid, string UserPassword)
         {
+            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
             LogOnViewModel logOnModel = new LogOnViewModel();
             logOnModel.Email = UserEmailValid;
             logOnModel.Password = UserPassword;
@@ -79,12 +83,10 @@ namespace $safeprojectname$.MembershipServices
             this.Password = Password;
             Guid UserNameValidActivationToken = Guid.Empty;
 
-            ControllerFake<UserAccountController> controllerUserCreation = new ControllerFake<UserAccountController>();
-            CommonTests.Register_Succeed(controllerUserCreation, this.Email, this.Password, ref UserNameValidActivationToken);
-            CommonTests.Register_ActivateAccount(controllerUserCreation, UserNameValidActivationToken);
-            CommonTests.Login_Succeed(controllerUserCreation, this.Email, this.Password);
+            CommonTests.Register_Succeed(this.Email, this.Password, ref UserNameValidActivationToken);
+            CommonTests.Register_ActivateAccount(UserNameValidActivationToken);
+            CommonTests.Login_Succeed(this.Email, this.Password);
             this.AuthenticationToken = HttpContext.Current.Response.Cookies[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value;
-            controllerUserCreation.Dispose();
         }
     }
 }

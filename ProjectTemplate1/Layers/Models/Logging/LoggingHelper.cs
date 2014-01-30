@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Transactions;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 namespace $safeprojectname$.Logging
@@ -7,7 +8,10 @@ namespace $safeprojectname$.Logging
     {
         private static void LogMessageAsync(LogEntry log)
         {
-            Logger.Write(log);
+            using (TransactionScope transScope = new TransactionScope(TransactionScopeOption.Suppress))
+            {
+                Logger.Write(log);
+            }
         }
 
         public static void Write(LogEntry logEntry)

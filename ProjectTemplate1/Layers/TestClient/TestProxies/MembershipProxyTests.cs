@@ -270,6 +270,5 @@ namespace $safeprojectname$.TestProxies
             DataResultBoolean resultDelete = _memberShipeServices.DeleteUser(_userName, true);
             Assert.AreEqual(resultDelete.Data, true);
         }
-
     }
 }

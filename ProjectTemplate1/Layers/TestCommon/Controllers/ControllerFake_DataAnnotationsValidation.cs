@@ -8,6 +8,7 @@ using $customNamespace$.UI.Web.Areas.Error;
 using $customNamespace$.UI.Web.Areas.Home;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAdministration;
+using $customNamespace$.UI.Web.Areas.UserProfile;
 
 namespace $safeprojectname$.Controllers
 {
@@ -61,6 +62,14 @@ namespace $safeprojectname$.Controllers
             }
         }
 
+        public UrlHelper UrlHelper
+        {
+            get
+            {
+                return ((Controller)this._controller).Url;
+            }
+        }
+
         private Mock<HttpRequestBase> _HttpRequestBaseMock = null;
         public Mock<HttpRequestBase> HttpRequestBaseMock
         {
@@ -69,10 +78,18 @@ namespace $safeprojectname$.Controllers
                 if (this._HttpRequestBaseMock == null)
                 {
                     // Build Common Request Values
-                    this._HttpRequestBaseMock = new Mock<HttpRequestBase>(MockBehavior.Strict);
+                    //this._HttpRequestBaseMock = new Mock<HttpRequestBase>(MockBehavior.Strict);
+                    this._HttpRequestBaseMock = new Mock<HttpRequestBase>(MockBehavior.Default);
                     this._HttpRequestBaseMock.SetupGet(x => x.ApplicationPath).Returns("/");
                     //request.SetupGet(x => x.Url).Returns(new Uri("http://localhost/", UriKind.Absolute));
                     this._HttpRequestBaseMock.SetupGet(x => x.ServerVariables).Returns(new NameValueCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.Cookies).Returns(new HttpCookieCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.Headers).Returns(new NameValueCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.Params).Returns(new NameValueCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.Form).Returns(new NameValueCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.QueryString).Returns(new NameValueCollection());
+                    this._HttpRequestBaseMock.SetupGet(x => x.HttpMethod).Returns("POST");
+                    this._HttpRequestBaseMock.SetupGet(x => x.RequestType).Returns(HttpVerbs.Post.ToString().ToUpper());
                 }
                 return this._HttpRequestBaseMock;
             }
@@ -90,7 +107,7 @@ namespace $safeprojectname$.Controllers
                 if (this._HttpResponseBaseMock == null)
                 {
                     // Build Common Response Values
-                    this._HttpResponseBaseMock = new Mock<HttpResponseBase>(MockBehavior.Strict);
+                    this._HttpResponseBaseMock = new Mock<HttpResponseBase>(MockBehavior.Default);
                     this._HttpResponseBaseMock.Setup(x => x.ApplyAppPathModifier(It.IsAny<string>())).Returns((string url) => url);
                 }
                 return this._HttpResponseBaseMock;
@@ -109,17 +126,89 @@ namespace $safeprojectname$.Controllers
                 if (this._HttpContextBaseMock == null)
                 {
                     // Buid Context Base
-                    this._HttpContextBaseMock = new Mock<HttpContextBase>(MockBehavior.Strict);
+                    this._HttpContextBaseMock = new Mock<HttpContextBase>(MockBehavior.Default);
                     this._HttpContextBaseMock.SetupGet(x => x.Request).Returns(this.HttpRequestBaseMock.Object);
                     this._HttpContextBaseMock.SetupGet(x => x.Response).Returns(this.HttpResponseBaseMock.Object);
+                    this._HttpContextBaseMock.SetupGet(x => x.Session).Returns(this.HttpSessionStateMock.Object);
+
+
+                    //var context = new Mock<HttpContextBase>();
+                    //var request = new Mock<HttpRequestBase>();
+                    //var response = new Mock<HttpResponseBase>();
+                    //var session = new Mock<HttpSessionStateBase>();
+                    var server = new Mock<HttpServerUtilityBase>();
+                    //var user = new Mock<IPrincipal>();
+                    //var identity = new Mock<IIdentity>();
+                    //this._HttpContextBaseMock.Setup(ctx => ctx.Request).Returns(request.Object);
+                    //this._HttpContextBaseMock.Setup(ctx => ctx.Response).Returns(response.Object);
+                    //this._HttpContextBaseMock.Setup(ctx => ctx.Session).Returns(session.Object);
+                    this._HttpContextBaseMock.Setup(ctx => ctx.Server).Returns(server.Object);
+                    //context.Setup(ctx => ctx.User).Returns(user.Object);
+                    //user.Setup(ctx => ctx.Identity).Returns(identity.Object);
+                    //identity.Setup(id => id.IsAuthenticated).Returns(true);
+                    //identity.Setup(id => id.Name).Returns(username);
+                    //context.Setup(ctx => ctx.Response.Cache).Returns(CreateCachePolicy());
+                    //return context.Object;
+
+
                 }
                 return this._HttpContextBaseMock;
+
+
+                //var context = new Mock<HttpContextBase>();
+                //var request = new Mock<HttpRequestBase>();
+                //var response = new Mock<HttpResponseBase>();
+                //var session = new Mock<HttpSessionStateBase>();
+                //var server = new Mock<HttpServerUtilityBase>();
+                //var user = new Mock<IPrincipal>();
+                //var identity = new Mock<IIdentity>();
+
+
+                ////controllerContext.RequestContext.HttpContext.Request.RequestType.ToUpper()
+
+                //request.Setup(x => x.RequestType).Returns("POST");
+
+                //context.Setup(ctx => ctx.Request).Returns(request.Object);
+                //context.Setup(ctx => ctx.Response).Returns(response.Object);
+                //context.Setup(ctx => ctx.Session).Returns(session.Object);
+                //context.Setup(ctx => ctx.Server).Returns(server.Object);
+                //context.Setup(ctx => ctx.User).Returns(user.Object);
+                //user.Setup(ctx => ctx.Identity).Returns(identity.Object);
+                //identity.Setup(id => id.IsAuthenticated).Returns(true);
+                //identity.Setup(id => id.Name).Returns("xxx@gmail.com");
+                ////context.Setup(ctx => ctx.Response.Cache).Returns(CreateCachePolicy());
+
+
+
+                //return context;
+
             }
             set
             {
                 this._HttpContextBaseMock = value;
             }
         }
+
+        private Mock<HttpSessionStateBase> _HttpSessionStateMock = null;
+        public Mock<HttpSessionStateBase> HttpSessionStateMock
+        {
+            get
+            {
+                if (this._HttpSessionStateMock == null)
+                {
+                    // Buid Context Base
+                    this._HttpSessionStateMock = new Mock<HttpSessionStateBase>(MockBehavior.Loose);
+                    //this._HttpSessionStateMock.SetupGet(x => x.Request).Returns(this.HttpRequestBaseMock.Object);
+                    //this._HttpSessionStateMock.SetupGet(x => x.Response).Returns(this.HttpResponseBaseMock.Object);
+                }
+                return this._HttpSessionStateMock;
+            }
+            set
+            {
+                this._HttpSessionStateMock = value;
+            }
+        }
+
 
         private RouteCollection Routes
         {
@@ -128,6 +217,7 @@ namespace $safeprojectname$.Controllers
                 var routes = new RouteCollection();
                 MvcApplication.RegisterRoutes(routes);
 
+                new UserProfileAreaRegistration().RegisterArea(new AreaRegistrationContext(UserProfileAreaRegistration.UserProfileAreaName, routes));
                 new UserAccountAreaRegistration().RegisterArea(new AreaRegistrationContext(UserAccountAreaRegistration.UserAccountAdminAreaName, routes));
                 new HomeAreaRegistration().RegisterArea(new AreaRegistrationContext(HomeAreaRegistration.HomeAreaName, routes));
                 new UserAdministrationAreaRegistration().RegisterArea(new AreaRegistrationContext(UserAdministrationAreaRegistration.UserAdminAreaName, routes));
@@ -137,7 +227,7 @@ namespace $safeprojectname$.Controllers
             }
         }
 
-        //public ControllerFake_WithModelValidation<TController, TActionModel> BuildContext()
+        //public ControllerFake<TController> BuildContext()
         //{
         //    // Set Controller Common Values
         //    ((Controller)this.Controller).ControllerContext = new ControllerContext(this.HttpContextBaseMock.Object, new RouteData(), this.Controller);
