@@ -9,7 +9,7 @@ using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.Tests.Common.MembershipServices;
 
-namespace $safeprojectname$
+namespace $safeprojectname$.TestMultiThreaded
 {
     [TestClass]
     public class LoadMultiThreadTest : TestControllerBase<UserAccountAreaRegistration>

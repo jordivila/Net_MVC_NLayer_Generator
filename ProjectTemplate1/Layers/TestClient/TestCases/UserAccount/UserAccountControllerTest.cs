@@ -15,8 +15,8 @@ using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
-using $customNamespace$.Tests.Common.MembershipServices;
 using $customNamespace$.Resources.Account;
+using $customNamespace$.Tests.Client.Common;
 
 namespace $safeprojectname$.TestCases.UserAccount
 {

@@ -43,6 +43,16 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProxyTests.cs">MembershipProxyTests.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="RoleProxyTests.cs">RoleProxyTests.cs</ProjectItem>
       </Folder>
+      <Folder Name="Common" TargetFolderName="Common">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MembershipCommonTestMethods.cs">MembershipCommonTestMethods.cs</ProjectItem>
+      </Folder>
+      <Folder Name="TestMultiThreaded" TargetFolderName="TestMultiThreaded">
+        <ProjectItem ReplaceParameters="true" TargetFileName="LoadMultiThreadTest.cs">LoadMultiThreadTest.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MultiThreadResults.cs">MultiThreadResults.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Template.Tests.Integration.testsettings">Template.Tests.Integration.testsettings</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Template.Tests.Integration.EndScript.bat">Template.Tests.Integration.EndScript.bat</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Template.Tests.Integration.StartScript.bat">Template.Tests.Integration.StartScript.bat</ProjectItem>
     </Project>
   </TemplateContent>
   <WizardExtension>

@@ -61,12 +61,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Layers\TestClient\Template.Tests.Integration.EndScript.bat" />
+    <None Include="Layers\TestClient\Template.Tests.Integration.StartScript.bat" />
+    <None Include="Layers\TestClient\Template.Tests.Integration.testsettings">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Layers\WCFHost\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDAL.cs" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDALDevelopment.cs" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderReal.cs" />
     <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\UI\Unity\UnityContainerProviderReal.cs" />
+    <None Include="Layers\TestClient\TestMultiThreaded\LoadMultiThreadTest.cs" />
+    <None Include="Layers\TestClient\TestMultiThreaded\MultiThreadResults.cs" />
+    <None Include="Layers\TestClient\Common\MembershipCommonTestMethods.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -192,8 +200,6 @@
     <None Include="Layers\TestClient\App.config" />
     <None Include="Layers\TestClient\packages.config" />
     <None Include="Layers\TestCommon\packages.config" />
-    <None Include="Layers\TestPerformance\app.config" />
-    <None Include="Layers\TestPerformance\packages.config" />
     <None Include="Layers\UI\Areas\Blog\Views\Blog\Category.cshtml" />
     <None Include="Layers\UI\Areas\Blog\Views\Blog\Index.cshtml" />
     <None Include="Layers\UI\Areas\Blog\Views\Shared\DisplayTemplates\SyndicationItem.cshtml" />
@@ -407,9 +413,6 @@
     <None Include="Layers\TestCommon\Properties\AssemblyInfo.cs" />
     <None Include="Layers\TestCommon\Proxies\TextProxyBase.cs" />
     <None Include="Layers\TestCommon\TestCommon.cs" />
-    <None Include="Layers\TestPerformance\LoadMultiThreadTest.cs" />
-    <None Include="Layers\TestPerformance\MultiThreadResults.cs" />
-    <None Include="Layers\TestPerformance\Properties\AssemblyInfo.cs" />
     <None Include="Layers\UI\Common\ApplicationServicesProvider\MessageInspectorBehaviorExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFLibrary\app.config" />
@@ -479,9 +482,6 @@
     <Content Include="Layers\TestCommon\Template.Tests.Common.csproj" />
     <Content Include="Layers\TestCommon\Template.Tests.Common.vstemplate" />
     <Content Include="Layers\TestCommon\__TemplateIcon.ico" />
-    <Content Include="Layers\TestPerformance\Template.Tests.Performance.csproj" />
-    <Content Include="Layers\TestPerformance\Template.Tests.Performance.vstemplate" />
-    <Content Include="Layers\TestPerformance\__TemplateIcon.ico" />
     <Content Include="Layers\UI\Areas\Blog\Content\blog.css" />
     <Content Include="Layers\UI\Areas\Blog\Content\blogrss.xml" />
     <Content Include="Layers\UI\Areas\Error\Content\ErrorLogged.jpg" />

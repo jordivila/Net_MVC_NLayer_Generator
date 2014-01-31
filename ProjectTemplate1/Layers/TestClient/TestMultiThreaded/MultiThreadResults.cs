@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Xml.Serialization;
 
-namespace $safeprojectname$
+namespace $safeprojectname$.TestMultiThreaded
 {
     public static class ThreadList
     {

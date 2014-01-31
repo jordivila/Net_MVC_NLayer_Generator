@@ -52,7 +52,7 @@ namespace CustomWizard
 
                 // Append Custom Dictionary Entries
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
-                //IWizardImplementation.GlobalData.DirectoryCopy(IWizardImplementation.GlobalData.PackagesDirectoryRepository.FullName, IWizardImplementation.GlobalData.PackagesDirectory.FullName, true);
+                //IWizardImplementation.GlobalData.DirectoryCopy(IWizardImplementation.GlobalData.PackagesDirectory.FullName, IWizardImplementation.GlobalData.PackagesDirectory.FullName, true);
                 this.FormInfo_FormShow();
             }
             catch (Exception ex)

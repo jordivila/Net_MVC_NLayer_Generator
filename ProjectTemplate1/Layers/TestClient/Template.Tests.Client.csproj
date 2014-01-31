@@ -77,6 +77,9 @@
     <Compile Include="TestCases\UserProfile\UserProfileControllerTests.cs" />
     <Compile Include="TestProxies\MembershipProxyTests.cs" />
     <Compile Include="TestProxies\RoleProxyTests.cs" />
+    <Compile Include="Common\MembershipCommonTestMethods.cs" />
+    <Compile Include="TestMultiThreaded\LoadMultiThreadTest.cs" />
+    <Compile Include="TestMultiThreaded\MultiThreadResults.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -104,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Template.Tests.Integration.testsettings"></None>
+    <None Include="Template.Tests.Integration.EndScript.bat"></None>
+    <None Include="Template.Tests.Integration.StartScript.bat"></None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

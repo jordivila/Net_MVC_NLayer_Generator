@@ -9,9 +9,9 @@ using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Tests.Common.Controllers;
-using $customNamespace$.Tests.Common.MembershipServices;
 using $customNamespace$.UI.Web.Areas.Error;
 using $customNamespace$.Models.Enumerations;
+using $customNamespace$.Tests.Client.Common;
 
 namespace $safeprojectname$.TestCases.AuthorizeAttribute
 {

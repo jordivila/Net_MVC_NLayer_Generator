@@ -12,10 +12,9 @@ using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 using $customNamespace$.UI.Web.Areas.UserProfile;
 using $customNamespace$.UI.Web.Areas.UserProfile.Controllers;
 using $customNamespace$.UI.Web.Areas.UserProfile.Models;
-using $customNamespace$.Tests.Common.MembershipServices;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Enumerations;
-
+using $customNamespace$.Tests.Client.Common;
 
 namespace $safeprojectname$.TestCases.UserProfile
 {
