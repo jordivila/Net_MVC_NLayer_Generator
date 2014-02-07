@@ -42,14 +42,12 @@ namespace $safeprojectname$.TestProxies
             return userTemp;
         };
 
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
+
+
+
+        [TestInitialize()]
+        public void MyTestInitialize()
         {
-            TestBase.Application_InitEnterpriseLibrary();
-            TestBase.SetHttpContext();
-
-
-
             _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
             _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
 
@@ -62,10 +60,11 @@ namespace $safeprojectname$.TestProxies
                     _listUsers.Add(createUserTemp(false, new string[0], false));
                 }
             }
+
         }
 
-        [ClassCleanup()]
-        public static void MyClassCleanup()
+        [TestCleanup()]
+        public void MyTestCleanup()
         {
             TestBase.SetHttpContext();
 
@@ -81,6 +80,7 @@ namespace $safeprojectname$.TestProxies
 
             _memberShipeServices.Dispose();
             _rolesServices.Dispose();
+
         }
 
 

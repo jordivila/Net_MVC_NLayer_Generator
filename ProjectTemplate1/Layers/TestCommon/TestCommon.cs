@@ -5,6 +5,7 @@ using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.UI.Web.Unity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -46,6 +47,7 @@ namespace $safeprojectname$
         [TestInitialize()]
         public void TestBaseTestInitialize()
         {
+            TestBase.TestBaseHostWCFInit(this.testContextInstance);
             TestBase.Application_InitEnterpriseLibrary();
             TestBase.SetHttpContext();
         }
@@ -53,57 +55,7 @@ namespace $safeprojectname$
         [TestCleanup]
         public void TestBaseTestCleanUp()
         {
-
-        }
-
-        protected void CheckInheritance(Assembly assemblyToCheck, List<Type> excludedTypes, List<Type> baseClasses)
-        {
-            List<TypeInfo> assemblyTypes = assemblyToCheck.DefinedTypes.ToList();
-            List<TypeInfo> assemblyTypesToCheck = assemblyTypes.Where(x => excludedTypes.All(p => p.FullName != x.FullName) && !x.IsEnum).ToList();
-            List<TypeInfo> assemblyTypesDevelopment = assemblyTypesToCheck.Where(x =>
-                                                                                !(x.IsDefined(typeof(CompilerGeneratedAttribute), false)) // filter out <>_DisplayClasses or any compiler generated class
-                //&& !(x.GetCustomAttributes(typeof(CompilerGeneratedAttribute)).Count() == 0)
-                                                                                ).ToList();
-
-            //List<TypeInfo> assemblyTypesUnInherited = assemblyTypesDevelopment.Where(x => ((x.BaseType == null) || (!baseClasses.Select(p => p.FullName).Contains(x.BaseType.FullName)))).ToList();
-
-            List<TypeInfo> assemblyTypesUnInherited = new List<TypeInfo>();
-
-            foreach (var item in assemblyTypesDevelopment)
-            {
-                int inheritanceChildLevelCounter = 0;
-                int inheritanceChildLevelMax = 10;
-                bool inheritanceOK = false;
-                Func<TypeInfo, bool> inheritanceValid = delegate(TypeInfo type)
-                {
-                    bool validBaseClass = baseClasses.Select(p => p.FullName).Contains(type.BaseType.FullName);
-                    //return ((type.BaseType == null) || (!validBaseClass));
-                    return ((type.BaseType != null) && (validBaseClass));
-                };
-                TypeInfo typeToCheck = item;
-                while ((!inheritanceOK) && (typeToCheck != null) && (typeToCheck != typeof(object)) && (inheritanceChildLevelCounter < inheritanceChildLevelMax))
-                {
-                    inheritanceOK = inheritanceValid(typeToCheck);
-                    if (!inheritanceOK)
-                    {
-                        typeToCheck = typeToCheck.BaseType.GetTypeInfo();
-                    }
-
-                    inheritanceChildLevelCounter++;
-                }
-
-                if (!inheritanceOK)
-                {
-                    assemblyTypesUnInherited.Add(item);
-                }
-            }
-
-
-            Assert.AreEqual(0, assemblyTypesUnInherited.Count(),
-                string.Format("\n \n {0} \n \n Contiene tipos que no heredan de ninguna de las clases base ({1}): \n \n {2}",
-                                assemblyToCheck.ManifestModule.ToString(),
-                                string.Join(", ", baseClasses.Select(x => x.Name)),
-                                string.Join("\n,  ", assemblyTypesUnInherited.Select(x => x.FullName).ToList())));
+            TestBase.TestBaseHostWCFEnd();
         }
 
         public static void SetHttpContext()
@@ -122,6 +74,53 @@ namespace $safeprojectname$
             //LogWriterFactory logWriterFactory = new LogWriterFactory();
             //Logger.SetLogWriter(logWriterFactory.Create());
         }
+
+        #region Self Hosted WCF
+        private static object lockObject = new object();
+        private static Process TestBaseHostWCFHostProcess = null;
+        private static void TestBaseHostWCFInit(TestContext testContext)
+        {
+            lock (lockObject)
+            {
+                if (TestBaseHostWCFHostProcess == null)
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    startInfo.CreateNoWindow = false;
+                    startInfo.UseShellExecute = false;
+                    startInfo.FileName = Path.Combine(testContext.DeploymentDirectory, "$customNamespace$.WCF.ServicesHost.exe");
+                    startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    //startInfo.Arguments = "-f j -o \"" + ex1 + "\" -z 1.0 -s y " + ex2;
+
+                    try
+                    {
+                        TestBaseHostWCFHostProcess = Process.Start(startInfo);
+
+                        // Start the process with the info we specified.
+                        // Call WaitForExit and then the using statement will close.
+                        //using (Process exeProcess = Process.Start(startInfo))
+                        //{
+                            //exeProcess.WaitForExit();
+                        //}
+                    }
+                    catch (Exception ex)
+                    {
+                        Assert.Inconclusive(ex.Message);
+                    }
+                }                
+            }
+        }
+        private static void TestBaseHostWCFEnd()
+        {
+            lock (lockObject)
+            {
+                if (TestBaseHostWCFHostProcess != null)
+                {
+                    TestBaseHostWCFHostProcess.Close();
+                    TestBaseHostWCFHostProcess.Dispose();
+                }
+            }
+        }
+        #endregion
 
 
     }

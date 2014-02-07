@@ -8,40 +8,41 @@ using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Common;
 
 namespace $safeprojectname$.TestMultiThreaded
 {
     [TestClass]
     public class LoadMultiThreadTest : TestControllerBase<UserAccountAreaRegistration>
     {
-        static TestContext testContextInstance;
         static EventWaitHandle _mainThreadWaitHandle = new AutoResetEvent(false);
         static int NumTrheads = 10;
         static int NumIterationsPerThread = 1;
 
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-            testContextInstance = testContext;
-        }
 
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
+        //[ClassInitialize()]
+        //public static void MyClassInitialize(TestContext testContext)
+        //{
+        //    TestBase.MyClassInitialize(testContext);
+        //}
 
-        }
+        //[ClassCleanup()]
+        //public static void MyClassCleanup()
+        //{
+        //    TestBase.MyClassCleanup();
+        //}
 
-        [TestInitialize()]
-        public override void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-        }
+        //[TestInitialize()]
+        //public override void MyTestInitialize()
+        //{
+        //    base.MyTestInitialize();
+        //}
 
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
+        //[TestCleanup()]
+        //public void MyTestCleanup()
+        //{
 
-        }
+        //}
 
         [TestMethod]
         public void StressMultiThreadTest()
@@ -66,7 +67,7 @@ namespace $safeprojectname$.TestMultiThreaded
             resume.Errors = (from t in ThreadList.Results where t.Exception != null select t).ToList();
             resume.Success = (from t in ThreadList.Results where t.Exception == null select t).ToList();
             resume.AverageExecutionInSeconds = resume.Success.Count > 0 ? (from s in resume.Success select s.TotalSeconds + 0).Average() : 0;
-            baseModel.Serialize(resume).Save(Path.Combine(testContextInstance.ResultsDirectory, string.Format("{0}.xml", testContextInstance.TestName)));
+            baseModel.Serialize(resume).Save(Path.Combine(this.TestContext.ResultsDirectory, string.Format("{0}.xml", this.TestContext.TestName)));
             if (resume.Errors.Count > 0) { Assert.IsTrue(false, resume.ToString()); }
             else
             {
@@ -100,7 +101,7 @@ namespace $safeprojectname$.TestMultiThreaded
         {
             try
             {
-                this.MyTestInitialize();
+                TestBase.SetHttpContext();
 
                 string UserNameValid = Guid.NewGuid().ToString();
                 string UserEmailValid = string.Format("{0}@valid.com", UserNameValid);

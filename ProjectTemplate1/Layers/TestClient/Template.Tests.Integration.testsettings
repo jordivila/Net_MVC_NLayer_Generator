@@ -3,8 +3,9 @@
   <Description>These are default test settings for a local test run.</Description>
   <Deployment>
     <DeploymentItem filename="$customNamespace$\$customNamespace$.UI.Web\web.config" />
+    <DeploymentItem filename="$customNamespace$\$customNamespace$.WCF.ServicesHost\bin\Debug\" />
   </Deployment>
-  <Scripts setupScript="C:\Users\jv.io\Documents\Visual Studio 2013\Projects\$customNamespace$\MvcApllication.Tests.Integration.StartScript.bat" cleanupScript="C:\Users\jv.io\Documents\Visual Studio 2013\Projects\$customNamespace$\MvcApllication.Tests.Integration.EndScript.bat" />
+  <Scripts setupScript="$customNamespace$\MvcApllication.Tests.Integration.StartScript.bat" cleanupScript="$customNamespace$\MvcApllication.Tests.Integration.EndScript.bat" />
   <Execution>
     <TestTypeSpecific>
       <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">

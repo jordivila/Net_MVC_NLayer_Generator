@@ -32,32 +32,6 @@ namespace $safeprojectname$.TestCases.UserAccount
         static string UserNameValidUnActivated = Guid.NewGuid().ToString();
         static string UserEmailValidUnActivated = string.Format("{0}@valid.com", UserNameValidUnActivated);
 
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-
-        }
-
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-
-        }
-
-        [TestInitialize()]
-        public override void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-
-            //UserAccountControllerTest.controller = new ControllerFake<UserAccountController>();
-        }
-
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-            //controller.Dispose();
-        }
-
         [TestMethod]
         public void UserAccountControllerTest_Security()
         {

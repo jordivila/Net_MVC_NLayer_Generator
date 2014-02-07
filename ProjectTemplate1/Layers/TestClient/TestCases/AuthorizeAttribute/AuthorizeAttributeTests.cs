@@ -18,29 +18,6 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
     [TestClass]
     public class AuthorizeAttributeControllerTest : TestControllerBase<AdminOnlyControllerAreaRegistration>
     {
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-
-        }
-
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-        }
-
-        [TestInitialize()]
-        public override void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-        }
-
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-
-        }
-
         private void User_Check_Access<TModel>(ControllerFake_WithModelValidation<AdminOnlyControllerController, TModel> controller,
                                         Func<ActionResult, ActionResult, bool> resultComparer,
                                         ActionResult actionResultExpected)

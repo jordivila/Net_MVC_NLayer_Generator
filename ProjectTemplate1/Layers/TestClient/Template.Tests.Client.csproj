@@ -103,9 +103,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Proxies\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="Template.Tests.Integration.testsettings"></None>
     <None Include="Template.Tests.Integration.EndScript.bat"></None>

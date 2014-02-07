@@ -13,17 +13,6 @@ namespace $safeprojectname$.Proxies
     [TestClass]
     public abstract class TestProxyBase: TestBase
     {
-        //private CulturesAvailable currentCulture = MvcApplication30.Models.Enumerations.CulturesAvailable.es;
-        //private string currentCulture = "es-ES";
-        //public static string currentCultureName = TestCommon.CultureDefault;
-
-
-        public virtual void MyTestInitialize()
-        {
-            
-        }
-
-
 
     }
 }

@@ -27,44 +27,16 @@ namespace $safeprojectname$.TestProxies
 
         public MembershipUnitTests()
         {
-
-        }
-
-        private TestContext testContextInstance;
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
             _userGuid = Guid.NewGuid();
             _userName = _userGuid.ToString();
             _userEmail = string.Format("{0}@gmail.com", _userName.Replace("-", string.Empty));
             _userPwd = "1*dk**_=lsdk/()078909";
         }
 
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-            //_memberShipeServices.Dispose();
-            //_rolesServices.Dispose();
-            //_container.Dispose();
-        }
 
         [TestInitialize()]
-        public override void MyTestInitialize()
+        public void MyTestInitialize()
         {
-            base.MyTestInitialize();
-
             _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
             _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
 
@@ -240,31 +212,6 @@ namespace $safeprojectname$.TestProxies
             MembershipUserWrapper userResultAfterUnlock = _memberShipeServices.GetUserByName(_userName, false).Data;
             Assert.AreEqual(userResultAfterUnlock.IsLockedOut, false);
         }
-        //[TestMethod]
-        //public void GetUserListTests()
-        //{
-
-        //    Func<bool?,string[], bool?, string, UserEntity> createUserTemp = delegate (bool? approved, string[] isInRoleName, bool? locked, string userNameFilterValue)
-        //    {
-        //        Thread.Sleep(1);
-        //        Guid userGuid = Guid.NewGuid();
-        //        string userName = userGuid.ToString();
-        //        string userEmail = string.Format("{0}@gmail.com", userName.Replace("-", string.Empty));
-        //        string userPwd = "1*dk**_=lsdk/()078909";
-
-        //        _memberShipeServices.CreateUser(userName, userPwd, userEmail, string.Empty, string.Empty);
-        //        UserEntity userTemp = _memberShipeServices.GetUser(userName, false).Data;
-        //        return userTemp;
-        //    };
-
-        //    // Test filter by single value "Unapproved"
-        //    UserEntity unapprovedUser = createUserTemp(false, new string[0], null, string.Empty);
-        //    UserListFilterModel filterUnApproved = new UserListFilterModel();
-        //    Assert.AreEqual(_memberShipeServices.GetUserList(filterUnApproved, 0, Int32.MaxValue - 1).Data.Users.Where(x => x.UserName == unapprovedUser.UserName).Count() == 1, true);
-
-        //    // WARNING !!! EL TEST ENTRA EN TRANSACTION LOCK !!!!!
-
-        //}
         public void DeleteUserTest()
         {
             DataResultBoolean resultDelete = _memberShipeServices.DeleteUser(_userName, true);

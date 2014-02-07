@@ -22,30 +22,6 @@ namespace $safeprojectname$.TestCases.UserProfile
     [TestClass]
     public class UserProfileControllerTest : TestControllerBase<UserProfileAreaRegistration>
     {
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-
-        }
-
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-
-        }
-
-        [TestInitialize()]
-        public override void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-        }
-
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-
-        }
-
         [TestMethod]
         public void UserProfileControllerTest_Security()
         {

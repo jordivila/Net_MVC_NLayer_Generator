@@ -13,7 +13,7 @@ using $customNamespace$.UI.Web.Unity;
 namespace $safeprojectname$.Controllers
 {
     [TestClass]
-    public abstract class TestControllerBase<Tarea>: TestBase where Tarea : AreaRegistration, new()
+    public abstract class TestControllerBase<Tarea> : TestBase where Tarea : AreaRegistration, new()
     {
         //public string currentCultureName = TestCommon.CultureDefault;
         //public static string currentCultureNameStatic = TestCommon.CultureDefault;
