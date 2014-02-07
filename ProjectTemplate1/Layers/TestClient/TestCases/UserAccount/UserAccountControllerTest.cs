@@ -74,7 +74,7 @@ namespace $safeprojectname$.TestCases.UserAccount
             List<MethodInfo> methodsWithAuthorizeAttributeResulted = typeof(UserAccountController)
                                                                 .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
                                                                 .Where(x => methodsWithAuthorizeAttributeExpected.Contains(x.Name) &&
-                                                                            x.GetCustomAttributes(typeof($customNamespace$.UI.Web.Common.Mvc.Attributes.AuthorizeAttribute), true)
+                                                                            x.GetCustomAttributes(typeof(UI.Web.Common.Mvc.Attributes.AuthorizeAttribute), true)
                                                                             .Count() == 1).ToList();
 
             Assert.AreEqual(true, methodsWithAuthorizeAttributeResulted.Count == methodsWithAuthorizeAttributeExpected.Count);
@@ -227,7 +227,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
 
         #region Reset Password
-        
+
         public void ResetPassword_Validation()
         {
             ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456", ConfirmPassword = "123456" };

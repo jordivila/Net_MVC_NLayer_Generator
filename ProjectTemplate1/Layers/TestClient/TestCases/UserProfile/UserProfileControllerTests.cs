@@ -15,6 +15,7 @@ using $customNamespace$.UI.Web.Areas.UserProfile.Models;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Common;
 
 namespace $safeprojectname$.TestCases.UserProfile
 {
@@ -42,13 +43,13 @@ namespace $safeprojectname$.TestCases.UserProfile
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            
+
         }
 
         [TestMethod]
         public void UserProfileControllerTest_Security()
         {
-            bool hassAuthorizeAttribute = typeof(UserProfileController).GetCustomAttributes(typeof($customNamespace$.UI.Web.Common.Mvc.Attributes.AuthorizeAttribute), true).Count() == 1;
+            bool hassAuthorizeAttribute = typeof(UserProfileController).GetCustomAttributes(typeof(UI.Web.Common.Mvc.Attributes.AuthorizeAttribute), true).Count() == 1;
             Assert.AreEqual(true, hassAuthorizeAttribute);
         }
 
@@ -82,7 +83,7 @@ namespace $safeprojectname$.TestCases.UserProfile
                     Gender = Gender.Female,
                     FirstName = "Jordi",
                     BirthDate = DateTime.Now,
-                    Culture = GlobalizationHelper.CultureInfoGetOrDefault(this.currentCultureName),
+                    Culture = GlobalizationHelper.CultureInfoGetOrDefault(TestBase.currentCultureName),
                     Theme = ThemesAvailable.Flick,
                     LastName = "Vila"
                 }

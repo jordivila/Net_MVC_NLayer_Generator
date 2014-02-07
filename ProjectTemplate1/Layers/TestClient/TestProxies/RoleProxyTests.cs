@@ -11,6 +11,7 @@ using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.UserAdministration;
 using $customNamespace$.Tests.Common.Proxies;
+using $customNamespace$.Tests.Common;
 
 namespace $safeprojectname$.TestProxies
 {
@@ -26,19 +27,6 @@ namespace $safeprojectname$.TestProxies
         public RoleServiceAdminTests()
         {
 
-        }
-
-        private TestContext testContextInstance;
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
         }
 
         static Func<bool?, string[], bool?, MembershipUserWrapper> createUserTemp = delegate(bool? approved, string[] isInRoleName, bool? locked)
@@ -57,9 +45,8 @@ namespace $safeprojectname$.TestProxies
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-            TestProxyBase.Application_InitEnterpriseLibrary();
-            TestProxyBase.SetHttpContext();
-
+            TestBase.Application_InitEnterpriseLibrary();
+            TestBase.SetHttpContext();
 
 
 
@@ -80,7 +67,7 @@ namespace $safeprojectname$.TestProxies
         [ClassCleanup()]
         public static void MyClassCleanup()
         {
-            TestProxyBase.SetHttpContext();
+            TestBase.SetHttpContext();
 
             foreach (MembershipUserWrapper item in _listUsers)
             {
@@ -96,17 +83,6 @@ namespace $safeprojectname$.TestProxies
             _rolesServices.Dispose();
         }
 
-        [TestInitialize()]
-        public override void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-        }
-
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-
-        }
 
         [TestMethod]
         public void RoleServiceAdminTests_ShouldPass()

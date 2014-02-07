@@ -405,11 +405,8 @@
     <None Include="Layers\TestClient\TestProxies\MembershipProxyTests.cs" />
     <None Include="Layers\TestClient\TestProxies\RoleProxyTests.cs" />
     <None Include="Layers\TestCommon\Actions\Helper.cs" />
-    <None Include="Layers\TestCommon\Controllers\ControllerActionIvoker.cs" />
     <None Include="Layers\TestCommon\Controllers\ControllerFake.cs" />
-    <None Include="Layers\TestCommon\Controllers\ControllerFake_DataAnnotationsValidation.cs" />
     <None Include="Layers\TestCommon\Controllers\TestControllerBase.cs" />
-    <None Include="Layers\TestCommon\MembershipServices\CommonTests.cs" />
     <None Include="Layers\TestCommon\Properties\AssemblyInfo.cs" />
     <None Include="Layers\TestCommon\Proxies\TextProxyBase.cs" />
     <None Include="Layers\TestCommon\TestCommon.cs" />

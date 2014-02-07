@@ -7,7 +7,7 @@ using $customNamespace$.Models;
 using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
-using $customNamespace$.Tests.Common.MembershipServices;
+using $customNamespace$.Tests.Client.Common;
 
 namespace $safeprojectname$.TestMultiThreaded
 {
