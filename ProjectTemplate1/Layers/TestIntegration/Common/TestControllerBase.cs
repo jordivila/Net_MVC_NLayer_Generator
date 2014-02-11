@@ -11,7 +11,7 @@ using $customNamespace$.UI.Web.Unity;
 using $customNamespace$.Tests.Common;
 
 
-namespace $customNamespace$.Tests.Client.Common
+namespace $customNamespace$.Tests.Integration.Common
 {
     [TestClass]
     public abstract class TestControllerBase<Tarea> : TestIntegrationBase where Tarea : AreaRegistration, new()

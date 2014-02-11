@@ -61,9 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Layers\TestClient\Template.Tests.Integration.EndScript.bat" />
-    <None Include="Layers\TestClient\Template.Tests.Integration.StartScript.bat" />
-    <None Include="Layers\TestClient\Template.Tests.Integration.testsettings">
+    <None Include="Layers\TestIntegration\Template.Tests.Integration.EndScript.bat" />
+    <None Include="Layers\TestIntegration\Template.Tests.Integration.StartScript.bat" />
+    <None Include="Layers\TestIntegration\Template.Tests.Integration.testsettings">
       <SubType>Designer</SubType>
     </None>
     <None Include="Layers\WCFHost\Unity\UnityContainerProvider.cs" />
@@ -72,10 +72,10 @@
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderReal.cs" />
     <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\UI\Unity\UnityContainerProviderReal.cs" />
-    <None Include="Layers\TestClient\TestMultiThreaded\LoadMultiThreadTest.cs" />
-    <None Include="Layers\TestClient\TestMultiThreaded\MultiThreadResults.cs" />
-    <None Include="Layers\TestClient\Common\MembershipCommonTestMethods.cs" />
-    <None Include="Layers\TestClient\Common\TestIntegrationBase.cs" />
+    <None Include="Layers\TestIntegration\TestMultiThreaded\LoadMultiThreadTest.cs" />
+    <None Include="Layers\TestIntegration\TestMultiThreaded\MultiThreadResults.cs" />
+    <None Include="Layers\TestIntegration\Common\MembershipCommonTestMethods.cs" />
+    <None Include="Layers\TestIntegration\Common\TestIntegrationBase.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -198,8 +198,8 @@
     <None Include="Layers\BL\Properties\AssemblyInfo.cs" />
     <None Include="Layers\BL\SyndicationServices\SyndicationBL.cs" />
     <None Include="Layers\BL\TockenPersistenceServices\TokenPersistenceBL.cs" />
-    <None Include="Layers\TestClient\App.config" />
-    <None Include="Layers\TestClient\packages.config" />
+    <None Include="Layers\TestIntegration\App.config" />
+    <None Include="Layers\TestIntegration\packages.config" />
     <None Include="Layers\TestCommon\packages.config" />
     <None Include="Layers\UI\Areas\Blog\Views\Blog\Category.cshtml" />
     <None Include="Layers\UI\Areas\Blog\Views\Blog\Index.cshtml" />
@@ -396,18 +396,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Template_T4_Runtime_JS_ControllerScripts.tt</DependentUpon>
     </None>
-    <None Include="Layers\TestClient\Properties\AssemblyInfo.cs" />
-    <None Include="Layers\TestClient\TestCases\AuthorizeAttribute\AuthorizeAttributeTests.cs" />
-    <None Include="Layers\TestClient\TestCases\AuthorizeAttribute\AuthorizedAttributeAdminOnlyController.cs" />
-    <None Include="Layers\TestClient\TestCases\Configuration\ConfigurationTests.cs" />
-    <None Include="Layers\TestClient\TestCases\GenericTests\Ensure_AuthorizeAttribute.cs" />
-    <None Include="Layers\TestClient\TestCases\UserAccount\UserAccountControllerTest.cs" />
-    <None Include="Layers\TestClient\TestCases\UserProfile\UserProfileControllerTests.cs" />
-    <None Include="Layers\TestClient\TestProxies\MembershipProxyTests.cs" />
-    <None Include="Layers\TestClient\TestProxies\RoleProxyTests.cs" />
-    <None Include="Layers\TestClient\Common\Actions\Helper.cs" />
-    <None Include="Layers\TestClient\Common\Controllers\ControllerFake.cs" />
-    <None Include="Layers\TestClient\Common\TestControllerBase.cs" />
+    <None Include="Layers\TestIntegration\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\TestIntegration\TestCases\AuthorizeAttribute\AuthorizeAttributeTests.cs" />
+    <None Include="Layers\TestIntegration\TestCases\AuthorizeAttribute\AuthorizedAttributeAdminOnlyController.cs" />
+    <None Include="Layers\TestIntegration\TestCases\Configuration\ConfigurationTests.cs" />
+    <None Include="Layers\TestIntegration\TestCases\GenericTests\Ensure_AuthorizeAttribute.cs" />
+    <None Include="Layers\TestIntegration\TestCases\UserAccount\UserAccountControllerTest.cs" />
+    <None Include="Layers\TestIntegration\TestCases\UserProfile\UserProfileControllerTests.cs" />
+    <None Include="Layers\TestIntegration\TestProxies\MembershipProxyTests.cs" />
+    <None Include="Layers\TestIntegration\TestProxies\RoleProxyTests.cs" />
+    <None Include="Layers\TestIntegration\Common\Actions\Helper.cs" />
+    <None Include="Layers\TestIntegration\Common\Controllers\ControllerFake.cs" />
+    <None Include="Layers\TestIntegration\Common\TestControllerBase.cs" />
     <None Include="Layers\TestCommon\Properties\AssemblyInfo.cs" />
     <None Include="Layers\TestCommon\TestCommon.cs" />
     <None Include="Layers\UI\Common\ApplicationServicesProvider\MessageInspectorBehaviorExtension.cs" />
@@ -473,9 +473,9 @@
     <Content Include="Layers\Resources\Template.Resources.vstemplate" />
     <Content Include="Layers\Resources\Template.Resources.csproj" />
     <Content Include="Layers\Resources\__TemplateIcon.ico" />
-    <Content Include="Layers\TestClient\Template.Tests.Client.csproj" />
-    <Content Include="Layers\TestClient\Template.Tests.Client.vstemplate" />
-    <Content Include="Layers\TestClient\__TemplateIcon.ico" />
+    <Content Include="Layers\TestIntegration\Template.Tests.Integration.csproj" />
+    <Content Include="Layers\TestIntegration\Template.Tests.Integration.vstemplate" />
+    <Content Include="Layers\TestIntegration\__TemplateIcon.ico" />
     <Content Include="Layers\TestCommon\Template.Tests.Common.csproj" />
     <Content Include="Layers\TestCommon\Template.Tests.Common.vstemplate" />
     <Content Include="Layers\TestCommon\__TemplateIcon.ico" />

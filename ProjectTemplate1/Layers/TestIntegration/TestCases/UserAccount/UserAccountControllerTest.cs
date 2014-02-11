@@ -14,11 +14,11 @@ using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 using $customNamespace$.Resources.Account;
-using $customNamespace$.Tests.Client.Common;
-using $customNamespace$.Tests.Client.Common.Controllers;
-using $customNamespace$.Tests.Client.Common.Actions;
+using $customNamespace$.Tests.Integration.Common;
+using $customNamespace$.Tests.Integration.Common.Controllers;
+using $customNamespace$.Tests.Integration.Common.Actions;
 
-namespace $customNamespace$.Tests.Client.TestCases.UserAccount
+namespace $customNamespace$.Tests.Integration.TestCases.UserAccount
 {
     [TestClass]
     public class UserAccountControllerTest : TestControllerBase<UserAccountAreaRegistration>

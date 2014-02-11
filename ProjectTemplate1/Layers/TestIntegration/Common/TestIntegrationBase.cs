@@ -15,7 +15,7 @@ using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Tests.Common;
 using $customNamespace$.UI.Web.Unity;
 
-namespace $customNamespace$.Tests.Client.Common
+namespace $customNamespace$.Tests.Integration.Common
 {
     public class TestIntegrationBase : TestBase
     {

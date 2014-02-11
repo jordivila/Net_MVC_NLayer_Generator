@@ -1,2 +1,2 @@
-copy web.config $customNamespace$.Tests.Client.dll.config
+copy web.config $customNamespace$.Tests.Integration.dll.config
 rem copy web.config $customNamespace$.Tests.Integration.dll.config

@@ -10,10 +10,10 @@ using $customNamespace$.Models.Unity;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.UI.Web.Areas.Error;
 using $customNamespace$.Models.Enumerations;
-using $customNamespace$.Tests.Client.Common;
-using $customNamespace$.Tests.Client.Common.Controllers;
+using $customNamespace$.Tests.Integration.Common;
+using $customNamespace$.Tests.Integration.Common.Controllers;
 
-namespace $customNamespace$.Tests.Client.TestCases.AuthorizeAttribute
+namespace $customNamespace$.Tests.Integration.TestCases.AuthorizeAttribute
 {
     [TestClass]
     public class AuthorizeAttributeControllerTest : TestControllerBase<AdminOnlyControllerAreaRegistration>

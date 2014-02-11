@@ -6,11 +6,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using $customNamespace$.Models;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
-using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Integration.Common;
 using $customNamespace$.Tests.Common;
-using $customNamespace$.Tests.Client.Common.Controllers;
+using $customNamespace$.Tests.Integration.Common.Controllers;
 
-namespace $customNamespace$.Tests.Client.TestMultiThreaded
+namespace $customNamespace$.Tests.Integration.TestMultiThreaded
 {
     [TestClass]
     public class LoadMultiThreadTest : TestControllerBase<UserAccountAreaRegistration>

@@ -13,11 +13,11 @@ using $customNamespace$.UI.Web.Areas.UserProfile.Controllers;
 using $customNamespace$.UI.Web.Areas.UserProfile.Models;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Enumerations;
-using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Integration.Common;
 using $customNamespace$.Tests.Common;
-using $customNamespace$.Tests.Client.Common.Controllers;
+using $customNamespace$.Tests.Integration.Common.Controllers;
 
-namespace $customNamespace$.Tests.Client.TestCases.UserProfile
+namespace $customNamespace$.Tests.Integration.TestCases.UserProfile
 {
     [TestClass]
     public class UserProfileControllerTest : TestControllerBase<UserProfileAreaRegistration>

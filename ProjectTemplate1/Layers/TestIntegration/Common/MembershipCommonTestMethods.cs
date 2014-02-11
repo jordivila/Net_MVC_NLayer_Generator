@@ -5,11 +5,11 @@ using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using $customNamespace$.Models.UserRequestModel;
-using $customNamespace$.Tests.Client.Common.Controllers;
+using $customNamespace$.Tests.Integration.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 
-namespace $customNamespace$.Tests.Client.Common
+namespace $customNamespace$.Tests.Integration.Common
 {
     public class CommonTests
     {

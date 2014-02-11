@@ -12,7 +12,7 @@ using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAdministration;
 using $customNamespace$.UI.Web.Areas.UserProfile;
 
-namespace $customNamespace$.Tests.Client.Common.Controllers
+namespace $customNamespace$.Tests.Integration.Common.Controllers
 {
     /// <summary>
     /// <![CDATA[

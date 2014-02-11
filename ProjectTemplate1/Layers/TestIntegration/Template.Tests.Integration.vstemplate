@@ -1,20 +1,20 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>$customNamespace$.Tests.Client</Name>
+    <Name>$customNamespace$.Tests.Integration</Name>
     <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>$customNamespace$.Tests.Client</DefaultName>
+    <DefaultName>$customNamespace$.Tests.Integration</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.ico</Icon>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="Template.Tests.Client.csproj" File="Template.Tests.Client.csproj" ReplaceParameters="true">
+    <Project TargetFileName="Template.Tests.Integration.csproj" File="Template.Tests.Integration.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">

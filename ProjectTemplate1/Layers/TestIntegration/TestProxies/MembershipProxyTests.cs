@@ -9,9 +9,9 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
-using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Integration.Common;
 
-namespace $customNamespace$.Tests.Client.TestProxies
+namespace $customNamespace$.Tests.Integration.TestProxies
 {
     [TestClass]
     public class MembershipUnitTests : TestIntegrationBase
