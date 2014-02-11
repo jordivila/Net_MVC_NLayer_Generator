@@ -78,6 +78,10 @@
     <Compile Include="TestProxies\MembershipProxyTests.cs" />
     <Compile Include="TestProxies\RoleProxyTests.cs" />
     <Compile Include="Common\MembershipCommonTestMethods.cs" />
+    <Compile Include="Common\TestControllerBase.cs" />
+    <Compile Include="Common\TestIntegrationBase.cs" />
+    <Compile Include="Common\Controllers\ControllerFake.cs" />
+    <Compile Include="Common\Actions\Helper.cs" />
     <Compile Include="TestMultiThreaded\LoadMultiThreadTest.cs" />
     <Compile Include="TestMultiThreaded\MultiThreadResults.cs" />
   </ItemGroup>

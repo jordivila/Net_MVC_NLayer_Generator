@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using $customNamespace$.Models;
-using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.Tests.Client.Common;
 using $customNamespace$.Tests.Common;
+using $customNamespace$.Tests.Client.Common.Controllers;
 
-namespace $safeprojectname$.TestMultiThreaded
+namespace $customNamespace$.Tests.Client.TestMultiThreaded
 {
     [TestClass]
     public class LoadMultiThreadTest : TestControllerBase<UserAccountAreaRegistration>
@@ -19,30 +19,6 @@ namespace $safeprojectname$.TestMultiThreaded
         static int NumTrheads = 10;
         static int NumIterationsPerThread = 1;
 
-
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //    TestBase.MyClassInitialize(testContext);
-        //}
-
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //    TestBase.MyClassCleanup();
-        //}
-
-        //[TestInitialize()]
-        //public override void MyTestInitialize()
-        //{
-        //    base.MyTestInitialize();
-        //}
-
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-
-        //}
 
         [TestMethod]
         public void StressMultiThreadTest()
@@ -101,7 +77,7 @@ namespace $safeprojectname$.TestMultiThreaded
         {
             try
             {
-                TestBase.SetHttpContext();
+                TestIntegrationBase.SetHttpContext();
 
                 string UserNameValid = Guid.NewGuid().ToString();
                 string UserEmailValid = string.Format("{0}@valid.com", UserNameValid);

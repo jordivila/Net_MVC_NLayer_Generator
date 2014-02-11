@@ -6,7 +6,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using $customNamespace$.Models.Globalization;
 using $customNamespace$.Models.UserRequestModel;
-using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 using $customNamespace$.UI.Web.Areas.UserProfile;
@@ -16,8 +15,9 @@ using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Tests.Client.Common;
 using $customNamespace$.Tests.Common;
+using $customNamespace$.Tests.Client.Common.Controllers;
 
-namespace $safeprojectname$.TestCases.UserProfile
+namespace $customNamespace$.Tests.Client.TestCases.UserProfile
 {
     [TestClass]
     public class UserProfileControllerTest : TestControllerBase<UserProfileAreaRegistration>
@@ -45,7 +45,7 @@ namespace $safeprojectname$.TestCases.UserProfile
             logOnModel.Email = UserEmailValid;
             logOnModel.Password = UserPassword;
 
-            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controllerLogin = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
+            ControllerFake<UserAccountController, LogOnViewModel> controllerLogin = new ControllerFake<UserAccountController, LogOnViewModel>();
             ActionResult resultPost = controllerLogin.Controller.LogOn(logOnModel);
             Assert.AreEqual(true, string.IsNullOrEmpty(HttpContext.Current.Response.Cookies[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value) != true);
             Assert.AreEqual(true, resultPost.GetType() == typeof(RedirectResult));
@@ -65,7 +65,7 @@ namespace $safeprojectname$.TestCases.UserProfile
                 }
             };
 
-            ControllerFake_WithModelValidation<UserProfileController, UserProfileIndexModel> controller = new ControllerFake_WithModelValidation<UserProfileController, UserProfileIndexModel>();
+            ControllerFake<UserProfileController, UserProfileIndexModel> controller = new ControllerFake<UserProfileController, UserProfileIndexModel>();
             model.Object.UserProfileResult.Data.Gender = Gender.Female;
             ActionResult resultInvalid = controller.Controller.Edit(model.Object);
             bool invalidFound = ((UserProfileIndexModel)((ViewResult)resultInvalid).Model).UserProfileResultUpdated.IsValid == true;

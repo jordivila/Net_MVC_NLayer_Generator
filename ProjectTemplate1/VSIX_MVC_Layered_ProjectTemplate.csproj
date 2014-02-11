@@ -75,6 +75,7 @@
     <None Include="Layers\TestClient\TestMultiThreaded\LoadMultiThreadTest.cs" />
     <None Include="Layers\TestClient\TestMultiThreaded\MultiThreadResults.cs" />
     <None Include="Layers\TestClient\Common\MembershipCommonTestMethods.cs" />
+    <None Include="Layers\TestClient\Common\TestIntegrationBase.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -404,11 +405,10 @@
     <None Include="Layers\TestClient\TestCases\UserProfile\UserProfileControllerTests.cs" />
     <None Include="Layers\TestClient\TestProxies\MembershipProxyTests.cs" />
     <None Include="Layers\TestClient\TestProxies\RoleProxyTests.cs" />
-    <None Include="Layers\TestCommon\Actions\Helper.cs" />
-    <None Include="Layers\TestCommon\Controllers\ControllerFake.cs" />
-    <None Include="Layers\TestCommon\Controllers\TestControllerBase.cs" />
+    <None Include="Layers\TestClient\Common\Actions\Helper.cs" />
+    <None Include="Layers\TestClient\Common\Controllers\ControllerFake.cs" />
+    <None Include="Layers\TestClient\Common\TestControllerBase.cs" />
     <None Include="Layers\TestCommon\Properties\AssemblyInfo.cs" />
-    <None Include="Layers\TestCommon\Proxies\TextProxyBase.cs" />
     <None Include="Layers\TestCommon\TestCommon.cs" />
     <None Include="Layers\UI\Common\ApplicationServicesProvider\MessageInspectorBehaviorExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

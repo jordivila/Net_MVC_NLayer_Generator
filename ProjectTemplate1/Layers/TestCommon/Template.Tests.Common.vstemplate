@@ -15,20 +15,10 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Template.Tests.Common.csproj" File="Template.Tests.Common.csproj" ReplaceParameters="true">
-      <Folder Name="Actions" TargetFolderName="Actions">
-        <ProjectItem ReplaceParameters="true" TargetFileName="Helper.cs">Helper.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Controllers" TargetFolderName="Controllers">
-        <ProjectItem ReplaceParameters="true" TargetFileName="ControllerFake.cs">ControllerFake.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="TestControllerBase.cs">TestControllerBase.cs</ProjectItem>
-      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="TestCommon.cs">TestCommon.cs</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Proxies" TargetFolderName="Proxies">
-        <ProjectItem ReplaceParameters="true" TargetFileName="TextProxyBase.cs">TextProxyBase.cs</ProjectItem>
       </Folder>
     </Project>
   </TemplateContent>

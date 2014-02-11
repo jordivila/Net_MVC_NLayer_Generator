@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
-namespace $safeprojectname$.Actions
+namespace $customNamespace$.Tests.Client.Common.Actions
 {
     public static class Helper<TModel, TProperty>
     {

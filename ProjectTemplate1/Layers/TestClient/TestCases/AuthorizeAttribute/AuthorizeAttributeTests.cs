@@ -8,17 +8,17 @@ using $customNamespace$.Models;
 using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Models.UserRequestModel;
-using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.Error;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Client.Common.Controllers;
 
-namespace $safeprojectname$.TestCases.AuthorizeAttribute
+namespace $customNamespace$.Tests.Client.TestCases.AuthorizeAttribute
 {
     [TestClass]
     public class AuthorizeAttributeControllerTest : TestControllerBase<AdminOnlyControllerAreaRegistration>
     {
-        private void User_Check_Access<TModel>(ControllerFake_WithModelValidation<AdminOnlyControllerController, TModel> controller,
+        private void User_Check_Access<TModel>(ControllerFake<AdminOnlyControllerController, TModel> controller,
                                         Func<ActionResult, ActionResult, bool> resultComparer,
                                         ActionResult actionResultExpected)
         {
@@ -42,14 +42,14 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         [TestMethod]
         public void User_Unauthenticated_GetsRedirect()
         {
-            this.User_Check_Access(new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>(), null, null);
+            this.User_Check_Access(new ControllerFake<AdminOnlyControllerController, object>(), null, null);
         }
 
         [TestMethod]
         public void User_Authenticated_WithNOAccess_GetsRedirected()
         {
             UserForTesting userTesting = new UserForTesting(Guid.NewGuid().ToString(), "123456");
-            ControllerFake_WithModelValidation<AdminOnlyControllerController, object> controller = new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>();
+            ControllerFake<AdminOnlyControllerController, object> controller = new ControllerFake<AdminOnlyControllerController, object>();
             controller.Controller.Request.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, userTesting.AuthenticationToken));
             this.User_Check_Access(controller, null, null);
         }
@@ -58,7 +58,7 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         public void User_Authenticated_WithAccess_GetsController()
         {
             UserForTesting userTesting = new UserForTesting(Guid.NewGuid().ToString(), "123456");
-            ControllerFake_WithModelValidation<AdminOnlyControllerController, object> controller = new ControllerFake_WithModelValidation<AdminOnlyControllerController, object>();
+            ControllerFake<AdminOnlyControllerController, object> controller = new ControllerFake<AdminOnlyControllerController, object>();
             controller.Controller.Request.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, userTesting.AuthenticationToken));
             Func<ActionResult, ActionResult, bool> resultComparer = delegate(ActionResult result1, ActionResult result2)
             {
@@ -74,3 +74,4 @@ namespace $safeprojectname$.TestCases.AuthorizeAttribute
         }
     }
 }
+

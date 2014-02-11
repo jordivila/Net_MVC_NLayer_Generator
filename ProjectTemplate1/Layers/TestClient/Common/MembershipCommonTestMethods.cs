@@ -5,9 +5,9 @@ using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Tests.Client.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
-using $customNamespace$.Tests.Common.Controllers;
 
 namespace $customNamespace$.Tests.Client.Common
 {
@@ -16,7 +16,7 @@ namespace $customNamespace$.Tests.Client.Common
         #region Methods to test
         public static void Register_Succeed(string UserEmailValid, string UserPassword, ref Guid UserNameValidActivationToken)
         {
-            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
+            ControllerFake<UserAccountController, RegisterViewModel> controller = new ControllerFake<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = UserPassword;
@@ -27,14 +27,14 @@ namespace $customNamespace$.Tests.Client.Common
         }
         public static void Register_ActivateAccount(Guid UserNameValidActivationToken)
         {
-            ControllerFake_WithModelValidation<UserAccountController, object> controller = new ControllerFake_WithModelValidation<UserAccountController, object>();
+            ControllerFake<UserAccountController, object> controller = new ControllerFake<UserAccountController, object>();
             ActionResult resultValid = controller.Controller.Activate(UserNameValidActivationToken.ToString());
             Assert.AreEqual(true, resultValid.GetType() == typeof(RedirectResult));
             Assert.AreEqual(true, (((RedirectResult)resultValid).Url == controller.Controller.RedirectResultOnLogIn().Url));
         }
         public static void CantAccessMyAccount_Succeed(string UserEmailValid, ref Guid CantAccessMyAccountToken)
         {
-            ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel>();
+            ControllerFake<UserAccountController, CantAccessYourAccountViewModel> controller = new ControllerFake<UserAccountController, CantAccessYourAccountViewModel>();
             ActionResult resultInvalid = controller.Controller.CantAccessYourAccount(new CantAccessYourAccountViewModel()
             {
                 EmailAddress = UserEmailValid
@@ -46,7 +46,7 @@ namespace $customNamespace$.Tests.Client.Common
         }
         public static void ResetPassword_Succeed(string UserEmailValid, Guid CantAccessMyAccountToken, string NewPassword)
         {
-            ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel>();
+            ControllerFake<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake<UserAccountController, ResetPasswordClientModel>();
             ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = NewPassword, ConfirmPassword = NewPassword };
             ActionResult actionResult = controller.Controller.ResetPassword(CantAccessMyAccountToken.ToString(), model);
             Assert.AreEqual(true, actionResult.GetType() == typeof(RedirectResult));
@@ -54,7 +54,7 @@ namespace $customNamespace$.Tests.Client.Common
         }
         public static void Login_Succeed(string UserEmailValid, string UserPassword)
         {
-            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
+            ControllerFake<UserAccountController, LogOnViewModel> controller = new ControllerFake<UserAccountController, LogOnViewModel>();
             LogOnViewModel logOnModel = new LogOnViewModel();
             logOnModel.Email = UserEmailValid;
             logOnModel.Password = UserPassword;

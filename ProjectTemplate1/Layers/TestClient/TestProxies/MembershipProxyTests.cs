@@ -9,12 +9,12 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
-using $customNamespace$.Tests.Common.Proxies;
+using $customNamespace$.Tests.Client.Common;
 
-namespace $safeprojectname$.TestProxies
+namespace $customNamespace$.Tests.Client.TestProxies
 {
     [TestClass]
-    public class MembershipUnitTests : TestProxyBase
+    public class MembershipUnitTests : TestIntegrationBase
     {
         private static IProviderMembership _memberShipeServices;
         private static IProviderRoleManager _rolesServices;

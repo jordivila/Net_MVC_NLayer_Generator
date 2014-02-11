@@ -10,13 +10,13 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.UserAdministration;
-using $customNamespace$.Tests.Common.Proxies;
 using $customNamespace$.Tests.Common;
+using $customNamespace$.Tests.Client.Common;
 
-namespace $safeprojectname$.TestProxies
+namespace $customNamespace$.Tests.Client.TestProxies
 {
     [TestClass]
-    public class RoleServiceAdminTests : TestProxyBase
+    public class RoleServiceAdminTests : TestIntegrationBase
     {
         private static IProviderMembership _memberShipeServices;
         private static IProviderRoleManager _rolesServices;
@@ -66,7 +66,7 @@ namespace $safeprojectname$.TestProxies
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            TestBase.SetHttpContext();
+            TestIntegrationBase.SetHttpContext();
 
             foreach (MembershipUserWrapper item in _listUsers)
             {

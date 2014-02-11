@@ -10,15 +10,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using $customNamespace$.Models.DataAnnotationsAttributes;
 using $customNamespace$.Models.Membership;
-using $customNamespace$.Tests.Common.Actions;
-using $customNamespace$.Tests.Common.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 using $customNamespace$.UI.Web.Areas.UserAccount.Models;
 using $customNamespace$.Resources.Account;
 using $customNamespace$.Tests.Client.Common;
+using $customNamespace$.Tests.Client.Common.Controllers;
+using $customNamespace$.Tests.Client.Common.Actions;
 
-namespace $safeprojectname$.TestCases.UserAccount
+namespace $customNamespace$.Tests.Client.TestCases.UserAccount
 {
     [TestClass]
     public class UserAccountControllerTest : TestControllerBase<UserAccountAreaRegistration>
@@ -35,7 +35,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         [TestMethod]
         public void UserAccountControllerTest_Security()
         {
-            ControllerFake_WithModelValidation<UserAccountController, ChangePasswordViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ChangePasswordViewModel>();
+            ControllerFake<UserAccountController, ChangePasswordViewModel> controller = new ControllerFake<UserAccountController, ChangePasswordViewModel>();
 
             Expression<Func<ChangePasswordViewModel, ActionResult>> methodChangePassword = m => controller.Controller.ChangePassword(new ChangePasswordViewModel());
             Expression<Func<ChangePasswordViewModel, ActionResult>> dashBoard = m => controller.Controller.Dashboard();
@@ -100,7 +100,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Register_InvalidEmail()
         {
-            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
+            ControllerFake<UserAccountController, RegisterViewModel> controller = new ControllerFake<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = "jordi.invalidMail.com";
             ActionResult resultInvalid = controller.Controller.Register(model.Object);
@@ -109,7 +109,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Register_InvalidPassword()
         {
-            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
+            ControllerFake<UserAccountController, RegisterViewModel> controller = new ControllerFake<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = string.Empty;
@@ -123,7 +123,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Register_CreateUnActivatedAccount()
         {
-            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
+            ControllerFake<UserAccountController, RegisterViewModel> controller = new ControllerFake<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValidUnActivated;
             model.Object.Password = UserPassword;
@@ -134,7 +134,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Register_Duplicated()
         {
-            ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, RegisterViewModel>();
+            ControllerFake<UserAccountController, RegisterViewModel> controller = new ControllerFake<UserAccountController, RegisterViewModel>();
             Mock<RegisterViewModel> model = new Mock<RegisterViewModel>();
             model.Object.Email = UserEmailValid;
             model.Object.Password = UserPassword;
@@ -145,7 +145,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Register_ActivateAccount_UnexistingToken()
         {
-            ControllerFake_WithModelValidation<UserAccountController, object> controller = new ControllerFake_WithModelValidation<UserAccountController, object>();
+            ControllerFake<UserAccountController, object> controller = new ControllerFake<UserAccountController, object>();
             ActionResult resultInvalid = controller.Controller.Activate(Guid.NewGuid().ToString());
             MembershipUserWrapper user = ((AccountActivationClientModel)((ViewResult)resultInvalid).Model).Result.Data.User;
             bool invalidFound = user == null;
@@ -177,7 +177,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void CantAccessMyAccount_UnexistingEmail()
         {
-            ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, CantAccessYourAccountViewModel>();
+            ControllerFake<UserAccountController, CantAccessYourAccountViewModel> controller = new ControllerFake<UserAccountController, CantAccessYourAccountViewModel>();
             ActionResult resultInvalid = controller.Controller.CantAccessYourAccount(new CantAccessYourAccountViewModel()
             {
                 EmailAddress = "someUnexistingEmail@gmail.com"
@@ -219,7 +219,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void ResetPassword_InvalidPassword()
         {
-            ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel>();
+            ControllerFake<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake<UserAccountController, ResetPasswordClientModel>();
             ResetPasswordClientModel model = new ResetPasswordClientModel();
             ActionResult actionResult = controller.Controller.ResetPassword(Guid.NewGuid().ToString(), model);
             Assert.AreEqual(false, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.IsValid);
@@ -227,7 +227,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void ResetPassword_InvalidConfirmPassword()
         {
-            ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel>();
+            ControllerFake<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake<UserAccountController, ResetPasswordClientModel>();
             ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456" };
             ActionResult actionResult = controller.Controller.ResetPassword(Guid.NewGuid().ToString(), model);
             Assert.AreEqual(false, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.IsValid);
@@ -235,7 +235,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void ResetPassword_InvalidToken()
         {
-            ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake_WithModelValidation<UserAccountController, ResetPasswordClientModel>();
+            ControllerFake<UserAccountController, ResetPasswordClientModel> controller = new ControllerFake<UserAccountController, ResetPasswordClientModel>();
             ResetPasswordClientModel model = new ResetPasswordClientModel() { NewPassword = "123456", ConfirmPassword = "123456" };
             ActionResult actionResult = controller.Controller.ResetPassword(Guid.NewGuid().ToString(), model);
             Assert.AreEqual(false, ((ResetPasswordClientModel)((ViewResult)actionResult).Model).Result.IsValid);
@@ -259,7 +259,7 @@ namespace $safeprojectname$.TestCases.UserAccount
 
         public void Login_InvalidCredentials()
         {
-            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
+            ControllerFake<UserAccountController, LogOnViewModel> controller = new ControllerFake<UserAccountController, LogOnViewModel>();
             LogOnViewModel logOnModel = new LogOnViewModel();
             logOnModel.Email = UserEmailValid;
             logOnModel.Password = "12345asd6";
@@ -269,7 +269,7 @@ namespace $safeprojectname$.TestCases.UserAccount
         }
         public void Login_UnActivatedUser()
         {
-            ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel> controller = new ControllerFake_WithModelValidation<UserAccountController, LogOnViewModel>();
+            ControllerFake<UserAccountController, LogOnViewModel> controller = new ControllerFake<UserAccountController, LogOnViewModel>();
             LogOnViewModel logOnModel = new LogOnViewModel();
             logOnModel.Email = UserEmailValidUnActivated;
             logOnModel.Password = UserPassword;

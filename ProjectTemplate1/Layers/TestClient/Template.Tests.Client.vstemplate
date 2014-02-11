@@ -20,7 +20,6 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>
-      <Folder Name="Proxies" TargetFolderName="Proxies" />
       <Folder Name="TestCases" TargetFolderName="TestCases">
         <Folder Name="AuthorizeAttribute" TargetFolderName="AuthorizeAttribute">
           <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeAttributeTests.cs">AuthorizeAttributeTests.cs</ProjectItem>
@@ -45,6 +44,14 @@
       </Folder>
       <Folder Name="Common" TargetFolderName="Common">
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipCommonTestMethods.cs">MembershipCommonTestMethods.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestControllerBase.cs">TestControllerBase.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestIntegrationBase.cs">TestIntegrationBase.cs</ProjectItem>
+        <Folder Name="Actions" TargetFolderName="Actions">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Helper.cs">Helper.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ControllerFake.cs">ControllerFake.cs</ProjectItem>
+        </Folder>
       </Folder>
       <Folder Name="TestMultiThreaded" TargetFolderName="TestMultiThreaded">
         <ProjectItem ReplaceParameters="true" TargetFileName="LoadMultiThreadTest.cs">LoadMultiThreadTest.cs</ProjectItem>

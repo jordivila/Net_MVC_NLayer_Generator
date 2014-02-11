@@ -12,20 +12,20 @@ using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Areas.UserAdministration;
 using $customNamespace$.UI.Web.Areas.UserProfile;
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.Tests.Client.Common.Controllers
 {
     /// <summary>
     /// <![CDATA[
     ///     Usage sample:
     ///     
     ///     CantAccessYourAccountViewModel model = new CantAccessYourAccountViewModel() { EmailAddress = string.Empty };
-    ///     ModelStateDictionary modelState = new ControllerFake_WithModelValidation <UserAccountController, CantAccessYourAccountViewModel> ().ValidateModel(model).ModelState;
+    ///     ModelStateDictionary modelState = new ControllerFake <UserAccountController, CantAccessYourAccountViewModel> ().ValidateModel(model).ModelState;
     /// ]]>
     /// </summary>
     /// <typeparam name="TController"></typeparam>
     /// <typeparam name="TActionModel"></typeparam>
 
-    public class ControllerFake_WithModelValidation<TController, TActionModel> : Controller // Keep in mind -> We inherit Controller to use DataAnnotations validation unit tests
+    public class ControllerFake<TController, TActionModel> : Controller // Keep in mind -> We inherit Controller to use DataAnnotations validation unit tests
             where TController : Controller, new()
     {
         protected override void Dispose(bool disposing)
@@ -38,7 +38,7 @@ namespace $safeprojectname$.Controllers
         }
 
         #region Validation Methods Purposes Unit Tests
-        public ControllerFake_WithModelValidation<TController, TActionModel> ValidateModel(TActionModel model)
+        public ControllerFake<TController, TActionModel> ValidateModel(TActionModel model)
         {
             this.ControllerContext = new ControllerContext(this.HttpContextBaseMock.Object, new RouteData(), this.Controller);
             this.Url = new UrlHelper(new RequestContext(this.HttpContextBaseMock.Object, new RouteData()), this.Routes);
