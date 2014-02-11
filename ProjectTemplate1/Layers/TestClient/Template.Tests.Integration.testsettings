@@ -5,7 +5,7 @@
     <DeploymentItem filename="$customNamespace$\$customNamespace$.UI.Web\web.config" />
     <DeploymentItem filename="$customNamespace$\$customNamespace$.WCF.ServicesHost\bin\Debug\" />
   </Deployment>
-  <Scripts setupScript="$customNamespace$\MvcApllication.Tests.Integration.StartScript.bat" cleanupScript="$customNamespace$\MvcApllication.Tests.Integration.EndScript.bat" />
+  <Scripts setupScript="$destinationdirectory$\Template.Tests.Integration.StartScript.bat" cleanupScript="$destinationdirectory$\Template.Tests.Integration.EndScript.bat" />
   <Execution>
     <TestTypeSpecific>
       <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
