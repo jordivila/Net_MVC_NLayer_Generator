@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="VSIX_MVC_Layered.Jordi-Vila.751e31c4-9883-40b9-9df5-bb726126ebd6">
-    <Name>ASP_NET_MVC4_LAYERED</Name>
+    <Name>ASP_NET_MVC_LAYERED</Name>
     <Author>Jordi Vila</Author>
     <Version>8.0</Version>
-    <Description xml:space="preserve">Creates N-Layered solution with MVC 4 project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
+    <Description xml:space="preserve">Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Locale>1033</Locale>
     <SupportedProducts>
       <VisualStudio Version="10.0">
@@ -20,7 +20,7 @@
     </Reference>
   </References>
   <Content>
-    <Assembly AssemblyName="|Wizard;AssemblyName|">|Wizard|</Assembly>
+    <Assembly AssemblyName="|VSIX_MVC_Layered_Wizard;AssemblyName|">|VSIX_MVC_Layered_Wizard|</Assembly>
     <CustomExtension Type="CommonServiceLocator.1.0.nupkg">packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg</CustomExtension>
     <CustomExtension Type="EnterpriseLibrary.Common.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nupkg</CustomExtension>
     <CustomExtension Type="EnterpriseLibrary.Data.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Data.6.0.1304.0\EnterpriseLibrary.Data.6.0.1304.0.nupkg</CustomExtension>

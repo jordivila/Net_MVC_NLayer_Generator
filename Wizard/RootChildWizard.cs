@@ -6,10 +6,9 @@ using Microsoft.VisualStudio.TemplateWizard;
 using EnvDTE80;
 using System.IO;
 using System.Linq;
-using Wizard;
 using System.Diagnostics;
 
-namespace CustomWizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public class IWizardImplementationChild : IWizard
     {

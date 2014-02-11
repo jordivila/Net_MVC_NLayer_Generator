@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
-using Wizard;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio;
@@ -13,7 +12,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE80;
 using System.Diagnostics;
 
-namespace CustomWizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public class IWizardImplementation : IWizard
     {

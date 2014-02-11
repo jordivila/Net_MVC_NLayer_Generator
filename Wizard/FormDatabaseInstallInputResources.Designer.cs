@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Wizard {
+namespace VSIX_MVC_Layered_Wizard {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Wizard {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Wizard.FormDatabaseInstallInputResources", typeof(FormDatabaseInstallInputResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VSIX_MVC_Layered_Wizard.FormDatabaseInstallInputResources", typeof(FormDatabaseInstallInputResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

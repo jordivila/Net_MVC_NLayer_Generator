@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Wizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public class FormBase:Form
     {

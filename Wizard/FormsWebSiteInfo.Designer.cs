@@ -1,4 +1,4 @@
-﻿namespace Wizard
+﻿namespace VSIX_MVC_Layered_Wizard
 {
     partial class FormsWebSiteInfo
     {

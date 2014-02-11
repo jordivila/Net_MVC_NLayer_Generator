@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
 
-namespace Wizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public partial class FormsWebSiteInfo : UserControl
     {

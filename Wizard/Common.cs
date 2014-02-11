@@ -10,7 +10,7 @@ using System.Globalization;
 using System.Xml.Serialization;
 using System.Xml.XPath;
 
-namespace Wizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public class GlobalData
     {

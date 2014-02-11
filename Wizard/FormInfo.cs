@@ -6,9 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Wizard;
 
-namespace Wizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public partial class FormInfo : FormBase
     {

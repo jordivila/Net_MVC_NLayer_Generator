@@ -1,4 +1,4 @@
-﻿namespace Wizard
+﻿namespace VSIX_MVC_Layered_Wizard
 {
     partial class FormInfo
     {
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInfo));
-            this.formDatabaseInstallInfoUserControl1 = new Wizard.FormDatabaseInstallInfoUserControl();
+            this.formDatabaseInstallInfoUserControl1 = new VSIX_MVC_Layered_Wizard.FormDatabaseInstallInfoUserControl();
             this.ButtonDev = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.ButtonNext = new System.Windows.Forms.Button();
-            this.formWcfInfo1 = new Wizard.FormWcfInfo();
-            this.formsWebSiteInfo1 = new Wizard.FormsWebSiteInfo();
+            this.formWcfInfo1 = new VSIX_MVC_Layered_Wizard.FormWcfInfo();
+            this.formsWebSiteInfo1 = new VSIX_MVC_Layered_Wizard.FormsWebSiteInfo();
             this.SuspendLayout();
             // 
             // formDatabaseInstallInfoUserControl1

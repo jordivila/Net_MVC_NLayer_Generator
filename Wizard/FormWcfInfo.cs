@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.ServiceModel;
 
-namespace Wizard
+namespace VSIX_MVC_Layered_Wizard
 {
     public partial class FormWcfInfo : UserControl
     {

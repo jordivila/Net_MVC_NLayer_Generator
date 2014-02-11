@@ -38,8 +38,8 @@
     </Project>
   </TemplateContent>
   <WizardExtension>
-    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
-    <FullClassName>CustomWizard.IWizardImplementationChild</FullClassName>
+    <Assembly>VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>VSIX_MVC_Layered_Wizard.IWizardImplementationChild</FullClassName>
   </WizardExtension>
   <WizardExtension>
     <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>

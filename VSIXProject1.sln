@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F46D4B99-819A-44B0-9576-A7E0514D67BC}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIX_MVC_Layered_Project", "VSIXProject1\VSIX_MVC_Layered_Project.csproj", "{5EBB22C5-C75A-498F-BE4F-7E7C17BE6985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wizard", "Wizard\Wizard.csproj", "{A334D4A2-9D04-4C52-8164-59ED4B8EB800}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIX_MVC_Layered_Wizard", "Wizard\VSIX_MVC_Layered_Wizard.csproj", "{A334D4A2-9D04-4C52-8164-59ED4B8EB800}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIX_MVC_Layered_ProjectTemplate", "ProjectTemplate1\VSIX_MVC_Layered_ProjectTemplate.csproj", "{C6FF170E-1B92-470C-A829-1FA834899A76}"
 EndProject

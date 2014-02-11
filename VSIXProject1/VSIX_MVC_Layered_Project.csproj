@@ -193,9 +193,9 @@
       <TemplateType>Project</TemplateType>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
     </ProjectReference>
-    <ProjectReference Include="..\Wizard\Wizard.csproj">
+    <ProjectReference Include="..\Wizard\VSIX_MVC_Layered_Wizard.csproj">
       <Project>{A334D4A2-9D04-4C52-8164-59ED4B8EB800}</Project>
-      <Name>Wizard</Name>
+      <Name>VSIX_MVC_Layered_Wizard</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <VSIXSubPath>Web</VSIXSubPath>

@@ -1,7 +1,7 @@
 ﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>ASP.NET MVC 4 Layered Application</Name>
-    <Description xml:space="preserve">Creates N-Layered solution with MVC 4 project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
+    <Name>ASP.NET MVC Layered Application</Name>
+    <Description xml:space="preserve">Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Icon></Icon>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
@@ -27,7 +27,7 @@
     </ProjectCollection>
   </TemplateContent>
   <WizardExtension>
-    <Assembly>Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
-    <FullClassName>CustomWizard.IWizardImplementation</FullClassName>
+    <Assembly>VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>VSIX_MVC_Layered_Wizard.IWizardImplementation</FullClassName>
   </WizardExtension>
 </VSTemplate>
