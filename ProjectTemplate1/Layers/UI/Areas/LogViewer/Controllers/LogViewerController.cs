@@ -83,18 +83,38 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
 
             TraceListenerReferenceData traceListenerReference = model.LogTraceListeners.Where(x => x.Name == listenerName).First();
             TraceListenerData traceListener = (ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings).TraceListeners.Where(x => x.Name == traceListenerReference.Name).First();
-            if (traceListener.Type == typeof(ProxiedWcfTraceListener))
+
+            var traceListenerInstance = Activator.CreateInstance(traceListener.Type);
+
+            if (traceListenerInstance is ICustomTraceListener)
             {
-                return RedirectPermanent(LogViewerUrlHelper.LogViewerByProxiedWcfTraceListener(this.Url, model.LogTraceSourceSelected, model.LogTraceListenerSelected));
-            }
+                model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
+                model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
 
-            if (traceListener.Type == typeof(RollingXmlTraceListener))
+                if (this.RequestType() == HttpVerbs.Get)
+                {
+                    model.Filter = new DataFilterLogger()
+                    {
+                        LogTraceSourceSelected = sourceName,
+                        Page = 0,
+                        PageSize = (int)PageSizesAvailable.RowsPerPage10
+                    };
+                }
+
+                if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
+                {
+                    this.ModelState.Clear();
+                    model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
+                }
+
+                model.LogMessages = ((ICustomTraceListener)traceListenerInstance).SearchLogMessages(listenerName, sourceName, LogginConfigurationSectionName, model.Filter);
+
+                return View(LogViewerViewHelper.LogViewerDisplay, model);
+            }
+            else
             {
-                return RedirectPermanent(LogViewerUrlHelper.LogViewerByRollingXmlFileTraceListener(this.Url, model.LogTraceSourceSelected, model.LogTraceListenerSelected));
+                throw new Exception("TraceListener Not Supperted");
             }
-
-            throw new Exception("TraceListener Not Supperted");
-
         }
         public ActionResult LogViewerById(string guid)
         {
@@ -111,73 +131,6 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
 
 
             return View(LogViewerViewHelper.LogViewerById, model);
-        }
-        public ActionResult LogViewerByProxiedWcfTraceListener(string sourceName, string listenerName, LogViewerModel model)
-        {
-            model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
-            model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
-
-            if (this.RequestType() == HttpVerbs.Get)
-            {
-                model.Filter = new DataFilterLogger()
-                {
-                    LogTraceSourceSelected = sourceName,
-                    Page = 0,
-                    PageSize = (int)PageSizesAvailable.RowsPerPage10
-                };
-            }
-
-
-            if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
-            {
-                this.ModelState.Clear();
-                model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
-            }
-
-            using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
-            {
-                DataResultLogMessageList resultSearch = provider.LoggingExceptionGetAll(model.Filter);
-                model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
-                model.LogMessages = new DataResultLogMessageList()
-                {
-                    Data = resultSearch.Data,
-                    Page = resultSearch.Page,
-                    PageSize = resultSearch.PageSize,
-                    SortAscending = resultSearch.SortAscending,
-                    SortBy = resultSearch.SortBy,
-                    TotalPages = resultSearch.TotalPages,
-                    TotalRows = resultSearch.TotalRows
-                };
-            }
-
-
-            return View(LogViewerViewHelper.LogViewerDisplay, model);
-        }
-        public ActionResult LogViewerByRollingXmlFileTraceListener(string sourceName, string listenerName, LogViewerModel model)
-        {
-            model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
-            model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
-
-            if (ControllerHelper.RequestType(this.ControllerContext) == HttpVerbs.Get)
-            {
-                model.Filter = new DataFilterLogger()
-                {
-                    Page = 0,
-                    PageSize = (int)PageSizesAvailable.RowsPerPage10,
-                    IsClientVisible = false
-                };
-            }
-
-            if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
-            {
-                this.ModelState.Clear();
-                model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
-            }
-
-            model.LogMessages = RollingXmlTraceListener.RollingXmlFileListenerToList(model.LogTraceListenerSelected, sourceName, LogginConfigurationSectionName, model.Filter);
-
-
-            return View(LogViewerViewHelper.LogViewerDisplay, model);
         }
     }
 }

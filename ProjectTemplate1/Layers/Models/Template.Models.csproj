@@ -109,6 +109,7 @@
     <Compile Include="Enumerations\Enums.cs" />
     <Compile Include="Globalization\GlobalizationHelper.cs" />
     <Compile Include="Logging\CustomTraceListenerAzureTableStorage.cs" />
+    <Compile Include="Logging\CustomTraceListenerInterface.cs" />
     <Compile Include="Logging\CustomTraceListenerRollingXml.cs" />
     <Compile Include="Logging\CustomTraceListenerProxiedWCF.cs" />
     <Compile Include="Logging\LoggingHelper.cs" />

@@ -15,8 +15,14 @@ using $customNamespace$.Models.Common;
 namespace $customNamespace$.Models.Logging
 {
     [ConfigurationElementType(typeof(RollingFlatFileTraceListenerData))]
-    public class RollingXmlTraceListener : RollingFlatFileTraceListener
+    public class RollingXmlTraceListener : RollingFlatFileTraceListener, ICustomTraceListener
     {
+        public RollingXmlTraceListener()
+            : base("RollingXmlTraceListener.xml")
+        {
+            
+        }
+
         public RollingXmlTraceListener(string fileName, string header, string footer, ILogFormatter formatter, int rollSizeKB, string timeStampPattern, RollFileExistsBehavior rollFileExistsBehavior, RollInterval rollInterval)
             : base(fileName, header, footer, formatter, rollSizeKB, timeStampPattern, rollFileExistsBehavior, rollInterval)
         {
@@ -29,14 +35,13 @@ namespace $customNamespace$.Models.Logging
 
         }
 
-
-        public static DataResultLogMessageList RollingXmlFileListenerToList(string listenerName, string categorySourceName, string LogginConfigurationSectionName, IDataFilter dataFilter)
+        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, IDataFilter dataFilter)
         {
             List<LogMessageModel> logMessageModelList = new List<LogMessageModel>();
 
-            using (MemoryStream ms = new MemoryStream(RollingXmlTraceListener.GetAllDataMemoryStream(listenerName, LogginConfigurationSectionName)))
+            using (MemoryStream ms = new MemoryStream(this.GetAllDataMemoryStream(listenerName, LogginConfigurationSectionName)))
             {
-                logMessageModelList = RollingXmlTraceListener.GetAllDataDeserialized(ms);
+                logMessageModelList = this.GetAllDataDeserialized(ms);
                 logMessageModelList = logMessageModelList.Where(r => r.Category == categorySourceName).ToList();
             }
 
@@ -52,7 +57,7 @@ namespace $customNamespace$.Models.Logging
             };
         }
 
-        private static string RollingXmlFileListenerFilePath(string listenerName, string LogginConfigurationSectionName)
+        private string RollingXmlFileListenerFilePath(string listenerName, string LogginConfigurationSectionName)
         {
             string filePath = string.Empty;
             LoggingSettings log = ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings;
@@ -68,7 +73,7 @@ namespace $customNamespace$.Models.Logging
             return CheckEnvironmentVarInLogFilePath(filePath);
         }
 
-        private static string CheckEnvironmentVarInLogFilePath(string filePath)
+        private string CheckEnvironmentVarInLogFilePath(string filePath)
         {
             // Environment Variables are enclosed "%" characters.
             // This routine checks if exists some environment variable in log file path
@@ -85,18 +90,18 @@ namespace $customNamespace$.Models.Logging
             return filePath;
         }
 
-        private static string[] GetAllFilesWrittenByListener(string listenerName, string LogginConfigurationSectionName)
+        private string[] GetAllFilesWrittenByListener(string listenerName, string LogginConfigurationSectionName)
         {
-            string filePath = RollingXmlTraceListener.RollingXmlFileListenerFilePath(listenerName, LogginConfigurationSectionName);
+            string filePath = this.RollingXmlFileListenerFilePath(listenerName, LogginConfigurationSectionName);
             string directoryName = Path.GetDirectoryName(filePath);
             string pattern = string.Format("*{0}*", Path.GetFileNameWithoutExtension(filePath));
             return Directory.GetFiles(directoryName, pattern);
         }
 
-        private static byte[] GetAllDataMemoryStream(string listenerName, string LogginConfigurationSectionName)
+        private byte[] GetAllDataMemoryStream(string listenerName, string LogginConfigurationSectionName)
         {
             List<byte[]> buffers = new List<byte[]>();
-            string[] logFiles = RollingXmlTraceListener.GetAllFilesWrittenByListener(listenerName, LogginConfigurationSectionName);
+            string[] logFiles = this.GetAllFilesWrittenByListener(listenerName, LogginConfigurationSectionName);
 
             foreach (string file in logFiles)
             {
@@ -113,7 +118,7 @@ namespace $customNamespace$.Models.Logging
             return buffers.SelectMany(b => b).ToArray();
         }
 
-        private static List<LogMessageModel> GetAllDataDeserialized(MemoryStream ms)
+        private List<LogMessageModel> GetAllDataDeserialized(MemoryStream ms)
         {
             List<LogMessageModel> result = new List<LogMessageModel>();
             XmlReaderSettings set = new XmlReaderSettings();

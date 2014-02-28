@@ -73,6 +73,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerAzureTableStorage.cs">CustomTraceListenerAzureTableStorage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerProxiedWCF.cs">CustomTraceListenerProxiedWCF.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerRollingXml.cs">CustomTraceListenerRollingXml.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerInterface.cs">CustomTraceListenerInterface.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LoggingHelper.cs">LoggingHelper.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogMessage.cs">LogMessage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogMessageFilter.cs">LogMessageFilter.cs</ProjectItem>

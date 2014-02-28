@@ -82,6 +82,7 @@
     <None Include="Layers\TestIntegration\Common\MembershipCommonTestMethods.cs" />
     <None Include="Layers\TestIntegration\Common\TestIntegrationBase.cs" />
     <None Include="Layers\Models\Logging\CustomTraceListenerAzureTableStorage.cs" />
+    <None Include="Layers\Models\Logging\CustomTraceListenerInterface.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
