@@ -5,11 +5,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.XPath;
-using $safeprojectname$.Common;
-using $safeprojectname$.Globalization;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
+using $customNamespace$.Models.Common;
+using $customNamespace$.Models.Globalization;
+using $customNamespace$.Models.Enumerations;
 
-
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
     [DataContract]
     public class DataResultLogMessageList : baseDataPagedResult<LogMessageModel>, IDataResultPaginatedModel<LogMessageModel>
@@ -35,6 +36,18 @@ namespace $safeprojectname$.Logging
         }
 
         public LogMessageModel() { }
+        public LogMessageModel(LogEntry logEntry)
+            : this(
+                logEntry.Message,
+                logEntry.Categories.Count() > 0 ? logEntry.Categories.First() : LoggerCategories.UIGeneral,
+                logEntry.Priority,
+                logEntry.EventId,
+                logEntry.Severity,
+                logEntry.Title,
+                logEntry.ExtendedProperties)
+        {
+            this.Timestamp = logEntry.TimeStamp;
+        }
         public LogMessageModel(XPathNavigator node)
         {
             this.timestampField = DateTime.ParseExact(((XPathItem)node.SelectSingleNode("Timestamp")).Value, LogMessageModel.LogMessageModel_DatetimeFormat, GlobalizationHelper.CultureInfoGetOrDefault(string.Empty));

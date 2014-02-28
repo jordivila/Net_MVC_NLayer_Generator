@@ -9,15 +9,15 @@ using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.General;
-using $safeprojectname$.Areas.LogViewer.Models;
-using $safeprojectname$.Areas.UserAccount;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Common.Mvc.Html;
+using $customNamespace$.UI.Web.Areas.LogViewer.Models;
+using $customNamespace$.UI.Web.Areas.UserAccount;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Common.Mvc.Html;
 
-namespace $safeprojectname$.Areas.LogViewer.Controllers
+namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
 {
-    [$safeprojectname$.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
-        public class LogViewerController : Controller, IControllerWithClientResources
+    [$customNamespace$.UI.Web.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
+    public class LogViewerController : Controller, IControllerWithClientResources
     {
         public string[] GetControllerJavascriptResources
         {
@@ -174,28 +174,10 @@ namespace $safeprojectname$.Areas.LogViewer.Controllers
                 model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
             }
 
-            List<LogMessageModel> messages = RollingXmlTraceListener.RollingXmlFileListenerToList(model.LogTraceListenerSelected, LogginConfigurationSectionName);
-            model.LogMessages = new DataResultLogMessageList()
-            {
-                Page = model.Filter.Page,
-                PageSize = model.Filter.PageSize,
-                Data = new List<LogMessageModel>(),
-                TotalRows = messages.Count,
-            };
+            model.LogMessages = RollingXmlTraceListener.RollingXmlFileListenerToList(model.LogTraceListenerSelected, sourceName, LogginConfigurationSectionName, model.Filter);
 
-            int rowStartIndex = model.Filter.Page.Value * model.Filter.PageSize;
-            int rowEndIndex = (int)(model.Filter.Page.Value * model.Filter.PageSize) + model.Filter.PageSize;
-
-            for (int i = rowStartIndex; i < rowEndIndex; i++)
-            {
-                if (i < messages.Count)
-                {
-                    model.LogMessages.Data.Add(messages[i]);
-                }
-            }
 
             return View(LogViewerViewHelper.LogViewerDisplay, model);
         }
     }
-
 }

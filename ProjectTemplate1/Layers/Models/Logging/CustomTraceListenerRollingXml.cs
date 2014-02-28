@@ -10,8 +10,9 @@ using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Logging.Formatters;
 using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
+using $customNamespace$.Models.Common;
 
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
     [ConfigurationElementType(typeof(RollingFlatFileTraceListenerData))]
     public class RollingXmlTraceListener : RollingFlatFileTraceListener
@@ -29,57 +30,26 @@ namespace $safeprojectname$.Logging
         }
 
 
-        public static List<LogMessageModel> RollingXmlFileListenerToList(string listenerName, string LogginConfigurationSectionName)
+        public static DataResultLogMessageList RollingXmlFileListenerToList(string listenerName, string categorySourceName, string LogginConfigurationSectionName, IDataFilter dataFilter)
         {
-            List<LogMessageModel> result = new List<LogMessageModel>();
-            MemoryStream ms = null;
-            BinaryWriter ws = null;
-            try
+            List<LogMessageModel> logMessageModelList = new List<LogMessageModel>();
+
+            using (MemoryStream ms = new MemoryStream(RollingXmlTraceListener.GetAllDataMemoryStream(listenerName, LogginConfigurationSectionName)))
             {
-                string filePath = RollingXmlTraceListener.RollingXmlFileListenerFilePath(listenerName, LogginConfigurationSectionName);
-                
-                string directoryName = Path.GetDirectoryName(filePath);
-                string pattern = string.Format("*{0}*", Path.GetFileNameWithoutExtension(filePath));
-                string[] logFiles = Directory.GetFiles(directoryName, pattern);
-                ms = new MemoryStream();
-                ws = new BinaryWriter(ms);
-                foreach (string file in logFiles)
-                {
-                    try
-                    {
-                        ws.Write(System.IO.File.ReadAllBytes(file));
-                    }
-                    catch (IOException)
-                    {
-
-                    }
-                }
-
-                ms.Position = 0;
-
-                XmlReaderSettings set = new XmlReaderSettings();
-                set.ConformanceLevel = ConformanceLevel.Fragment;
-                XPathDocument doc = new XPathDocument(XmlReader.Create(ms, set));
-                XPathNavigator nav = doc.CreateNavigator();
-
-                XPathExpression selectExpression = nav.Compile("/LogMessageModel");
-                selectExpression.AddSort(nav.Compile("Timestamp"), new LogMessageModelDatetimeSortDescending());
-                XPathNodeIterator nodeIterator = nav.Select(selectExpression);
-                while (nodeIterator.MoveNext())
-                {
-                    result.Add(new LogMessageModel(nodeIterator.Current));
-                }
+                logMessageModelList = RollingXmlTraceListener.GetAllDataDeserialized(ms);
+                logMessageModelList = logMessageModelList.Where(r => r.Category == categorySourceName).ToList();
             }
-            catch (Exception)
+
+            int rowStartIndex = dataFilter.Page.Value * dataFilter.PageSize;
+            int rowEndIndex = (int)(dataFilter.Page.Value * dataFilter.PageSize) + dataFilter.PageSize;
+
+            return new DataResultLogMessageList()
             {
-                if (ws != null) { ws.Close(); ws.Dispose(); }
-                if (ms != null) { ms.Close(); ms.Dispose(); }
-
-                //LogMessageModel logM = new LogMessageModel();
-                //logM.Title = ex.Message;
-                //result.Add(logM);
-            }
-            return result;
+                Page = dataFilter.Page,
+                PageSize = dataFilter.PageSize,
+                Data = logMessageModelList.Skip(rowStartIndex).Take(rowEndIndex).ToList(),
+                TotalRows = logMessageModelList.Count,
+            };
         }
 
         private static string RollingXmlFileListenerFilePath(string listenerName, string LogginConfigurationSectionName)
@@ -115,12 +85,58 @@ namespace $safeprojectname$.Logging
             return filePath;
         }
 
+        private static string[] GetAllFilesWrittenByListener(string listenerName, string LogginConfigurationSectionName)
+        {
+            string filePath = RollingXmlTraceListener.RollingXmlFileListenerFilePath(listenerName, LogginConfigurationSectionName);
+            string directoryName = Path.GetDirectoryName(filePath);
+            string pattern = string.Format("*{0}*", Path.GetFileNameWithoutExtension(filePath));
+            return Directory.GetFiles(directoryName, pattern);
+        }
+
+        private static byte[] GetAllDataMemoryStream(string listenerName, string LogginConfigurationSectionName)
+        {
+            List<byte[]> buffers = new List<byte[]>();
+            string[] logFiles = RollingXmlTraceListener.GetAllFilesWrittenByListener(listenerName, LogginConfigurationSectionName);
+
+            foreach (string file in logFiles)
+            {
+                try
+                {
+                    buffers.Add(File.ReadAllBytes(file));
+                }
+                catch (IOException)
+                {
+
+                }
+            }
+
+            return buffers.SelectMany(b => b).ToArray();
+        }
+
+        private static List<LogMessageModel> GetAllDataDeserialized(MemoryStream ms)
+        {
+            List<LogMessageModel> result = new List<LogMessageModel>();
+            XmlReaderSettings set = new XmlReaderSettings();
+            set.ConformanceLevel = ConformanceLevel.Fragment;
+            XPathDocument doc = new XPathDocument(XmlReader.Create(ms, set));
+            XPathNavigator nav = doc.CreateNavigator();
+
+            XPathExpression selectExpression = nav.Compile("/LogMessageModel");
+            selectExpression.AddSort(nav.Compile("Timestamp"), new LogMessageModelDatetimeSortDescending());
+            XPathNodeIterator nodeIterator = nav.Select(selectExpression);
+            while (nodeIterator.MoveNext())
+            {
+                result.Add(new LogMessageModel(nodeIterator.Current));
+            }
+
+            return result;
+        }
     }
 
     [ConfigurationElementType(typeof(CustomFormatterData))]
     public class RollingXmlTraceListenerFormatter : TextFormatter, ILogFormatter
     {
-        private static string RollingXmlTraceListener = @"<LogMessageModel><Timestamp><![CDATA[{timestamp(yyyy/MM/dd HH:mm:ss.fffffff)}]]></Timestamp><Message><![CDATA[{message}]]></Message><Category><![CDATA[{category}]]></Category><Priority><![CDATA[{priority}]]></Priority><EventId><![CDATA[{eventid}]]></EventId><Severity><![CDATA[{severity}]]></Severity><Title><![CDATA[{title}]]></Title><Machine><![CDATA[{localMachine}]]></Machine><App_Domain><![CDATA[{localAppDomain}]]></App_Domain><ProcessId><![CDATA[{localProcessId}]]></ProcessId><Process_Name><![CDATA[{localProcessName}]]></Process_Name><Thread_Name><![CDATA[{threadName}]]></Thread_Name><Win32_ThreadId><![CDATA[{win32ThreadId}]]></Win32_ThreadId><FormattedMessage>{dictionary(<KeyValuePair><Name><![CDATA[{key}]]></Name><Value><![CDATA[{value}]]></Value></KeyValuePair>)}</FormattedMessage></LogMessageModel>";
+        private const string RollingXmlTraceListener = @"<LogMessageModel><Timestamp><![CDATA[{timestamp(yyyy/MM/dd HH:mm:ss.fffffff)}]]></Timestamp><Message><![CDATA[{message}]]></Message><Category><![CDATA[{category}]]></Category><Priority><![CDATA[{priority}]]></Priority><EventId><![CDATA[{eventid}]]></EventId><Severity><![CDATA[{severity}]]></Severity><Title><![CDATA[{title}]]></Title><Machine><![CDATA[{localMachine}]]></Machine><App_Domain><![CDATA[{localAppDomain}]]></App_Domain><ProcessId><![CDATA[{localProcessId}]]></ProcessId><Process_Name><![CDATA[{localProcessName}]]></Process_Name><Thread_Name><![CDATA[{threadName}]]></Thread_Name><Win32_ThreadId><![CDATA[{win32ThreadId}]]></Win32_ThreadId><FormattedMessage>{dictionary(<KeyValuePair><Name><![CDATA[{key}]]></Name><Value><![CDATA[{value}]]></Value></KeyValuePair>)}</FormattedMessage></LogMessageModel>";
 
         public RollingXmlTraceListenerFormatter(NameValueCollection attributes)
             : base(attributes.AllKeys.Contains("template") ? attributes["template"] : RollingXmlTraceListener)

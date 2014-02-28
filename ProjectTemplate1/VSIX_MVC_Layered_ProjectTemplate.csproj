@@ -61,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Layers\CloudServices\Roles\diagnostics.wadcfg" />
+    <None Include="Layers\CloudServices\Template.CloudServices.ccproj" />
+    <None Include="Layers\CloudServices\ServiceConfiguration.Cloud.cscfg" />
+    <None Include="Layers\CloudServices\ServiceConfiguration.Local.cscfg" />
+    <None Include="Layers\CloudServices\ServiceDefinition.csdef" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.EndScript.bat" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.StartScript.bat" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.testsettings">
@@ -76,6 +81,7 @@
     <None Include="Layers\TestIntegration\TestMultiThreaded\MultiThreadResults.cs" />
     <None Include="Layers\TestIntegration\Common\MembershipCommonTestMethods.cs" />
     <None Include="Layers\TestIntegration\Common\TestIntegrationBase.cs" />
+    <None Include="Layers\Models\Logging\CustomTraceListenerAzureTableStorage.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -454,6 +460,8 @@
     <Content Include="Layers\BL\Template.BL.vstemplate" />
     <Content Include="Layers\BL\Template.BL.csproj" />
     <Content Include="Layers\BL\__TemplateIcon.ico" />
+    <Content Include="Layers\CloudServices\Template.CloudServices.vstemplate" />
+    <Content Include="Layers\CloudServices\__TemplateIcon.ico" />
     <Content Include="Layers\DAL\Template.DAL.vstemplate">
       <SubType>Designer</SubType>
     </Content>

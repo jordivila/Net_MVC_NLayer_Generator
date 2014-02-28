@@ -1,0 +1,30 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.CloudServices</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CloudServiceProject</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.CloudServices</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.CloudServices.ccproj" File="Template.CloudServices.ccproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="ServiceConfiguration.Cloud.cscfg">ServiceConfiguration.Cloud.cscfg</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ServiceConfiguration.Local.cscfg">ServiceConfiguration.Local.cscfg</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDefinition.csdef">ServiceDefinition.csdef</ProjectItem>
+      <Folder Name="Roles" TargetFolderName="$customNamespace$.UI.WebContent">
+        <ProjectItem ReplaceParameters="true" TargetFileName="diagnostics.wadcfg">diagnostics.wadcfg</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>VSIX_MVC_Layered_Wizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+</VSTemplate>

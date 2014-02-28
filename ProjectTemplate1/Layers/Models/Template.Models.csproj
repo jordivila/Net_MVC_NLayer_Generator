@@ -50,6 +50,18 @@
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
+
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\WindowsAzure.Storage.2.1.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+
+
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -95,9 +107,8 @@
     <Compile Include="DataAnnotationsAttributes\UrlAttribute.cs" />
     <Compile Include="Enumerations\EnumExtensions.cs" />
     <Compile Include="Enumerations\Enums.cs" />
-    <Compile Include="Globalization\GlobalizationHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Globalization\GlobalizationHelper.cs" />
+    <Compile Include="Logging\CustomTraceListenerAzureTableStorage.cs" />
     <Compile Include="Logging\CustomTraceListenerRollingXml.cs" />
     <Compile Include="Logging\CustomTraceListenerProxiedWCF.cs" />
     <Compile Include="Logging\LoggingHelper.cs" />
