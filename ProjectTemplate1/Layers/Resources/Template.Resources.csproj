@@ -94,6 +94,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JavascriptTexts.es.resx</DependentUpon>
     </Compile>
+    <Compile Include="LogViewer\LogViewerTexts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogViewerTexts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LogViewer\LogViewerTexts.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogViewerTexts.es.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceHelpers\ResourceHelperPre.cs" />
     <Compile Include="UserAdministration\UserAdminTexts.Designer.cs">
@@ -168,6 +178,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>JavascriptTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="LogViewer\LogViewerTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogViewerTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogViewer\LogViewerTexts.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogViewerTexts.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+
     <EmbeddedResource Include="UserAdministration\UserAdminTexts.es.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UserAdminTexts.es.Designer.cs</LastGenOutput>

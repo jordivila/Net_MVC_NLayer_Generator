@@ -83,6 +83,8 @@
     <None Include="Layers\TestIntegration\Common\TestIntegrationBase.cs" />
     <None Include="Layers\Models\Logging\CustomTraceListenerAzureTableStorage.cs" />
     <None Include="Layers\Models\Logging\CustomTraceListenerInterface.cs" />
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.Designer.cs" />
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.Designer.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -430,7 +432,10 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.resx" />
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.resx" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Layers\Resources\Account\AccountResources.Designer.cs" />
     <None Include="Layers\Resources\Account\AccountResources.es.Designer.cs" />

@@ -13,6 +13,10 @@ using $customNamespace$.UI.Web.Areas.LogViewer.Models;
 using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.UI.Web.Controllers;
 using $customNamespace$.UI.Web.Common.Mvc.Html;
+using System.Diagnostics;
+using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
+using System.Reflection;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
 {
@@ -81,41 +85,47 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
 
             model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
 
-            TraceListenerReferenceData traceListenerReference = model.LogTraceListeners.Where(x => x.Name == listenerName).First();
-            TraceListenerData traceListener = (ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings).TraceListeners.Where(x => x.Name == traceListenerReference.Name).First();
-
-            var traceListenerInstance = Activator.CreateInstance(traceListener.Type);
-
-            if (traceListenerInstance is ICustomTraceListener)
+            LogWriterFactory logWriterFactory = new LogWriterFactory();
+            LogWriter logWriterInstance = logWriterFactory.Create();
+            using (TraceListener traceListenerInstance = logWriterInstance.TraceSources[sourceName].Listeners.Where(p => p.Name == listenerName).First())
             {
-                model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
-                model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
-
-                if (this.RequestType() == HttpVerbs.Get)
+                if (traceListenerInstance is ICustomTraceListener)
                 {
-                    model.Filter = new DataFilterLogger()
+                    model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
+                    model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
+
+                    if (this.RequestType() == HttpVerbs.Get)
                     {
-                        LogTraceSourceSelected = sourceName,
-                        Page = 0,
-                        PageSize = (int)PageSizesAvailable.RowsPerPage10
-                    };
-                }
+                        model.Filter = new DataFilterLogger()
+                        {
+                            LogTraceSourceSelected = sourceName,
+                            Page = 0,
+                            PageSize = (int)PageSizesAvailable.RowsPerPage10
+                        };
 
-                if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
+                        model.Filter.CreationDateFrom = DateTime.Now;   // This value should be set by user as a form vlues
+                        model.Filter.CreationDateTo = DateTime.Now;     // This value should be set by user as a form vlues
+
+                    }
+
+
+                    if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
+                    {
+                        this.ModelState.Clear();
+                        model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
+                    }
+
+                    model.LogMessages = ((ICustomTraceListener)traceListenerInstance).SearchLogMessages(listenerName, sourceName, LogginConfigurationSectionName, model.Filter);
+
+                    return View(LogViewerViewHelper.LogViewerDisplay, model);
+                }
+                else
                 {
-                    this.ModelState.Clear();
-                    model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
+                    throw new Exception("TraceListener Not Supperted");
                 }
-
-                model.LogMessages = ((ICustomTraceListener)traceListenerInstance).SearchLogMessages(listenerName, sourceName, LogginConfigurationSectionName, model.Filter);
-
-                return View(LogViewerViewHelper.LogViewerDisplay, model);
-            }
-            else
-            {
-                throw new Exception("TraceListener Not Supperted");
             }
         }
+
         public ActionResult LogViewerById(string guid)
         {
             LogViewerModel model = new LogViewerModel();

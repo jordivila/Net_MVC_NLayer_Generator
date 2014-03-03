@@ -15,37 +15,60 @@ using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using $customNamespace$.Models.Common;
+using $customNamespace$.Models.Configuration;
+using System.Globalization;
+using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace $customNamespace$.Models.Logging
 {
     [ConfigurationElementType(typeof(CustomTraceListenerData))]
-    public class AzureTableStorageListener : CustomTraceListener
+    public class AzureTableStorageListener : TraceListener, ICustomTraceListener
     {
-        private const string _azureStorageCnnAttributeName = "azureStorageConnectionStringName";
+        public AzureTableStorageListener()
+            : base()
+        {
 
-        private CloudStorageAccount storageAccount = null;
-        private CloudTableClient tableClient = null;
+        }
+
+        private const string _azureStorageCnnAttributeName = "azureStorageConnectionStringName";
+        private CloudStorageAccount _storageAccount = null;
+        private CloudTableClient _tableClient = null;
+        private Dictionary<string, List<TableOperation>> _tableBatchOperationList = new Dictionary<string, List<TableOperation>>();
+        private int _tableBatchOperationListLimit = 90;
+
+        private CloudTableClient TableClient()
+        {
+            if (this._storageAccount == null)
+            {
+
+
+
+                this._storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting(this.Attributes[_azureStorageCnnAttributeName]));
+                this._tableClient = _storageAccount.CreateCloudTableClient();
+            }
+
+            return this._tableClient;
+        }
 
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            if (this.storageAccount == null)
-            {
-                this.storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting(this.Attributes[_azureStorageCnnAttributeName]));
-                this.tableClient = storageAccount.CreateCloudTableClient();
-            }
-
-            if (this.storageAccount != null)
+            if (this.TableClient() != null)
             {
                 //if (data is LogEntry && this.Formatter != null)
                 if (data is LogEntry)
                 {
-                    LogMessageModel logMsg = new LogMessageModel(data as LogEntry);
+                    LogMessageModel logMessage = new LogMessageModel(data as LogEntry);
+                    AzureTableStorageListenerEntity azureLogEntity = new AzureTableStorageListenerEntity(logMessage);
 
-                    CloudTable table = tableClient.GetTableReference(logMsg.Category);
-                    table.CreateIfNotExists();
-
-                    TableOperation insertOperation = TableOperation.Insert(new AzureTableStorageListenerEntity(logMsg));
-                    table.Execute(insertOperation);
+                    if (ApplicationConfiguration.IsDebugMode)
+                    {
+                        this.TraceDataSingleOperation(logMessage.Category, azureLogEntity);
+                    }
+                    else
+                    {
+                        this.TraceDataBatchOperation(logMessage.Category, azureLogEntity);
+                    }
                 }
                 else
                 {
@@ -53,8 +76,58 @@ namespace $customNamespace$.Models.Logging
                 }
             }
             else
-            { 
-            
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Batching is about more than just committing a bunch of rows at one time, it also has an impact on cost. 
+        /// Remember how Azure Table Storage charges you $0.0000001 per “transaction”? 
+        /// 
+        /// By the time I write these lines:
+        /// 
+        /// There are no limits to the number of tables you can create in Windows Azure. 
+        /// 
+        /// 1.- single operation: the size of the entity must be a maximum of 64KB 
+        /// 2.- batch operation : max of 100 entities or 4MB (per batch)
+        /// 3.- batch operation: all items in a batch must have the same partition key
+        /// 
+        /// </summary>
+        private void TraceDataBatchOperation(string categorySource, AzureTableStorageListenerEntity azureEntityLog)
+        {
+            if (!this._tableBatchOperationList.ContainsKey(categorySource))
+            {
+                this._tableBatchOperationList.Add(categorySource, new List<TableOperation>());
+            }
+
+            List<TableOperation> operationList = this._tableBatchOperationList[categorySource];
+
+            operationList.Add(TableOperation.Insert(azureEntityLog));
+
+            if (operationList.Count == this._tableBatchOperationListLimit)
+            {
+                CloudTable table = this.TableClient().GetTableReference(categorySource);
+                table.CreateIfNotExists();
+
+                var batch = new TableBatchOperation();
+                for (int i = 0; i < operationList.Count; i++)
+                {
+                    batch.Insert(i, operationList[i]);
+                }
+                table.ExecuteBatch(batch);
+
+                operationList.Clear();
+            }
+        }
+
+        private void TraceDataSingleOperation(string categorySource, AzureTableStorageListenerEntity azureEntityLog)
+        {
+            if (this.TableClient() != null)
+            {
+                CloudTable table = this.TableClient().GetTableReference(categorySource);
+                table.CreateIfNotExists();
+                table.Execute(TableOperation.Insert(azureEntityLog));
             }
         }
 
@@ -67,13 +140,50 @@ namespace $customNamespace$.Models.Logging
         {
             //Debug.WriteLine(message);
         }
+
+        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
+        {
+            CloudTable table = this.TableClient().GetTableReference(categorySourceName);
+
+            TableQuery<AzureTableStorageListenerEntity> rangeQuery = new TableQuery<AzureTableStorageListenerEntity>().Where(
+
+                TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey",
+                                                        QueryComparisons.GreaterThanOrEqual,
+                                                        dataFilter.CreationDateFrom.ToString("yyyyMMdd")),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("PartitionKey",
+                                                        QueryComparisons.LessThanOrEqual,
+                                                        dataFilter.CreationDateTo.ToString("yyyyMMdd"))
+                    ));
+
+            List<AzureTableStorageListenerEntity> resultsList = table.ExecuteQuery<AzureTableStorageListenerEntity>(rangeQuery).ToList();
+
+
+            int rowStartIndex = dataFilter.Page.Value * dataFilter.PageSize;
+            int rowEndIndex = (int)(dataFilter.Page.Value * dataFilter.PageSize) + dataFilter.PageSize;
+
+            return new DataResultLogMessageList()
+            {
+                Page = dataFilter.Page,
+                PageSize = dataFilter.PageSize,
+                Data = resultsList.Skip(rowStartIndex).Take(dataFilter.PageSize).Select(p => baseModel.DeserializeFromJson<LogMessageModel>(p.LogMessageJSON)).ToList(),
+                TotalRows = resultsList.Count,
+            };
+
+        }
     }
 
     public class AzureTableStorageListenerEntity : TableEntity
     {
+        public AzureTableStorageListenerEntity()
+        {
+
+        }
+
         public AzureTableStorageListenerEntity(LogMessageModel logMessage)
         {
-            this.PartitionKey = logMessage.Category;
+            this.PartitionKey = logMessage.Timestamp.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
             this.RowKey = logMessage.Timestamp.Ticks.ToString();
             this.LogMessageJSON = logMessage.SerializeToJson();
         }

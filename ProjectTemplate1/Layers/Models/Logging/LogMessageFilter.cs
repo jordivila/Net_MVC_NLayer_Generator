@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
-using $safeprojectname$.Common;
+using $customNamespace$.Models.Common;
+using $customNamespace$.Models.DataAnnotationsAttributes;
+using System.ComponentModel.DataAnnotations;
+using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
+using $customNamespace$.Resources.DataAnnotations;
 
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
     [DataContract]
     [Serializable]
@@ -18,8 +22,25 @@ namespace $safeprojectname$.Logging
         public string LogTraceSourceSelected { get; set; }
 
         [DataMember]
+        [Date(ErrorMessageResourceName = DataAnnotationsResourcesKeys.DateAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
+        [Display(ResourceType = typeof(LogViewerTextsKeys), Name = LogViewerTextsKeys.CreationDateFrom)]
+        [Required]
         [XmlElement]
-        public LogMessageModel LogMessage { get; set; }
+        public DateTime CreationDateFrom { get; set; }
+
+        [DataMember]
+        [Date(ErrorMessageResourceName = DataAnnotationsResourcesKeys.DateAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
+        [DateGreaterThan("CreationDateFrom", ErrorMessageResourceName = LogViewerTextsKeys.CreationDateToGreaterThanFrom, ErrorMessageResourceType = typeof(LogViewerTextsKeys))]
+        [Display(ResourceType = typeof(LogViewerTextsKeys), Name = LogViewerTextsKeys.CreationDateTo)]
+        [Required]
+        [XmlElement]
+        public DateTime CreationDateTo { get; set; }
+
+
+
+        //[DataMember]
+        //[XmlElement]
+        //public LogMessageModel LogMessage { get; set; }
 
         [DataMember]
         [XmlElement]

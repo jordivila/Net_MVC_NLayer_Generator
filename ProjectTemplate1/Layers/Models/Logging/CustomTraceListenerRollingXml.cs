@@ -20,7 +20,7 @@ namespace $customNamespace$.Models.Logging
         public RollingXmlTraceListener()
             : base("RollingXmlTraceListener.xml")
         {
-            
+
         }
 
         public RollingXmlTraceListener(string fileName, string header, string footer, ILogFormatter formatter, int rollSizeKB, string timeStampPattern, RollFileExistsBehavior rollFileExistsBehavior, RollInterval rollInterval)
@@ -35,7 +35,7 @@ namespace $customNamespace$.Models.Logging
 
         }
 
-        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, IDataFilter dataFilter)
+        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
             List<LogMessageModel> logMessageModelList = new List<LogMessageModel>();
 

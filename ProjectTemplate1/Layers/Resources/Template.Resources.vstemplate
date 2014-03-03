@@ -51,6 +51,12 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.resx">JavascriptTexts.resx</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="JavascriptTexts.Designer.cs">JavascriptTexts.Designer.cs</ProjectItem>
       </Folder>
+      <Folder Name="LogViewer" TargetFolderName="LogViewer">
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerTexts.es.resx">LogViewerTexts.es.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerTexts.es.Designer.cs">LogViewerTexts.es.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerTexts.resx">LogViewerTexts.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LogViewerTexts.Designer.cs">LogViewerTexts.Designer.cs</ProjectItem>
+      </Folder>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>
