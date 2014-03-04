@@ -85,6 +85,7 @@
     <None Include="Layers\Models\Logging\CustomTraceListenerInterface.cs" />
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.Designer.cs" />
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.Designer.cs" />
+    <None Include="Layers\Models\Logging\CustomTraceListenerDatabase.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />

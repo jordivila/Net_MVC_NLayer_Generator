@@ -29,7 +29,8 @@ namespace $customNamespace$.Models.Logging
 
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            if (data is LogEntry && this.Formatter != null)
+            //if (data is LogEntry && this.Formatter != null)
+            if (data is LogEntry)
             {
                 // Check Channel State otherwise can generate loop errors
                 if (((IClientChannel)this.proxyLogging.proxy).State == CommunicationState.Opened)

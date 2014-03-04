@@ -11,29 +11,116 @@ using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Logging.Formatters;
 using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
 using $customNamespace$.Models.Common;
+using System.Diagnostics;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 namespace $customNamespace$.Models.Logging
 {
-    [ConfigurationElementType(typeof(RollingFlatFileTraceListenerData))]
-    public class RollingXmlTraceListener : RollingFlatFileTraceListener, ICustomTraceListener
+    [ConfigurationElementType(typeof(CustomTraceListenerData))]
+    public class RollingXmlTraceListener : CustomTraceListener, ICustomTraceListener
     {
+        private const string _fileNameAttribute = "fileName";
+        private string _fileName = string.Empty;
+
+        private const string _maxArchivedFilesAttribute = "maxArchivedFiles";
+        private int _maxArchivedFiles = 2;
+
+        private const string _rollSizeKBAttribute = "rollSizeKB";
+        private int _rollSizeKB = 1024;
+
+        private const string _timeStampPatternAttribute = "timeStampPattern";
+        private string _timeStampPattern = "yyyy-MM-dd";
+
+
+        private RollingFlatFileTraceListener _rollingFlatFileTraceListener = null;
+
         public RollingXmlTraceListener()
-            : base("RollingXmlTraceListener.xml")
+            : base()
         {
-
+            
         }
 
-        public RollingXmlTraceListener(string fileName, string header, string footer, ILogFormatter formatter, int rollSizeKB, string timeStampPattern, RollFileExistsBehavior rollFileExistsBehavior, RollInterval rollInterval)
-            : base(fileName, header, footer, formatter, rollSizeKB, timeStampPattern, rollFileExistsBehavior, rollInterval)
+        protected override string[] GetSupportedAttributes()
         {
-
+            return new string[] { _fileNameAttribute, _maxArchivedFilesAttribute, _rollSizeKBAttribute, _timeStampPatternAttribute };
         }
 
-        public RollingXmlTraceListener(string fileName, string header, string footer, ILogFormatter formatter, int rollSizeKB, string timeStampPattern, RollFileExistsBehavior rollFileExistsBehavior, RollInterval rollInterval, int maxArchivedFiles)
-            : base(fileName, header, footer, formatter, rollSizeKB, timeStampPattern, rollFileExistsBehavior, rollInterval, maxArchivedFiles)
+        private RollingFlatFileTraceListener RollingFlatFileTraceListenerGet()
         {
+            if (this._rollingFlatFileTraceListener == null)
+            {
+                this.AttributesSetDefaultValues();
 
+                this._rollingFlatFileTraceListener = new RollingFlatFileTraceListener(
+                                                            this.Attributes[_fileNameAttribute]
+                                                            , string.Empty
+                                                            , string.Empty
+                                                            , null
+                                                            , this._rollSizeKB
+                                                            , this._timeStampPattern
+                                                            , RollFileExistsBehavior.Overwrite
+                                                            , RollInterval.None
+                                                            , this._maxArchivedFiles);
+            }
+
+            return this._rollingFlatFileTraceListener;
         }
+
+        private void AttributesSetDefaultValues()
+        {
+            if (!this.Attributes.ContainsKey(_maxArchivedFilesAttribute))
+            {
+                this.Attributes.Add(_maxArchivedFilesAttribute, this._maxArchivedFiles.ToString());
+            }
+
+            if (!this.Attributes.ContainsKey(_rollSizeKBAttribute))
+            {
+                this.Attributes.Add(_rollSizeKBAttribute, this._rollSizeKB.ToString());
+            }
+
+            if (!this.Attributes.ContainsKey(_timeStampPatternAttribute))
+            {
+                this.Attributes.Add(_timeStampPatternAttribute, this._timeStampPattern.ToString());
+            }
+        }
+
+        private NameValueCollection AttributesConvertToNameValueCollection()
+        {
+            NameValueCollection attributes = new NameValueCollection();
+
+            foreach (string item in this.Attributes.Keys)
+            {
+                attributes.Add(item, this.Attributes[item]);
+            }
+
+            return attributes;
+        }
+
+        public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
+        {
+            if (data is LogEntry)
+            {
+                this.Write(baseModel.Serialize(new LogMessageModel(data as LogEntry)).DocumentElement.OuterXml);
+            }
+        }
+
+        public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, params object[] data)
+        {
+            this.RollingFlatFileTraceListenerGet().TraceData(eventCache, source, eventType, id, data);
+        }
+
+        public override void Write(string message)
+        {
+            this.RollingFlatFileTraceListenerGet().Write(message);
+            this.RollingFlatFileTraceListenerGet().RollingHelper.RollIfNecessary();
+        }
+
+        public override void WriteLine(string message)
+        {
+            this.RollingFlatFileTraceListenerGet().WriteLine(message);
+            this.RollingFlatFileTraceListenerGet().RollingHelper.RollIfNecessary();
+        }
+
 
         public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
@@ -63,10 +150,10 @@ namespace $customNamespace$.Models.Logging
             LoggingSettings log = ConfigurationManager.GetSection(LogginConfigurationSectionName) as LoggingSettings;
             foreach (TraceListenerData listener in log.TraceListeners)
             {
-                if ((listener.Name == listenerName) && listener is RollingFlatFileTraceListenerData)
+                if ((listener.Name == listenerName) && listener is CustomTraceListenerData)
                 {
-                    RollingFlatFileTraceListenerData data = listener as RollingFlatFileTraceListenerData;
-                    filePath = data.FileName;
+                    CustomTraceListenerData data = listener as CustomTraceListenerData;
+                    filePath = data.Attributes[_fileNameAttribute];
                     break;
                 }
             }

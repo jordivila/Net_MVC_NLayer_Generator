@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=3.0.1304.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.dll</HintPath>
@@ -109,6 +112,7 @@
     <Compile Include="Enumerations\Enums.cs" />
     <Compile Include="Globalization\GlobalizationHelper.cs" />
     <Compile Include="Logging\CustomTraceListenerAzureTableStorage.cs" />
+    <Compile Include="Logging\CustomTraceListenerDatabase.cs" />
     <Compile Include="Logging\CustomTraceListenerInterface.cs" />
     <Compile Include="Logging\CustomTraceListenerRollingXml.cs" />
     <Compile Include="Logging\CustomTraceListenerProxiedWCF.cs" />
