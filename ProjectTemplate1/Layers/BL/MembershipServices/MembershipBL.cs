@@ -56,7 +56,10 @@ namespace $safeprojectname$.MembershipServices
             DataResultUserCantAccess dalResult;
             try
             {
-                using (TransactionScope trans = new TransactionScope())
+                using (TransactionScope trans = new TransactionScope(TransactionScopeOption.Required,
+                                                new TransactionOptions(){
+                                                    IsolationLevel = IsolationLevel.ReadUncommitted
+                                                }))
                 {
                     dalResult = this._dal.CantAccessYourAccount(activateFormVirtualPath, email);
                     if (dalResult.IsValid)
