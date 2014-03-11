@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.LogViewer
+namespace $customNamespace$.UI.Web.Areas.LogViewer
 {
     public static class LogViewerUrlHelper
     {
@@ -20,14 +20,21 @@ namespace $safeprojectname$.Areas.LogViewer
         {
             return helper.Action("LogViewerByListenerName", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName, sourceName = sourceName, listenerName = listenerName });
         }
-        public static string LogViewerByProxiedWcfTraceListener(this UrlHelper helper, string sourceName, string listenerName)
+        public static string LogViewerByModel(this UrlHelper helper)
         {
-            return helper.Action("LogViewerByProxiedWcfTraceListener", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName, sourceName = sourceName, listenerName = listenerName });
+            return helper.Action("LogViewerByModel", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName });
         }
-        public static string LogViewerByRollingXmlFileTraceListener(this UrlHelper helper, string sourceName, string listenerName)
-        {
-            return helper.Action("LogViewerByRollingXmlFileTraceListener", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName, sourceName = sourceName, listenerName = listenerName });
-        }
+
+
+
+        //public static string LogViewerByProxiedWcfTraceListener(this UrlHelper helper, string sourceName, string listenerName)
+        //{
+        //    return helper.Action("LogViewerByProxiedWcfTraceListener", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName, sourceName = sourceName, listenerName = listenerName });
+        //}
+        //public static string LogViewerByRollingXmlFileTraceListener(this UrlHelper helper, string sourceName, string listenerName)
+        //{
+        //    return helper.Action("LogViewerByRollingXmlFileTraceListener", "LogViewer", new { Area = LogViewerAreaRegistration.LogViewerAreaName, sourceName = sourceName, listenerName = listenerName });
+        //}
     }
 
 }

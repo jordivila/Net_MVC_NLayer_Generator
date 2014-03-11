@@ -109,6 +109,7 @@
                 <ProjectItem ReplaceParameters="true" TargetFileName="LogMessageModel.cshtml">LogMessageModel.cshtml</ProjectItem>
               </Folder>
               <ProjectItem ReplaceParameters="true" TargetFileName="Layout.cshtml">Layout.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="LayoutLogViewer.cshtml">LayoutLogViewer.cshtml</ProjectItem>
             </Folder>
             <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
           </Folder>

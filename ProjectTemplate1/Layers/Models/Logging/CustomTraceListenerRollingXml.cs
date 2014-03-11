@@ -37,7 +37,7 @@ namespace $customNamespace$.Models.Logging
         public RollingXmlTraceListener()
             : base()
         {
-            
+
         }
 
         protected override string[] GetSupportedAttributes()
@@ -122,14 +122,14 @@ namespace $customNamespace$.Models.Logging
         }
 
 
-        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
+        public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
             List<LogMessageModel> logMessageModelList = new List<LogMessageModel>();
 
-            using (MemoryStream ms = new MemoryStream(this.GetAllDataMemoryStream(listenerName, LogginConfigurationSectionName)))
+            using (MemoryStream ms = new MemoryStream(this.GetAllDataMemoryStream(dataFilter.LogTraceListenerSelected, LogginConfigurationSectionName)))
             {
                 logMessageModelList = this.GetAllDataDeserialized(ms);
-                logMessageModelList = logMessageModelList.Where(r => r.Category == categorySourceName).ToList();
+                logMessageModelList = logMessageModelList.Where(r => r.Category == dataFilter.LogTraceSourceSelected).ToList();
             }
 
             int rowStartIndex = dataFilter.Page.Value * dataFilter.PageSize;

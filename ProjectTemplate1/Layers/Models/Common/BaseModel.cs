@@ -6,13 +6,16 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
-namespace $safeprojectname$
+namespace $customNamespace$.Models
 {
     [DataContract]
     [Serializable]
@@ -156,16 +159,20 @@ namespace $safeprojectname$
             return baseModel.SerializeObjectToJson(this);
         }
 
-        private static JavaScriptSerializer jser = new JavaScriptSerializer();
-
         public static string SerializeObjectToJson(object obj)
         {
-            return jser.Serialize(obj);
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
+            serializerSettings.Converters.Add(new IsoDateTimeConverter());
+            string result = JsonConvert.SerializeObject(obj);
+            return result;
         }
 
         public static T DeserializeFromJson<T>(string jsonObj)
         {
-            return jser.Deserialize<T>(jsonObj);
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
+            serializerSettings.Converters.Add(new IsoDateTimeConverter());
+            T result = JsonConvert.DeserializeObject<T>(jsonObj);
+            return result;
         }
 
         private static string UTF8ByteArrayToString(byte[] characters)
@@ -183,5 +190,3 @@ namespace $safeprojectname$
         }
     }
 }
-
-

@@ -19,6 +19,8 @@ using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Configuration;
 using System.Globalization;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.Storage.Table.Queryable;
+
 
 namespace $customNamespace$.Models.Logging
 {
@@ -141,21 +143,46 @@ namespace $customNamespace$.Models.Logging
             //Debug.WriteLine(message);
         }
 
-        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
+
+        public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
-            CloudTable table = this.TableClient().GetTableReference(categorySourceName);
+            // Pagination Sample over Azute Table Storage Entities
+            // Remember that method "Count" is not supported. Thus, I can't know the total number of pages
+
+            //using Microsoft.WindowsAzure.Storage.Table.Queryable;
+
+            //var table = this.TableClient().GetTableReference(dataFilter.LogTraceSourceSelected);
+
+            //var query = (from log in table.CreateQuery<AzureTableStorageListenerEntity>()
+            //             where log.PartitionKey == dataFilter.CreationDateFrom.ToString("yyyyMMdd")
+            //             select log).Take(dataFilter.PageSize)
+            //        .AsTableQuery<AzureTableStorageListenerEntity>();
+
+            //var result = new List<LogMessageModel>();
+
+            //var queryResult = query.ExecuteSegmented(dataFilter.NextContinuationToken);
+
+            //return new DataResultLogMessageList()
+            //{
+            //    Page = dataFilter.Page,
+            //    PageSize = dataFilter.PageSize,
+            //    Data = queryResult.Results.Select(p => baseModel.DeserializeFromJson<LogMessageModel>(p.LogMessageJSON)).ToList(),
+            //    TotalRows = 1000, //-> just a fake
+            //    NextContinuationToken = queryResult.ContinuationToken,
+            //    PreviousContinuationToken = dataFilter.NextContinuationToken
+            //};
+
+            
+            
+            
+            CloudTable table = this.TableClient().GetTableReference(dataFilter.LogTraceSourceSelected);
 
             TableQuery<AzureTableStorageListenerEntity> rangeQuery = new TableQuery<AzureTableStorageListenerEntity>().Where(
 
-                TableQuery.CombineFilters(
                     TableQuery.GenerateFilterCondition("PartitionKey",
                                                         QueryComparisons.GreaterThanOrEqual,
-                                                        dataFilter.CreationDateFrom.ToString("yyyyMMdd")),
-                    TableOperators.And,
-                    TableQuery.GenerateFilterCondition("PartitionKey",
-                                                        QueryComparisons.LessThanOrEqual,
-                                                        dataFilter.CreationDateTo.ToString("yyyyMMdd"))
-                    ));
+                                                        dataFilter.CreationDate.ToString("yyyyMMdd"))
+                    );
 
             List<AzureTableStorageListenerEntity> resultsList = table.ExecuteQuery<AzureTableStorageListenerEntity>(rangeQuery).ToList();
 
@@ -173,6 +200,7 @@ namespace $customNamespace$.Models.Logging
 
         }
     }
+
 
     public class AzureTableStorageListenerEntity : TableEntity
     {

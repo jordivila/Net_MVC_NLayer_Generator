@@ -39,7 +39,7 @@ namespace $customNamespace$.Resources.LogViewer {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MvcApplication19.Resources.LogViewer.LogViewerTexts", typeof(LogViewerTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("$customNamespace$.Resources.LogViewer.LogViewerTexts", typeof(LogViewerTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,6 +84,15 @@ namespace $customNamespace$.Resources.LogViewer {
         public static string CreationDateToGreaterThanFrom {
             get {
                 return ResourceManager.GetString("CreationDateToGreaterThanFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Message Search.
+        /// </summary>
+        public static string LogMessagesSearch {
+            get {
+                return ResourceManager.GetString("LogMessagesSearch", resourceCulture);
             }
         }
     }

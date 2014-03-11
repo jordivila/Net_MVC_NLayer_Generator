@@ -126,4 +126,7 @@
   <data name="CreationDateToGreaterThanFrom" xml:space="preserve">
     <value>"Creation date (from)" must be smaller than "Creation date (to)"</value>
   </data>
+  <data name="LogMessagesSearch" xml:space="preserve">
+    <value>Log Message Search</value>
+  </data>
 </root>

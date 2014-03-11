@@ -6,6 +6,9 @@ using $customNamespace$.Models.DataAnnotationsAttributes;
 using System.ComponentModel.DataAnnotations;
 using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
 using $customNamespace$.Resources.DataAnnotations;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Storage.Table;
+using $customNamespace$.Resources.LogViewer;
 
 namespace $customNamespace$.Models.Logging
 {
@@ -13,9 +16,10 @@ namespace $customNamespace$.Models.Logging
     [Serializable]
     public class DataFilterLogger : baseModel, IDataFilter
     {
-        //[DataMember]
-        //[XmlElement]
-        //public DateTime? CreationDate { get; set; }
+
+        [DataMember]
+        [XmlElement]
+        public string LogTraceListenerSelected { get; set; }
 
         [DataMember]
         [XmlElement]
@@ -23,24 +27,26 @@ namespace $customNamespace$.Models.Logging
 
         [DataMember]
         [Date(ErrorMessageResourceName = DataAnnotationsResourcesKeys.DateAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
-        [Display(ResourceType = typeof(LogViewerTextsKeys), Name = LogViewerTextsKeys.CreationDateFrom)]
+        [Display(ResourceType = typeof(LogViewerTexts), Name = LogViewerTextsKeys.CreationDateFrom)]
         [Required]
         [XmlElement]
-        public DateTime CreationDateFrom { get; set; }
+        public DateTime CreationDate { get; set; }
 
-        [DataMember]
-        [Date(ErrorMessageResourceName = DataAnnotationsResourcesKeys.DateAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
-        [DateGreaterThan("CreationDateFrom", ErrorMessageResourceName = LogViewerTextsKeys.CreationDateToGreaterThanFrom, ErrorMessageResourceType = typeof(LogViewerTextsKeys))]
-        [Display(ResourceType = typeof(LogViewerTextsKeys), Name = LogViewerTextsKeys.CreationDateTo)]
-        [Required]
-        [XmlElement]
-        public DateTime CreationDateTo { get; set; }
-
-
+        //[DataMember]
+        //[Date(ErrorMessageResourceName = DataAnnotationsResourcesKeys.DateAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
+        //[DateGreaterThan("CreationDateFrom", ErrorMessageResourceName = LogViewerTextsKeys.CreationDateToGreaterThanFrom, ErrorMessageResourceType = typeof(LogViewerTexts))]
+        //[Display(ResourceType = typeof(LogViewerTexts), Name = LogViewerTextsKeys.CreationDateTo)]
+        //[Required]
+        //[XmlElement]
+        //public DateTime CreationDateTo { get; set; }
 
         //[DataMember]
         //[XmlElement]
-        //public LogMessageModel LogMessage { get; set; }
+        //public TableContinuationToken NextContinuationToken { get; set; }
+
+        //[DataMember]
+        //[XmlElement]
+        //public TableContinuationToken PreviousContinuationToken { get; set; }
 
         [DataMember]
         [XmlElement]

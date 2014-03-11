@@ -5,86 +5,144 @@
 @using $customNamespace$.Models.Enumerations;
 @using $customNamespace$.Models;
 @using $customNamespace$.Models.Logging;
+@using $customNamespace$.UI.Web.Areas.LogViewer;
 
 @model $customNamespace$.UI.Web.Areas.LogViewer.Models.LogViewerModel
 
 @{
-    Layout = "~/Areas/LogViewer/Views/Shared/LayOut.cshtml";
+    Layout = "~/Areas/LogViewer/Views/Shared/LayoutLogViewer.cshtml";
 }
 
 @section InlineStyles
 {
     <style type="text/css">
-        .ui-logMessageViewer h2 {text-align:left;}
-        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Timestamp {text-align:left !important;width:9em !important;vertical-align:middle;}
-        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title {text-align:left !important;}
-        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title .ui-icon {float:left;}
+        .ui-logMessageViewer h2 { text-align: left; }
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Timestamp { text-align: left !important; width: 9em !important; vertical-align: middle; }
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title { text-align: left !important; }
+        .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title .ui-icon { float: left; }
+        .ui-logMessageViewer .ui-logViewer-formattedMessage { overflow: hidden; }
+        .ui-logMessageViewer .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair { clear: both; padding: 0em 1em 0em 2em; }
+        .ui-logMessageViewer .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair .ui-logViewer-key { font-weight: bold; text-transform: lowercase; }
+        .ui-logMessageViewer .ui-logViewer-formattedMessage .ui-logViewer-keyValuePair .ui-logViewer-Value { padding: 0 0 0 2em; clear: both; }
     </style>
 }
 
 @section ScriptsToAdd
 {
-<script type="text/javascript">
-    (function ($) {
-        jQuery(document).ready(function () {
-            jQuery('div[data-widget="accordion"]').accordion({
-                collapsible: true
-                , active: false
+    <script type="text/javascript">
+        (function ($) {
+            jQuery(document).ready(function () {
+                jQuery('div[data-widget="accordion"]').accordion({
+                    collapsible: true
+                    , active: false
+                });
             });
-        });
-    } (jQuery));
-</script>
+        }(jQuery));
+    </script>
 }
 
-@section ErrorDescriptionContainer
+@section LogViewerBody
 {
-
     <div class="ui-logMessageViewer">
-    
-            <h2>@this.Model.LogTraceListenerSelected</h2>
 
-            @if (this.ViewData.ModelState.IsValid)
+        <h2>@this.Model.Filter.LogTraceListenerSelected</h2>
+        <br />
+        @{
+        using (MvcForm form = Html.BeginWidgetForm(new { action = Url.LogViewerByModel() }))
+        {
+            using (MvcWidgetBox divBox = Html.BeginWidgetBox(true, true, (!this.Model.Filter.IsClientVisible), string.Empty, new { @class = "" }))
             {
-                WebGridColumn[] columns = new List<WebGridColumn>().ToArray();
-
-                if (this.Model.LogMessages != null)
+                using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
                 {
-                    if (this.Model.LogMessages.Data.Count > 0)
-                    {
-                        Expression<Func<LogViewerModel, DateTime>> expressionCreationDate = m => this.Model.LogMessages.Data[0].Timestamp;
-                        Expression<Func<LogViewerModel, string>> expressionTitle = m => this.Model.LogMessages.Data[0].Title;
-                        Expression<Func<LogViewerModel, LogMessageModel>> expressionObject = m => this.Model.LogMessages.Data[0];
+                    @$customNamespace$.Resources.LogViewer.LogViewerTexts.LogMessagesSearch
+                }
+                using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
+                {
+                    <text>
+                        @Html.HiddenFor(model => Model.Filter.Page)
+                        @Html.HiddenFor(Model => Model.Filter.PageSize)
+                        @Html.HiddenFor(model => Model.Filter.SortBy)
+                        @Html.HiddenFor(model => Model.Filter.SortAscending)
+                        @Html.HiddenFor(Model => Model.Filter.IsClientVisible)
 
-                        columns = new List<WebGridColumn>(){
-                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).PropertyName, 
-                                                                    Header=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).DisplayName, 
+                        @Html.HiddenFor(Model => Model.Filter.LogTraceSourceSelected)
+                        @Html.HiddenFor(Model => Model.Filter.LogTraceListenerSelected)
+
+                        @{
+                            if (!this.ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummaryCustomized()
+                            }
+                        }
+
+                        @using (MvcWidgetFieldSet fieldSet = Html.BeginWidgetFieldSet($customNamespace$.Resources.UserAdministration.UserAdminTexts.Created, new { @class = "" }))
+                        {
+                            @Html.FormItem(Model => Model.Filter.CreationDate)
+                        }
+                    </text>
+
+                    using (MvcWidgetButtonsBox divButtonsBox = Html.BeginWidgetButtonsBox(new { @class = "ui-widgetForm-ButtonSearch" }))
+                    {
+                        @Html.Button($customNamespace$.Resources.UserAdministration.UserAdminTexts.Search,
+                                                        jQueryHelpers.Icon.ui_icon_search,
+                                                        ButtonType.Submit);
+                    }
+
+                    if (!this.ViewData.ModelState.IsValid)
+                    {
+                        <text><br /></text>
+                        @Html.ValidationSummaryCustomized()
+                    }
+
+                }
+            }
+        }
+        }
+
+
+        @if (this.ViewData.ModelState.IsValid)
+    {
+        WebGridColumn[] columns = new List<WebGridColumn>().ToArray();
+
+        if (this.Model.LogMessages != null)
+        {
+            if (this.Model.LogMessages.Data.Count > 0)
+            {
+                Expression<Func<LogViewerModel, DateTime>> expressionCreationDate = m => this.Model.LogMessages.Data[0].Timestamp;
+                Expression<Func<LogViewerModel, string>> expressionTitle = m => this.Model.LogMessages.Data[0].Title;
+                Expression<Func<LogViewerModel, LogMessageModel>> expressionObject = m => this.Model.LogMessages.Data[0];
+
+                columns = new List<WebGridColumn>(){
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).PropertyName,
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionCreationDate,ViewData).DisplayName,
                                                                     CanSort=false,
                                                                     Format=@<text>@item.Timestamp</text>
                                                                     },
-                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).PropertyName, 
-                                                                    Header=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).DisplayName, 
+                            new WebGridColumn(){ ColumnName=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).PropertyName,
+                                                                    Header=ModelMetadata.FromLambdaExpression(expressionTitle,ViewData).DisplayName,
                                                                     CanSort=false,
                                                                     Format=@<text>
-                                                                                        @{
-                                                                                                    LogMessageModel temp = item.Value;
-                                                                                                    <div data-widget="accordion" class="ui-logViewer">@Html.DisplayFor(x => temp)</div>
-                                                                                            }
-                                                                                    </text>
+                                                                        @{
+                                                                            LogMessageModel temp = item.Value;
+                                                                            <div data-widget="accordion" class="ui-logViewer">@Html.DisplayFor(x => temp)</div>
+                                                                        }
+                                                                    </text>
                                                                     },
                         }.ToArray();
-                    }
-
-                    var gridHtml = Html.WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>(
-                                                                                                    model => this.Model.LogMessages,
-                                                                                                    model => this.Model.Filter,
-                                                                                                    columns,
-                                                                                                    webGridStyle: WebGridStyle.Table,
-                                                                                                    emptyResultsMessage: $customNamespace$.Resources.General.GeneralTexts.NoDataFound);
-                        <text>
-                        <br />
-                        @gridHtml.Render()
-                        </text>
-                }
             }
-            </div>
+
+            var gridHtml = Html.WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>(
+                                                                                            model => this.Model.LogMessages,
+                                                                                            model => this.Model.Filter,
+                                                                                            columns,
+                                                                                            webGridStyle: WebGridStyle.Table,
+                                                                                            emptyResultsMessage: $customNamespace$.Resources.General.GeneralTexts.NoDataFound);
+                                                                                            <text>
+                                                                                                <br />
+                                                                                                @gridHtml.Render()
+                                                                                            </text>
+        }
+    }
+    </div>
 }
+

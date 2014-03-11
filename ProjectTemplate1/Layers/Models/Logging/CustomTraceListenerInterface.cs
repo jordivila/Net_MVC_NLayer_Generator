@@ -9,6 +9,6 @@ namespace $customNamespace$.Models.Logging
 {
     public interface ICustomTraceListener
     {
-        DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter);
+        DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter);
     }
 }

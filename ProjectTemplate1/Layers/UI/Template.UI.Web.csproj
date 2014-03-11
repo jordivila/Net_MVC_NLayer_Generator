@@ -269,6 +269,7 @@
     <Content Include="Areas\LogViewer\Views\Web.config" />
     <Content Include="Areas\LogViewer\Views\Shared\DisplayTemplates\LogMessageModel.cshtml" />
     <Content Include="Areas\LogViewer\Views\Shared\Layout.cshtml" />
+    <Content Include="Areas\LogViewer\Views\Shared\LayoutLogViewer.cshtml" />
     <Content Include="Areas\LogViewer\Views\LogViewer\LogViewerDisplay.cshtml" />
     <Content Include="Areas\Blog\Views\Web.config" />
     <Content Include="Areas\Blog\Views\Blog\Index.cshtml" />

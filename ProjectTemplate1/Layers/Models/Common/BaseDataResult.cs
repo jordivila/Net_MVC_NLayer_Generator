@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using $safeprojectname$.Enumerations;
+using $customNamespace$.Models.Enumerations;
 
-namespace $safeprojectname$.Common
+namespace $customNamespace$.Models.Common
 {
     [DataContract]
     public abstract class baseDataResult<T> : baseModel, IDataResultModel<T>
     {
-        public baseDataResult() 
+        public baseDataResult()
         {
             //by default we expect correct messages to be sent
             this.IsValid = true;

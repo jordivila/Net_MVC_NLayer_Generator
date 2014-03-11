@@ -54,16 +54,28 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
                 {
                     throw new Exception("Trace Data Source Not Found");
                 }
-                model.LogTraceSourceSelected = sourceName;
+
+                model.Filter = new DataFilterLogger()
+                {
+                    LogTraceSourceSelected = sourceName,
+                    CreationDate = DateTime.Now,
+                    //CreationDateTo = DateTime.Now,
+                    IsClientVisible = true,
+                    Page = 0,
+                    PageSize = (int)PageSizesAvailable.RowsPerPage10,
+                    SortAscending = true,
+                    SortBy = string.Empty
+                };
+
                 model.LogTraceListeners = model.LogTraceSources.Where(x => x.Name == sourceName).First().TraceListeners;
+
                 if (!string.IsNullOrEmpty(listenerName))
                 {
-                    model.LogTraceListenerSelected = listenerName;
+                    model.Filter.LogTraceListenerSelected = listenerName;
                     if (!model.LogTraceListeners.Contains(listenerName))
                     {
                         throw new Exception("Trace Data Source Not Found");
                     }
-
                 }
             }
             return model;
@@ -79,52 +91,46 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
             model = this.LogViewerSetBreadcrumb(model, sourceName, string.Empty);
             return View(LogViewerViewHelper.LogViewerBySourceName, model);
         }
+
         public ActionResult LogViewerByListenerName(string sourceName, string listenerName)
         {
             LogViewerModel model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
-
             model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
+            return View(LogViewerViewHelper.LogViewerDisplay, model);
+        }
+
+        public ActionResult LogViewerByModel(LogViewerModel model)
+        {
+            if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
+            {
+                this.ModelState.Clear();
+                model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
+                model.Filter.IsClientVisible = false;
+            }
+
+
+            model = this.LogViewerSetBreadcrumb(model, model.Filter.LogTraceSourceSelected, model.Filter.LogTraceListenerSelected);
 
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             LogWriter logWriterInstance = logWriterFactory.Create();
-            using (TraceListener traceListenerInstance = logWriterInstance.TraceSources[sourceName].Listeners.Where(p => p.Name == listenerName).First())
+            using (TraceListener traceListenerInstance = logWriterInstance.TraceSources[model.Filter.LogTraceSourceSelected]
+                                                                          .Listeners.Where(p => p.Name == model.Filter.LogTraceListenerSelected).First())
             {
                 if (traceListenerInstance is ICustomTraceListener)
                 {
-                    model = this.LogViewerModel_GetBaseModel(sourceName, listenerName);
-                    model = this.LogViewerSetBreadcrumb(model, sourceName, listenerName);
-
-                    if (this.RequestType() == HttpVerbs.Get)
-                    {
-                        model.Filter = new DataFilterLogger()
-                        {
-                            LogTraceSourceSelected = sourceName,
-                            Page = 0,
-                            PageSize = (int)PageSizesAvailable.RowsPerPage10
-                        };
-
-                        model.Filter.CreationDateFrom = DateTime.Now;   // This value should be set by user as a form vlues
-                        model.Filter.CreationDateTo = DateTime.Now;     // This value should be set by user as a form vlues
-
-                    }
-
-
-                    if (WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.IsWebGridEvent())
-                    {
-                        this.ModelState.Clear();
-                        model.Filter = (DataFilterLogger)WebGrid<LogMessageModel, LogViewerModel, DataFilterLogger>.GetDataFilterFromPost();
-                    }
-
-                    model.LogMessages = ((ICustomTraceListener)traceListenerInstance).SearchLogMessages(listenerName, sourceName, LogginConfigurationSectionName, model.Filter);
-
+                    model.LogMessages = ((ICustomTraceListener)traceListenerInstance).SearchLogMessages(LogginConfigurationSectionName, model.Filter);
+                    //model.Filter.NextContinuationToken = model.LogMessages.NextContinuationToken;
+                    //model.Filter.PreviousContinuationToken = model.LogMessages.PreviousContinuationToken;
                     return View(LogViewerViewHelper.LogViewerDisplay, model);
                 }
                 else
                 {
-                    throw new Exception("TraceListener Not Supperted");
+                    throw new Exception("TraceListener Not Supported");
                 }
             }
+        
         }
+
 
         public ActionResult LogViewerById(string guid)
         {

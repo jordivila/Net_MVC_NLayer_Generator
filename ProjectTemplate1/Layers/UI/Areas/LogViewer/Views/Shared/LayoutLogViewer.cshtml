@@ -1,0 +1,19 @@
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section InlineStyles{
+    @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
+}
+
+@section ScriptsToAdd
+{
+    @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, true)
+}
+
+
+<div class="ui-logViewer">
+    @RenderSection("LogViewerBody", true)
+</div>

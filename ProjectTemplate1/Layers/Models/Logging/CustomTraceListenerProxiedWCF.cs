@@ -44,7 +44,7 @@ namespace $customNamespace$.Models.Logging
             }
         }
 
-        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
+        public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
             using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
             {

@@ -111,7 +111,7 @@ namespace $customNamespace$.Models.Logging
             throw new NotImplementedException();
         }
 
-        public DataResultLogMessageList SearchLogMessages(string listenerName, string categorySourceName, string LogginConfigurationSectionName, DataFilterLogger dataFilter)
+        public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
             return DependencyFactory.Resolve<IProviderLogging>().LoggingExceptionGetAll(dataFilter);
         }

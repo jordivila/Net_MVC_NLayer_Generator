@@ -8,9 +8,10 @@ namespace VSIX_MVC_Layered_ProjectTemplate
 {
     class TodoList
     {
+        ///TODO: Check Session outdated can re-login
         ///TODO: Asp Net Mvc assembly should be load by Nuget
 
-        ///TODO: Template tests should use testsettings solution file
+        
 
         ///TODO: Los metodos de UserReuqest qyue guardan valores para un Thread pierden el contexto cuando se hace un proceso Asincrono
         /** 

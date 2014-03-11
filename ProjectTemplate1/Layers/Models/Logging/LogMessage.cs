@@ -9,13 +9,18 @@ using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Globalization;
 using $customNamespace$.Models.Enumerations;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace $customNamespace$.Models.Logging
 {
     [DataContract]
     public class DataResultLogMessageList : baseDataPagedResult<LogMessageModel>, IDataResultPaginatedModel<LogMessageModel>
     {
+        //[DataMember]
+        //public TableContinuationToken NextContinuationToken { get; set; }
 
+        //[DataMember]
+        //public TableContinuationToken PreviousContinuationToken { get; set; }
     }
 
     [DataContract]
@@ -85,15 +90,16 @@ namespace $customNamespace$.Models.Logging
             this.severityField = severity.ToString();
             this.titleField = title;
             this.formattedMessageField = (from p in properties
-                                         select new LogMessageKeyValuePair() { 
-                                            Name = p.Key,
-                                            Value = p.Value.ToString()
-                                         }).ToArray(); 
+                                          select new LogMessageKeyValuePair()
+                                          {
+                                              Name = p.Key,
+                                              Value = p.Value.ToString()
+                                          }).ToArray();
         }
 
 
         private DateTime timestampField;
-        
+
         [DataMember]
         public DateTime Timestamp
         {
@@ -122,7 +128,7 @@ namespace $customNamespace$.Models.Logging
         }
 
         private string categoryField;
-        [DataMember] 
+        [DataMember]
         public string Category
         {
             get

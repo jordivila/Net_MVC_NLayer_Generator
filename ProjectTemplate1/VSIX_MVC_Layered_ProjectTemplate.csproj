@@ -71,6 +71,7 @@
     <None Include="Layers\TestIntegration\Template.Tests.Integration.testsettings">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Layers\UI\Areas\LogViewer\Views\Shared\LayoutLogViewer.cshtml" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDAL.cs" />
     <None Include="Layers\WCFHost\Unity\UnityContainerProviderMockDALDevelopment.cs" />
@@ -434,8 +435,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.resx" />
-    <None Include="Layers\Resources\LogViewer\LogViewerTexts.resx" />
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.resx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Layers\Resources\LogViewer\LogViewerTexts.resx">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Layers\Resources\Account\AccountResources.Designer.cs" />
