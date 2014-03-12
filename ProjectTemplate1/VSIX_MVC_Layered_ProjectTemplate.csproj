@@ -85,6 +85,8 @@
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.Designer.cs" />
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.Designer.cs" />
     <None Include="Layers\Models\Logging\CustomTraceListenerDatabase.cs" />
+    <None Include="Layers\Models\Syndication\ISyndicationDAL.cs" />
+    <None Include="Layers\Models\TokenPersistence\ITokenPersistenceDAL.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -182,9 +184,7 @@
     <None Include="Layers\Models\Membership\IMembershipDAL.cs" />
     <None Include="Layers\DAL\Properties\AssemblyInfo.cs" />
     <None Include="Layers\DAL\SyndicationServices\SyndicationDAL.cs" />
-    <None Include="Layers\Models\Syndication\ISyndicationDAL.cs" />
     <None Include="Layers\DAL\TockenPersistenceServices\TokenPersistenceDAL.cs" />
-    <None Include="Layers\Models\TokenPersistence\ITokenPersistenceDAL.cs" />
     <None Include="Layers\BL\AuthenticationServices\AuthenticationBL.cs" />
     <None Include="Layers\BL\BaseBL.cs" />
     <None Include="Layers\BL\LoggingServices\LoggingBL.cs" />
