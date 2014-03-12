@@ -99,13 +99,13 @@ namespace $safeprojectname$.UserRequestModel
 
     public class UserRequestModelHttpClient : UserRequestModelHttp, IUserRequestClientModel
     {
-        private IProviderRoles RolesProvider;
-        private IProviderMembership MembershipProvider;
-        private IProviderAuthentication ProviderAuthentication;
+        private IRolesProxy RolesProvider;
+        private IMembershipProxy MembershipProvider;
+        private IAuthenticationProxy ProviderAuthentication;
 
-        public UserRequestModelHttpClient(IProviderRoles providerRoles, 
-                                            IProviderMembership providerMembership, 
-                                            IProviderAuthentication providerAuth)
+        public UserRequestModelHttpClient(IRolesProxy providerRoles, 
+                                            IMembershipProxy providerMembership, 
+                                            IAuthenticationProxy providerAuth)
         {
             this.RolesProvider = providerRoles;
             this.MembershipProvider = providerMembership;

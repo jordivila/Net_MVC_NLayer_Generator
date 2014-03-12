@@ -5,7 +5,7 @@ using System.ServiceModel;
 namespace $safeprojectname$.Profile
 {
     [ServiceContract]
-    public interface IProviderProxyProfileServices : IDisposable
+    public interface IProfileProxy : IDisposable
     {
         [OperationContract]
         DataResultUserProfile Get();
@@ -15,7 +15,7 @@ namespace $safeprojectname$.Profile
     }
 
 
-    public class ProviderProxyProfileServices : ProviderBaseChannel<IProviderProxyProfileServices>, IProviderProxyProfileServices
+    public class ProfileProxy : ProviderBaseChannel<IProfileProxy>, IProfileProxy
     {
         public DataResultUserProfile Get()
         {

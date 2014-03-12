@@ -6,7 +6,7 @@ using $customNamespace$.Models.Unity;
 
 namespace $safeprojectname$.SyndicationServices
 {
-    public class SyndicationBL : BaseBL, IProviderSyndication
+    public class SyndicationBL : BaseBL, ISyndicationProxy
     {
         private ISyndicationDAL _dal;
         public SyndicationBL()

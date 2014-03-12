@@ -5,7 +5,7 @@ using $safeprojectname$.Common;
 namespace $safeprojectname$.Membership
 {
     [ServiceContract]
-    public interface IProviderMembership: IDisposable
+    public interface IMembershipProxy: IDisposable
     {
         [OperationContract]
         DataResultUserActivate ActivateAccount(Guid activateUserToken);

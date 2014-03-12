@@ -21,7 +21,7 @@ using $customNamespace$.Resources.UserAdministration;
 
 namespace $safeprojectname$.MembershipServices
 {
-    public interface IMembershipBL : IProviderMembership
+    public interface IMembershipBL : IMembershipProxy
     {
         bool ValidatePasswordStrength(string password);
     }

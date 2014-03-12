@@ -5,7 +5,7 @@ using $safeprojectname$.ProxyProviders;
 
 namespace $safeprojectname$.Membership
 {
-    public class ProviderProxyMembership : ProviderBaseChannel<IProviderMembership>, IProviderMembership
+    public class MembershipProxy : ProviderBaseChannel<IMembershipProxy>, IMembershipProxy
     {
         public DataResultUserCantAccess CantAccessYourAccount(string activateFormVirtualPath, string email)
         {

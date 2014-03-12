@@ -48,7 +48,7 @@ namespace $safeprojectname$
 
         static void Host_InitEnterpriseLibrary()
         {
-            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.MockDALDevelopment));
+            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());

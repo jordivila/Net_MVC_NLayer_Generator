@@ -16,8 +16,8 @@ namespace $customNamespace$.Tests.Integration.TestProxies
     [TestClass]
     public class MembershipUnitTests : TestIntegrationBase
     {
-        private static IProviderMembership _memberShipeServices;
-        private static IProviderRoleManager _rolesServices;
+        private static IMembershipProxy _memberShipeServices;
+        private static IRoleManagerProxy _rolesServices;
 
         private static Guid _userGuid;
         private static string _userName;
@@ -37,8 +37,8 @@ namespace $customNamespace$.Tests.Integration.TestProxies
         [TestInitialize()]
         public void MyTestInitialize()
         {
-            _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
-            _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
+            _memberShipeServices = DependencyFactory.Resolve<IMembershipProxy>();
+            _rolesServices = DependencyFactory.Resolve<IRoleManagerProxy>();
 
 
             MembershipProviderSettings settings = _memberShipeServices.Settings().Data;

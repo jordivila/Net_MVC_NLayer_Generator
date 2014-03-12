@@ -31,8 +31,6 @@
       </Folder>
       <Folder Name="Unity" TargetFolderName="Unity">
         <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProvider.cs">UnityContainerProvider.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderMockDAL.cs">UnityContainerProviderMockDAL.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderMockDALDevelopment.cs">UnityContainerProviderMockDALDevelopment.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderReal.cs">UnityContainerProviderReal.cs</ProjectItem>
       </Folder>
     </Project>

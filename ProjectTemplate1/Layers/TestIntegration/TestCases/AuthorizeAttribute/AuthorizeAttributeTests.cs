@@ -65,7 +65,7 @@ namespace $customNamespace$.Tests.Integration.TestCases.AuthorizeAttribute
                 return (result1.GetType() == result2.GetType()) && (result2.GetType() == typeof(JsonResult));
             };
 
-            IProviderRoleManager providerRoles = DependencyFactory.Resolve<IProviderRoleManager>();
+            IRoleManagerProxy providerRoles = DependencyFactory.Resolve<IRoleManagerProxy>();
             providerRoles.AddToRoles(userTesting.Email, new string[1] { SiteRoles.Administrator.ToString() });
             providerRoles.Dispose();
 

@@ -5,12 +5,12 @@ using $customNamespace$.Models.Common;
 
 namespace $safeprojectname$.AuthenticationServices
 {
-    public interface IAuthenticationBL : IProviderAuthentication
+    public interface IAuthenticationBL : IAuthenticationProxy
     {
         FormsAuthenticationTicket SetTicket(string userName);
     }
 
-    //public interface CopyOfIAuthenticationBL : IProviderAuthentication
+    //public interface CopyOfIAuthenticationBL : IAuthenticationProxy
     //{
     //    FormsAuthenticationTicket SetTicket(string userName);
     //}
@@ -18,6 +18,7 @@ namespace $safeprojectname$.AuthenticationServices
     public class AuthenticationBL : BaseBL, IAuthenticationBL
     {
         IMembershipBL bl = null;
+
         public AuthenticationBL()
         {
             bl = new MembershipBL();

@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
-using $safeprojectname$.ProxyProviders;
+using $customNamespace$.Models.ProxyProviders;
 
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
-    public class ProviderProxyLogging : ProviderBaseChannel<IProviderLogging>, IProviderLogging
+    public class LoggingProxy : ProviderBaseChannel<ILoggingProxy>, ILoggingProxy
     {
         public DataResultLogMessageList LoggingExceptionGetById(System.Guid guid)
         {

@@ -20,8 +20,8 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
     [$safeprojectname$.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
     public class UserAdministrationController : Controller, IControllerWithClientResources
     {
-        private IProviderMembership _providerMembership;
-        private IProviderRoleManager _providerRoles;
+        private IMembershipProxy _providerMembership;
+        private IRoleManagerProxy _providerRoles;
 
         protected override void Dispose(bool disposing)
         {
@@ -48,8 +48,8 @@ namespace $safeprojectname$.Areas.UserAdministration.Controllers
 
         public UserAdministrationController()
         {
-            this._providerMembership = DependencyFactory.Resolve<IProviderMembership>();
-            this._providerRoles = DependencyFactory.Resolve<IProviderRoleManager>();
+            this._providerMembership = DependencyFactory.Resolve<IMembershipProxy>();
+            this._providerRoles = DependencyFactory.Resolve<IRoleManagerProxy>();
 
             if (!ModelBinders.Binders.ContainsKey(typeof(DetailsViewModel)))
             {

@@ -4,9 +4,10 @@ using $customNamespace$.Models.Authentication;
 
 namespace $safeprojectname$.AspNetApplicationServices
 {
-    public class AuthenticationService : BaseService, IProviderAuthentication
+    public class AuthenticationService : BaseService, IAuthenticationProxy
     {
         IAuthenticationBL authBL = null;
+
         public AuthenticationService()
         {
             authBL = new AuthenticationBL();

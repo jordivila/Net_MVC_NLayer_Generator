@@ -3,7 +3,7 @@ using $customNamespace$.Models.Profile;
 
 namespace $safeprojectname$.AspNetApplicationServices
 {
-    public class ProfileService : BaseService, IProviderProxyProfileServices
+    public class ProfileService : BaseService, IProfileProxy
     {
         ProfileBL _bl = null;
 

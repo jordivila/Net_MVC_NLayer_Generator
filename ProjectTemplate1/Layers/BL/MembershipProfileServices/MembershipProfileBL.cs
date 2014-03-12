@@ -5,13 +5,13 @@ using $customNamespace$.Models.Unity;
 
 namespace $safeprojectname$.MembershipServices
 {
-    public class ProfileBL : BaseBL, IProviderProxyProfileServices
+    public class ProfileBL : BaseBL, IProfileProxy
     {
-        private IProviderProfileDAL _dal;
+        private IProfileDAL _dal;
 
         public ProfileBL()
         {
-            _dal = DependencyFactory.Resolve<IProviderProfileDAL>();
+            _dal = DependencyFactory.Resolve<IProfileDAL>();
 
         }
         public override void Dispose()

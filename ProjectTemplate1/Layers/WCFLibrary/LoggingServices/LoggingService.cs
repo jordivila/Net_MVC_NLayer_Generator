@@ -5,9 +5,9 @@ using $customNamespace$.Models.Logging;
 
 namespace $safeprojectname$.LoggingServices
 {
-    public class LoggingService : IProviderLogging, IDisposable
+    public class LoggingService : ILoggingProxy, IDisposable
     {
-        ILoggingBL _bl = null;
+        ILoggingProxy _bl = null;
 
         public LoggingService()
         {

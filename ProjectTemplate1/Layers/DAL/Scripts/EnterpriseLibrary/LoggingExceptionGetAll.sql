@@ -13,7 +13,9 @@ begin
 	set nocount on;
 
 	declare @logTraceSourceSelected varchar(255)
+	declare @logDateCreationFrom datetime, @logDateCreationTo datetime
 	declare @sqlcommand nvarchar(max)
+	declare @sqlcommandWhereClause nvarchar(max)
 	declare @sqlCommandParametersDefinition nvarchar(max);
 	declare @sortAscendingDescription varchar(255)
 	declare @totalcount int = 0
@@ -25,11 +27,14 @@ begin
 
 	select	
 			@logTraceSourceSelected = r.rootnode.value('LogTraceSourceSelected[1][not(@xsi:nil = "true")]', 'nvarchar(255)'),
+			@logDateCreationFrom = r.rootnode.value('CreationDate[1][not(@xsi:nil = "true")]', 'datetime'),
 			@pageIndex = r.rootnode.value('Page[1][not(@xsi:nil = "true")]', 'int'),
 			@pageSize = r.rootnode.value('PageSize[1][not(@xsi:nil = "true")]', 'int'),
 			@sortBy = r.rootnode.value('SortBy[1][not(@xsi:nil = "true")]', 'nvarchar(255)'),
 			@sortAscending = r.rootnode.value('SortAscending[1][not(@xsi:nil = "true")]', 'bit')
 	from	@filter.nodes('/DataFilterLogger') as r(rootnode)
+	
+	set @logDateCreationTo =  DATEADD(DAY, 1, @logDateCreationFrom)
 	
 	select 
 			@sortBy = ISNULL(@sortBy, 'LogID'), 
@@ -39,47 +44,53 @@ begin
 				else 'asc' 
 			end
 
+
+	set @sqlcommandWhereClause = N' from
+										[log]
+										inner JOIN CategoryLog on CategoryLog.CategoryLogID = [Log].LogID
+										inner join Category on Category.CategoryID = CategoryLog.CategoryID
+									where
+										CategoryName = @logTraceSourceSelected
+										and [Timestamp] between @logDateCreationFrom and @logDateCreationTo'
+
 	set @sqlcommand = N'
 						select	count(*) TotalCount,
 								case (count(*)) % @pageSize 
 									when 0 then count(*) / @pageSize
 									else	(count(*) / @pageSize) + 1
 								end TotalPages
-						from
-							[dbo].[log]
-						where
-							Title like ''%'' + @logTraceSourceSelected + ''%''
+						' + @sqlcommandWhereClause + '
 
 						select * from (select 
-											[logid]
-											,[eventid]
-											,[priority]
-											,[severity]
-											,[title]
-											,[timestamp]
-											,[machinename]
-											,[appdomainname]
-											,[processid]
-											,[processname]
-											,[threadname]
-											,[win32threadid]
-											,[message]
-											,[formattedmessage] 
-											,row_number() over ( order by ' + @sortBy + ' ' + @sortAscendingDescription + ') as rowNumber
-										from
-											[dbo].[log]
-										where
-											Title like ''%'' + @logTraceSourceSelected + ''%''
+											[Log].[logid]
+											,[Log].[eventid]
+											,[Log].[priority]
+											,[Log].[severity]
+											,[Log].[title]
+											,[Log].[timestamp]
+											,[Log].[machinename]
+											,[Log].[appdomainname]
+											,[Log].[processid]
+											,[Log].[processname]
+											,[Log].[threadname]
+											,[Log].[win32threadid]
+											,[Log].[message]
+											,[Log].[formattedmessage] 
+											,row_number() over ( order by [Log].' + @sortBy + ' ' + @sortAscendingDescription + ') as rowNumber
+						' + @sqlcommandWhereClause + ' 
 										)as tmp
 						where rowNumber between (@pageindex * @pagesize) and ((@pageindex * @pagesize)+@pagesize)
-						order by ' + @sortby + ' ' + @sortAscendingDescription;
+						' 
+						-- order by ' + @sortby + ' ' + @sortAscendingDescription;
 
 
-	set @sqlCommandParametersDefinition = N'@logTraceSourceSelected varchar(256), @pageIndex int , @pageSize int';
+	set @sqlCommandParametersDefinition = N'@logTraceSourceSelected varchar(256), @logDateCreationFrom datetime, @logDateCreationTo datetime, @pageIndex int , @pageSize int';
 
 	execute sp_executesql @sqlcommand, 
 							@sqlCommandParametersDefinition, 
 							@logTraceSourceSelected = @logTraceSourceSelected,
+							@logDateCreationFrom = @logDateCreationFrom,
+							@logDateCreationTo = @logDateCreationTo,
 							@pageIndex = @pageIndex,
 							@pageSize = @pageSize
 
@@ -87,13 +98,16 @@ end
 
 GO
 
---declare @p5 xml
---set @p5=convert(xml,
---N'<DataFilterLogger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
---	<LogTraceSourceSelected>BeginREquest</LogTraceSourceSelected>
---	<IsClientVisible>false</IsClientVisible>
+--declare @p1 xml
+--set @p1=convert(xml,N'
+--<DataFilterLogger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+--	<LogTraceListenerSelected>ListenerOnUIProxied</LogTraceListenerSelected>
+--	<LogTraceSourceSelected>UIBeginRequest</LogTraceSourceSelected>
+--	<CreationDate>2014-03-12T00:00:00</CreationDate>
+--	<IsClientVisible>true</IsClientVisible>
 --	<Page>0</Page>
 --	<PageSize>10</PageSize>
---	<SortAscending>false</SortAscending>
+--	<SortAscending>true</SortAscending>
 --</DataFilterLogger>')
---exec LoggingExceptionGetAll @filter=@p5
+
+--exec LoggingExceptionGetAll @filter=@p1

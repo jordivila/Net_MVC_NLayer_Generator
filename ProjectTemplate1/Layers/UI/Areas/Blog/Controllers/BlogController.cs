@@ -22,11 +22,11 @@ namespace $safeprojectname$.Areas.Blog.Controllers
             get { return new string[1] { "~/Areas/Blog/Content/blog.css" }; }
         }
 
-        private IProviderSyndication ProviderSyndication = null;
+        private ISyndicationProxy ProviderSyndication = null;
 
         public BlogController()
         {
-            this.ProviderSyndication = DependencyFactory.Resolve<IProviderSyndication>();
+            this.ProviderSyndication = DependencyFactory.Resolve<ISyndicationProxy>();
         }
 
         protected override void Dispose(bool disposing)

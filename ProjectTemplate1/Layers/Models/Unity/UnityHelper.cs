@@ -6,7 +6,7 @@ namespace $safeprojectname$.Unity
 {
     public static class DependencyFactory
     {
-        public static UnityContainerAvailable UnityContainerDefault = UnityContainerAvailable.MockDALDevelopment;
+        public static UnityContainerAvailable UnityContainerDefault = UnityContainerAvailable.Real;
         private static IUnityContainer _unity;
 
         public static void SetUnityContainerProviderFactory(IUnityContainer container)
@@ -30,7 +30,6 @@ namespace $safeprojectname$.Unity
     public enum UnityContainerAvailable
     {
         Real,
-        MockDAL,
-        MockDALDevelopment
+        //MockDALDevelopment
     }
 }

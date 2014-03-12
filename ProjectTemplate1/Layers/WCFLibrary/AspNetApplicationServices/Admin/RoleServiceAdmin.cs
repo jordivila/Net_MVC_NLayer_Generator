@@ -4,7 +4,7 @@ using $customNamespace$.Models.Roles;
 
 namespace $safeprojectname$.AspNetApplicationServices.Admin
 {
-    public class RoleServiceAdmin : BaseService, IProviderRoleManager
+    public class RoleServiceAdmin : BaseService, IRoleManagerProxy
     {
         private IRoleAdminBL _bl;
         public RoleServiceAdmin()

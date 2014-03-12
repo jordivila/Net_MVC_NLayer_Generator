@@ -5,7 +5,7 @@ using $safeprojectname$.UserRequestModel;
 
 namespace $safeprojectname$.Profile
 {
-    public interface IProviderProfileDAL : IDisposable
+    public interface IProfileDAL : IDisposable
     {
         DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest);
 

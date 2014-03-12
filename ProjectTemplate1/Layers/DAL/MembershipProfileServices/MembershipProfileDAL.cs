@@ -7,9 +7,9 @@ using $customNamespace$.Models.UserRequestModel;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.DAL.MembershipServices
 {
-    public class ProfileDAL : BaseDAL, IProviderProfileDAL
+    public class ProfileDAL : BaseDAL, IProfileDAL
     {
         private const string CacheManagerName = "CacheManagerForProfileDAL";
         private ObjectCache _objCacheManager = new MemoryCache(CacheManagerName);

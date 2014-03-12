@@ -13,11 +13,11 @@ namespace $customNamespace$.Models.Logging
     [ConfigurationElementType(typeof(CustomTraceListenerData))]
     public class ProxiedWcfTraceListener : CustomTraceListener, ICustomTraceListener
     {
-        private ProviderProxyLogging proxyLogging = null;
+        private LoggingProxy proxyLogging = null;
 
         public ProxiedWcfTraceListener()
         {
-            proxyLogging = new ProviderProxyLogging();
+            proxyLogging = new LoggingProxy();
         }
 
         protected override void Dispose(bool disposing)
@@ -46,7 +46,7 @@ namespace $customNamespace$.Models.Logging
 
         public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
-            using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
+            using (ILoggingProxy provider = DependencyFactory.Resolve<ILoggingProxy>())
             {
                 DataResultLogMessageList resultSearch = provider.LoggingExceptionGetAll((DataFilterLogger)dataFilter);
                 return new DataResultLogMessageList()

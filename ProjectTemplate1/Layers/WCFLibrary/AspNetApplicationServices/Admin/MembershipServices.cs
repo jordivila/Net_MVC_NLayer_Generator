@@ -5,7 +5,7 @@ using $customNamespace$.Models.Membership;
 
 namespace $safeprojectname$.AspNetApplicationServices.Admin
 {
-    public class MembershipServices : BaseService, IProviderMembership
+    public class MembershipServices : BaseService, IMembershipProxy
     {
         private IMembershipBL _bl;
 

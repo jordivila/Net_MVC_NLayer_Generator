@@ -89,7 +89,7 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\ProviderAuthenticationInterface.cs" />
+    <Compile Include="Authentication\IAuthenticationProxy.cs" />
     <Compile Include="Collections\CollectionHelpers.cs" />
     <Compile Include="Common\BaseDataCommonResults.cs" />
     <Compile Include="Configuration\ApplicationConfiguration.cs" />
@@ -123,7 +123,8 @@
     <Compile Include="Logging\LoggingHelper.cs" />
     <Compile Include="Logging\LogMessage.cs" />
     <Compile Include="Logging\LogMessageFilter.cs" />
-    <Compile Include="Logging\ProviderLoggingInterface.cs" />
+    <Compile Include="Logging\ILoggingProxy.cs" />
+    <Compile Include="Logging\ILoggingDAL.cs" />
     <Compile Include="Membership\DataFilterUserList.cs" />
     <Compile Include="Membership\DataResultProviderSettings.cs" />
     <Compile Include="Membership\DataResultUser.cs" />
@@ -132,28 +133,33 @@
     <Compile Include="Membership\DataResultUserCreateResult.cs" />
     <Compile Include="Membership\DataResultUserList.cs" />
     <Compile Include="Membership\DataResultUserSearch.cs" />
-    <Compile Include="Membership\ProviderMembershipInterface.cs" />
-    <Compile Include="Membership\ProviderMembershipSettings.cs" />
+    <Compile Include="Membership\IMembershipProxy.cs" />
+    <Compile Include="Membership\IMembershipDAL.cs" />
+    <Compile Include="Membership\MembershipSettings.cs" />
     <Compile Include="Profile\Profile.cs" />
     <Compile Include="Profile\ProviderProfileInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Syndication\ProviderProxySyndication.cs" />
-    <Compile Include="Authentication\ProviderProxyAuthentication.cs" />
+    
+    <Compile Include="Authentication\AuthenticationProxy.cs" />
     <Compile Include="ProxyProviders\ProviderProxyBase.cs" />
-    <Compile Include="Logging\ProviderProxyLogging.cs" />
-    <Compile Include="Membership\ProviderProxyMembership.cs" />
+    <Compile Include="Logging\LoggingProxy.cs" />
+    <Compile Include="Membership\MembershipProxy.cs" />
     <Compile Include="Profile\ProviderProxyProfiles.cs" />
-    <Compile Include="Roles\ProviderProxyRoleManager.cs" />
-    <Compile Include="Roles\ProviderProxyRoles.cs" />
-    <Compile Include="Roles\ProviderRoleManagerInterface.cs" />
-    <Compile Include="Roles\ProviderRolesInterface.cs" />
+    <Compile Include="Roles\RoleManagerProxy.cs" />
+    <Compile Include="Roles\IMembershipRoleDALProvider.cs" />
+    <Compile Include="Roles\RolesProxy.cs" />
+    <Compile Include="Roles\IRoleManagerProxy.cs" />
+    <Compile Include="Roles\IRolesProxy.cs" />
     <Compile Include="RepositoryPattern\RepositoryPattern.cs" />
     <Compile Include="SmtpModels\SmtpClientProxy.cs" />
     <Compile Include="Syndication\DataFilterSyndication.cs" />
-    <Compile Include="Syndication\ProviderSyndicationInterface.cs" />
+    <Compile Include="Syndication\ISyndicationProxy.cs" />
+    <Compile Include="Syndication\ISyndicationDAL.cs" />
     <Compile Include="Syndication\SyndicationEqualityComparer.cs" />
     <Compile Include="Syndication\SyndicationHelpers.cs" />
+    <Compile Include="Syndication\SyndicationProxy.cs" />
     <Compile Include="TokenPersistence\TokenPersistence.cs" />
+    <Compile Include="TokenPersistence\ITokenPersistenceDAL.cs" />
     <Compile Include="Unity\UnityHelper.cs" />
     <Compile Include="UserRequestModel\UserRequest.cs" />
     <Compile Include="UserSessionPersistence\UserSessionHelper.cs" />

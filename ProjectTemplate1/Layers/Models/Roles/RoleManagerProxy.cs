@@ -1,11 +1,11 @@
-﻿using $safeprojectname$.Common;
-using $safeprojectname$.ProxyProviders;
+﻿using $customNamespace$.Models.Common;
+using $customNamespace$.Models.ProxyProviders;
 
 
 
-namespace $safeprojectname$.Roles
+namespace $customNamespace$.Models.Roles
 {
-    public class ProviderProxyRoleManager : ProviderBaseChannel<IProviderRoleManager>, IProviderRoleManager
+    public class RoleManagerProxy : ProviderBaseChannel<IRoleManagerProxy>, IRoleManagerProxy
     {
         public DataResultBoolean AddToRoles(string userName, string[] roles)
         {

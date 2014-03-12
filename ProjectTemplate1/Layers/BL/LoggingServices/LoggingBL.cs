@@ -5,14 +5,9 @@ using $customNamespace$.DAL.LoggingServices;
 using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Unity;
 
-namespace $safeprojectname$.LoggingServices
+namespace $customNamespace$.BL.LoggingServices
 {
-    public interface ILoggingBL : IProviderLogging
-    {
-
-    }
-
-    public class LoggingBL : BaseBL, ILoggingBL
+    public class LoggingBL : BaseBL, ILoggingProxy
     {
         private ILoggingDAL _dal;
 
@@ -20,6 +15,7 @@ namespace $safeprojectname$.LoggingServices
         {
             _dal = DependencyFactory.Resolve<ILoggingDAL>();
         }
+
         public override void Dispose()
         {
             base.Dispose();
@@ -34,13 +30,16 @@ namespace $safeprojectname$.LoggingServices
         {
             return this._dal.LoggingExceptionGetById(guid);
         }
+
         public Guid LoggingExceptionSet(LogEntry logMessage)
         {
             return this._dal.LoggingExceptionSet(logMessage);
         }
+
         public DataResultLogMessageList LoggingExceptionGetAll(DataFilterLogger filter)
         {
             return this._dal.LoggingExceptionGetAll(filter);
         }
+
     }
 }

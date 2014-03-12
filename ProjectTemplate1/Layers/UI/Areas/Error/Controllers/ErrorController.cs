@@ -42,7 +42,7 @@ namespace $safeprojectname$.Areas.Error.Controllers
 
         public ActionResult SessionExpired()
         {
-            using (IProviderAuthentication authServices = DependencyFactory.Resolve<IProviderAuthentication>())
+            using (IAuthenticationProxy authServices = DependencyFactory.Resolve<IAuthenticationProxy>())
             {
                 authServices.LogOut();
             }

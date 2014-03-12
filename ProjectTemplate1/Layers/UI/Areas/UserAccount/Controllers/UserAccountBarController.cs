@@ -19,11 +19,11 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
             get { return new string[0]; }
         }
 
-        private IProviderProxyProfileServices providerProfile;
+        private IProfileProxy providerProfile;
 
         public UserAccountBarController()
         {
-            this.providerProfile = DependencyFactory.Resolve<IProviderProxyProfileServices>();
+            this.providerProfile = DependencyFactory.Resolve<IProfileProxy>();
         }
 
         protected override void Dispose(bool disposing)

@@ -10,14 +10,15 @@ using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Configuration.ConnectionProviders;
 using $customNamespace$.Models.Logging;
 
-namespace $safeprojectname$.LoggingServices
+namespace $customNamespace$.DAL.LoggingServices
 {
-    public class LoggingDAL : BaseDAL,  ILoggingDAL
+    public class LoggingDAL : BaseDAL, ILoggingDAL
     {
         public LoggingDAL()
         {
 
         }
+
         public override void Dispose()
         {
             base.Dispose();

@@ -65,23 +65,12 @@
   <ItemGroup>
     <Compile Include="BaseDAL.cs" />
     <Compile Include="LoggingServices\LoggingDAL.cs" />
-    <Compile Include="LoggingServices\LoggingDALInterface.cs" />
-    <Compile Include="LoggingServices\LoggingDALMock.cs" />
     <Compile Include="MembershipProfileServices\MembershipProfileDAL.cs" />
-    <Compile Include="MembershipProfileServices\MembershipProfileDALInterface.cs" />
-    <Compile Include="MembershipProfileServices\MembershipProfileDALMock.cs" />
     <Compile Include="MembershipRoleServices\MembershipRoleDAL.cs" />
-    <Compile Include="MembershipRoleServices\MembershipRoleDALInterface.cs" />
-    <Compile Include="MembershipRoleServices\MembershipRoleDALMock.cs" />
     <Compile Include="MembershipServices\MembershipDAL.cs" />
-    <Compile Include="MembershipServices\MembershipDALInterface.cs" />
-    <Compile Include="MembershipServices\MembershipDALMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SyndicationServices\SyndicationDAL.cs" />
-    <Compile Include="SyndicationServices\SyndicationDALInterface.cs" />
     <Compile Include="TockenPersistenceServices\TokenPersistenceDAL.cs" />
-    <Compile Include="TockenPersistenceServices\TokenPersistenceDALInterface.cs" />
-    <Compile Include="TockenPersistenceServices\TokenPersistenceDALMock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\AspNetServices\AspNetMembershipDatabase.sql" />

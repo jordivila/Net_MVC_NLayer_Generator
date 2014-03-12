@@ -1,7 +1,8 @@
 ﻿using System.Web.Security;
 using $customNamespace$.Models.Common;
+using $customNamespace$.Models.Roles;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.DAL.MembershipRoleServices
 {
     public class RoleAdminDAL : BaseDAL, IRoleAdminDAL
     {

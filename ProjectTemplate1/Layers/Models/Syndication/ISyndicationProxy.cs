@@ -7,7 +7,7 @@ namespace $safeprojectname$.Syndication
     [ServiceContract]
     [ServiceKnownType(typeof(Atom10ItemFormatter))]
     [ServiceKnownType(typeof(Atom10FeedFormatter))]
-    public interface IProviderSyndication : IDisposable
+    public interface ISyndicationProxy : IDisposable
     {
 
         [OperationContract]

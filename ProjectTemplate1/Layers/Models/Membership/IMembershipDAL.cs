@@ -1,9 +1,8 @@
 ﻿using System;
-using $customNamespace$.Models.Membership;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.Models.Membership
 {
-    public interface IMembershipDAL : IProviderMembership
+    public interface IMembershipDAL : IMembershipProxy
     {
         DataResultUserCantAccess  ResetPassword(MembershipUserWrapper user, string newPassword, string confirmNewPassword);
         DataResultUserActivate ActivateAccount(MembershipUserWrapper user, Guid activateUserToken);

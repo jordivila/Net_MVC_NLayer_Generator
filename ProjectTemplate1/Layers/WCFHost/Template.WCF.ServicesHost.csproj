@@ -98,8 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Unity\UnityContainerProvider.cs" />
-    <Compile Include="Unity\UnityContainerProviderMockDAL.cs" />
-    <Compile Include="Unity\UnityContainerProviderMockDALDevelopment.cs" />
     <Compile Include="Unity\UnityContainerProviderReal.cs" />
   </ItemGroup>
   <ItemGroup>

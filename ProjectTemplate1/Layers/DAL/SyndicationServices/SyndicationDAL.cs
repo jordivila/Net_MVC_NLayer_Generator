@@ -8,8 +8,7 @@ using System.Xml;
 using $customNamespace$.Models.ExtensionMethods;
 using $customNamespace$.Models.Syndication;
 
-
-namespace $safeprojectname$.SyndicationServices
+namespace $customNamespace$.DAL.SyndicationServices
 {
     public class SyndicationDAL : BaseDAL, ISyndicationDAL
     {

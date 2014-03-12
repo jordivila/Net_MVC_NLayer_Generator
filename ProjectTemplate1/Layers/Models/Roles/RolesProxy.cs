@@ -1,8 +1,8 @@
-﻿using $safeprojectname$.ProxyProviders;
+﻿using $customNamespace$.Models.ProxyProviders;
 
-namespace $safeprojectname$.Roles
+namespace $customNamespace$.Models.Roles
 {
-    public class ProviderProxyRole : ProviderBaseChannel<IProviderRoles>, IProviderRoles
+    public class RolesProxy : ProviderBaseChannel<IRolesProxy>, IRolesProxy
     {
         public string[] GetRolesForCurrentUser()
         { 

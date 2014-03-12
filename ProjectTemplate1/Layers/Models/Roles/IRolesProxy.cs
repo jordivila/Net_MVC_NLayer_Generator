@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ServiceModel;
 
-namespace $safeprojectname$.Roles
+namespace $customNamespace$.Models.Roles
 {
     [ServiceContract]
-    public interface IProviderRoles: IDisposable
+    public interface IRolesProxy: IDisposable
     {
         [OperationContract]
         string[] GetRolesForCurrentUser();

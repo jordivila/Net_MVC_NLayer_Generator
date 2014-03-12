@@ -5,7 +5,7 @@ using System.Web.Security;
 namespace $safeprojectname$.Authentication
 {
     [ServiceContract]
-    public interface IProviderAuthentication: IDisposable
+    public interface IAuthenticationProxy: IDisposable
     {
         [OperationContract]
         bool IsLoggedIn();

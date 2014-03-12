@@ -172,15 +172,15 @@ namespace $customNamespace$.Models.Logging
             //    PreviousContinuationToken = dataFilter.NextContinuationToken
             //};
 
-            
-            
-            
+
+
+
             CloudTable table = this.TableClient().GetTableReference(dataFilter.LogTraceSourceSelected);
 
             TableQuery<AzureTableStorageListenerEntity> rangeQuery = new TableQuery<AzureTableStorageListenerEntity>().Where(
 
                     TableQuery.GenerateFilterCondition("PartitionKey",
-                                                        QueryComparisons.GreaterThanOrEqual,
+                                                        QueryComparisons.Equal,
                                                         dataFilter.CreationDate.ToString("yyyyMMdd"))
                     );
 

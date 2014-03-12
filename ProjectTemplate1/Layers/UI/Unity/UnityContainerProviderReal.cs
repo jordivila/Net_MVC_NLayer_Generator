@@ -25,13 +25,13 @@ namespace $safeprojectname$.Unity
         {
             IUnityContainer unityContainerReal = new UnityContainer();
 
-            unityContainerReal.RegisterType(typeof(IProviderAuthentication), typeof(ProviderProxyAuthentication), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderMembership), typeof(ProviderProxyMembership), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderRoleManager), typeof(ProviderProxyRoleManager), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderRoles), typeof(ProviderProxyRole), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderProxyProfileServices), typeof(ProviderProxyProfileServices), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderLogging), typeof(ProviderProxyLogging), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderSyndication), typeof(ProviderProxySyndication), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IAuthenticationProxy), typeof(AuthenticationProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IMembershipProxy), typeof(MembershipProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IRoleManagerProxy), typeof(RoleManagerProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IRolesProxy), typeof(RolesProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IProfileProxy), typeof(ProfileProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(ILoggingProxy), typeof(LoggingProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationProxy), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(IUserRequestModel<HttpContext, HttpCookieCollection>), typeof(UserRequestModelHttpClient), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
             return unityContainerReal;
@@ -44,13 +44,13 @@ namespace $safeprojectname$.Unity
         {
             IUnityContainer unityContainerReal = new UnityContainer();
 
-            unityContainerReal.RegisterType(typeof(IProviderAuthentication), typeof(ProviderProxyAuthentication), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderMembership), typeof(ProviderProxyMembership), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderRoleManager), typeof(ProviderProxyRoleManager), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderRoles), typeof(ProviderProxyRole), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderProxyProfileServices), typeof(ProviderProxyProfileServices), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderLogging), typeof(ProviderProxyLogging), new InjectionMember[0]);
-            unityContainerReal.RegisterType(typeof(IProviderSyndication), typeof(ProviderProxySyndication), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IAuthenticationProxy), typeof(AuthenticationProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IMembershipProxy), typeof(MembershipProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IRoleManagerProxy), typeof(RoleManagerProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IRolesProxy), typeof(RolesProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(IProfileProxy), typeof(ProfileProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(ILoggingProxy), typeof(LoggingProxy), new InjectionMember[0]);
+            unityContainerReal.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationProxy), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(IUserRequestModel<HttpContext, HttpCookieCollection>), typeof(UserRequestModelHttpClient), new InjectionMember[0]);
             unityContainerReal.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
             return unityContainerReal;

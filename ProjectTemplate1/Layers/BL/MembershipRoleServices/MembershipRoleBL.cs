@@ -10,7 +10,7 @@ using $customNamespace$.Resources.UserAdministration;
 
 namespace $safeprojectname$.MembershipServices
 {
-    public interface IRoleAdminBL : IProviderRoleManager
+    public interface IRoleAdminBL : IRoleManagerProxy
     {
 
     }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ServiceModel;
-using $safeprojectname$.Common;
+using $customNamespace$.Models.Common;
 
-namespace $safeprojectname$.Roles
+namespace $customNamespace$.Models.Roles
 {
     [ServiceContract]
-    public interface IProviderRoleManager : IDisposable
+    public interface IRoleManagerProxy : IDisposable
     {
         [OperationContract]
         DataResultBoolean AddToRoles(string userName, string[] roles);

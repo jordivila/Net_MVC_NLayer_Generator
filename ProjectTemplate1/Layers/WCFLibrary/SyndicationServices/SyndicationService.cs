@@ -4,9 +4,9 @@ using $customNamespace$.Models.Syndication;
 
 namespace $safeprojectname$.SyndicationServices
 {
-    public class SyndicationService : IProviderSyndication
+    public class SyndicationService : ISyndicationProxy
     {
-        private IProviderSyndication _bl;
+        private ISyndicationProxy _bl;
 
         public SyndicationService()
         {

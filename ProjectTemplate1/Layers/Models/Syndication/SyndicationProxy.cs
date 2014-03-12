@@ -4,7 +4,7 @@ using $safeprojectname$.ProxyProviders;
 
 namespace $safeprojectname$.Syndication
 {
-    public class ProviderProxySyndication : ProviderBaseChannel<IProviderSyndication>, IProviderSyndication
+    public class SyndicationProxy : ProviderBaseChannel<ISyndicationProxy>, ISyndicationProxy
     {
         private const string CacheManagerName = "CacheManagerForBlogFrontEnd";
         private ObjectCache Cache = new MemoryCache(CacheManagerName);

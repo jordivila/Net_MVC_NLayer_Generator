@@ -113,7 +113,7 @@ namespace $customNamespace$.Models.Logging
 
         public DataResultLogMessageList SearchLogMessages(string LogginConfigurationSectionName, DataFilterLogger dataFilter)
         {
-            return DependencyFactory.Resolve<IProviderLogging>().LoggingExceptionGetAll(dataFilter);
+            return DependencyFactory.Resolve<ILoggingDAL>().LoggingExceptionGetAll(dataFilter);
         }
     }
 }

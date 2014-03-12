@@ -18,8 +18,8 @@ namespace $customNamespace$.Tests.Integration.TestProxies
     [TestClass]
     public class RoleServiceAdminTests : TestIntegrationBase
     {
-        private static IProviderMembership _memberShipeServices;
-        private static IProviderRoleManager _rolesServices;
+        private static IMembershipProxy _memberShipeServices;
+        private static IRoleManagerProxy _rolesServices;
 
         private static List<MembershipUserWrapper> _listUsers = new List<MembershipUserWrapper>();
         private static string _tempRoleName = "SomeRoleName";
@@ -48,8 +48,8 @@ namespace $customNamespace$.Tests.Integration.TestProxies
         [TestInitialize()]
         public void MyTestInitialize()
         {
-            _memberShipeServices = DependencyFactory.Resolve<IProviderMembership>();
-            _rolesServices = DependencyFactory.Resolve<IProviderRoleManager>();
+            _memberShipeServices = DependencyFactory.Resolve<IMembershipProxy>();
+            _rolesServices = DependencyFactory.Resolve<IRoleManagerProxy>();
 
 
 

@@ -13,7 +13,7 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Resources.Account;
 using $customNamespace$.Resources.UserAdministration;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.DAL.MembershipServices
 {
     public class MembershipDAL : BaseDAL,  IMembershipDAL
     {

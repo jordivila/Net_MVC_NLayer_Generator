@@ -11,7 +11,7 @@ namespace $safeprojectname$.Unity
     public abstract class UnityContainerProvider
     {
         private static UnityContainerProviderReal unityContainerProviderReal = new UnityContainerProviderReal();
-        private static UnityContainerProviderDevelopment unityContainerProviderDevelopment = new UnityContainerProviderDevelopment();
+        //private static UnityContainerProviderDevelopment unityContainerProviderDevelopment = new UnityContainerProviderDevelopment();
 
         public static IUnityContainer GetContainer(UnityContainerAvailable containerSelected)
         {
@@ -22,9 +22,9 @@ namespace $safeprojectname$.Unity
                 case UnityContainerAvailable.Real:
                     result = UnityContainerProvider.unityContainerProviderReal.GetContainer();
                     break;
-                case UnityContainerAvailable.MockDALDevelopment:
-                    result = UnityContainerProvider.unityContainerProviderDevelopment.GetContainer();
-                    break;
+                //case UnityContainerAvailable.MockDALDevelopment:
+                //    result = UnityContainerProvider.unityContainerProviderDevelopment.GetContainer();
+                //    break;
                 default:
                     throw new Exception("IUnityContainer does not exist in the list of available providers");
             }

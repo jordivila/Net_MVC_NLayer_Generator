@@ -2,11 +2,11 @@
 using System.ServiceModel;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
 
     [ServiceContract]
-    public interface IProviderLogging : IDisposable
+    public interface ILoggingProxy : IDisposable
     {
         [OperationContract]
         DataResultLogMessageList LoggingExceptionGetById(Guid guid);
@@ -16,6 +16,5 @@ namespace $safeprojectname$.Logging
 
         [OperationContract]
         DataResultLogMessageList LoggingExceptionGetAll(DataFilterLogger filter);
-
     }
 }

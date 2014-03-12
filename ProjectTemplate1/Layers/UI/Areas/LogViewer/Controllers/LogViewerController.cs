@@ -136,7 +136,7 @@ namespace $customNamespace$.UI.Web.Areas.LogViewer.Controllers
         {
             LogViewerModel model = new LogViewerModel();
 
-            using (IProviderLogging provider = DependencyFactory.Resolve<IProviderLogging>())
+            using (ILoggingProxy provider = DependencyFactory.Resolve<ILoggingProxy>())
             {
                 model.BaseViewModelInfo.Title = GeneralTexts.LogViewer;
                 model.LogMessages = new DataResultLogMessageList()

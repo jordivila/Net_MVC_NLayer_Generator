@@ -3,7 +3,7 @@ using $safeprojectname$.ProxyProviders;
 
 namespace $safeprojectname$.Authentication
 {
-    public class ProviderProxyAuthentication : ProviderBaseChannel<IProviderAuthentication>, IProviderAuthentication
+    public class AuthenticationProxy : ProviderBaseChannel<IAuthenticationProxy>, IAuthenticationProxy
     {
         public bool LogIn(string userName, string password, string customCredential, bool isPersistent)
         {

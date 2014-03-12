@@ -31,11 +31,11 @@ namespace $safeprojectname$.Areas.UserProfile.Controllers
             get { return new string[0]; }
         }
 
-        private IProviderProxyProfileServices ProviderProfile;
+        private IProfileProxy ProviderProfile;
 
         public UserProfileController()
         {
-            this.ProviderProfile = DependencyFactory.Resolve<IProviderProxyProfileServices>();
+            this.ProviderProfile = DependencyFactory.Resolve<IProfileProxy>();
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
