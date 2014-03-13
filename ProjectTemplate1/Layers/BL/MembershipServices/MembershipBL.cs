@@ -228,8 +228,11 @@ namespace $safeprojectname$.MembershipServices
             {
                 if (this.ValidatePasswordStrength(password))
                 {
-
-                    using (TransactionScope trans = new TransactionScope())
+                    using (TransactionScope trans = new TransactionScope(TransactionScopeOption.Required,
+                                                    new TransactionOptions()
+                                                    {
+                                                        IsolationLevel = IsolationLevel.ReadUncommitted
+                                                    }))
                     {
                         result = this._dal.CreateUser(username, password, email, passwordQuestion, passwordAnswer, activateFormVirtualPath);
 
