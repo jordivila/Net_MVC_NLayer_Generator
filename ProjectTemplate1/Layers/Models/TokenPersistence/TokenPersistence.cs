@@ -1,47 +1,42 @@
 ﻿using System;
-using $safeprojectname$.RepositoryPattern;
+using $customNamespace$.Models.RepositoryPattern;
+using System.Data;
+using $customNamespace$.Models.Common;
 
-namespace $safeprojectname$.TokenPersistence
+namespace $customNamespace$.Models.TokenPersistence
 {
-    public interface ITokenTemporaryPersistenceServices : IRepository<TokenTemporaryPersistenceServiceItem>{}
-
-    interface ITokenTemporaryPersistenceServiceItem
+    public interface ITokenTemporaryPersistenceServiceItem<T> : IDataReaderBindable
     {
-        DateTime TokenCreated { get; }
-        object TokenObject { get; set; }
         Guid Token { get; set; }
+        DateTime TokenCreated { get; }
+        T TokenObject { get; set; }
     }
 
-    public class TokenTemporaryPersistenceServiceItem : ITokenTemporaryPersistenceServiceItem
+    public class TokenTemporaryPersistenceServiceItem<T> : ITokenTemporaryPersistenceServiceItem<T>
     {
-        private Guid _Token = Guid.NewGuid();
-        private DateTime _TokenCreated = DateTime.Now;
-        
-        public Guid Token
+        public TokenTemporaryPersistenceServiceItem()
+            : base()
         {
-            get
-            {
-                return this._Token;
-            }
-            set
-            {
-                this._Token = value;
-            }
+            this.Token = Guid.NewGuid();
+            this.TokenCreated = DateTime.Now;
         }
-        public DateTime TokenCreated
-        {
-            get
-            {
-                return this._TokenCreated;
-            }
-        }
-        public object TokenObject { get; set; }
 
-        public TokenTemporaryPersistenceServiceItem() { }
-        public TokenTemporaryPersistenceServiceItem(object obj)
+        public TokenTemporaryPersistenceServiceItem(T obj)
+            : this()
         {
             this.TokenObject = obj;
         }
 
+        public Guid Token { get; set; }
+        public DateTime TokenCreated { get; set; }
+        public T TokenObject { get; set; }
+
+
+        public void DataBind(IDataReader dr)
+        {
+            this.Token = Guid.Parse((string)dr["tokenId"]);
+            this.TokenCreated = (DateTime)dr["tokenCreated"];
+            this.TokenObject = (T)baseModel.DeserializeFromJson<T>((string)dr["tokenObjectSerialized"]);
+        }
     }
 }

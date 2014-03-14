@@ -4,18 +4,18 @@ using Microsoft.Practices.Unity;
 using $customNamespace$.DAL.TokenTemporaryPersistenceServices;
 using $customNamespace$.Models.TokenPersistence;
 using $customNamespace$.Models.Unity;
+using System.Linq.Expressions;
+using $customNamespace$.Models.Common;
 
-namespace $safeprojectname$.TokenTemporaryPersistenceServices
+namespace $customNamespace$.BL.TokenTemporaryPersistenceServices
 {
-    public interface ITokenTemporaryPersistenceBL : ITokenTemporaryPersistenceServices { }
-
-    public class TokenTemporaryPersistenceBL : BaseBL, ITokenTemporaryPersistenceBL
+    public class TokenTemporaryPersistenceBL<T> : BaseBL, ITokenTemporaryPersistenceBL<T>
     {
-        private ITokenTemporaryPersistenceDAL _dal;
+        private ITokenTemporaryPersistenceDAL<T> _dal;
 
         public TokenTemporaryPersistenceBL()
         {
-            _dal = DependencyFactory.Resolve<ITokenTemporaryPersistenceDAL>();
+            _dal = DependencyFactory.Resolve<ITokenTemporaryPersistenceDAL<T>>();
         }
 
         public override void Dispose()
@@ -28,32 +28,22 @@ namespace $safeprojectname$.TokenTemporaryPersistenceServices
             }
         }
 
-        public List<TokenTemporaryPersistenceServiceItem> GetAll()
+        public TokenTemporaryPersistenceServiceItem<T> Insert(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            return this._dal.GetAll();
+            return this._dal.Insert(entity);
         }
 
-        public List<TokenTemporaryPersistenceServiceItem> FindBy(System.Linq.Expressions.Expression<Func<TokenTemporaryPersistenceServiceItem, bool>> predicate)
+        public object Delete(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            return this._dal.FindBy(predicate);
+            return this._dal.Delete(entity);
         }
 
-        public void Insert(TokenTemporaryPersistenceServiceItem entity)
+        public TokenTemporaryPersistenceServiceItem<T> Update(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            this._dal.Insert(entity);
+            return this._dal.Update(entity);
         }
 
-        public void Delete(TokenTemporaryPersistenceServiceItem entity)
-        {
-            this._dal.Delete(entity);
-        }
-
-        public void Update(TokenTemporaryPersistenceServiceItem entity)
-        {
-            this._dal.Update(entity);
-        }
-
-        public TokenTemporaryPersistenceServiceItem GetById(object id)
+        public TokenTemporaryPersistenceServiceItem<T> GetById(object id)
         {
             return this._dal.GetById(id);
         }

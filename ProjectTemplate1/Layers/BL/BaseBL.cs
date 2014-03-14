@@ -3,8 +3,9 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.Unity;
+using System.Transactions;
 
-namespace $safeprojectname$
+namespace $customNamespace$.BL
 {
     public abstract class BaseBL : IDisposable
     {
@@ -28,11 +29,18 @@ namespace $safeprojectname$
             }
         }
 
+        internal TransactionScope TransactionScopeCreate()
+        {
+            return new TransactionScope(TransactionScopeOption.Required,
+                                            new TransactionOptions()
+                                            {
+                                                IsolationLevel = IsolationLevel.ReadCommitted
+                                            });
+        }
+
         public virtual void Dispose()
         {
-            
+
         }
     }
 }
-
-

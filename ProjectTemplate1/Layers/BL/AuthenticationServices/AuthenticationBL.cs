@@ -1,19 +1,14 @@
 ﻿using System.Web.Security;
-using $safeprojectname$.MembershipServices;
+using $customNamespace$.BL.MembershipServices;
 using $customNamespace$.Models.Authentication;
 using $customNamespace$.Models.Common;
 
-namespace $safeprojectname$.AuthenticationServices
+namespace $customNamespace$.BL.AuthenticationServices
 {
     public interface IAuthenticationBL : IAuthenticationProxy
     {
         FormsAuthenticationTicket SetTicket(string userName);
     }
-
-    //public interface CopyOfIAuthenticationBL : IAuthenticationProxy
-    //{
-    //    FormsAuthenticationTicket SetTicket(string userName);
-    //}
 
     public class AuthenticationBL : BaseBL, IAuthenticationBL
     {
@@ -61,7 +56,7 @@ namespace $safeprojectname$.AuthenticationServices
                     }
                     //return this.UserRequest.UserFormsIdentity.IsAuthenticated;
                 }
-                catch 
+                catch
                 {
                     //return false;
                 }
@@ -112,5 +107,5 @@ namespace $safeprojectname$.AuthenticationServices
         }
     }
 
-    
+
 }

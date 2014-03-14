@@ -39,6 +39,9 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipUserSearch.sql">AspNetMembershipUserSearch.sql</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
         </Folder>
+        <Folder Name="TokenPersistence" TargetFolderName="TokenPersistence">
+          <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistence.sql">TokenPersistence.sql</ProjectItem>
+        </Folder>
         <Folder Name="EnterpriseLibrary" TargetFolderName="EnterpriseLibrary">
           <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDatabase.sql">LoggingDatabase.sql</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetAll.sql">LoggingExceptionGetAll.sql</ProjectItem>

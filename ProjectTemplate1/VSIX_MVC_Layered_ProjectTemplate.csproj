@@ -460,6 +460,7 @@
     <Content Include="Layers\BL\__TemplateIcon.ico" />
     <Content Include="Layers\CloudServices\Template.CloudServices.vstemplate" />
     <Content Include="Layers\CloudServices\__TemplateIcon.ico" />
+    <Content Include="Layers\DAL\Scripts\TokenPersistence\TokenPersistence.sql" />
     <Content Include="Layers\DAL\Template.DAL.vstemplate">
       <SubType>Designer</SubType>
     </Content>

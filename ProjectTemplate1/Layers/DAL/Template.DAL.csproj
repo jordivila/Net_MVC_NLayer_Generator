@@ -80,6 +80,7 @@
     <Content Include="Scripts\EnterpriseLibrary\LoggingExceptionGetById.sql" />
     <Content Include="Scripts\AspNetServices\Readme.txt" />
     <Content Include="Scripts\AspNetServices\AspNetMembershipUserSearch.sql" />
+    <Content Include="Scripts\TokenPersistence\TokenPersistence.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\$customNamespace$.Models\$customNamespace$.Models.csproj">

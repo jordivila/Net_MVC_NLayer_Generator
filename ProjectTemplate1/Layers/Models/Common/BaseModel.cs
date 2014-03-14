@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 using System.Xml.XPath;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using $customNamespace$.Models.Common;
 
 namespace $customNamespace$.Models
 {
@@ -21,6 +22,8 @@ namespace $customNamespace$.Models
     [Serializable]
     public abstract class baseModel : Object
     {
+        public baseModel() { }
+
         private static Func<IDataReader, string, bool> readerColumnExists = delegate(IDataReader rdr, string columnName)
         {
             rdr.GetSchemaTable().DefaultView.RowFilter = "ColumnName= '" + columnName + "'";

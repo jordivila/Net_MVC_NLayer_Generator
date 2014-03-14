@@ -1,76 +1,106 @@
-﻿using System;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using $customNamespace$.Models;
+using $customNamespace$.Models.Configuration;
+using $customNamespace$.Models.Configuration.ConnectionProviders;
+using $customNamespace$.Models.TokenPersistence;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
-using System.Linq.Expressions;
-using $customNamespace$.Models.TokenPersistence;
-using $customNamespace$.DAL;
-using $customNamespace$.DAL.TokenTemporaryPersistenceServices;
-using $customNamespace$.Models.TokenPersistence;
 
 namespace $customNamespace$.DAL.TokenTemporaryPersistenceServices
 {
-    public class TokenTemporaryPersistenceDAL : BaseDAL, ITokenTemporaryPersistenceDAL
+    public class TokenTemporaryDatabasePersistenceDAL<T> : BaseDAL, ITokenTemporaryPersistenceDAL<T>
     {
         public override void Dispose()
         {
             base.Dispose();
         }
 
-        private static List<TokenTemporaryPersistenceServiceItem> _tokensList = new List<TokenTemporaryPersistenceServiceItem>();
-
-        public List<TokenTemporaryPersistenceServiceItem> GetAll()
+        public TokenTemporaryPersistenceServiceItem<T> Insert(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            lock (_tokensList)
-            {
-                return TokenTemporaryPersistenceDAL._tokensList;
-            }
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceInsert");
+            db.AddInParameter(cmd, "@id", DbType.String, entity.Token.ToString());
+            db.AddInParameter(cmd, "@tokenCreated", DbType.DateTime, entity.TokenCreated);
+            db.AddInParameter(cmd, "@tokenObjectSerialized", DbType.String, baseModel.SerializeObjectToJson(entity.TokenObject));
+            db.ExecuteNonQuery(cmd);
+            return entity;
         }
 
-        public List<TokenTemporaryPersistenceServiceItem> FindBy(Expression<Func<TokenTemporaryPersistenceServiceItem, bool>> predicate)
+        public object Delete(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            lock (_tokensList)
-            {
-
-                return this.GetAll().Where(predicate.Compile()).ToList();
-            }
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceDelete");
+            db.AddInParameter(cmd, "@id", DbType.String, entity.Token.ToString());
+            return db.ExecuteScalar(cmd);
         }
 
-        public void Insert(TokenTemporaryPersistenceServiceItem entity)
-        {
-            lock (_tokensList)
-            {
-
-                TokenTemporaryPersistenceDAL._tokensList.Add(entity);
-            }
-        }
-
-        public void Delete(TokenTemporaryPersistenceServiceItem entity)
-        {
-            lock (_tokensList)
-            {
-
-                var item = TokenTemporaryPersistenceDAL._tokensList.Where(x => x.Token == entity.Token);
-                if (item.Count() > 0)
-                {
-                    TokenTemporaryPersistenceDAL._tokensList.Remove(item.First());
-                }
-            }
-        }
-
-        public void Update(TokenTemporaryPersistenceServiceItem entity)
+        public TokenTemporaryPersistenceServiceItem<T> Update(TokenTemporaryPersistenceServiceItem<T> entity)
         {
             throw new NotImplementedException();
         }
 
-        public TokenTemporaryPersistenceServiceItem GetById(object id)
+        public TokenTemporaryPersistenceServiceItem<T> GetById(object id)
+        {
+            TokenTemporaryPersistenceServiceItem<T> result = null;
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceGetById");
+            db.AddInParameter(cmd, "@id", DbType.String, ((Guid)id).ToString());
+            int i = this.ExecuteReader<TokenTemporaryPersistenceServiceItem<T>>(db, null, cmd, ref result);
+            return result;
+        }
+    }
+
+    public class TokenTemporaryInMemoryPersistenceDAL<T> : BaseDAL, ITokenTemporaryPersistenceDAL<T>
+    {
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
+
+        private static Dictionary<Guid, TokenTemporaryPersistenceServiceItem<T>> _tokensList = new Dictionary<Guid, TokenTemporaryPersistenceServiceItem<T>>();
+
+        public TokenTemporaryPersistenceServiceItem<T> Insert(TokenTemporaryPersistenceServiceItem<T> entity)
         {
             lock (_tokensList)
             {
+                TokenTemporaryInMemoryPersistenceDAL<T>._tokensList.Add(entity.Token, entity);
+            }
 
-                IEnumerable<TokenTemporaryPersistenceServiceItem> result = this.GetAll().Where(x => x.Token.ToString() == ((Guid)id).ToString());
-                if (result.Count() > 0)
+            return entity;
+        }
+
+        public object Delete(TokenTemporaryPersistenceServiceItem<T> entity)
+        {
+            int rowCount = 0;
+
+            lock (_tokensList)
+            {
+                rowCount = TokenTemporaryInMemoryPersistenceDAL<T>._tokensList.Where(x => x.Key == entity.Token).Count();
+
+                if (rowCount > 0)
                 {
-                    return result.First();
+                    TokenTemporaryInMemoryPersistenceDAL<T>._tokensList.Remove(entity.Token);
+                }
+            }
+
+            return rowCount;
+        }
+
+        public TokenTemporaryPersistenceServiceItem<T> Update(TokenTemporaryPersistenceServiceItem<T> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TokenTemporaryPersistenceServiceItem<T> GetById(object id)
+        {
+            lock (_tokensList)
+            {
+                if (TokenTemporaryInMemoryPersistenceDAL<T>._tokensList.Any(x => x.Key == ((Guid)id)))
+                {
+                    return TokenTemporaryInMemoryPersistenceDAL<T>._tokensList[((Guid)id)];
                 }
                 else
                 {

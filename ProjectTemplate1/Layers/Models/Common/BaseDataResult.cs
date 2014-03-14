@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using $customNamespace$.Models.Enumerations;
+using System.Data;
+using System;
 
 namespace $customNamespace$.Models.Common
 {
@@ -98,4 +100,10 @@ namespace $customNamespace$.Models.Common
         string SortBy { get; set; }
         bool SortAscending { get; set; }
     }
+
+    public interface IDataReaderBindable
+    {
+        void DataBind(IDataReader rd);
+    }
+
 }

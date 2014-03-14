@@ -4,9 +4,9 @@ using System.Net.Mail;
 using System.Transactions;
 using System.Web.Security;
 using Microsoft.Practices.Unity;
-using $safeprojectname$.AuthenticationServices;
-using $safeprojectname$.Mailing;
-using $safeprojectname$.TokenTemporaryPersistenceServices;
+using $customNamespace$.BL.AuthenticationServices;
+using $customNamespace$.BL.Mailing;
+using $customNamespace$.BL.TokenTemporaryPersistenceServices;
 using $customNamespace$.DAL.MembershipServices;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Configuration;
@@ -19,7 +19,7 @@ using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
 using $customNamespace$.Resources.UserAdministration;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.BL.MembershipServices
 {
     public interface IMembershipBL : IMembershipProxy
     {
@@ -52,20 +52,18 @@ namespace $safeprojectname$.MembershipServices
         }
         public DataResultUserCantAccess CantAccessYourAccount(string activateFormVirtualPath, string email)
         {
-            ITokenTemporaryPersistenceBL tokenServices = null;
+            ITokenTemporaryPersistenceBL<MembershipUserWrapper> tokenServices = null;
+
             DataResultUserCantAccess dalResult;
             try
             {
-                using (TransactionScope trans = new TransactionScope(TransactionScopeOption.Required,
-                                                new TransactionOptions(){
-                                                    IsolationLevel = IsolationLevel.ReadUncommitted
-                                                }))
+                using (TransactionScope trans = this.TransactionScopeCreate())
                 {
                     dalResult = this._dal.CantAccessYourAccount(activateFormVirtualPath, email);
                     if (dalResult.IsValid)
                     {
-                        tokenServices = new TokenTemporaryPersistenceBL();
-                        TokenTemporaryPersistenceServiceItem token = new TokenTemporaryPersistenceServiceItem(dalResult.Data.User);
+                        tokenServices = new TokenTemporaryPersistenceBL<MembershipUserWrapper>();
+                        TokenTemporaryPersistenceServiceItem<MembershipUserWrapper> token = new TokenTemporaryPersistenceServiceItem<MembershipUserWrapper>(dalResult.Data.User);
                         tokenServices.Insert(token);
                         dalResult.Data.ChangePasswordToken = token.Token;
 
@@ -129,10 +127,10 @@ namespace $safeprojectname$.MembershipServices
                 }
                 else
                 {
-                    ITokenTemporaryPersistenceBL tokenServices = null;
+                    ITokenTemporaryPersistenceBL<MembershipUserWrapper> tokenServices = null;
                     try
                     {
-                        tokenServices = new TokenTemporaryPersistenceBL();
+                        tokenServices = new TokenTemporaryPersistenceBL<MembershipUserWrapper>();
                         object tokenTempItem = tokenServices.GetById(guid);
                         if (tokenTempItem == null)
                         {
@@ -145,9 +143,9 @@ namespace $safeprojectname$.MembershipServices
                         }
                         else
                         {
-                            using (TransactionScope trans = new TransactionScope())
+                            using (TransactionScope trans = this.TransactionScopeCreate())
                             {
-                                MembershipUserWrapper userChangingPassword = (MembershipUserWrapper)((TokenTemporaryPersistenceServiceItem)tokenTempItem).TokenObject;
+                                MembershipUserWrapper userChangingPassword = ((TokenTemporaryPersistenceServiceItem<MembershipUserWrapper>)tokenTempItem).TokenObject;
                                 result = this._dal.ResetPassword(userChangingPassword, newPassword, confirmNewPassword);
                                 if (result.IsValid)
                                 {
@@ -160,7 +158,7 @@ namespace $safeprojectname$.MembershipServices
                                         mail.Body = string.Format(AccountResources.ChangePassword_EmailBody, MailingHelper.DomainConfig.DomainName);
                                         return mail;
                                     });
-                                    tokenServices.Delete(new TokenTemporaryPersistenceServiceItem() { Token = guid });
+                                    tokenServices.Delete(new TokenTemporaryPersistenceServiceItem<MembershipUserWrapper>() { Token = guid });
                                     trans.Complete();
                                     this.ForceAuthentication(userChangingPassword.UserName);
                                 }
@@ -228,11 +226,8 @@ namespace $safeprojectname$.MembershipServices
             {
                 if (this.ValidatePasswordStrength(password))
                 {
-                    using (TransactionScope trans = new TransactionScope(TransactionScopeOption.Required,
-                                                    new TransactionOptions()
-                                                    {
-                                                        IsolationLevel = IsolationLevel.ReadUncommitted
-                                                    }))
+
+                    using (TransactionScope trans = this.TransactionScopeCreate())
                     {
                         result = this._dal.CreateUser(username, password, email, passwordQuestion, passwordAnswer, activateFormVirtualPath);
 
@@ -248,8 +243,8 @@ namespace $safeprojectname$.MembershipServices
                             UserProfileModel usrProfile = _profileBL.Create(username).Data;
                             _profileBL.Dispose();
 
-                            ITokenTemporaryPersistenceBL _tokenServices = new TokenTemporaryPersistenceBL();
-                            TokenTemporaryPersistenceServiceItem token = new TokenTemporaryPersistenceServiceItem(newUser);
+                            ITokenTemporaryPersistenceBL<MembershipUserWrapper> _tokenServices = new TokenTemporaryPersistenceBL<MembershipUserWrapper>();
+                            TokenTemporaryPersistenceServiceItem<MembershipUserWrapper> token = new TokenTemporaryPersistenceServiceItem<MembershipUserWrapper>(newUser);
                             _tokenServices.Insert(token);
                             result.Data.ActivateUserToken = token.Token;
                             _tokenServices.Dispose();
@@ -371,8 +366,8 @@ namespace $safeprojectname$.MembershipServices
         public DataResultUserActivate ActivateAccount(Guid activateUserToken)
         {
             DataResultUserActivate result = null;
-            ITokenTemporaryPersistenceBL _tokenServices = new TokenTemporaryPersistenceBL();
-            TokenTemporaryPersistenceServiceItem _tokenItem = _tokenServices.GetById(activateUserToken);
+            ITokenTemporaryPersistenceBL<MembershipUserWrapper> _tokenServices = new TokenTemporaryPersistenceBL<MembershipUserWrapper>();
+            TokenTemporaryPersistenceServiceItem<MembershipUserWrapper> _tokenItem = _tokenServices.GetById(activateUserToken);
 
             if (_tokenItem == null)
             {
@@ -381,20 +376,20 @@ namespace $safeprojectname$.MembershipServices
                     IsValid = false,
                     Message = UserAdminTexts.ActivationTokenExpired,
                     Data = new AccountActivationModel()
-                     {
-                         ActivateUserToken = activateUserToken
-                     }
+                    {
+                        ActivateUserToken = activateUserToken
+                    }
                 };
             }
             else
             {
-                using (TransactionScope trans = new TransactionScope())
+                using (TransactionScope trans = this.TransactionScopeCreate())
                 {
                     try
                     {
                         result = this._dal.ActivateAccount((MembershipUserWrapper)_tokenItem.TokenObject, activateUserToken);
 
-                        _tokenServices.Delete(new TokenTemporaryPersistenceServiceItem() { Token = activateUserToken });
+                        _tokenServices.Delete(new TokenTemporaryPersistenceServiceItem<MembershipUserWrapper>() { Token = activateUserToken });
 
                         trans.Complete();
 

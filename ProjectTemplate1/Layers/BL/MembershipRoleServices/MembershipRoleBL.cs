@@ -8,7 +8,7 @@ using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.UserAdministration;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.BL.MembershipServices
 {
     public interface IRoleAdminBL : IRoleManagerProxy
     {
@@ -121,12 +121,12 @@ namespace $safeprojectname$.MembershipServices
         {
             string[] userRoles = this.FindByUserName(userName).Data.ToArray();
             string[] userExistingRoles = (from r in roles
-                                     where userRoles.Contains(r)
-                                     select r).ToArray();
+                                          where userRoles.Contains(r)
+                                          select r).ToArray();
 
             if (userExistingRoles.Count() > 0)
             {
-                using (TransactionScope trans = new TransactionScope())
+                using (TransactionScope trans = this.TransactionScopeCreate())
                 {
                     DataResultBoolean result = this._dal.RemoveFromRoles(userName, userExistingRoles);
                     if (result.IsValid)

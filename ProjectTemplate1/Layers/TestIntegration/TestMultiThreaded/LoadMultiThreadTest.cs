@@ -13,7 +13,7 @@ using $customNamespace$.Tests.Integration.Common.Controllers;
 namespace $customNamespace$.Tests.Integration.TestMultiThreaded
 {
     [TestClass]
-    public class LoadMultiThreadTest : TestControllerBase<UserAccountAreaRegistration>
+    public class MultiThreadTests : TestControllerBase<UserAccountAreaRegistration>
     {
         static EventWaitHandle _mainThreadWaitHandle = new AutoResetEvent(false);
         static int NumTrheads = 10;
@@ -21,7 +21,7 @@ namespace $customNamespace$.Tests.Integration.TestMultiThreaded
 
 
         [TestMethod]
-        public void StressMultiThreadTest()
+        public void MultiThreadTest()
         {
 
             Func<int, Thread> createWorker = delegate(int counterThreads)
@@ -64,6 +64,7 @@ namespace $customNamespace$.Tests.Integration.TestMultiThreaded
             {
                 this.StressMultiThreadAction();
             }
+
             ThreadList.ThreadsActive_Remove(Thread.CurrentThread);
 
             if ((ThreadList.ThreadsActive.Count == 0) && (ThreadList.Results.Count == (NumTrheads * NumIterationsPerThread)))
