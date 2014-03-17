@@ -4,9 +4,9 @@ using $customNamespace$.DAL.SyndicationServices;
 using $customNamespace$.Models.Syndication;
 using $customNamespace$.Models.Unity;
 
-namespace $safeprojectname$.SyndicationServices
+namespace $customNamespace$.BL.SyndicationServices
 {
-    public class SyndicationBL : BaseBL, ISyndicationProxy
+    public class SyndicationBL : BaseBL, ISyndicationBL
     {
         private ISyndicationDAL _dal;
         public SyndicationBL()

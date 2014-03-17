@@ -2,7 +2,7 @@
 
 namespace $customNamespace$.Models.Roles
 {
-    public interface IRoleAdminDAL : IRoleManagerProxy
+    public interface IRoleAdminDAL : IRoleAdminBL
     {
         
     }

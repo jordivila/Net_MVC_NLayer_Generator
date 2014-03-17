@@ -9,18 +9,13 @@ using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Globalization;
 using $customNamespace$.Models.Enumerations;
-using Microsoft.WindowsAzure.Storage.Table;
 
 namespace $customNamespace$.Models.Logging
 {
     [DataContract]
     public class DataResultLogMessageList : baseDataPagedResult<LogMessageModel>, IDataResultPaginatedModel<LogMessageModel>
     {
-        //[DataMember]
-        //public TableContinuationToken NextContinuationToken { get; set; }
 
-        //[DataMember]
-        //public TableContinuationToken PreviousContinuationToken { get; set; }
     }
 
     [DataContract]

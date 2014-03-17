@@ -17,6 +17,7 @@
     <Project TargetFileName="Template.Models.csproj" File="Template.Models.csproj" ReplaceParameters="true">
       <Folder Name="Authentication" TargetFolderName="Authentication">
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuthenticationProxy.cs">IAuthenticationProxy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IAuthenticationBL.cs">IAuthenticationBL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthenticationProxy.cs">AuthenticationProxy.cs</ProjectItem>
       </Folder>
       <Folder Name="Collections" TargetFolderName="Collections">
@@ -79,6 +80,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="LogMessage.cs">LogMessage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogMessageFilter.cs">LogMessageFilter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ILoggingProxy.cs">ILoggingProxy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ILoggingBL.cs">ILoggingBL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ILoggingDAL.cs">ILoggingDAL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LoggingProxy.cs">LoggingProxy.cs</ProjectItem>
       </Folder>
@@ -93,14 +95,17 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="DataResultUserSearch.cs">DataResultUserSearch.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IMembershipProxy.cs">IMembershipProxy.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IMembershipDAL.cs">IMembershipDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMembershipBL.cs">IMembershipBL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipSettings.cs">MembershipSettings.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProxy.cs">MembershipProxy.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Profile" TargetFolderName="Profile">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IProfileBL.cs">IProfileBL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IProfileDAL.cs">IProfileDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IProfileProxy.cs">IProfileProxy.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Profile.cs">Profile.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProfileInterface.cs">ProviderProfileInterface.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyProfiles.cs">ProviderProxyProfiles.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProfileProxy.cs">ProfileProxy.cs</ProjectItem>
       </Folder>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
@@ -112,11 +117,12 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="RepositoryPattern.cs">RepositoryPattern.cs</ProjectItem>
       </Folder>
       <Folder Name="Roles" TargetFolderName="Roles">
-        <ProjectItem ReplaceParameters="true" TargetFileName="IMembershipRoleDALProvider.cs">IMembershipRoleDALProvider.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RoleManagerProxy.cs">RoleManagerProxy.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RolesProxy.cs">RolesProxy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRoleAdminBL.cs">IRoleAdminBL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRoleAdminDAL.cs">IRoleAdminDAL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IRoleManagerProxy.cs">IRoleManagerProxy.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IRolesProxy.cs">IRolesProxy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RoleManagerProxy.cs">RoleManagerProxy.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RolesProxy.cs">RolesProxy.cs</ProjectItem>
       </Folder>
       <Folder Name="SmtpModels" TargetFolderName="SmtpModels">
         <Folder Name="Contracts" TargetFolderName="Contracts" />
@@ -127,6 +133,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationProxy.cs">SyndicationProxy.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ISyndicationProxy.cs">ISyndicationProxy.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ISyndicationDAL.cs">ISyndicationDAL.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ISyndicationBL.cs">ISyndicationBL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationEqualityComparer.cs">SyndicationEqualityComparer.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationHelpers.cs">SyndicationHelpers.cs</ProjectItem>
       </Folder>

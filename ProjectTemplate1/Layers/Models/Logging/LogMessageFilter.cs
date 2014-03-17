@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
 using $customNamespace$.Resources.DataAnnotations;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Storage.Table;
 using $customNamespace$.Resources.LogViewer;
 
 namespace $customNamespace$.Models.Logging

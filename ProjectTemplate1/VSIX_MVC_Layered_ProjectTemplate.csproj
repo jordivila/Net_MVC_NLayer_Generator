@@ -87,6 +87,13 @@
     <None Include="Layers\Models\Logging\CustomTraceListenerDatabase.cs" />
     <None Include="Layers\Models\Syndication\ISyndicationDAL.cs" />
     <None Include="Layers\Models\TokenPersistence\ITokenPersistenceDAL.cs" />
+    <None Include="Layers\Models\Authentication\IAuthenticationBL.cs" />
+    <None Include="Layers\Models\Logging\ILoggingBL.cs" />
+    <None Include="Layers\Models\Profile\IProfileProxy.cs" />
+    <None Include="Layers\Models\Profile\IProfileBL.cs" />
+    <None Include="Layers\Models\Roles\IRoleAdminBL.cs" />
+    <None Include="Layers\Models\Membership\IMembershipBL.cs" />
+    <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -155,8 +162,8 @@
     <None Include="Layers\Models\Membership\MembershipSettings.cs" />
     <None Include="Layers\Models\Membership\MembershipProxy.cs" />
     <None Include="Layers\Models\Profile\Profile.cs" />
-    <None Include="Layers\Models\Profile\ProviderProfileInterface.cs" />
-    <None Include="Layers\Models\Profile\ProviderProxyProfiles.cs" />
+    <None Include="Layers\Models\Profile\IProfileDAL.cs" />
+    <None Include="Layers\Models\Profile\ProfileProxy.cs" />
     <None Include="Layers\Models\Properties\AssemblyInfo.cs" />
     <None Include="Layers\Models\ProxyProviders\ProviderProxyBase.cs" />
     <None Include="Layers\Models\RepositoryPattern\RepositoryPattern.cs" />
@@ -179,7 +186,7 @@
     <None Include="Layers\Models\Logging\ILoggingDAL.cs" />
     <None Include="Layers\DAL\MembershipProfileServices\MembershipProfileDAL.cs" />
     <None Include="Layers\DAL\MembershipRoleServices\MembershipRoleDAL.cs" />
-    <None Include="Layers\Models\Roles\IMembershipRoleDALProvider.cs" />
+    <None Include="Layers\Models\Roles\IRoleAdminDAL.cs" />
     <None Include="Layers\DAL\MembershipServices\MembershipDAL.cs" />
     <None Include="Layers\Models\Membership\IMembershipDAL.cs" />
     <None Include="Layers\DAL\Properties\AssemblyInfo.cs" />

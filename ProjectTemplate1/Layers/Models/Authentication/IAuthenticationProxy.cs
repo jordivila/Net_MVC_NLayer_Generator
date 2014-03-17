@@ -2,7 +2,7 @@
 using System.ServiceModel;
 using System.Web.Security;
 
-namespace $safeprojectname$.Authentication
+namespace $customNamespace$.Models.Authentication
 {
     [ServiceContract]
     public interface IAuthenticationProxy: IDisposable

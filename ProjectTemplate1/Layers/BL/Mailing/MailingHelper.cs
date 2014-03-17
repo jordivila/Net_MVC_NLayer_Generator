@@ -5,16 +5,17 @@ using $customNamespace$.Models.Configuration.ConfigSections.DomainInfo;
 using $customNamespace$.Models.Configuration.ConfigSections.Mailing;
 using $customNamespace$.Models.SmtpModels;
 using $customNamespace$.Models.Unity;
+using $customNamespace$.Models.Configuration;
 
-namespace $safeprojectname$.Mailing
+namespace $customNamespace$.BL.Mailing
 {
     public static class MailingHelper
     {
         static MailingHelper()
         {
             _SmtpClient = DependencyFactory.Resolve<ISmtpClient>();
-            _MailingConfig = $customNamespace$.Models.Configuration.ApplicationConfiguration.MailingSettingsSection; //new MailingConfiguration();  // DependencyFactory.Unity.Resolve<IMailingConfiguration>(); 
-            _DomainConfig = $customNamespace$.Models.Configuration.ApplicationConfiguration.DomainInfoSettingsSection;  // new DomainInfoConfiguration(); // DependencyFactory.Unity.Resolve<IDomainInfoConfiguration>();
+            _MailingConfig = ApplicationConfiguration.MailingSettingsSection;
+            _DomainConfig = ApplicationConfiguration.DomainInfoSettingsSection;
         }
 
         private static ISmtpClient _SmtpClient;
@@ -40,7 +41,5 @@ namespace $safeprojectname$.Mailing
             _SmtpClient.Send(mailMessage());
             //_SmtpClient.Dispose();
         }
-
-        
     }
 }

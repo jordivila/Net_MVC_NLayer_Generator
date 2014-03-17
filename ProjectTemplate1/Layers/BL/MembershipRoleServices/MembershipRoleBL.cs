@@ -10,11 +10,6 @@ using $customNamespace$.Resources.UserAdministration;
 
 namespace $customNamespace$.BL.MembershipServices
 {
-    public interface IRoleAdminBL : IRoleManagerProxy
-    {
-
-    }
-
     public class RoleAdminBL : BaseBL, IRoleAdminBL
     {
         private IRoleAdminDAL _dal;

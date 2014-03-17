@@ -6,13 +6,13 @@ using System.Runtime.Serialization;
 using System.Threading;
 using System.Web;
 using System.Web.Profile;
-using $safeprojectname$.Common;
-using $safeprojectname$.Enumerations;
-using $safeprojectname$.Globalization;
-using $safeprojectname$.UserRequestModel;
+using $customNamespace$.Models.Common;
+using $customNamespace$.Models.Enumerations;
+using $customNamespace$.Models.Globalization;
+using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
 
-namespace $safeprojectname$.Profile
+namespace $customNamespace$.Models.Profile
 {
     public interface IUserProfileModel
     {
@@ -25,7 +25,6 @@ namespace $safeprojectname$.Profile
         string CultureName { get; set; }
         ThemesAvailable? Theme { get; set; }
     }
-
 
     [DataContract]
     public class UserProfileModel : IUserProfileModel, IDisposable
@@ -47,7 +46,7 @@ namespace $safeprojectname$.Profile
             //this.Culture = Enum.IsDefined(typeof(CulturesAvailable), string.Format("{0}",profileBase[baseModel.GetInfo(() => this.Culture).Name])) ?
             //                            (CulturesAvailable?)Enum.Parse(typeof(CulturesAvailable), (string)profileBase[baseModel.GetInfo(() => this.Culture).Name])
             //                            :
-            //                            $safeprojectname$.Enumerations.CulturesAvailable.en_US;
+            //                            $customNamespace$.Models.Enumerations.CulturesAvailable.en_US;
             
             //this.Culture = GlobalizationHelper.CultureInfoGetOrDefault(string.Format("{0}", profileBase[baseModel.GetInfo(() => this.Culture).Name]));
             this.CultureName = (string)profileBase[baseModel.GetInfo(() => this.Culture).Name];

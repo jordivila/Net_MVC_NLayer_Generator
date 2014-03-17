@@ -1,7 +1,7 @@
 ﻿
 namespace $customNamespace$.Models.Syndication
 {
-    public interface ISyndicationDAL : ISyndicationBL
+    public interface ISyndicationBL : ISyndicationProxy
     {
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using $safeprojectname$.UserRequestModel;
+using $customNamespace$.Models.UserRequestModel;
 
-namespace $safeprojectname$.Profile
+namespace $customNamespace$.Models.Profile
 {
     public interface IProfileDAL : IDisposable
     {

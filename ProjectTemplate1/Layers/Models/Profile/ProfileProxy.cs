@@ -1,20 +1,9 @@
-﻿using $safeprojectname$.ProxyProviders;
+﻿using $customNamespace$.Models.ProxyProviders;
 using System;
 using System.ServiceModel;
 
-namespace $safeprojectname$.Profile
+namespace $customNamespace$.Models.Profile
 {
-    [ServiceContract]
-    public interface IProfileProxy : IDisposable
-    {
-        [OperationContract]
-        DataResultUserProfile Get();
-
-        [OperationContract]
-        DataResultUserProfile Update(UserProfileModel userProfile);
-    }
-
-
     public class ProfileProxy : ProviderBaseChannel<IProfileProxy>, IProfileProxy
     {
         public DataResultUserProfile Get()

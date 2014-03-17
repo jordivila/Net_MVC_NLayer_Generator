@@ -2,14 +2,10 @@
 using $customNamespace$.BL.MembershipServices;
 using $customNamespace$.Models.Authentication;
 using $customNamespace$.Models.Common;
+using $customNamespace$.Models.Membership;
 
 namespace $customNamespace$.BL.AuthenticationServices
 {
-    public interface IAuthenticationBL : IAuthenticationProxy
-    {
-        FormsAuthenticationTicket SetTicket(string userName);
-    }
-
     public class AuthenticationBL : BaseBL, IAuthenticationBL
     {
         IMembershipBL bl = null;
@@ -73,19 +69,16 @@ namespace $customNamespace$.BL.AuthenticationServices
 
             return result;
         }
-
         public FormsAuthenticationTicket SetTicket(string userName)
         {
             FormsAuthenticationTicket fTicket = new FormsAuthenticationTicket(userName, false, (int)FormsAuthentication.Timeout.TotalMinutes);
             return this.SetTicket(fTicket);
         }
-
         private FormsAuthenticationTicket SetTicket(FormsAuthenticationTicket fTicket)
         {
             this.UserRequest.WcfAuthenticationCookieValue = FormsAuthentication.Encrypt(fTicket);
             return fTicket;
         }
-
         public bool LogIn(string userName, string password, string customCredential, bool isPersistent)
         {
             DataResultBoolean result = bl.ValidateUser(userName, password);
@@ -106,6 +99,4 @@ namespace $customNamespace$.BL.AuthenticationServices
             return result.Data;
         }
     }
-
-
 }

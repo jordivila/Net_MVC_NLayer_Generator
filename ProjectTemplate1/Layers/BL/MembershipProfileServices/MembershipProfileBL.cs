@@ -3,9 +3,9 @@ using $customNamespace$.DAL.MembershipServices;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Unity;
 
-namespace $safeprojectname$.MembershipServices
+namespace $customNamespace$.BL.MembershipServices
 {
-    public class ProfileBL : BaseBL, IProfileProxy
+    public class ProfileBL : BaseBL, IProfileBL
     {
         private IProfileDAL _dal;
 
@@ -23,47 +23,6 @@ namespace $safeprojectname$.MembershipServices
                 this._dal.Dispose();
             }
         }
-
-        //public Dictionary<string, object> GetAllPropertiesForCurrentUser(bool authenticatedUserOnly)
-        //{
-        //    if (this.UserRequest.UserIsLoggedIn)
-        //    {
-        //        return this._dal.GetAllPropertiesForCurrentUser(authenticatedUserOnly);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //public Dictionary<string, object> GetPropertiesForCurrentUser(IEnumerable<string> properties, bool authenticatedUserOnly)
-        //{
-        //    if (this.UserRequest.UserIsLoggedIn)
-        //    {
-        //        return this._dal.GetPropertiesForCurrentUser(properties, authenticatedUserOnly);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //public ProfilePropertyMetadata[] GetPropertiesMetadata()
-        //{
-        //    return this._dal.GetPropertiesMetadata();
-        //}
-
-        //public Collection<string> SetPropertiesForCurrentUser(IDictionary<string, object> values, bool authenticatedUserOnly)
-        //{
-        //    if (this.UserRequest.UserIsLoggedIn)
-        //    {
-        //        return this._dal.SetPropertiesForCurrentUser(values, authenticatedUserOnly);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
 
         public DataResultUserProfile Create(string userName)
         {

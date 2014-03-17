@@ -18,14 +18,11 @@ using $customNamespace$.Models.TokenPersistence;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
 using $customNamespace$.Resources.UserAdministration;
+using $customNamespace$.Models.Roles;
+using $customNamespace$.Models.Authentication;
 
 namespace $customNamespace$.BL.MembershipServices
 {
-    public interface IMembershipBL : IMembershipProxy
-    {
-        bool ValidatePasswordStrength(string password);
-    }
-
     public class MembershipBL : BaseBL, IMembershipBL
     {
         private IMembershipDAL _dal;

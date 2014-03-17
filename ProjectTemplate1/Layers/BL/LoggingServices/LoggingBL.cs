@@ -7,7 +7,7 @@ using $customNamespace$.Models.Unity;
 
 namespace $customNamespace$.BL.LoggingServices
 {
-    public class LoggingBL : BaseBL, ILoggingProxy
+    public class LoggingBL : BaseBL, ILoggingBL
     {
         private ILoggingDAL _dal;
 
