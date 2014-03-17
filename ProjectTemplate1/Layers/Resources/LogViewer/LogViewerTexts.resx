@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreationDateFrom" xml:space="preserve">
-    <value>Creation date from</value>
+    <value>Creation date</value>
   </data>
   <data name="CreationDateTo" xml:space="preserve">
     <value>to</value>
