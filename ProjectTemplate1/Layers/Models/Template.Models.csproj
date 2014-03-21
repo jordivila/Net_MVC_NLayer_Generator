@@ -127,6 +127,7 @@
     <Compile Include="Logging\ILoggingProxy.cs" />
     <Compile Include="Logging\ILoggingBL.cs" />
     <Compile Include="Logging\ILoggingDAL.cs" />
+    
     <Compile Include="Membership\DataFilterUserList.cs" />
     <Compile Include="Membership\DataResultProviderSettings.cs" />
     <Compile Include="Membership\DataResultUser.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Unity\UnityHelper.cs" />
     <Compile Include="UserRequestModel\UserRequest.cs" />
     <Compile Include="UserSessionPersistence\UserSessionHelper.cs" />
+    <Compile Include="Host\HostInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataAnnotationsAttributes\aa_Readme.txt" />

@@ -70,6 +70,10 @@
       <Folder Name="Globalization" TargetFolderName="Globalization">
         <ProjectItem ReplaceParameters="true" TargetFileName="GlobalizationHelper.cs">GlobalizationHelper.cs</ProjectItem>
       </Folder>
+      <Folder Name="Host" TargetFolderName="Host">
+        <ProjectItem ReplaceParameters="true" TargetFileName="HostInitializer.cs">HostInitializer.cs</ProjectItem>
+      </Folder>
+
       <Folder Name="Logging" TargetFolderName="Logging">
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerAzureTableStorage.cs">CustomTraceListenerAzureTableStorage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerDatabase.cs">CustomTraceListenerDatabase.cs</ProjectItem>

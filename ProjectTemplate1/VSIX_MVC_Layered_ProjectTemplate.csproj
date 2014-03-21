@@ -72,10 +72,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Layers\UI\Areas\LogViewer\Views\Shared\LayoutLogViewer.cshtml" />
-    <None Include="Layers\WCFHost\Unity\UnityContainerProvider.cs" />
-    <None Include="Layers\WCFHost\Unity\UnityContainerProviderReal.cs" />
     <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
-    <None Include="Layers\UI\Unity\UnityContainerProviderReal.cs" />
     <None Include="Layers\TestIntegration\TestMultiThreaded\LoadMultiThreadTest.cs" />
     <None Include="Layers\TestIntegration\TestMultiThreaded\MultiThreadResults.cs" />
     <None Include="Layers\TestIntegration\Common\MembershipCommonTestMethods.cs" />
@@ -94,6 +91,11 @@
     <None Include="Layers\Models\Roles\IRoleAdminBL.cs" />
     <None Include="Layers\Models\Membership\IMembershipBL.cs" />
     <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
+    <None Include="Layers\Models\Host\HostInitializer.cs" />
+    <None Include="Layers\WCFHostCommon\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
+    <None Include="Layers\WCFHostWorkerRole\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -317,6 +319,9 @@
     </None>
     <None Include="Layers\UI\Web.Debug.config" />
     <None Include="Layers\UI\Web.Release.config" />
+    <None Include="Layers\WCFHostCommon\packages.config" />
+    <None Include="Layers\WCFHostWorkerRole\app.config" />
+    <None Include="Layers\WCFHostWorkerRole\packages.config" />
     <None Include="Layers\WCFHost\app.config" />
     <None Include="Layers\WCFHost\packages.config" />
     <None Include="Layers\WCFLibrary\AspNetApplicationServices\Admin\MembershipServices.cs" />
@@ -1188,6 +1193,12 @@
     <Content Include="Layers\UI\Scripts\ui-widgetTreeList\ui-widgetTreeList.js" />
     <Content Include="Layers\UI\Template.UI.Web.csproj" />
     <Content Include="Layers\UI\__TemplateIcon.ico" />
+    <Content Include="Layers\WCFHostCommon\Template.WCF.ServicesHostCommon.csproj" />
+    <Content Include="Layers\WCFHostCommon\Template.WCF.ServicesHostCommon.vstemplate" />
+    <Content Include="Layers\WCFHostCommon\__TemplateIcon.ico" />
+    <Content Include="Layers\WCFHostWorkerRole\Template.WCF.ServicesHostWorkerRole.csproj" />
+    <Content Include="Layers\WCFHostWorkerRole\Template.WCF.ServicesHostWorkerRole.vstemplate" />
+    <Content Include="Layers\WCFHostWorkerRole\__TemplateIcon.ico" />
     <Content Include="Layers\WCFHost\blogrss.xml" />
     <Content Include="Layers\WCFHost\Template.WCF.ServicesHost.vstemplate" />
     <Content Include="Layers\WCFHost\Template.WCF.ServicesHost.csproj" />
@@ -1196,6 +1207,7 @@
     <Content Include="Layers\WCFLibrary\Template.WCF.ServicesLibrary.csproj" />
     <Content Include="Layers\WCFLibrary\__TemplateIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

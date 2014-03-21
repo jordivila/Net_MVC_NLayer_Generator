@@ -1,38 +1,26 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Template.WCF.ServicesHost</Name>
+    <Name>Template.WCF.ServicesHostWorkerRole</Name>
     <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>Template.WCF.ServicesHost</DefaultName>
+    <DefaultName>Template.WCF.ServicesHostWorkerRole</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.ico</Icon>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="Template.WCF.ServicesHost.csproj" File="Template.WCF.ServicesHost.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true"  TargetFileName="app.config">app.config</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="Host.cs">Host.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.cs">HostService.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.designer.cs">HostService.designer.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="packages.config">packages.config</ProjectItem>
-      <ProjectItem ReplaceParameters="false" TargetFileName="postBuild.bat">postBuild.bat</ProjectItem>
-      <ProjectItem ReplaceParameters="false" TargetFileName="preBuild.bat">preBuild.bat</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.cs">ProjectInstaller.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.designer.cs">ProjectInstaller.designer.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="ProjectInstaller.resx">ProjectInstaller.resx</ProjectItem>
-      <ProjectItem ReplaceParameters="true"  TargetFileName="blogrss.xml">blogrss.xml</ProjectItem>
+    <Project TargetFileName="Template.WCF.ServicesHostWorkerRole.csproj" File="Template.WCF.ServicesHostWorkerRole.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="app.config">app.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>
-      <!--<Folder Name="Unity" TargetFolderName="Unity">
-        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProvider.cs">UnityContainerProvider.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderReal.cs">UnityContainerProviderReal.cs</ProjectItem>
-      </Folder>-->
+      <ProjectItem ReplaceParameters="true" TargetFileName="WorkerRole.cs">WorkerRole.cs</ProjectItem>
     </Project>
   </TemplateContent>
   <WizardExtension>
@@ -53,4 +41,5 @@
       <package id="Unity.Interception" version="3.0.1304.0" targetFramework="net45" />
     </packages>
   </WizardData>
+
 </VSTemplate>

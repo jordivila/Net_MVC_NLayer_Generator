@@ -24,6 +24,8 @@
       <ProjectTemplateLink ProjectName="$customNamespace$.Tests.Integration">Layers\TestIntegration\Template.Tests.Integration.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.WCF.ServicesLibrary">Layers\WCFLibrary\Template.WCF.ServicesLibrary.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.WCF.ServicesHost">Layers\WCFHost\Template.WCF.ServicesHost.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.WCF.ServicesHostCommon">Layers\WCFHostCommon\Template.WCF.ServicesHostCommon.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.WCF.ServicesHostWorkerRole">Layers\WCFHostWorkerRole\Template.WCF.ServicesHostWorkerRole.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.CloudServices">Layers\CloudServices\Template.CloudServices.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>

@@ -85,7 +85,7 @@ namespace $safeprojectname$
 
         public void Application_InitEnterpriseLibrary()
         {
-            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(DependencyFactory.UnityContainerDefault));
+            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(FrontEndUnityContainerAvailable.ProxiesToAzure));
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());

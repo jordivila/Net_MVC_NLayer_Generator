@@ -22,20 +22,19 @@ namespace $customNamespace$.Models.Logging
 
         protected override void Dispose(bool disposing)
         {
-            this.proxyLogging.proxy.Dispose();
+            this.proxyLogging.Dispose();
 
             base.Dispose(disposing);
         }
 
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            //if (data is LogEntry && this.Formatter != null)
             if (data is LogEntry)
             {
                 // Check Channel State otherwise can generate loop errors
-                if (((IClientChannel)this.proxyLogging.proxy).State == CommunicationState.Opened)
+                if (this.proxyLogging.State == CommunicationState.Opened)
                 {
-                    Guid guid = this.proxyLogging.proxy.LoggingExceptionSet(data as LogEntry);
+                    Guid guid = this.proxyLogging.LoggingExceptionSet(data as LogEntry);
                 }
             }
             else

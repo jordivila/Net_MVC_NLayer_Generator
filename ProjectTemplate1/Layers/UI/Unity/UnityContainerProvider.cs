@@ -1,37 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
+using $customNamespace$.Models.Authentication;
+using $customNamespace$.Models.Logging;
+using $customNamespace$.Models.Membership;
+using $customNamespace$.Models.Profile;
+using $customNamespace$.Models.ProxyProviders;
+using $customNamespace$.Models.Roles;
+using $customNamespace$.Models.Syndication;
 using $customNamespace$.Models.Unity;
+using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Models.UserSessionPersistence;
+using System;
+using System.Web;
+using System.Web.SessionState;
 
-namespace $safeprojectname$.Unity
+namespace $customNamespace$.UI.Web.Unity
 {
-    public abstract class UnityContainerProvider
+    public class UnityContainerProvider
     {
-        private static UnityContainerProviderReal unityContainerProviderReal = new UnityContainerProviderReal();
-        //private static UnityContainerProviderDevelopment unityContainerProviderDevelopment = new UnityContainerProviderDevelopment();
-
-        public static IUnityContainer GetContainer(UnityContainerAvailable containerSelected)
+        public static IUnityContainer GetContainer(FrontEndUnityContainerAvailable containerSelected)
         {
-            IUnityContainer result = null;
+            IUnityContainer result = new UnityContainer();
+            result.RegisterType(typeof(IAuthenticationProxy), typeof(AuthenticationProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(IMembershipProxy), typeof(MembershipProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(IRoleManagerProxy), typeof(RoleManagerProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(IRolesProxy), typeof(RolesProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(IProfileProxy), typeof(ProfileProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(ILoggingProxy), typeof(LoggingProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationProxy), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserRequestModel<HttpContext, HttpCookieCollection>), typeof(UserRequestModelHttpClient), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
 
             switch (containerSelected)
             {
-                case UnityContainerAvailable.Real:
-                    result = UnityContainerProvider.unityContainerProviderReal.GetContainer();
+                case FrontEndUnityContainerAvailable.ProxiesToCustomHost:
+                    result.RegisterType(typeof(IProviderBaseChannelInitiator<>), typeof(ProviderChannelInitiatorCustomHost<>), new InjectionMember[0]);
                     break;
-                //case UnityContainerAvailable.MockDALDevelopment:
-                //    result = UnityContainerProvider.unityContainerProviderDevelopment.GetContainer();
-                //    break;
+                case FrontEndUnityContainerAvailable.ProxiesToAzure:
+                    result.RegisterType(typeof(IProviderBaseChannelInitiator<>), typeof(ProviderChannelInitiatorAzureRole<>), new InjectionMember[0]);
+                    break;
                 default:
                     throw new Exception("IUnityContainer does not exist in the list of available providers");
             }
 
             return result;
         }
-
-        internal abstract IUnityContainer GetContainer();
     }
 }

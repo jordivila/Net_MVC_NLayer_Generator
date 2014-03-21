@@ -1,22 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AB5CC3FB-EAFD-4EB6-A5C5-05C2DE49F9CD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{790F2B30-3000-44CE-BF73-2F4342805BB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>$safeprojectname$</RootNamespace>
     <AssemblyName>$safeprojectname$</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <RoleType>Worker</RoleType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -60,18 +63,27 @@
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\WindowsAzure.Storage.2.1.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$customPackagesRelativeLevelPath$packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+
+
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activation" />
-    <Reference Include="System.ServiceModel.DomainServices.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.ServiceModel.DomainServices.Server, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,71 +91,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Host.cs" />
-    <!--
-    <Compile Include="HostService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="HostService.designer.cs">
-      <DependentUpon>HostService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectInstaller.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ProjectInstaller.designer.cs">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </Compile>
-    -->
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkerRole.cs" />
   </ItemGroup>
-  <!--<ItemGroup>
-    <Compile Include="Unity\UnityContainerProvider.cs" />
-    <Compile Include="Unity\UnityContainerProviderReal.cs" />
-  </ItemGroup>-->
-  <ItemGroup>
-    <!--<EmbeddedResource Include="ProjectInstaller.resx">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </EmbeddedResource>-->
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="blogrss.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <!--
-    <None Include="postBuild.bat" />
-    <None Include="preBuild.bat" />
-    -->
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
-      <Project>{EDC045DC-A310-426E-B714-61967C41383F}</Project>
+    <ProjectReference Include="..\$customNamespace$\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
+      <Project>{edc045dc-a310-426e-b714-61967c41383f}</Project>
       <Name>$customNamespace$.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\$customNamespace$.Models\$customNamespace$.Models.csproj">
-      <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
+    <ProjectReference Include="..\$customNamespace$\$customNamespace$.Models\$customNamespace$.Models.csproj">
+      <Project>{893bc36d-2348-404d-bdb1-6a19a9ccff68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
-      <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>
+    <ProjectReference Include="..\$customNamespace$\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
+      <Project>{31ea2808-81a4-48cb-8730-6b8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\$customNamespace$.WCF.ServicesLibrary\$customNamespace$.WCF.ServicesLibrary.csproj">
-      <Project>{32E85879-06DC-4B3C-8C0C-2702A494821B}</Project>
-      <Name>$customNamespace$.WCF.ServicesLibrary</Name>
-    </ProjectReference>
-
-    <ProjectReference Include="..\$customNamespace$.WCF.ServicesHostCommon\$customNamespace$.WCF.ServicesHostCommon.csproj">
-      <Project>{917AC502-C1F4-4356-8513-84404907E7B5}</Project>
+    <ProjectReference Include="..\$customNamespace$\$customNamespace$.WCF.ServicesHostCommon\$customNamespace$.WCF.ServicesHostCommon.csproj">
+      <Project>{917ac502-c1f4-4356-8513-84404907e7b5}</Project>
       <Name>$customNamespace$.WCF.ServicesHostCommon</Name>
     </ProjectReference>
-
-
+    <ProjectReference Include="..\$customNamespace$\$customNamespace$.WCF.ServicesLibrary\$customNamespace$.WCF.ServicesLibrary.csproj">
+      <Project>{32e85879-06dc-4b3c-8c0c-2702a494821b}</Project>
+      <Name>$customNamespace$.WCF.ServicesLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

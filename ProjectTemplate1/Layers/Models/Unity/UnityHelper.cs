@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Practices.Unity;
-using $safeprojectname$.Configuration;
+using $customNamespace$.Models.Configuration;
 
-namespace $safeprojectname$.Unity
+namespace $customNamespace$.Models.Unity
 {
     public static class DependencyFactory
     {
-        public static UnityContainerAvailable UnityContainerDefault = UnityContainerAvailable.Real;
+        //public static UnityContainerAvailable UnityContainerDefault = UnityContainerAvailable.Real;
         private static IUnityContainer _unity;
 
         public static void SetUnityContainerProviderFactory(IUnityContainer container)
@@ -27,9 +27,16 @@ namespace $safeprojectname$.Unity
         }
     }
 
-    public enum UnityContainerAvailable
+    public enum BackEndUnityContainerAvailable
     {
         Real,
+        //MockDALDevelopment
+    }
+
+    public enum FrontEndUnityContainerAvailable
+    {
+        ProxiesToCustomHost,
+        ProxiesToAzure
         //MockDALDevelopment
     }
 }

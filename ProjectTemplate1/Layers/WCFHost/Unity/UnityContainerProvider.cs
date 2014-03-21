@@ -13,13 +13,13 @@ namespace $customNamespace$.WCF.Unity
         //private static UnityContainerProviderMockDALDevelopment unityContainerProviderMockDALDevelopment = new UnityContainerProviderMockDALDevelopment();
         private static UnityContainerProviderReal unityContainerProviderReal = new UnityContainerProviderReal();
 
-        public static IUnityContainer GetContainer(UnityContainerAvailable containerSelected)
+        public static IUnityContainer GetContainer(BackEndUnityContainerAvailable containerSelected)
         {
             IUnityContainer result = null;
 
             switch (containerSelected)
             {
-                case UnityContainerAvailable.Real:
+                case BackEndUnityContainerAvailable.Real:
                     result = UnityContainerProvider.unityContainerProviderReal.GetContainer();
                     break;
                 //case UnityContainerAvailable.MockDALDevelopment:

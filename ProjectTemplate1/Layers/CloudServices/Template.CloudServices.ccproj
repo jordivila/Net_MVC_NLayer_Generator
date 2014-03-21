@@ -37,6 +37,14 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\$customNamespace$.WCF.ServicesHostWorkerRole\$customNamespace$.WCF.ServicesHostWorkerRole.csproj">
+      <Name>$customNamespace$.WCF.ServicesHostWorkerRole</Name>
+      <Project>{790f2b30-3000-44ce-bf73-2f4342805bb6}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>$customNamespace$.WCF.ServicesHostWorkerRole</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
     <ProjectReference Include="..\$customNamespace$.UI.Web\$customNamespace$.UI.Web.csproj">
       <Name>$customNamespace$.UI.Web</Name>
       <Project>{609ecaee-9e8f-49fd-aa7c-2e62d72098b8}</Project>
@@ -48,9 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$customNamespace$.UI.WebContent\" />
+    <Folder Include="$customNamespace$.WCF.ServicesHostWorkerRoleContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$customNamespace$.UI.WebContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="$customNamespace$.WCF.ServicesHostWorkerRoleContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

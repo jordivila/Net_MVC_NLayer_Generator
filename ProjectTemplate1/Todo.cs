@@ -10,7 +10,8 @@ namespace VSIX_MVC_Layered_ProjectTemplate
     {
         ///TODO: Check Session outdated can re-login
         ///TODO: Asp Net Mvc assembly should be load by Nuget
-
+        ///TODO: LoggingHelper.Write(Exception ex)
+        ///TODO: MvcApplication.WCF.ServicesLibrary.GetAllServiceTypes-> GetServices by reflection
         
 
         ///TODO: Los metodos de UserReuqest qyue guardan valores para un Thread pierden el contexto cuando se hace un proceso Asincrono

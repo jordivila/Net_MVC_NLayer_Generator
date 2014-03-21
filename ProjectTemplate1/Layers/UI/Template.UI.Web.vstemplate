@@ -1003,7 +1003,6 @@
       </Folder>
       <Folder Name="Unity" TargetFolderName="Unity">
         <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProvider.cs">UnityContainerProvider.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UnityContainerProviderReal.cs">UnityContainerProviderReal.cs</ProjectItem>
       </Folder>
       <Folder Name="Views" TargetFolderName="Views" >
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>

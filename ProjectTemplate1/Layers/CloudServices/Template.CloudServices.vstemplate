@@ -7,7 +7,7 @@
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>Template.CloudServices</DefaultName>
+    <DefaultName>MvcApplication29.CloudServices</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -19,6 +19,9 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="ServiceConfiguration.Local.cscfg">ServiceConfiguration.Local.cscfg</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDefinition.csdef">ServiceDefinition.csdef</ProjectItem>
       <Folder Name="Roles" TargetFolderName="$customNamespace$.UI.WebContent">
+        <ProjectItem ReplaceParameters="true" TargetFileName="diagnostics.wadcfg">diagnostics.wadcfg</ProjectItem>
+      </Folder>
+      <Folder Name="Roles" TargetFolderName="$customNamespace$.WCF.ServicesHostWorkerRoleContent">
         <ProjectItem ReplaceParameters="true" TargetFileName="diagnostics.wadcfg">diagnostics.wadcfg</ProjectItem>
       </Folder>
     </Project>

@@ -4,8 +4,14 @@ using System.ServiceModel.Channels;
 using System.Threading;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.Unity;
+using System.Collections.Generic;
+using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices;
+using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin;
+using $customNamespace$.WCF.ServicesLibrary.LoggingServices;
+using $customNamespace$.WCF.ServicesLibrary.SyndicationServices;
 
-namespace $safeprojectname$
+
+namespace $customNamespace$.WCF.ServicesLibrary
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Single)]
     [LoggingServiceBehavior]
@@ -30,6 +36,19 @@ namespace $safeprojectname$
 
                 return _userRequest;
             }
+        }
+
+        public static List<Type> GetAllServiceTypes()
+        {
+            return new List<Type>() { 
+                typeof(AuthenticationService),
+                typeof(MembershipServices),
+                typeof(RoleServiceAdmin),
+                typeof(ProfileService),
+                typeof(RoleService),
+                typeof(LoggingService),
+                typeof(SyndicationService)
+            };
         }
 
         public virtual void Dispose()

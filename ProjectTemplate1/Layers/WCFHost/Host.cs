@@ -1,109 +1,35 @@
-﻿using System;
-using System.ServiceModel;
-using System.Reflection;
-using System.Diagnostics;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary.Logging;
-using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices;
-using $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin;
-using $customNamespace$.WCF.ServicesLibrary.LoggingServices;
-using $customNamespace$.WCF.ServicesLibrary.SyndicationServices;
+﻿using $customNamespace$.Models.Host;
 using $customNamespace$.Models.Unity;
-using $customNamespace$.WCF.Unity;
+using $customNamespace$.WCF.ServicesHostCommon.Unity;
+using $customNamespace$.WCF.ServicesLibrary;
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
 
-namespace $safeprojectname$
+namespace $customNamespace$.WCF.ServicesHost
 {
     class Program
     {
+        private static List<ServiceHost> serviceHostInstances = new List<ServiceHost>();
+
+
         static void Main()
         {
-            Host_InitEnterpriseLibrary();
+            HostInitializer hostInitializer = new HostInitializer();
+            hostInitializer.Start_EnterpriseLibrary(UnityContainerProvider.GetContainer(BackEndUnityContainerAvailable.Real));
 
-            ServiceHost svcAuthentication = Host_Create(typeof(AuthenticationService));
-            ServiceHost svcMembership = Host_Create(typeof(MembershipServices));
-            ServiceHost svcRolesManager = Host_Create(typeof(RoleServiceAdmin));
-            ServiceHost svcProfiles = Host_Create(typeof(ProfileService));
-            ServiceHost svcRoles = Host_Create(typeof(RoleService));
-            ServiceHost svcLogging = Host_Create(typeof(LoggingService));
-            ServiceHost svcSyndication = Host_Create(typeof(SyndicationService));
+            foreach (var item in BaseService.GetAllServiceTypes())
+            {
+                serviceHostInstances.Add(hostInitializer.Start_ServiceHost(item));
+            }
 
             Console.WriteLine("Press <ENTER> to stop services...");
             Console.ReadLine();
 
-            svcAuthentication.Close();
-            svcRoles.Close();
-            svcMembership.Close();
-            svcProfiles.Close();
-            svcRolesManager.Close();
-            svcLogging.Close();
-            svcSyndication.Close();
-        }
-
-        static MethodBase GetCurrentMethod()
-        {
-            StackTrace st = new StackTrace();
-            StackFrame sf = st.GetFrame(1);
-            return sf.GetMethod();
-        }
-
-        static void Host_InitEnterpriseLibrary()
-        {
-            DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(UnityContainerAvailable.Real));
-            DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
-            LogWriterFactory logWriterFactory = new LogWriterFactory();
-            Logger.SetLogWriter(logWriterFactory.Create());
-        }
-
-        static ServiceHost Host_Create(Type serviceType)
-        {
-            ServiceHost host = new ServiceHost(serviceType);
-            host.Open();
-            foreach (var item in host.BaseAddresses)
+            foreach (var item in serviceHostInstances)
             {
-                Console.WriteLine("Service listening at {0}", item.AbsoluteUri);
+                item.Close();
             }
-            host.Closed += new EventHandler(Host_Closed);
-            host.Closing += new EventHandler(Host_Closing);
-            host.Faulted += new EventHandler(Host_Faulted);
-            host.Opened += new EventHandler(Host_Opened);
-            host.Opening += new EventHandler(Host_Opening);
-            host.UnknownMessageReceived += new EventHandler<UnknownMessageReceivedEventArgs>(Host_UnknownMessageReceived);
-            return host;
-        }
-
-        static void Host_EventTrace(string eventName, ServiceHost service)
-        {
-            Console.WriteLine(string.Format("{0} {1}", eventName, service.BaseAddresses[0]));
-        }
-
-        static void Host_UnknownMessageReceived(object sender, UnknownMessageReceivedEventArgs e)
-        {
-            Console.WriteLine(e.Message);
-        }
-
-        static void Host_Opening(object sender, EventArgs e)
-        {
-            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
-        }
-
-        static void Host_Opened(object sender, EventArgs e)
-        {
-            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
-        }
-
-        static void Host_Faulted(object sender, EventArgs e)
-        {
-            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
-        }
-
-        static void Host_Closing(object sender, EventArgs e)
-        {
-            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
-        }
-
-        static void Host_Closed(object sender, EventArgs e)
-        {
-            Host_EventTrace(GetCurrentMethod().Name, (ServiceHost)sender);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Data;
 using System.Globalization;
 using System.IO;
@@ -15,6 +14,7 @@ using System.Xml.XPath;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using $customNamespace$.Models.Common;
+using System.Diagnostics;
 
 namespace $customNamespace$.Models
 {
@@ -22,7 +22,10 @@ namespace $customNamespace$.Models
     [Serializable]
     public abstract class baseModel : Object
     {
-        public baseModel() { }
+        public baseModel() 
+        { 
+        
+        }
 
         private static Func<IDataReader, string, bool> readerColumnExists = delegate(IDataReader rdr, string columnName)
         {
@@ -40,6 +43,19 @@ namespace $customNamespace$.Models
             {
                 return false;
             }
+        };
+
+        public static Func<IDataReader, object, object> readerToObject = delegate(IDataReader rdr, object o)
+        {
+            PropertyInfo[] propertyInfos = baseModel.GetTypeProperties(o);
+            foreach (PropertyInfo propertyInfo in propertyInfos)
+            {
+                if (baseModel.readerHasValue(rdr, propertyInfo.Name) == true)
+                {
+                    propertyInfo.SetValue(o, rdr[propertyInfo.Name], null);
+                }
+            }
+            return o;
         };
 
         private static PropertyInfo[] GetTypeProperties(object o)
@@ -71,20 +87,14 @@ namespace $customNamespace$.Models
             return ((MethodCallExpression)action.Body).Method;
         }
 
-        public static Func<IDataReader, object, object> readerToObject = delegate(IDataReader rdr, object o)
+        public static MethodBase GetCurrentMethod()
         {
-            PropertyInfo[] propertyInfos = baseModel.GetTypeProperties(o);
-            foreach (PropertyInfo propertyInfo in propertyInfos)
-            {
-                if (baseModel.readerHasValue(rdr, propertyInfo.Name) == true)
-                {
-                    propertyInfo.SetValue(o, rdr[propertyInfo.Name], null);
-                }
-            }
-            return o;
-        };
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(1);
+            return sf.GetMethod();
+        }
 
-        internal object DownCast(object source)
+        public object DownCast(object source)
         {
             Type destinationType = this.GetType();
             PropertyInfo[] sourceProperties = baseModel.GetTypeProperties(source);
@@ -98,6 +108,7 @@ namespace $customNamespace$.Models
             }
             return this;
         }
+
 
         public XmlDocument Serialize()
         {
