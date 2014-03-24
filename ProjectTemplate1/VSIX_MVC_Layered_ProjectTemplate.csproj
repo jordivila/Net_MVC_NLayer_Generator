@@ -96,6 +96,7 @@
     <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\WCFHostWorkerRole\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
+    <None Include="Layers\Models\Configuration\ConfigSections\AzureRoles\AzureRolesConfiguration.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />

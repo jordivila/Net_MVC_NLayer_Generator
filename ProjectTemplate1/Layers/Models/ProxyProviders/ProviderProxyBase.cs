@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure.ServiceRuntime;
+using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Unity;
 using System;
 using System.ServiceModel;
@@ -57,7 +58,7 @@ namespace $customNamespace$.Models.ProxyProviders
 
         protected abstract ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory);
 
-        public IClientChannel Proxy 
+        public IClientChannel Proxy
         {
             get
             {
@@ -98,8 +99,8 @@ namespace $customNamespace$.Models.ProxyProviders
 
     public class ClientChannelAzureInternalRoleInitializer<TChannel> : ClientChannelInitializer<TChannel>
     {
-        private string roleName = "$customNamespace$.WCF.ServicesHostWorkerRole";
-        private string roleInternalEndpointName = "Internal";
+        private string roleName = ApplicationConfiguration.AzureRolesConfigurationSection.WCF_RoleName;
+        private string roleInternalEndpointName = ApplicationConfiguration.AzureRolesConfigurationSection.WCF_InternalEndPointName;
         private RoleInstanceEndpoint roleInternalInstanceEndPoint = null;
 
         public ClientChannelAzureInternalRoleInitializer() : base() { }
@@ -108,7 +109,7 @@ namespace $customNamespace$.Models.ProxyProviders
         {
             if (this.roleInternalInstanceEndPoint == null)
             {
-                this.roleInternalInstanceEndPoint = RoleEnvironment.Roles[roleName].Instances[0].InstanceEndpoints[roleInternalEndpointName];
+                this.roleInternalInstanceEndPoint = ApplicationConfiguration.AzureRolesConfigurationSection.RoleInstanceEndpointGet(roleName, roleInternalEndpointName);
             }
 
             return this.roleInternalInstanceEndPoint;
@@ -118,16 +119,8 @@ namespace $customNamespace$.Models.ProxyProviders
         {
             this.RoleInternalInstanceEndpointInit();
 
-            EndpointAddress channelFactoryEndpointAddress = channelFactory.Endpoint.Address;
-            
-            EndpointAddress endpointWorkerRoleAddress =
-                new EndpointAddress(
-                    new Uri(channelFactoryEndpointAddress.Uri.ToString().Replace(channelFactoryEndpointAddress.Uri.Authority,
-                            string.Format("{0}:{1}",
-                                            roleInternalInstanceEndPoint.IPEndpoint.Address.ToString(),
-                                            roleInternalInstanceEndPoint.IPEndpoint.Port))));
-
-            channelFactory.Endpoint.Address = endpointWorkerRoleAddress;
+            channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
+                channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
 
             return channelFactory;
         }

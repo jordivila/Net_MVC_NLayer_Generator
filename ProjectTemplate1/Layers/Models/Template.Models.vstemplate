@@ -40,6 +40,9 @@
           <Folder Name="Mailing" TargetFolderName="Mailing">
             <ProjectItem ReplaceParameters="true" TargetFileName="MailingConfiguration.cs">MailingConfiguration.cs</ProjectItem>
           </Folder>
+          <Folder Name="AzureRoles" TargetFolderName="AzureRoles">
+            <ProjectItem ReplaceParameters="true" TargetFileName="AzureRolesConfiguration.cs">AzureRolesConfiguration.cs</ProjectItem>
+          </Folder>
         </Folder>
         <Folder Name="ConnectionProviders" TargetFolderName="ConnectionProviders">
           <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionProvidersConfig.cs">ConnectionProvidersConfig.cs</ProjectItem>

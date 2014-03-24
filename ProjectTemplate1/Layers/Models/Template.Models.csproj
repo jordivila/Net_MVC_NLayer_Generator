@@ -98,6 +98,7 @@
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Configuration\ConfigSections\ClientResources\ClientResourcesConfiguration.cs" />
     <Compile Include="Configuration\ConfigSections\DomainInfo\DomainInfoConfiguration.cs" />
+    <Compile Include="Configuration\ConfigSections\AzureRoles\AzureRolesConfiguration.cs" />
     <Compile Include="Configuration\ConfigSections\Mailing\MailingConfiguration.cs" />
     <Compile Include="Configuration\ConnectionProviders\ConnectionProvidersConfig.cs" />
     <Compile Include="Cryptography\CryptoHelper.cs" />

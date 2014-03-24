@@ -1,4 +1,5 @@
 using Microsoft.WindowsAzure.ServiceRuntime;
+using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Host;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.WCF.ServicesHostCommon.Unity;
@@ -12,7 +13,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Threading;
 
-namespace $safeprojectname$
+namespace $customNamespace$.WCF.ServicesHostWorkerRole
 {
     public class WorkerRole : RoleEntryPoint
     {
@@ -40,24 +41,11 @@ namespace $safeprojectname$
         /// </summary>
         private Action<ServiceHost> Host_SetAzureInternalIPAddress = delegate(ServiceHost host)
         {
-            // Use NetTcpBinding with no security
-            //NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
-
-            //// Define an external endpoint for client traffic
-            //RoleInstanceEndpoint externalEndPoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["External"];
-            //host.AddServiceEndpoint(contractType, binding, String.Format("net.tcp://{0}/External/{1}", externalEndPoint.IPEndpoint, contractType.Name));
-
-            //// Define an internal endpoint for inter-role traffic
-            RoleInstanceEndpoint internalEndPoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Internal"];
-            //host.AddServiceEndpoint(contractType, binding, String.Format("net.tcp://{0}/Internal/{1}", internalEndPoint.IPEndpoint, contractType.Name));
-
             ServiceEndpoint endpointConfigFile = host.Description.Endpoints.First();
-            EndpointAddress endpointAddressToUse = new EndpointAddress(new Uri(
-                endpointConfigFile.ListenUri.ToString().Replace(
-                                                endpointConfigFile.ListenUri.Authority,
-                                                string.Format("{0}:{1}",
-                                                                internalEndPoint.IPEndpoint.Address.ToString(),
-                                                                internalEndPoint.IPEndpoint.Port))).ToString());
+            EndpointAddress endpointAddressToUse = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
+                endpointConfigFile.Address,
+                ApplicationConfiguration.AzureRolesConfigurationSection.WCF_RoleName,
+                ApplicationConfiguration.AzureRolesConfigurationSection.WCF_InternalEndPointName);
 
             host.Description.Endpoints.First().ListenUri = endpointAddressToUse.Uri;
             host.Description.Endpoints.First().Address = endpointAddressToUse;

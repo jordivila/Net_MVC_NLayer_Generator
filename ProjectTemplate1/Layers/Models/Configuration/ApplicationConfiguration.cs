@@ -1,16 +1,17 @@
 ﻿using System.Collections.Specialized;
 using System.Configuration;
-using $safeprojectname$.Configuration.ConfigSections.ClientResources;
-using $safeprojectname$.Configuration.ConfigSections.DomainInfo;
-using $safeprojectname$.Configuration.ConfigSections.Mailing;
+using $customNamespace$.Models.Configuration.ConfigSections.ClientResources;
+using $customNamespace$.Models.Configuration.ConfigSections.DomainInfo;
+using $customNamespace$.Models.Configuration.ConfigSections.Mailing;
+using $customNamespace$.Models.Configuration.ConfigSections.AzureRoles;
 
-namespace $safeprojectname$.Configuration
+namespace $customNamespace$.Models.Configuration
 {
     public class ApplicationConfiguration
     {
         public static bool IsDebugMode
         {
-            get 
+            get
             {
 #if DEBUG==true
                 return true;
@@ -37,7 +38,9 @@ namespace $safeprojectname$.Configuration
         public static IMailingConfiguration MailingSettingsSection = new MailingConfiguration();
 
         public static IDomainInfoConfiguration DomainInfoSettingsSection = new DomainInfoConfiguration();
-                
+
         public static IClientResourcesConfiguration ClientResourcesSettingsSection = new ClientResourcesConfiguration();
+
+        public static IAzureRolesConfiguration AzureRolesConfigurationSection = new AzureRolesConfiguration();
     }
 }
