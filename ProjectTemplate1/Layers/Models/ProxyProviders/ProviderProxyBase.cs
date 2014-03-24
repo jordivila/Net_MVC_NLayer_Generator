@@ -8,35 +8,18 @@ namespace $customNamespace$.Models.ProxyProviders
     public abstract class ProviderBaseChannel<TChannel> : IDisposable
         where TChannel : class
     {
-        IProviderBaseChannelInitiator<TChannel> initiator = null;
+        IClientChannelInitializer<TChannel> initiator = null;
 
         public ProviderBaseChannel()
         {
-            initiator = DependencyFactory.Resolve<IProviderBaseChannelInitiator<TChannel>>();
-        }
-
-        private IClientChannel ProxyGet()
-        {
-            IClientChannel result = this.initiator.ProxyInit();
-
-            //if (((IClientChannel)result).State == CommunicationState.Faulted)
-            //{
-            //    result.Abort();
-            //    result.Close();
-            //    result.Dispose();
-
-            //    //cache.Remove(cacheChannelClientKey);
-            //    result = this.ProxyInit();
-            //}
-
-            return result;
+            initiator = DependencyFactory.Resolve<IClientChannelInitializer<TChannel>>();
         }
 
         protected TChannel proxy
         {
             get
             {
-                return (TChannel)ProxyGet();
+                return (TChannel)this.initiator.Proxy;
             }
         }
 
@@ -44,7 +27,7 @@ namespace $customNamespace$.Models.ProxyProviders
         {
             get
             {
-                return ((IClientChannel)this.proxy).State;
+                return this.initiator.Proxy.State;
             }
         }
 
@@ -54,22 +37,44 @@ namespace $customNamespace$.Models.ProxyProviders
         }
     }
 
-    public interface IProviderBaseChannelInitiator<TChannel> : IDisposable
+    public interface IClientChannelInitializer<TChannel> : IDisposable
     {
-        IClientChannel ProxyInit();
+        IClientChannel Proxy { get; }
     }
 
-    public abstract class ProviderChannelInitiatorBase<TChannel> : IProviderBaseChannelInitiator<TChannel>
+    public abstract class ClientChannelInitializer<TChannel> : IClientChannelInitializer<TChannel>
     {
-        protected ChannelFactory<TChannel> channelFactoryInstance = null;
-        protected IClientChannel channelInstance = null;
+        private static ChannelFactory<TChannel> channelFactoryInstance = null;
+        private IClientChannel channelInstance = null;
 
-        public ProviderChannelInitiatorBase()
+        public ClientChannelInitializer()
         {
-            this.channelFactoryInstance = new ChannelFactory<TChannel>(typeof(TChannel).Name);
+            if (ClientChannelInitializer<TChannel>.channelFactoryInstance == null)
+            {
+                ClientChannelInitializer<TChannel>.channelFactoryInstance = this.ChannelFactoryInit(new ChannelFactory<TChannel>(typeof(TChannel).Name));
+            }
         }
 
-        public abstract IClientChannel ProxyInit();
+        protected abstract ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory);
+
+        public IClientChannel Proxy 
+        {
+            get
+            {
+                if (this.channelInstance == null)
+                {
+                    this.channelInstance = this.ClientChannelCreate(ClientChannelInitializer<TChannel>.channelFactoryInstance);
+                }
+                return this.channelInstance;
+            }
+        }
+
+        protected virtual IClientChannel ClientChannelCreate(ChannelFactory<TChannel> factory)
+        {
+            IClientChannel channel = (IClientChannel)factory.CreateChannel();
+            channel.Open();
+            return channel;
+        }
 
         public void Dispose()
         {
@@ -78,45 +83,53 @@ namespace $customNamespace$.Models.ProxyProviders
                 this.channelInstance.Close();
                 this.channelInstance.Dispose();
             }
-
-            if (this.channelFactoryInstance != null)
-            {
-                this.channelFactoryInstance.Close();
-            }
         }
     }
 
-    public class ProviderChannelInitiatorAzureRole<TChannel> : ProviderChannelInitiatorBase<TChannel>
+    public class ClientChannelCustomHostInitializer<TChannel> : ClientChannelInitializer<TChannel>
     {
-        public ProviderChannelInitiatorAzureRole() : base() { }
+        public ClientChannelCustomHostInitializer() : base() { }
 
-        public override IClientChannel ProxyInit()
+        protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
         {
-            if (this.channelInstance == null)
-            {
-                RoleInstanceEndpoint internalEndPoint = RoleEnvironment.Roles["$customNamespace$.WCF.ServicesHostWorkerRole"].Instances[0].InstanceEndpoints["Internal"];
-                EndpointAddress channelFactoryEndpointAddress = this.channelFactoryInstance.Endpoint.Address;
-                EndpointAddress endpointWorkerRoleAddress = new EndpointAddress(new Uri(channelFactoryEndpointAddress.Uri.ToString().Replace(channelFactoryEndpointAddress.Uri.Authority, string.Format("{0}:{1}", internalEndPoint.IPEndpoint.Address.ToString(), internalEndPoint.IPEndpoint.Port))));
-                this.channelInstance = (IClientChannel)this.channelFactoryInstance.CreateChannel(endpointWorkerRoleAddress);
-                this.channelInstance.Open();
-            }
-            return this.channelInstance;
+            return channelFactory;
         }
     }
 
-    public class ProviderChannelInitiatorCustomHost<TChannel> : ProviderChannelInitiatorBase<TChannel>
+    public class ClientChannelAzureInternalRoleInitializer<TChannel> : ClientChannelInitializer<TChannel>
     {
-        public ProviderChannelInitiatorCustomHost() : base() { }
+        private string roleName = "$customNamespace$.WCF.ServicesHostWorkerRole";
+        private string roleInternalEndpointName = "Internal";
+        private RoleInstanceEndpoint roleInternalInstanceEndPoint = null;
 
-        public override IClientChannel ProxyInit()
+        public ClientChannelAzureInternalRoleInitializer() : base() { }
+
+        private RoleInstanceEndpoint RoleInternalInstanceEndpointInit()
         {
-            if (this.channelInstance == null)
+            if (this.roleInternalInstanceEndPoint == null)
             {
-                this.channelInstance = (IClientChannel)this.channelFactoryInstance.CreateChannel();
-                this.channelInstance.Open();
+                this.roleInternalInstanceEndPoint = RoleEnvironment.Roles[roleName].Instances[0].InstanceEndpoints[roleInternalEndpointName];
             }
-            return this.channelInstance;
+
+            return this.roleInternalInstanceEndPoint;
+        }
+
+        protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
+        {
+            this.RoleInternalInstanceEndpointInit();
+
+            EndpointAddress channelFactoryEndpointAddress = channelFactory.Endpoint.Address;
+            
+            EndpointAddress endpointWorkerRoleAddress =
+                new EndpointAddress(
+                    new Uri(channelFactoryEndpointAddress.Uri.ToString().Replace(channelFactoryEndpointAddress.Uri.Authority,
+                            string.Format("{0}:{1}",
+                                            roleInternalInstanceEndPoint.IPEndpoint.Address.ToString(),
+                                            roleInternalInstanceEndPoint.IPEndpoint.Port))));
+
+            channelFactory.Endpoint.Address = endpointWorkerRoleAddress;
+
+            return channelFactory;
         }
     }
-
 }

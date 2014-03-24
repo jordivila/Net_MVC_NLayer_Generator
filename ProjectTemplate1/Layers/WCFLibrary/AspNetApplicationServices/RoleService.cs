@@ -2,9 +2,9 @@
 using $customNamespace$.BL.MembershipServices;
 using $customNamespace$.Models.Roles;
 
-namespace $safeprojectname$.AspNetApplicationServices
+namespace $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices
 {
-    public class RoleService : BaseService, IRolesProxy
+    public class RoleService : BaseServiceWithCustomMessageHeaders, IRolesProxy
     {
         IRoleAdminBL _bl = null;
         public RoleService()

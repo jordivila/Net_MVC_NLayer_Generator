@@ -4,18 +4,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
-
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.UserSessionPersistence;
-using $safeprojectname$.Common.AspNetApplicationServices;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Common.Mvc.Attributes;
+using $customNamespace$.UI.Web.Common.AspNetApplicationServices;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Common.Mvc.Attributes;
 using $customNamespace$.Models.Unity;
-using $safeprojectname$.Unity;
+using $customNamespace$.UI.Web.Unity;
 
-namespace $safeprojectname$
+
+namespace $customNamespace$.UI.Web
 {
     [Serializable]
     public class MvcApplication : HttpApplication
@@ -27,7 +26,7 @@ namespace $safeprojectname$
             {
                 if (_version == string.Empty)
                 {
-                    _version = @System.Reflection.Assembly.GetAssembly(typeof($safeprojectname$.MvcApplication)).GetName().Version.ToString();
+                    _version = @System.Reflection.Assembly.GetAssembly(typeof($customNamespace$.UI.Web.MvcApplication)).GetName().Version.ToString();
                 }
                 return _version;
             }
@@ -68,7 +67,7 @@ namespace $safeprojectname$
         {
             get
             {
-                return "$safeprojectname$";
+                return "$customNamespace$.UI.Web";
             }
         }
 
@@ -86,7 +85,6 @@ namespace $safeprojectname$
         public void Application_InitEnterpriseLibrary()
         {
             DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(FrontEndUnityContainerAvailable.ProxiesToAzure));
-            DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());
         }

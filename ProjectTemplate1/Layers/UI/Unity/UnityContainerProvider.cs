@@ -33,10 +33,10 @@ namespace $customNamespace$.UI.Web.Unity
             switch (containerSelected)
             {
                 case FrontEndUnityContainerAvailable.ProxiesToCustomHost:
-                    result.RegisterType(typeof(IProviderBaseChannelInitiator<>), typeof(ProviderChannelInitiatorCustomHost<>), new InjectionMember[0]);
+                    result.RegisterType(typeof(IClientChannelInitializer<>), typeof(ClientChannelCustomHostInitializer<>), new InjectionMember[0]);
                     break;
                 case FrontEndUnityContainerAvailable.ProxiesToAzure:
-                    result.RegisterType(typeof(IProviderBaseChannelInitiator<>), typeof(ProviderChannelInitiatorAzureRole<>), new InjectionMember[0]);
+                    result.RegisterType(typeof(IClientChannelInitializer<>), typeof(ClientChannelAzureInternalRoleInitializer<>), new InjectionMember[0]);
                     break;
                 default:
                     throw new Exception("IUnityContainer does not exist in the list of available providers");

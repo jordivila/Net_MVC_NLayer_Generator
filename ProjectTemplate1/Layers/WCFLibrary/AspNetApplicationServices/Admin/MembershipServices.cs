@@ -3,9 +3,9 @@ using $customNamespace$.BL.MembershipServices;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Membership;
 
-namespace $safeprojectname$.AspNetApplicationServices.Admin
+namespace $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin
 {
-    public class MembershipServices : BaseService, IMembershipProxy
+    public class MembershipServices : BaseServiceWithCustomMessageHeaders, IMembershipProxy
     {
         private IMembershipBL _bl;
 

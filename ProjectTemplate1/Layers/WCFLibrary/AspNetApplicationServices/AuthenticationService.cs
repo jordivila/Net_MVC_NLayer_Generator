@@ -2,9 +2,9 @@
 using $customNamespace$.BL.AuthenticationServices;
 using $customNamespace$.Models.Authentication;
 
-namespace $safeprojectname$.AspNetApplicationServices
+namespace $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices
 {
-    public class AuthenticationService : BaseService, IAuthenticationProxy
+    public class AuthenticationService : BaseServiceWithCustomMessageHeaders, IAuthenticationProxy
     {
         IAuthenticationBL authBL = null;
 

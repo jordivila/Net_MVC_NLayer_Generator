@@ -3,9 +3,9 @@ using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.BL.LoggingServices;
 using $customNamespace$.Models.Logging;
 
-namespace $safeprojectname$.LoggingServices
+namespace $customNamespace$.WCF.ServicesLibrary.LoggingServices
 {
-    public class LoggingService : ILoggingProxy, IDisposable
+    public class LoggingService : BaseService, ILoggingProxy
     {
         ILoggingProxy _bl = null;
 
@@ -13,12 +13,14 @@ namespace $safeprojectname$.LoggingServices
         {
             this._bl = new LoggingBL();
         }
-        public void Dispose()
+        public override void Dispose()
         {
             if (this._bl != null)
             {
                 this._bl.Dispose();
             }
+
+            base.Dispose();
         }
         public DataResultLogMessageList LoggingExceptionGetById(Guid guid)
         {

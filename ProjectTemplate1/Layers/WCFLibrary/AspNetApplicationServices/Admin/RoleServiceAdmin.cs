@@ -2,9 +2,9 @@
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Roles;
 
-namespace $safeprojectname$.AspNetApplicationServices.Admin
+namespace $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices.Admin
 {
-    public class RoleServiceAdmin : BaseService, IRoleManagerProxy
+    public class RoleServiceAdmin : BaseServiceWithCustomMessageHeaders, IRoleManagerProxy
     {
         private IRoleAdminBL _bl;
         public RoleServiceAdmin()

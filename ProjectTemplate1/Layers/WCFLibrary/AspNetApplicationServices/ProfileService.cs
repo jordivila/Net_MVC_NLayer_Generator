@@ -1,9 +1,9 @@
 ﻿using $customNamespace$.BL.MembershipServices;
 using $customNamespace$.Models.Profile;
 
-namespace $safeprojectname$.AspNetApplicationServices
+namespace $customNamespace$.WCF.ServicesLibrary.AspNetApplicationServices
 {
-    public class ProfileService : BaseService, IProfileProxy
+    public class ProfileService : BaseServiceWithCustomMessageHeaders, IProfileProxy
     {
         ProfileBL _bl = null;
 

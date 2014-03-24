@@ -2,9 +2,9 @@
 using $customNamespace$.BL.SyndicationServices;
 using $customNamespace$.Models.Syndication;
 
-namespace $safeprojectname$.SyndicationServices
+namespace $customNamespace$.WCF.ServicesLibrary.SyndicationServices
 {
-    public class SyndicationService : ISyndicationProxy
+    public class SyndicationService : BaseService, ISyndicationProxy
     {
         private ISyndicationProxy _bl;
 
@@ -12,15 +12,15 @@ namespace $safeprojectname$.SyndicationServices
         {
             _bl = new SyndicationBL();
         }
-        
-        public void Dispose()
-        {
-            //base.Dispose();
 
+        public override void Dispose()
+        {
             if (this._bl != null)
             {
                 this._bl.Dispose();
             }
+
+            base.Dispose();
         }
 
         public SyndicationFeedFormatter GetInfoWithNoItems()
