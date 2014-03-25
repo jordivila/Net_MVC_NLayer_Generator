@@ -7,8 +7,8 @@
     <ProjectGuid>{917AC502-C1F4-4356-8513-84404907E7B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>$safeprojectname$</RootNamespace>
-    <AssemblyName>$safeprojectname$</AssemblyName>
+    <RootNamespace>$customNamespace$.WCF.ServicesHostCommon</RootNamespace>
+    <AssemblyName>$customNamespace$.WCF.ServicesHostCommon</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -36,6 +36,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
+      <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+
+    <!--
     <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll</HintPath>
@@ -43,6 +62,7 @@
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
+    -->
 
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,10 +92,12 @@
       <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
+    <!--
     <ProjectReference Include="..\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
       <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>
     </ProjectReference>
+    -->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

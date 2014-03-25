@@ -39,7 +39,6 @@
     <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
-    -->
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -54,6 +53,7 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
       <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
     </Reference>
+    -->
     <Reference Include="Microsoft.Practices.Unity, Version=3.0.1304.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.dll</HintPath>
@@ -61,14 +61,15 @@
     <Reference Include="Microsoft.Practices.Unity.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-
-    <!--<Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <!--
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
-    </Reference>-->
+    </Reference>
+    -->
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
@@ -89,13 +90,13 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Data.Services.Client" />
+    <!--<Reference Include="System.Data.Services.Client" />-->
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xml.Linq" />
+    <!--<Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml" />-->
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,18 +107,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\$customNamespace$\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
+    <!--<ProjectReference Include="..\$customNamespace$\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
       <Project>{edc045dc-a310-426e-b714-61967c41383f}</Project>
       <Name>$customNamespace$.DAL</Name>
-    </ProjectReference>
+    </ProjectReference>-->
     <ProjectReference Include="..\$customNamespace$\$customNamespace$.Models\$customNamespace$.Models.csproj">
       <Project>{893bc36d-2348-404d-bdb1-6a19a9ccff68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\$customNamespace$\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
+    <!--<ProjectReference Include="..\$customNamespace$\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
       <Project>{31ea2808-81a4-48cb-8730-6b8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>
-    </ProjectReference>
+    </ProjectReference>-->
     <ProjectReference Include="..\$customNamespace$\$customNamespace$.WCF.ServicesHostCommon\$customNamespace$.WCF.ServicesHostCommon.csproj">
       <Project>{917ac502-c1f4-4356-8513-84404907e7b5}</Project>
       <Name>$customNamespace$.WCF.ServicesHostCommon</Name>

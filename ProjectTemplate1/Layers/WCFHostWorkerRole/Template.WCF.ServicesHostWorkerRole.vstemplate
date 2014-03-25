@@ -33,10 +33,12 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension" repositoryId="VSIX_MVC_Layered.Jordi-Vila.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <!--
       <package id="EnterpriseLibrary.Data" version="6.0.1304.0" targetFramework="net45" />
       <package id="EnterpriseLibrary.Common" version="6.0.1304.0" targetFramework="net45" />
       <package id="EnterpriseLibrary.Logging" version="6.0.1304.0" targetFramework="net45" />
       <package id="EnterpriseLibrary.Logging.Database" version="6.0.1304.0" targetFramework="net45" />
+      -->
       <package id="Unity" version="3.0.1304.1" targetFramework="net45" />
       <!--<package id="Unity.Interception" version="3.0.1304.0" targetFramework="net45" />-->
     </packages>
