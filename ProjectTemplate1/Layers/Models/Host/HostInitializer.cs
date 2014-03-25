@@ -4,13 +4,23 @@ using Microsoft.Practices.Unity;
 using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Unity;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.ServiceModel;
+using System.Reflection;
 
 
 namespace $customNamespace$.Models.Host
 {
-    public class HostInitializer
+    public partial class HostInitializer
+    {
+        public HostInitializer()
+        {
+            this.LoadSharedConfiguration(@"Template.WCF.ServiceHostCommon.config");
+        }
+    }
+
+    public partial class HostInitializer
     {
         public void Start_EnterpriseLibrary(IUnityContainer unityContainer)
         {
@@ -48,10 +58,11 @@ namespace $customNamespace$.Models.Host
             }
 
 
-            //foreach (var item in host.BaseAddresses)
-            //{
-            //    Console.WriteLine("Service listening at {0}", item.AbsoluteUri);
-            //}
+            foreach (var item in host.BaseAddresses)
+            {
+                Console.WriteLine("Service listening at {0}", item.AbsoluteUri);
+            }
+
             host.Closed += new EventHandler(Host_Closed);
             host.Closing += new EventHandler(Host_Closing);
             host.Faulted += new EventHandler(Host_Faulted);
@@ -88,6 +99,71 @@ namespace $customNamespace$.Models.Host
         private void Host_Closed(object sender, EventArgs e)
         {
             this.Host_EventTrace(baseModel.GetCurrentMethod().Name, (ServiceHost)sender);
+        }
+    }
+
+    public partial class HostInitializer
+    {
+        public void LoadSharedConfiguration(string sharedFile)
+        {
+            // Load shared configuration file into memory
+            System.Configuration.Configuration configMapped;
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = sharedFile;
+            configMapped = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+            // Merge application current configuration
+            System.Configuration.Configuration configCurrent = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configMapped.SaveAs(configCurrent.FilePath, ConfigurationSaveMode.Minimal, true);
+
+            // Refresh sections 
+            Action<ConfigurationSectionGroup, string> refreshChilds = null;
+
+            refreshChilds = delegate(ConfigurationSectionGroup parentGroup, string sectionGroupName)
+            {
+                ConfigurationSectionGroup group = null;
+
+                if (parentGroup == null)
+                {
+                    group = configMapped.RootSectionGroup;
+                }
+                else
+                {
+                    group = parentGroup.SectionGroups[sectionGroupName];
+                }
+
+                if (group != null)
+                {
+                    if (group.Sections != null)
+                    {
+
+                        foreach (var item in group.Sections.Keys)
+                        {
+                            string sectionName = string.Format("{0}{1}{2}",
+                                                                group.SectionGroupName,
+                                                                string.IsNullOrEmpty(group.SectionGroupName) ? string.Empty : "/",
+                                                                group.Sections[(string)item].SectionInformation.Name);
+
+                            if (configMapped.GetSection(sectionName).ElementInformation.IsPresent)
+                            {
+                                ConfigurationManager.RefreshSection(sectionName);
+                            }
+                            else
+                            {
+                                //Console.Write(sectionName);
+                            }
+                        }
+                    }
+
+                    foreach (var item in group.SectionGroups.Keys)
+                    {
+                        refreshChilds(group, group.SectionGroups[(string)item].Name);
+                    }
+                }
+            };
+
+
+            refreshChilds(null, configMapped.RootSectionGroup.SectionGroupName);
         }
     }
 }

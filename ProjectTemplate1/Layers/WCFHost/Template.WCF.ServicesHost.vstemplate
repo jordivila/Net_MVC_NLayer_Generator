@@ -50,7 +50,7 @@
       <package id="EnterpriseLibrary.Logging" version="6.0.1304.0" targetFramework="net45" />
       <package id="EnterpriseLibrary.Logging.Database" version="6.0.1304.0" targetFramework="net45" />
       <package id="Unity" version="3.0.1304.1" targetFramework="net45" />
-      <package id="Unity.Interception" version="3.0.1304.0" targetFramework="net45" />
+      <!--<package id="Unity.Interception" version="3.0.1304.0" targetFramework="net45" />-->
     </packages>
   </WizardData>
 </VSTemplate>

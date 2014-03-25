@@ -93,6 +93,7 @@
     <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
     <None Include="Layers\Models\Host\HostInitializer.cs" />
     <None Include="Layers\WCFHostCommon\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\WCFHostCommon\Template.WCF.ServiceHostCommon.config" />
     <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\WCFHostWorkerRole\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
