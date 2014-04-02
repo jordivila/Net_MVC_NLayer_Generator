@@ -8,6 +8,7 @@ namespace VSIX_MVC_Layered_ProjectTemplate
 {
     class TodoList
     {
+        ///TODO: Los servicios como por ej. syndicationServices no heredan de baseService
         ///TODO: Check Session outdated can re-login
         ///TODO: Asp Net Mvc assembly should be load by Nuget
         ///TODO: LoggingHelper.Write(Exception ex)

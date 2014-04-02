@@ -16,6 +16,8 @@ using System.Runtime.CompilerServices;
 
 namespace $customNamespace$.WCF.ServicesLibrary
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Single)]
+    [LoggingServiceBehavior]
     public abstract class BaseService : IDisposable
     {
         public BaseService()
@@ -81,8 +83,6 @@ namespace $customNamespace$.WCF.ServicesLibrary
     }
 
 
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Single)]
-    [LoggingServiceBehavior]
     public abstract class BaseServiceWithCustomMessageHeaders : BaseService
     {
         public BaseServiceWithCustomMessageHeaders(): base()

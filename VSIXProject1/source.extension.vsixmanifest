@@ -32,6 +32,7 @@
     <CustomExtension Type="WebGrease.1.1.0.nupkg">packages\WebGrease.1.1.0\WebGrease.1.1.0.nupkg</CustomExtension>
     <CustomExtension Type="Microsoft.Web.Infrastructure.1.0.0.0.nupkg">packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg</CustomExtension>
     <CustomExtension Type="Moq.4.0.10827.nupkg">packages\Moq.4.0.10827\Moq.4.0.10827.nupkg</CustomExtension>
+    <CustomExtension Type="Newtonsoft.Json.6.0.1.nupkg">packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nupkg</CustomExtension>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
   </Content>
 </Vsix>
