@@ -1,8 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Transactions;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
+using $customNamespace$.Models.Enumerations;
 
-namespace $safeprojectname$.Logging
+namespace $customNamespace$.Models.Logging
 {
     public class LoggingHelper
     {
@@ -24,6 +28,7 @@ namespace $safeprojectname$.Logging
                 }
             }
         }
-    }
 
+
+    }
 }
