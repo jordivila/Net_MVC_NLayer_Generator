@@ -16,7 +16,8 @@ namespace $customNamespace$.Models.Host
     {
         public HostInitializer()
         {
-            this.LoadSharedConfiguration(@"Template.WCF.ServiceHostCommon.config");
+            ///TODO: acabar esto. Al guardar la confoguracion en azure peta por unauthorized exception
+            //this.LoadSharedConfiguration(@"Template.WCF.ServiceHostCommon.config");
         }
     }
 

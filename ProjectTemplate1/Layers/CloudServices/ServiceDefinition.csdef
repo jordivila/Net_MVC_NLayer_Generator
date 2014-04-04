@@ -12,12 +12,16 @@
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
     <Imports>
+      <Import moduleName="Diagnostics" />
     </Imports>
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" />
     </ConfigurationSettings>
   </WebRole>
   <WorkerRole name="$customNamespace$.WCF.ServicesHostWorkerRole" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="StorageConnectionString" />
+    </ConfigurationSettings>
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>

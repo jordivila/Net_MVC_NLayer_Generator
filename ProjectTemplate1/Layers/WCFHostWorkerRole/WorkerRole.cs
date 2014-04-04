@@ -21,14 +21,6 @@ namespace $customNamespace$.WCF.ServicesHostWorkerRole
 
         public override void Run()
         {
-            HostInitializer hostInitializer = new HostInitializer();
-            hostInitializer.Start_EnterpriseLibrary(UnityContainerProvider.GetContainer(BackEndUnityContainerAvailable.Real));
-
-            foreach (var item in BaseService.GetAllServiceTypes())
-            {
-                serviceHostInstances.Add(hostInitializer.Start_ServiceHost(item, Host_SetAzureInternalIPAddress));
-            }
-
             while (true)
             {
                 Thread.Sleep(10000);
@@ -58,6 +50,16 @@ namespace $customNamespace$.WCF.ServicesHostWorkerRole
 
             // For information on handling configuration changes
             // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+
+            HostInitializer hostInitializer = new HostInitializer();
+            hostInitializer.Start_EnterpriseLibrary(UnityContainerProvider.GetContainer(BackEndUnityContainerAvailable.Real));
+
+            foreach (var item in BaseService.GetAllServiceTypes())
+            {
+                serviceHostInstances.Add(hostInitializer.Start_ServiceHost(item, Host_SetAzureInternalIPAddress));
+            }
+
+
 
             return base.OnStart();
         }
