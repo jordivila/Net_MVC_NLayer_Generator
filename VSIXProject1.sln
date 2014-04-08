@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Resources\How to configure a web role to expose an internal TCP endpoint.zip = Resources\How to configure a web role to expose an internal TCP endpoint.zip
 		README.md = README.md
+		Resources\SQLDatabaseProj.7z = Resources\SQLDatabaseProj.7z
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIX_MVC_Layered_Project", "VSIXProject1\VSIX_MVC_Layered_Project.csproj", "{5EBB22C5-C75A-498F-BE4F-7E7C17BE6985}"
