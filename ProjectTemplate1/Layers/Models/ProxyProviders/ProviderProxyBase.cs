@@ -115,14 +115,47 @@ namespace $customNamespace$.Models.ProxyProviders
             return this.roleInternalInstanceEndPoint;
         }
 
+        //protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
+        //{
+        //    this.RoleInternalInstanceEndpointInit();
+
+        //    channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
+        //        channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
+
+        //    return channelFactory;
+        //}
+
+        protected RoleInstanceEndpoint RoleInstanceEndpointGet(string roleName, string endpointName)
+        {
+            return RoleEnvironment.Roles[roleName].Instances[0].InstanceEndpoints[endpointName];
+        }
+
         protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
         {
+
             this.RoleInternalInstanceEndpointInit();
 
-            channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
-                channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
+            RoleInstanceEndpoint roleInstanceEnpoint = this.RoleInstanceEndpointGet(ApplicationConfiguration.AzureRolesConfigurationSection.WCF_RoleName, ApplicationConfiguration.AzureRolesConfigurationSection.WCF_InternalEndPointName);
+
+
+
+            channelFactory.Endpoint.Address = new EndpointAddress(String.Format("net.tcp://{0}/Internal/{1}", roleInstanceEnpoint.IPEndpoint, typeof(TChannel).Name));
+
+
+
+
+            //channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
+            //    channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
 
             return channelFactory;
+
+
+            //this.RoleInternalInstanceEndpointInit();
+
+            //channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
+            //    channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
+
+            //return channelFactory;
         }
     }
 }
