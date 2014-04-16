@@ -40,6 +40,9 @@
           <Folder Name="Mailing" TargetFolderName="Mailing">
             <ProjectItem ReplaceParameters="true" TargetFileName="MailingConfiguration.cs">MailingConfiguration.cs</ProjectItem>
           </Folder>
+          <Folder Name="BackendServices" TargetFolderName="BackendServices">
+            <ProjectItem ReplaceParameters="true" TargetFileName="BackendServicesConfiguration.cs">BackendServicesConfiguration.cs</ProjectItem>
+          </Folder>
           <Folder Name="AzureRoles" TargetFolderName="AzureRoles">
             <ProjectItem ReplaceParameters="true" TargetFileName="AzureRolesConfiguration.cs">AzureRolesConfiguration.cs</ProjectItem>
           </Folder>
@@ -73,10 +76,6 @@
       <Folder Name="Globalization" TargetFolderName="Globalization">
         <ProjectItem ReplaceParameters="true" TargetFileName="GlobalizationHelper.cs">GlobalizationHelper.cs</ProjectItem>
       </Folder>
-      <Folder Name="Host" TargetFolderName="Host">
-        <ProjectItem ReplaceParameters="true" TargetFileName="HostInitializer.cs">HostInitializer.cs</ProjectItem>
-      </Folder>
-
       <Folder Name="Logging" TargetFolderName="Logging">
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerAzureTableStorage.cs">CustomTraceListenerAzureTableStorage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerDatabase.cs">CustomTraceListenerDatabase.cs</ProjectItem>

@@ -84,5 +84,10 @@ namespace $safeprojectname$.Enumerations
         Error = 2,
         Confirm = 3
     }
+    public enum HostingPlatform
+    { 
+        Custom,
+        Azure
+    }
 
 }

@@ -19,6 +19,7 @@
     </ConfigurationSettings>
   </WebRole>
   <WorkerRole name="$customNamespace$.WCF.ServicesHostWorkerRole" vmsize="Small">
+    <Runtime executionContext="elevated"></Runtime>
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" />
     </ConfigurationSettings>

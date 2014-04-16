@@ -91,7 +91,6 @@
     <None Include="Layers\Models\Roles\IRoleAdminBL.cs" />
     <None Include="Layers\Models\Membership\IMembershipBL.cs" />
     <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
-    <None Include="Layers\Models\Host\HostInitializer.cs" />
     <None Include="Layers\WCFHostCommon\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostCommon\Template.WCF.ServiceHostCommon.config" />
     <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
@@ -99,6 +98,8 @@
     <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
     <None Include="Layers\Models\Configuration\ConfigSections\AzureRoles\AzureRolesConfiguration.cs" />
     <None Include="Layers\UI\WebRole.cs" />
+    <None Include="Layers\WCFHostCommon\BackendHostInitializer.cs" />
+    <None Include="Layers\Models\Configuration\ConfigSections\BackendServices\BackendServicesConfiguration.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />

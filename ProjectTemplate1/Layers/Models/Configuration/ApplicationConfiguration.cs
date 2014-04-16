@@ -4,6 +4,7 @@ using $customNamespace$.Models.Configuration.ConfigSections.ClientResources;
 using $customNamespace$.Models.Configuration.ConfigSections.DomainInfo;
 using $customNamespace$.Models.Configuration.ConfigSections.Mailing;
 using $customNamespace$.Models.Configuration.ConfigSections.AzureRoles;
+using $customNamespace$.Models.Configuration.ConfigSections.BackendServices;
 
 namespace $customNamespace$.Models.Configuration
 {
@@ -42,5 +43,7 @@ namespace $customNamespace$.Models.Configuration
         public static IClientResourcesConfiguration ClientResourcesSettingsSection = new ClientResourcesConfiguration();
 
         public static IAzureRolesConfiguration AzureRolesConfigurationSection = new AzureRolesConfiguration();
+
+        public static IBackendServicesConfiguration BackendServicesConfiguration = new BackendServicesConfiguration();
     }
 }

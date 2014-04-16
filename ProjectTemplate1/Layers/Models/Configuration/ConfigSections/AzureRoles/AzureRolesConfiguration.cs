@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.ServiceModel;
+using System.Net;
 
 namespace $customNamespace$.Models.Configuration.ConfigSections.AzureRoles
 {
@@ -9,9 +10,9 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.AzureRoles
     {
         string WCF_RoleName { get; set; }
         string WCF_InternalEndPointName { get; set; }
+        int WCF_InstanceNumber { get; set; }
 
-        RoleInstanceEndpoint RoleInstanceEndpointGet(string roleName, string endpointName);
-        EndpointAddress ReplaceEndpointAddressAuthorityByRoleEndpoint(EndpointAddress endpoint, string roleName, string roleEndpointName);
+        IPEndPoint BackEndGetIpEndpoint();
     }
 
     public class AzureRolesConfiguration : IAzureRolesConfiguration
@@ -20,28 +21,22 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.AzureRoles
         {
             this.WCF_RoleName = "$customNamespace$.WCF.ServicesHostWorkerRole";
             this.WCF_InternalEndPointName = "Internal";
+            this.WCF_InstanceNumber = 0;
         }
 
         public string WCF_RoleName { get; set; }
         public string WCF_InternalEndPointName { get; set; }
+        public int WCF_InstanceNumber { get; set; }
 
 
-        public RoleInstanceEndpoint RoleInstanceEndpointGet(string roleName, string endpointName)
+        private RoleInstanceEndpoint BackEndRoleInstanceEndpointGet()
         {
-            return RoleEnvironment.Roles[roleName].Instances[0].InstanceEndpoints[endpointName];
+            return RoleEnvironment.Roles[this.WCF_RoleName].Instances[this.WCF_InstanceNumber].InstanceEndpoints[this.WCF_InternalEndPointName];
         }
 
-
-        public EndpointAddress ReplaceEndpointAddressAuthorityByRoleEndpoint(EndpointAddress endpointToReplace, string roleName, string roleEndpointName)
+        public IPEndPoint BackEndGetIpEndpoint()
         {
-            RoleInstanceEndpoint roleInstanceEnpoint = this.RoleInstanceEndpointGet(roleName, roleEndpointName);
-
-            return
-                new EndpointAddress(
-                    new Uri(endpointToReplace.Uri.ToString().Replace(endpointToReplace.Uri.Authority,
-                            string.Format("{0}:{1}",
-                                            roleInstanceEnpoint.IPEndpoint.Address.ToString(),
-                                            roleInstanceEnpoint.IPEndpoint.Port))));
+            return this.BackEndRoleInstanceEndpointGet().IPEndpoint;
         }
     }
 }

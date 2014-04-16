@@ -3,6 +3,8 @@ using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Unity;
 using System;
 using System.ServiceModel;
+using System.ServiceModel.Description;
+using $customNamespace$.Models.Enumerations;
 
 namespace $customNamespace$.Models.ProxyProviders
 {
@@ -52,7 +54,9 @@ namespace $customNamespace$.Models.ProxyProviders
         {
             if (ClientChannelInitializer<TChannel>.channelFactoryInstance == null)
             {
-                ClientChannelInitializer<TChannel>.channelFactoryInstance = this.ChannelFactoryInit(new ChannelFactory<TChannel>(typeof(TChannel).Name));
+                ClientChannelInitializer<TChannel>.channelFactoryInstance =
+                    this.ChannelFactoryInit(
+                        new ChannelFactory<TChannel>(typeof(TChannel).Name));
             }
         }
 
@@ -93,69 +97,31 @@ namespace $customNamespace$.Models.ProxyProviders
 
         protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
         {
+            Uri backendEndpointAddress = ApplicationConfiguration.BackendServicesConfiguration.GetEndpoint(
+                                                    HostingPlatform.Custom,
+                                                    channelFactory.Endpoint.Binding,
+                                                    ContractDescription.GetContract(typeof(TChannel)));
+
+            channelFactory.Endpoint.Address = new EndpointAddress(backendEndpointAddress);
+
             return channelFactory;
         }
     }
 
     public class ClientChannelAzureInternalRoleInitializer<TChannel> : ClientChannelInitializer<TChannel>
     {
-        private string roleName = ApplicationConfiguration.AzureRolesConfigurationSection.WCF_RoleName;
-        private string roleInternalEndpointName = ApplicationConfiguration.AzureRolesConfigurationSection.WCF_InternalEndPointName;
-        private RoleInstanceEndpoint roleInternalInstanceEndPoint = null;
-
         public ClientChannelAzureInternalRoleInitializer() : base() { }
-
-        private RoleInstanceEndpoint RoleInternalInstanceEndpointInit()
-        {
-            if (this.roleInternalInstanceEndPoint == null)
-            {
-                this.roleInternalInstanceEndPoint = ApplicationConfiguration.AzureRolesConfigurationSection.RoleInstanceEndpointGet(roleName, roleInternalEndpointName);
-            }
-
-            return this.roleInternalInstanceEndPoint;
-        }
-
-        //protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
-        //{
-        //    this.RoleInternalInstanceEndpointInit();
-
-        //    channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
-        //        channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
-
-        //    return channelFactory;
-        //}
-
-        protected RoleInstanceEndpoint RoleInstanceEndpointGet(string roleName, string endpointName)
-        {
-            return RoleEnvironment.Roles[roleName].Instances[0].InstanceEndpoints[endpointName];
-        }
 
         protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
         {
+            Uri backendEndpointAddress = ApplicationConfiguration.BackendServicesConfiguration.GetEndpoint(
+                                                    HostingPlatform.Azure,
+                                                    channelFactory.Endpoint.Binding,
+                                                    ContractDescription.GetContract(typeof(TChannel)));
 
-            this.RoleInternalInstanceEndpointInit();
-
-            RoleInstanceEndpoint roleInstanceEnpoint = this.RoleInstanceEndpointGet(ApplicationConfiguration.AzureRolesConfigurationSection.WCF_RoleName, ApplicationConfiguration.AzureRolesConfigurationSection.WCF_InternalEndPointName);
-
-
-
-            channelFactory.Endpoint.Address = new EndpointAddress(String.Format("net.tcp://{0}/Internal/{1}", roleInstanceEnpoint.IPEndpoint, typeof(TChannel).Name));
-
-
-
-
-            //channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
-            //    channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
+            channelFactory.Endpoint.Address = new EndpointAddress(backendEndpointAddress);
 
             return channelFactory;
-
-
-            //this.RoleInternalInstanceEndpointInit();
-
-            //channelFactory.Endpoint.Address = ApplicationConfiguration.AzureRolesConfigurationSection.ReplaceEndpointAddressAuthorityByRoleEndpoint(
-            //    channelFactory.Endpoint.Address, roleName, roleInternalEndpointName);
-
-            //return channelFactory;
         }
     }
 }
