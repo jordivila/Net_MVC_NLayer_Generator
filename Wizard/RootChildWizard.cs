@@ -38,6 +38,8 @@ namespace VSIX_MVC_Layered_Wizard
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.DatabaseServerNameKey, IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.ServerName);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.MembershipDBNameKey, IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.MembershipDBName);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.LoggingDBNameKey, IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.LoggingDBName);
+                replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.TokenPersistenceDBNameKey, IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.TokenPersistenceDBName);
+
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.WebSiteAdminEmailAddressKey, IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.WebSiteAdminPasswordKey, IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword);
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.WebSiteApplictionNameKey, IWizardImplementation.GlobalData.CustomNamespace);

@@ -118,174 +118,180 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="formsWebSiteInfo1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="formDatabaseInstallInfoUserControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="formDatabaseInstallInfoUserControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 12</value>
   </data>
-  <data name="&gt;&gt;ButtonCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ButtonCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="formDatabaseInstallInfoUserControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 170</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="formDatabaseInstallInfoUserControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="formDatabaseInstallInfoUserControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.Name" xml:space="preserve">
+    <value>formDatabaseInstallInfoUserControl1</value>
+  </data>
+  <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.Type" xml:space="preserve">
+    <value>VSIX_MVC_Layered_Wizard.FormDatabaseInstallInfoUserControl, VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</value>
   </data>
   <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="formWcfInfo1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 285</value>
-  </data>
-  <data name="formDatabaseInstallInfoUserControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>425, 133</value>
-  </data>
-  <data name="&gt;&gt;ButtonDev.Name" xml:space="preserve">
-    <value>ButtonDev</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Wizard.FormBase, Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="ButtonDev.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;formsWebSiteInfo1.Name" xml:space="preserve">
-    <value>formsWebSiteInfo1</value>
-  </data>
-  <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.Type" xml:space="preserve">
-    <value>Wizard.FormDatabaseInstallInfoUserControl, Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="formWcfInfo1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;ButtonNext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Web Site Configuration</value>
-  </data>
-  <data name="ButtonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="formsWebSiteInfo1.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>480, 425</value>
-  </data>
-  <data name="&gt;&gt;ButtonNext.Name" xml:space="preserve">
-    <value>ButtonNext</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;ButtonDev.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;formWcfInfo1.Name" xml:space="preserve">
-    <value>formWcfInfo1</value>
-  </data>
-  <data name="ButtonNext.Text" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="ButtonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="formWcfInfo1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>425, 96</value>
-  </data>
-  <data name="formDatabaseInstallInfoUserControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 12</value>
-  </data>
-  <data name="&gt;&gt;ButtonCancel.Name" xml:space="preserve">
-    <value>ButtonCancel</value>
-  </data>
-  <data name="&gt;&gt;formWcfInfo1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ButtonDev.Text" xml:space="preserve">
-    <value>Dev Data</value>
-  </data>
-  <data name="ButtonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="formsWebSiteInfo1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>425, 128</value>
-  </data>
-  <data name="&gt;&gt;formsWebSiteInfo1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="formsWebSiteInfo1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 151</value>
-  </data>
-  <data name="&gt;&gt;ButtonDev.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ButtonNext.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;ButtonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonNext.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;formWcfInfo1.Type" xml:space="preserve">
-    <value>Wizard.FormWcfInfo, Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="ButtonNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 387</value>
-  </data>
-  <data name="&gt;&gt;formWcfInfo1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="ButtonDev.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="ButtonDev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 387</value>
-  </data>
-  <data name="&gt;&gt;ButtonDev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ButtonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 387</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormInfo</value>
+    <value>182, 424</value>
   </data>
   <data name="ButtonDev.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="formWcfInfo1.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="ButtonDev.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
-  <data name="&gt;&gt;ButtonNext.Parent" xml:space="preserve">
+  <data name="ButtonDev.Text" xml:space="preserve">
+    <value>Dev Data</value>
+  </data>
+  <data name="&gt;&gt;ButtonDev.Name" xml:space="preserve">
+    <value>ButtonDev</value>
+  </data>
+  <data name="&gt;&gt;ButtonDev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonDev.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonDev.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ButtonCancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ButtonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 424</value>
+  </data>
+  <data name="ButtonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="ButtonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="ButtonCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Name" xml:space="preserve">
+    <value>ButtonCancel</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ButtonNext.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ButtonNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 424</value>
   </data>
   <data name="ButtonNext.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;formsWebSiteInfo1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="ButtonNext.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="ButtonNext.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="&gt;&gt;ButtonNext.Name" xml:space="preserve">
+    <value>ButtonNext</value>
+  </data>
+  <data name="&gt;&gt;ButtonNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonNext.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonNext.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="formWcfInfo1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="formWcfInfo1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 322</value>
+  </data>
+  <data name="formWcfInfo1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 96</value>
+  </data>
+  <data name="formWcfInfo1.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;formWcfInfo1.Name" xml:space="preserve">
+    <value>formWcfInfo1</value>
+  </data>
+  <data name="&gt;&gt;formWcfInfo1.Type" xml:space="preserve">
+    <value>VSIX_MVC_Layered_Wizard.FormWcfInfo, VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</value>
+  </data>
+  <data name="&gt;&gt;formWcfInfo1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;formWcfInfo1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="formsWebSiteInfo1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="formsWebSiteInfo1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 188</value>
+  </data>
+  <data name="formsWebSiteInfo1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 128</value>
+  </data>
+  <data name="formsWebSiteInfo1.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;formsWebSiteInfo1.Name" xml:space="preserve">
+    <value>formsWebSiteInfo1</value>
   </data>
   <data name="&gt;&gt;formsWebSiteInfo1.Type" xml:space="preserve">
-    <value>Wizard.FormsWebSiteInfo, Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>VSIX_MVC_Layered_Wizard.FormsWebSiteInfo, VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</value>
   </data>
-  <data name="&gt;&gt;formDatabaseInstallInfoUserControl1.Name" xml:space="preserve">
-    <value>formDatabaseInstallInfoUserControl1</value>
+  <data name="&gt;&gt;formsWebSiteInfo1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;formsWebSiteInfo1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>es</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>479, 481</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Application Services Configuration</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormInfo</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>VSIX_MVC_Layered_Wizard.FormBase, VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</value>
+  </data>
 </root>

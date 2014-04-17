@@ -18,7 +18,7 @@ namespace VSIX_MVC_Layered_Wizard
         public FormInfo()
         {
             InitializeComponent();
-        }
+        } 
 
         public void ButtonCancel_Click(object sender, EventArgs e)
         {

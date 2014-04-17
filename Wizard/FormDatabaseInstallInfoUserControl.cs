@@ -20,6 +20,7 @@ namespace VSIX_MVC_Layered_Wizard
             this.ServerTextBox_Init();
             this.MembershipDBNameTextbox_Init();
             this.LoggingDBNameTextbox_Init();
+            this.TokenPersistenceDBNameTextbox_Init();
         }
 
         private bool IsValidServerName(string value)
@@ -127,6 +128,24 @@ namespace VSIX_MVC_Layered_Wizard
                                     });
         }
 
+        private void TokenPersistenceDBNameTextbox_Init()
+        {
+            this.TextBoxRequiredCommonInit(this.TokenPersistenceDBNameTextbox,
+                                    FormDatabaseInstallInputResources.TokenPersistenceDatabaseName,
+                                    FormDatabaseInstallInputResources.DatabaseInvalidName,
+                                    typeof(System.String),
+                                    delegate(object sender, TypeValidationEventArgs e)
+                                    {
+                                        if (!this.IsValidDatabaseName(e.ReturnValue.ToString()))
+                                        {
+                                            errorProvider1.SetError((Control)sender, FormDatabaseInstallInputResources.DatabaseInvalidName);
+                                            e.Cancel = true;
+                                        }
+                                    });
+        }
+
+        
+
         public FormDatabaseInstallInfoData ValueFake(object sender, EventArgs e)
         {
             return new FormDatabaseInstallInfoData()
@@ -134,7 +153,8 @@ namespace VSIX_MVC_Layered_Wizard
                 CreateDatabaseAccepted = false,
                 ServerName = FormDatabaseInstallInputResources.ServerName,
                 MembershipDBName = FormDatabaseInstallInputResources.MembershipDatabaseName,
-                LoggingDBName = FormDatabaseInstallInputResources.LoggingDatabaseName
+                LoggingDBName = FormDatabaseInstallInputResources.LoggingDatabaseName,
+                TokenPersistenceDBName = FormDatabaseInstallInputResources.TokenPersistenceDatabaseName
             };
         }
 
@@ -146,6 +166,7 @@ namespace VSIX_MVC_Layered_Wizard
                 ServerName = this.ServerTextBox.Text,
                 MembershipDBName = this.MembershipDBNameTextbox.Text,
                 LoggingDBName = this.LoggingDBNameTextbox.Text,
+                TokenPersistenceDBName = this.TokenPersistenceDBNameTextbox.Text
             };
         }
 
@@ -154,6 +175,7 @@ namespace VSIX_MVC_Layered_Wizard
             this.ServerTextBox.Text = "IO_JV";
             this.MembershipDBNameTextbox.Text = "CurlyDevelopmentMembership";
             this.LoggingDBNameTextbox.Text = "CurlyDevelopmentLogging";
+            this.TokenPersistenceDBNameTextbox.Text = "CurlyDevelopmentTokenPersistence";
         }
 
 
@@ -162,6 +184,7 @@ namespace VSIX_MVC_Layered_Wizard
             this.ServerTextBox.Text = "IO_JV";
             this.MembershipDBNameTextbox.Text = "CurlyDevelopmentMembership";
             this.LoggingDBNameTextbox.Text = "CurlyDevelopmentLogging";
+            this.TokenPersistenceDBNameTextbox.Text = "CurlyDevelopmentTokenPersistence";
         }
     }
 
@@ -172,6 +195,7 @@ namespace VSIX_MVC_Layered_Wizard
         public string ServerName { get; set; }
         public string MembershipDBName { get; set; }
         public string LoggingDBName { get; set; }
+        public string TokenPersistenceDBName { get; set; }
     }
 
 }

@@ -8,7 +8,7 @@ namespace VSIX_MVC_Layered_ProjectTemplate
 {
     class TodoList
     {
-        ///TODO: When deploy to azure WCF Host Common configuration throws exception: unauthroized when ConfigurationManager.SaveAs when trying to merge configuration
+        ///TODO: DB Connection string at cloud services definition file
         ///TODO: Use jQuery.globalize from microsoft cdn. Remove from Template.UI.Web jquery.globalize files
         ///TODO: Check Session outdated can re-login
         ///TODO: Asp Net Mvc assembly should be load by Nuget

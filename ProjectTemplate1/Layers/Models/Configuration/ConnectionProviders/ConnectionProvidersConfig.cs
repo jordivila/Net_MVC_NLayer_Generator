@@ -15,6 +15,9 @@ namespace $safeprojectname$.Configuration.ConnectionProviders
                 case ApplicationConfiguration.DatabaseNames.Logging:
                     cnnProvider = "Logging Database String";
                     break;
+                case ApplicationConfiguration.DatabaseNames.TokenPersistence:
+                    cnnProvider = "TokenPersistence Database String";
+                    break;
                 default:
                     throw new Exception("SQL Provider No Especificado. Debes asignar una cadena de conexion para ejecutar procedimientos o sentencias SQL");
                 //break;

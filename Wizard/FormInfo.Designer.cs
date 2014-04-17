@@ -51,9 +51,9 @@
             // 
             // ButtonCancel
             // 
-            resources.ApplyResources(this.ButtonCancel, "ButtonCancel");
             this.ButtonCancel.CausesValidation = false;
             this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.ButtonCancel, "ButtonCancel");
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.UseVisualStyleBackColor = true;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
@@ -80,6 +80,7 @@
             this.AcceptButton = this.ButtonNext;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.ButtonCancel;
             this.Controls.Add(this.formsWebSiteInfo1);
             this.Controls.Add(this.formWcfInfo1);
@@ -87,7 +88,10 @@
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonNext);
             this.Controls.Add(this.formDatabaseInstallInfoUserControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormInfo";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.ResumeLayout(false);
 
         }

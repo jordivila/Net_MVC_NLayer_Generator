@@ -34,6 +34,7 @@ namespace $customNamespace$.Models.Configuration
         {
             Membership
             , Logging
+            , TokenPersistence
         }
 
         public static IMailingConfiguration MailingSettingsSection = new MailingConfiguration();

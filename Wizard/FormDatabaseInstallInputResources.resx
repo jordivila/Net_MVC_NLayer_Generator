@@ -159,6 +159,9 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>Invalid database server name</value>
   </data>
+  <data name="TokenPersistenceDatabaseName" xml:space="preserve">
+    <value>Token Persistence Database_Name</value>
+  </data>
   <data name="WizardCaption" xml:space="preserve">
     <value>NTier MVC Application Wizard</value>
   </data>

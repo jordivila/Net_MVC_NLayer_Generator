@@ -156,10 +156,11 @@ namespace VSIX_MVC_Layered_Wizard
                     startInfo.CreateNoWindow = true;
                     
                     startInfo.FileName = command;
-                    startInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ",
+                    startInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" ",
                                                 IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.ServerName,
                                                 IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.MembershipDBName,
                                                 IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.LoggingDBName,
+                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.TokenPersistenceDBName,
                                                 IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
                                                 IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword,
                                                 IWizardImplementation.GlobalData.CustomNamespace,

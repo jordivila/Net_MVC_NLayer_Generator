@@ -38,6 +38,8 @@
             this.LoggingDBNameTextbox = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.TokenPersistenceDBNameLabel = new System.Windows.Forms.Label();
+            this.TokenPersistenceDBNameTextbox = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,9 +56,10 @@
             // ServerTextBox
             // 
             this.ServerTextBox.AsciiOnly = true;
+            this.ServerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ServerTextBox.Culture = new System.Globalization.CultureInfo("");
             this.ServerTextBox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.ServerTextBox.Location = new System.Drawing.Point(179, 50);
+            this.ServerTextBox.Location = new System.Drawing.Point(171, 50);
             this.ServerTextBox.Name = "ServerTextBox";
             this.ServerTextBox.RejectInputOnFirstFailure = true;
             this.ServerTextBox.ResetOnSpace = false;
@@ -75,9 +78,10 @@
             // MembershipDBNameTextbox
             // 
             this.MembershipDBNameTextbox.AsciiOnly = true;
+            this.MembershipDBNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MembershipDBNameTextbox.Culture = new System.Globalization.CultureInfo("");
             this.MembershipDBNameTextbox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.MembershipDBNameTextbox.Location = new System.Drawing.Point(179, 76);
+            this.MembershipDBNameTextbox.Location = new System.Drawing.Point(171, 76);
             this.MembershipDBNameTextbox.Name = "MembershipDBNameTextbox";
             this.MembershipDBNameTextbox.RejectInputOnFirstFailure = true;
             this.MembershipDBNameTextbox.ResetOnSpace = false;
@@ -92,7 +96,7 @@
             // LoggingDBNameLabel
             // 
             this.LoggingDBNameLabel.AutoSize = true;
-            this.LoggingDBNameLabel.Location = new System.Drawing.Point(4, 105);
+            this.LoggingDBNameLabel.Location = new System.Drawing.Point(3, 105);
             this.LoggingDBNameLabel.Name = "LoggingDBNameLabel";
             this.LoggingDBNameLabel.Size = new System.Drawing.Size(125, 13);
             this.LoggingDBNameLabel.TabIndex = 27;
@@ -101,9 +105,10 @@
             // LoggingDBNameTextbox
             // 
             this.LoggingDBNameTextbox.AsciiOnly = true;
+            this.LoggingDBNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LoggingDBNameTextbox.Culture = new System.Globalization.CultureInfo("");
             this.LoggingDBNameTextbox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.LoggingDBNameTextbox.Location = new System.Drawing.Point(179, 102);
+            this.LoggingDBNameTextbox.Location = new System.Drawing.Point(171, 102);
             this.LoggingDBNameTextbox.Name = "LoggingDBNameTextbox";
             this.LoggingDBNameTextbox.RejectInputOnFirstFailure = true;
             this.LoggingDBNameTextbox.ResetOnSpace = false;
@@ -131,10 +136,34 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Database and Web Site Admin Configruation";
             // 
+            // TokenPersistenceDBNameLabel
+            // 
+            this.TokenPersistenceDBNameLabel.AutoSize = true;
+            this.TokenPersistenceDBNameLabel.Location = new System.Drawing.Point(4, 131);
+            this.TokenPersistenceDBNameLabel.Name = "TokenPersistenceDBNameLabel";
+            this.TokenPersistenceDBNameLabel.Size = new System.Drawing.Size(126, 13);
+            this.TokenPersistenceDBNameLabel.TabIndex = 35;
+            this.TokenPersistenceDBNameLabel.Text = "Tokens  Database Name";
+            // 
+            // TokenPersistenceDBNameTextbox
+            // 
+            this.TokenPersistenceDBNameTextbox.AsciiOnly = true;
+            this.TokenPersistenceDBNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TokenPersistenceDBNameTextbox.Culture = new System.Globalization.CultureInfo("");
+            this.TokenPersistenceDBNameTextbox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.TokenPersistenceDBNameTextbox.Location = new System.Drawing.Point(171, 128);
+            this.TokenPersistenceDBNameTextbox.Name = "TokenPersistenceDBNameTextbox";
+            this.TokenPersistenceDBNameTextbox.RejectInputOnFirstFailure = true;
+            this.TokenPersistenceDBNameTextbox.ResetOnSpace = false;
+            this.TokenPersistenceDBNameTextbox.Size = new System.Drawing.Size(189, 20);
+            this.TokenPersistenceDBNameTextbox.TabIndex = 23;
+            // 
             // FormDatabaseInstallInfoUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TokenPersistenceDBNameLabel);
+            this.Controls.Add(this.TokenPersistenceDBNameTextbox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.serverLabel);
             this.Controls.Add(this.ServerTextBox);
@@ -143,7 +172,7 @@
             this.Controls.Add(this.LoggingDBNameLabel);
             this.Controls.Add(this.LoggingDBNameTextbox);
             this.Name = "FormDatabaseInstallInfoUserControl";
-            this.Size = new System.Drawing.Size(415, 131);
+            this.Size = new System.Drawing.Size(415, 173);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -163,5 +192,7 @@
         private System.Windows.Forms.MaskedTextBox LoggingDBNameTextbox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label TokenPersistenceDBNameLabel;
+        private System.Windows.Forms.MaskedTextBox TokenPersistenceDBNameTextbox;
     }
 }

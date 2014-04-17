@@ -136,6 +136,9 @@ namespace VSIX_MVC_Layered_Wizard
         public readonly string DatabaseServerNameKey = "$DatabaseServerName$";
         public readonly string MembershipDBNameKey = "$MembershipDBName$";
         public readonly string LoggingDBNameKey = "$LoggingDBName$";
+        public readonly string TokenPersistenceDBNameKey = "$TokenPersistenceDBNameKey$";
+        
+
         public readonly string WebSiteAdminEmailAddressKey = "$WebSiteAdminEmailAddress$";
         public readonly string WebSiteAdminPasswordKey = "$WebSiteAdminPassword$";
         public readonly string WebSiteApplictionNameKey = "$WebSiteApplicationName$";

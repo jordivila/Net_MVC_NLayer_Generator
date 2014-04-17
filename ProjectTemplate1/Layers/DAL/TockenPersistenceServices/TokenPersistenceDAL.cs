@@ -20,7 +20,7 @@ namespace $customNamespace$.DAL.TokenTemporaryPersistenceServices
 
         public TokenTemporaryPersistenceServiceItem<T> Insert(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.TokenPersistence));
             DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceInsert");
             db.AddInParameter(cmd, "@id", DbType.String, entity.Token.ToString());
             db.AddInParameter(cmd, "@tokenCreated", DbType.DateTime, entity.TokenCreated);
@@ -31,7 +31,7 @@ namespace $customNamespace$.DAL.TokenTemporaryPersistenceServices
 
         public object Delete(TokenTemporaryPersistenceServiceItem<T> entity)
         {
-            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.TokenPersistence));
             DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceDelete");
             db.AddInParameter(cmd, "@id", DbType.String, entity.Token.ToString());
             return db.ExecuteScalar(cmd);
@@ -45,7 +45,7 @@ namespace $customNamespace$.DAL.TokenTemporaryPersistenceServices
         public TokenTemporaryPersistenceServiceItem<T> GetById(object id)
         {
             TokenTemporaryPersistenceServiceItem<T> result = null;
-            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.Membership));
+            Database db = DatabaseFactory.CreateDatabase(Info.GetDatabaseName(ApplicationConfiguration.DatabaseNames.TokenPersistence));
             DbCommand cmd = db.GetStoredProcCommand("TokenTemporaryPersistenceGetById");
             db.AddInParameter(cmd, "@id", DbType.String, ((Guid)id).ToString());
             int i = this.ExecuteReader<TokenTemporaryPersistenceServiceItem<T>>(db, null, cmd, ref result);

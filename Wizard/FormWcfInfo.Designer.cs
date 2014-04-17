@@ -67,9 +67,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 13);
+            this.label1.Size = new System.Drawing.Size(220, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "WCF Client - Server Configruation";
+            this.label1.Text = "Backend WCF Services Configuration";
             // 
             // panel1
             // 

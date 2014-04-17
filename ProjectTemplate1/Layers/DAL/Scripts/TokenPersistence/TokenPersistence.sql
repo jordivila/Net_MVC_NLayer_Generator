@@ -1,4 +1,19 @@
-﻿	SET ANSI_NULLS ON
+﻿	/****** Object:  Database Logging    Script Date: 8/22/2005 ******/
+	USE [master]
+	GO
+
+	IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'$(DatabaseName)')
+		DROP DATABASE [$(DatabaseName)]
+	GO
+
+	CREATE DATABASE [$(DatabaseName)]
+	 COLLATE SQL_Latin1_General_CP1_CI_AS
+	GO
+
+	use [$(DatabaseName)]
+	GO
+
+	SET ANSI_NULLS ON
 	GO
 
 	SET QUOTED_IDENTIFIER ON

@@ -75,6 +75,7 @@
             // MembershipAdminEmailTextbox
             // 
             this.MembershipAdminEmailTextbox.AsciiOnly = true;
+            this.MembershipAdminEmailTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MembershipAdminEmailTextbox.Culture = new System.Globalization.CultureInfo("");
             this.MembershipAdminEmailTextbox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.MembershipAdminEmailTextbox.Location = new System.Drawing.Point(178, 59);
@@ -96,6 +97,7 @@
             // MembershipAdminPasswordTextbox
             // 
             this.MembershipAdminPasswordTextbox.AsciiOnly = true;
+            this.MembershipAdminPasswordTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MembershipAdminPasswordTextbox.Culture = new System.Globalization.CultureInfo("");
             this.MembershipAdminPasswordTextbox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.MembershipAdminPasswordTextbox.Location = new System.Drawing.Point(177, 85);
