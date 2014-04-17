@@ -15,7 +15,6 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Template.WCF.ServicesHost.csproj" File="Template.WCF.ServicesHost.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true"  TargetFileName="app.config">app.config</ProjectItem>
       <ProjectItem ReplaceParameters="true"  TargetFileName="Host.cs">Host.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.cs">HostService.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true"  TargetFileName="HostService.designer.cs">HostService.designer.cs</ProjectItem>

@@ -25,8 +25,10 @@ namespace VSIX_MVC_Layered_Wizard
 
         public void ProjectFinishedGenerating(Project project)
         {
-            this.FormInfo_CreateExecute();
+            this.BackEndHostsAddAsALinkSharedAppConfig();
+            this.FormInfo_CreateExecuteDatabase();
         }
+
 
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
         {
@@ -135,7 +137,7 @@ namespace VSIX_MVC_Layered_Wizard
             IWizardImplementation.GlobalData.WebSiteConfig = e.WebSiteConfig;
         }
 
-        private void FormInfo_CreateExecute()
+        private void FormInfo_CreateExecuteDatabase()
         {
             IWizardImplementation.GlobalData.dte.StatusBar.Text = string.Format("{0} . {1}...", FormsWizardGeneralResources.DatabaseInitializing, FormsWizardGeneralResources.PlaseWaitMinute);
 
@@ -175,6 +177,32 @@ namespace VSIX_MVC_Layered_Wizard
         }
 
         #endregion
+
+        private void BackEndHostsAddAsALinkSharedAppConfig()
+        {
+
+            IEnumerator enumerator = IWizardImplementation.GlobalData.dte.Solution.Projects.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                Project item = (Project)enumerator.Current;
+
+                bool isBackendHostProject = (item.Name == string.Format("{0}.WCF.ServicesHost", IWizardImplementation.GlobalData.CustomNamespace))
+                                            ||
+                                            (item.Name == string.Format("{0}.WCF.ServicesHostWorkerRole", IWizardImplementation.GlobalData.CustomNamespace));
+
+                if (isBackendHostProject)
+                {
+                    string pathToSharedAppConfig = string.Format(@"{0}\{1}.WCF.ServicesHostCommon\app.config", IWizardImplementation.GlobalData.SolutionDirectory, IWizardImplementation.GlobalData.CustomNamespace);
+
+                    ProjectItem appConfigLink = item.ProjectItems.AddFromFile(pathToSharedAppConfig);
+
+
+                    //project.ProjectItems.AddFromFile()
+                }
+            }
+        }
+
 
 
     }

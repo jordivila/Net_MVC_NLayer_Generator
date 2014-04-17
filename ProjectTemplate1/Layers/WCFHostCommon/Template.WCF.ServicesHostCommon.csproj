@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>$customNamespace$.WCF.ServicesHostCommon</RootNamespace>
     <AssemblyName>$customNamespace$.WCF.ServicesHostCommon</AssemblyName>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -81,9 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Template.WCF.ServiceHostCommon.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\$customNamespace$\$customNamespace$.WCF.ServicesLibrary\$customNamespace$.WCF.ServicesLibrary.csproj">

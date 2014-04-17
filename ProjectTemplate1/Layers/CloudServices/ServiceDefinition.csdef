@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="MvcApplicationAzureClodServices" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-10.2.2">
-  <WebRole name="$customNamespace$.UI.Web" vmsize="Small">
+  <WebRole name="$customNamespace$.UI.Web" vmsize="ExtraSmall">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -18,7 +18,7 @@
       <Setting name="StorageConnectionString" />
     </ConfigurationSettings>
   </WebRole>
-  <WorkerRole name="$customNamespace$.WCF.ServicesHostWorkerRole" vmsize="Small">
+  <WorkerRole name="$customNamespace$.WCF.ServicesHostWorkerRole" vmsize="ExtraSmall">
     <Runtime executionContext="elevated"></Runtime>
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" />

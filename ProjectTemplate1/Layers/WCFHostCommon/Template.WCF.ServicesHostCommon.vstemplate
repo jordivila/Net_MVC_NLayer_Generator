@@ -15,7 +15,7 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Template.WCF.ServicesHostCommon.csproj" File="Template.WCF.ServicesHostCommon.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true" TargetFileName="Template.WCF.ServiceHostCommon.config">Template.WCF.ServiceHostCommon.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="app.config">app.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="BackendHostInitializer.cs">BackendHostInitializer.cs</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">

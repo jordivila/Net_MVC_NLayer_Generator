@@ -92,7 +92,7 @@
     <None Include="Layers\Models\Membership\IMembershipBL.cs" />
     <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
     <None Include="Layers\WCFHostCommon\Properties\AssemblyInfo.cs" />
-    <None Include="Layers\WCFHostCommon\Template.WCF.ServiceHostCommon.config" />
+    <None Include="Layers\WCFHostCommon\app.config" />
     <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\WCFHostWorkerRole\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
@@ -324,9 +324,7 @@
     <None Include="Layers\UI\Web.Debug.config" />
     <None Include="Layers\UI\Web.Release.config" />
     <None Include="Layers\WCFHostCommon\packages.config" />
-    <None Include="Layers\WCFHostWorkerRole\app.config" />
     <None Include="Layers\WCFHostWorkerRole\packages.config" />
-    <None Include="Layers\WCFHost\app.config" />
     <None Include="Layers\WCFHost\packages.config" />
     <None Include="Layers\WCFLibrary\AspNetApplicationServices\Admin\MembershipServices.cs" />
     <None Include="Layers\WCFLibrary\AspNetApplicationServices\Admin\RoleServiceAdmin.cs" />

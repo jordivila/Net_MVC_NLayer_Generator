@@ -28,8 +28,10 @@ namespace $customNamespace$.WCF.ServicesHostCommon
 
         public BackendHostInitializer(BackEndUnityContainerAvailable unityContainer, HostingPlatform hostingPlatform)
         {
-            ///TODO: acabar esto. Al guardar la confoguracion en azure peta por unauthorized exception
-            this.ConfigurationShared_Init(@"Template.WCF.ServiceHostCommon.config");
+            ///TODO: 1 shared config file for all projects. 
+            ///This method is supposed to load this shared file and apply configuration at runtime 
+            ///But it needs admin privileges :( 
+            //this.ConfigurationShared_Init(@"Template.WCF.ServiceHostCommon.config");
 
             this.EnterpriseLibrary_Init(UnityContainerProvider.GetContainer(unityContainer));
             this.BackEndServices_Init(hostingPlatform);
@@ -112,6 +114,7 @@ namespace $customNamespace$.WCF.ServicesHostCommon
 
             // Merge application current configuration
             System.Configuration.Configuration configCurrent = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            // At this point we need admin provileges. Otherwise UnauthorizedException is thrown
             configMapped.SaveAs(configCurrent.FilePath, ConfigurationSaveMode.Minimal, true);
 
             this.ConfigurationShared_RefreshChilds(null, configMapped.RootSectionGroup.SectionGroupName, configMapped);
