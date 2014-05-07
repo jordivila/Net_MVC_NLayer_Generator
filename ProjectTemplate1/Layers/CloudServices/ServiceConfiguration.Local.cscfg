@@ -12,6 +12,9 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DbCnnStrMembership" value="Server=$DatabaseServerName$;Database=$MembershipDBName$;Integrated Security=SSPI;" />
+      <Setting name="DbCnnStrLogging" value="Server=$DatabaseServerName$;Database=$LoggingDBName$;Integrated Security=SSPI;" />
+      <Setting name="DbCnnStrTokenPersistence" value="Server=$DatabaseServerName$;Database=$TokenPersistenceDBNameKey$;Integrated Security=SSPI;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

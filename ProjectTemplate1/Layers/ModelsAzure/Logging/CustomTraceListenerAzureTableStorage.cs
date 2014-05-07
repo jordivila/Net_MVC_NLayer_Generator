@@ -43,9 +43,6 @@ namespace $customNamespace$.Models.Logging
         {
             if (this._storageAccount == null)
             {
-
-
-
                 this._storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting(this.Attributes[_azureStorageCnnAttributeName]));
                 this._tableClient = _storageAccount.CreateCloudTableClient();
             }

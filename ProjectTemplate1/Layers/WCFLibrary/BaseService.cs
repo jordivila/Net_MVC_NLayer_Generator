@@ -25,67 +25,16 @@ namespace $customNamespace$.WCF.ServicesLibrary
 
         }
 
-        public static List<Type> GetAllServiceTypes()
-        {
-            List<Type> allServices = BaseService.CheckInheritance(Assembly.GetAssembly(typeof(BaseService)),
-                                            new List<Type>() { typeof(BaseServiceWithCustomMessageHeaders) },
-                                            new List<Type>() { typeof(BaseService) });
-
-            return allServices;
-        }
-
-        protected static List<Type> CheckInheritance(Assembly assemblyToCheck, List<Type> excludedTypes, List<Type> baseClasses)
-        {
-            List<TypeInfo> assemblyTypes = assemblyToCheck.DefinedTypes.ToList();
-            List<TypeInfo> assemblyTypesToCheck = assemblyTypes.Where(x => excludedTypes.All(p => p.FullName != x.FullName) && !x.IsEnum).ToList();
-            List<TypeInfo> assemblyTypesDevelopment = assemblyTypesToCheck.Where(x =>
-                                                                                !(x.IsDefined(typeof(CompilerGeneratedAttribute), false)) // filter out <>_DisplayClasses or any compiler generated class
-                                                                                ).ToList();
-
-            List<TypeInfo> assemblyTypesUnInherited = new List<TypeInfo>();
-
-            foreach (var item in assemblyTypesDevelopment)
-            {
-                int inheritanceChildLevelCounter = 0;
-                int inheritanceChildLevelMax = 10;
-                bool inheritanceOK = false;
-                Func<TypeInfo, bool> inheritanceValid = delegate(TypeInfo type)
-                {
-                    bool validBaseClass = baseClasses.Select(p => p.FullName).Contains(type.BaseType.FullName);
-                    return ((type.BaseType != null) && (validBaseClass));
-                };
-                TypeInfo typeToCheck = item;
-                while ((!inheritanceOK) && (typeToCheck != null) && (typeToCheck != typeof(object)) && (inheritanceChildLevelCounter < inheritanceChildLevelMax))
-                {
-                    inheritanceOK = inheritanceValid(typeToCheck);
-                    if (!inheritanceOK)
-                    {
-                        typeToCheck = typeToCheck.BaseType.GetTypeInfo();
-                    }
-
-                    inheritanceChildLevelCounter++;
-                }
-
-                if (!inheritanceOK)
-                {
-                    assemblyTypesUnInherited.Add(item);
-                }
-            }
-
-            return assemblyTypesDevelopment.Except(assemblyTypesUnInherited).Cast<Type>().ToList();
-        }
-
-
         public virtual void Dispose()
-        { 
-            
+        {
+
         }
     }
 
-
     public abstract class BaseServiceWithCustomMessageHeaders : BaseService
     {
-        public BaseServiceWithCustomMessageHeaders(): base()
+        public BaseServiceWithCustomMessageHeaders()
+            : base()
         {
             Thread.CurrentThread.CurrentCulture = this.UserRequest.UserProfile.Culture;
             Thread.CurrentThread.CurrentUICulture = this.UserRequest.UserProfile.Culture;

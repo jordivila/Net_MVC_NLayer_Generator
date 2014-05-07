@@ -55,15 +55,16 @@ namespace $safeprojectname$.Enumerations
 
         public static string ToEnumMemberString(this Enum valueSelected)
         {
-            return EnumExtension.ToEnumMemberString(valueSelected.GetType());
+            return EnumExtension.ToEnumMemberString<Enum>(valueSelected);
         }
         public static string ToEnumMemberString<T>(T type)
         {
-            var enumType = typeof(T);
+            var enumType = type.GetType();
             var name = Enum.GetName(enumType, type);
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
             return enumMemberAttribute.Value;
         }
+        
         public static Nullable<T> ToEnumMember<T>(string str) where T : struct
         {
             var enumType = typeof(T);

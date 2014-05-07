@@ -1,0 +1,58 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.Models.Azure</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.Models.Azure</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Models.Azure.csproj" File="Template.Models.Azure.csproj" ReplaceParameters="true">
+      <Folder Name="Configuration" TargetFolderName="Configuration">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationConfiguration.cs">ApplicationConfiguration.cs</ProjectItem>
+        <Folder Name="ConfigSections" TargetFolderName="ConfigSections">
+          <Folder Name="AzureRoles" TargetFolderName="AzureRoles">
+            <ProjectItem ReplaceParameters="true" TargetFileName="AzureRolesConfiguration.cs">AzureRolesConfiguration.cs</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <Folder Name="Logging" TargetFolderName="Logging">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerAzureTableStorage.cs">CustomTraceListenerAzureTableStorage.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ProxyProviders" TargetFolderName="ProxyProviders">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProviderProxyBase.cs">ProviderProxyBase.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+    </Project>
+  </TemplateContent>
+
+  <WizardExtension>
+    <Assembly>VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
+    <FullClassName>VSIX_MVC_Layered_Wizard.IWizardImplementationChild</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension" repositoryId="VSIX_MVC_Layered.Jordi-Vila.751e31c4-9883-40b9-9df5-bb726126ebd6">
+      <package id="EnterpriseLibrary.Common" version="6.0.1304.0" targetFramework="net45" />
+      <package id="EnterpriseLibrary.Logging" version="6.0.1304.0" targetFramework="net45" />
+      <package id="EnterpriseLibrary.Logging.Database" version="6.0.1304.0" targetFramework="net45" />
+      <package id="Unity" version="3.0.1304.1" targetFramework="net45" />
+      <package id="Unity.Interception" version="3.0.1304.0" targetFramework="net45" />
+      <package id="Newtonsoft.Json" version="6.0.1" targetFramework="net451" />
+    </packages>
+  </WizardData>
+  
+</VSTemplate>

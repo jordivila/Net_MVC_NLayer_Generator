@@ -14,30 +14,35 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace $customNamespace$.WCF.ServicesHostCommon
 {
-    public class BackendHostInitializer : IDisposable
+    public abstract class BackendHostInitializer : IDisposable
     {
         private List<ServiceHost> servicesHost = new List<ServiceHost>();
 
-        public BackendHostInitializer(BackEndUnityContainerAvailable unityContainer, HostingPlatform hostingPlatform)
+        public BackendHostInitializer(BackEndUnityContainerAvailable unityContainer)
         {
-            ///TODO: 1 shared config file for all projects. 
-            ///This method is supposed to load this shared file and apply configuration at runtime 
-            ///But it needs admin privileges :( 
-            //this.ConfigurationShared_Init(@"Template.WCF.ServiceHostCommon.config");
-
+            this.DatabaseCnnStrings_Init();
             this.EnterpriseLibrary_Init(UnityContainerProvider.GetContainer(unityContainer));
-            this.BackEndServices_Init(hostingPlatform);
+            this.BackEndServices_Init();
         }
 
-        #region Enterprise Library Methods
+
+        #region Database Strings
+
+        protected abstract void DatabaseCnnStrings_Init();
+
+        #endregion
+
+        #region Enterprise Library
 
         private void EnterpriseLibrary_Init(IUnityContainer unityContainer)
         {
@@ -49,118 +54,46 @@ namespace $customNamespace$.WCF.ServicesHostCommon
 
         #endregion
 
-        #region Host Methods
+        #region BackEndServices
 
-        private void BackEndServices_Init(HostingPlatform hostingPlatform)
+        private void BackEndServices_Init()
         {
-            foreach (var item in BaseService.GetAllServiceTypes())
+            this.BackEndServices_EndpointsInit();
+            this.BackEndServices_HostsInit();
+        }
+        protected abstract void BackEndServices_EndpointsInit();
+        protected abstract void BackEndServices_TraceEvent(string eventName, ServiceHost service);
+        protected void BackEndServices_HostsInit()
+        {
+            System.Configuration.Configuration configCurrent = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            ServicesSection servicesSection = configCurrent.GetSection("system.serviceModel/services") as ServicesSection;
+
+            Assembly serviceLibraryAssembly = Assembly.GetAssembly(typeof(BaseService));
+            for (int i = 0; i < servicesSection.Services.Count; i++)
             {
-                this.servicesHost.Add(this.BackEndServices_Host_Create(item, hostingPlatform));
+                this.BackEndServices_HostCreate(serviceLibraryAssembly.GetType(servicesSection.Services[i].Name));
             }
         }
-        private ServiceHost BackEndServices_Host_Create(Type serviceType, HostingPlatform hostingPlatform)
+        private ServiceHost BackEndServices_HostCreate(Type serviceType)
         {
-            ServiceHost host = this.BackEndServices_Host_Init(serviceType, hostingPlatform);
-            Action<string, ServiceHost> traceThis = delegate(string eventName, ServiceHost service)
-            {
-                Trace.TraceInformation(string.Format("{0} {1}", eventName, service.Description.Endpoints.First().Contract.ContractType.FullName));
-            };
-
-            host.Closed += delegate(object sender, EventArgs e) { traceThis(baseModel.GetCurrentMethod().Name, (ServiceHost)sender); };
-            host.Closing += delegate(object sender, EventArgs e) { traceThis(baseModel.GetCurrentMethod().Name, (ServiceHost)sender); };
-            host.Faulted += delegate(object sender, EventArgs e) { traceThis(baseModel.GetCurrentMethod().Name, (ServiceHost)sender); };
-            host.Opened += delegate(object sender, EventArgs e) { traceThis(baseModel.GetCurrentMethod().Name, (ServiceHost)sender); };
-            host.Opening += delegate(object sender, EventArgs e) { traceThis(baseModel.GetCurrentMethod().Name, (ServiceHost)sender); };
-            host.UnknownMessageReceived += delegate(object sender, UnknownMessageReceivedEventArgs e) { traceThis(string.Format("{0} \n {1}", baseModel.GetCurrentMethod().Name, e.Message), (ServiceHost)sender); };
+            ServiceHost serviceHost = new ServiceHost(serviceType);
+            serviceHost.Closed += delegate(object sender, EventArgs e) { this.BackEndServices_TraceEvent("Closed: ", (ServiceHost)sender); };
+            serviceHost.Closing += delegate(object sender, EventArgs e) { this.BackEndServices_TraceEvent("Closing: ", (ServiceHost)sender); };
+            serviceHost.Faulted += delegate(object sender, EventArgs e) { this.BackEndServices_TraceEvent("Faulted: ", (ServiceHost)sender); };
+            serviceHost.Opened += delegate(object sender, EventArgs e) { this.BackEndServices_TraceEvent("Opened: ", (ServiceHost)sender); };
+            serviceHost.Opening += delegate(object sender, EventArgs e) { this.BackEndServices_TraceEvent("Opening: ", (ServiceHost)sender); };
+            //serviceHost.UnknownMessageReceived += delegate(object sender, UnknownMessageReceivedEventArgs e) { traceThis(string.Format("{0} \n {1}", "UnknownMessageReceived:", e.Message), (ServiceHost)sender); };
 
             try
             {
-                host.Open();
+                serviceHost.Open();
             }
             catch (CommunicationException communicationException)
             {
                 Trace.TraceError("Could not start WCF service host. {0}", communicationException.Message);
             }
 
-            return host;
-        }
-        private ServiceHost BackEndServices_Host_Init(Type serviceType, HostingPlatform hostingPlatform)
-        {
-            Type contractType = serviceType.GetInterfaces()
-                                            .Where(x => x.CustomAttributes.Any(c => c.AttributeType == typeof(ServiceContractAttribute)))
-                                            .First();
-
-            ContractDescription contractDescription = ContractDescription.GetContract(contractType);
-            ServiceHost serviceHost = new ServiceHost(serviceType);
-            Binding backendBinding = ApplicationConfiguration.BackendServicesConfiguration.GetBinding();
-            IPEndPoint backendIPEndPoint = ApplicationConfiguration.BackendServicesConfiguration.GetIPEndPoint(hostingPlatform);
-            serviceHost.AddServiceEndpoint(contractDescription.ContractType,
-                                            backendBinding,
-                                            ApplicationConfiguration.BackendServicesConfiguration.GetEndpoint(hostingPlatform, backendBinding, contractDescription));
             return serviceHost;
-        }
-
-        #endregion
-
-        #region Shared Configuration Methods
-
-        public void ConfigurationShared_Init(string sharedFile)
-        {
-            // Load shared configuration file into memory
-            System.Configuration.Configuration configMapped;
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-            configFileMap.ExeConfigFilename = sharedFile;
-            configMapped = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-
-            // Merge application current configuration
-            System.Configuration.Configuration configCurrent = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            // At this point we need admin provileges. Otherwise UnauthorizedException is thrown
-            configMapped.SaveAs(configCurrent.FilePath, ConfigurationSaveMode.Minimal, true);
-
-            this.ConfigurationShared_RefreshChilds(null, configMapped.RootSectionGroup.SectionGroupName, configMapped);
-        }
-
-        private void ConfigurationShared_RefreshChilds(ConfigurationSectionGroup parentGroup, string sectionGroupName, System.Configuration.Configuration configMapped)
-        {
-            ConfigurationSectionGroup group = null;
-
-            if (parentGroup == null)
-            {
-                group = configMapped.RootSectionGroup;
-            }
-            else
-            {
-                group = parentGroup.SectionGroups[sectionGroupName];
-            }
-
-            if (group != null)
-            {
-                if (group.Sections != null)
-                {
-
-                    foreach (var item in group.Sections.Keys)
-                    {
-                        string sectionName = string.Format("{0}{1}{2}",
-                                                            group.SectionGroupName,
-                                                            string.IsNullOrEmpty(group.SectionGroupName) ? string.Empty : "/",
-                                                            group.Sections[(string)item].SectionInformation.Name);
-
-                        if (configMapped.GetSection(sectionName).ElementInformation.IsPresent)
-                        {
-                            ConfigurationManager.RefreshSection(sectionName);
-                        }
-                        else
-                        {
-                            //Console.Write(sectionName);
-                        }
-                    }
-                }
-
-                foreach (var item in group.SectionGroups.Keys)
-                {
-                    ConfigurationShared_RefreshChilds(group, group.SectionGroups[(string)item].Name, configMapped);
-                }
-            }
         }
 
         #endregion

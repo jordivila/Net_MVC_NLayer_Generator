@@ -1,10 +1,10 @@
-﻿using Microsoft.WindowsAzure.ServiceRuntime;
-using $customNamespace$.Models.Configuration;
+﻿using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Unity;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using $customNamespace$.Models.Enumerations;
+using System.Net;
 
 namespace $customNamespace$.Models.ProxyProviders
 {
@@ -97,30 +97,6 @@ namespace $customNamespace$.Models.ProxyProviders
 
         protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
         {
-            Uri backendEndpointAddress = ApplicationConfiguration.BackendServicesConfiguration.GetEndpoint(
-                                                    HostingPlatform.Custom,
-                                                    channelFactory.Endpoint.Binding,
-                                                    ContractDescription.GetContract(typeof(TChannel)));
-
-            channelFactory.Endpoint.Address = new EndpointAddress(backendEndpointAddress);
-
-            return channelFactory;
-        }
-    }
-
-    public class ClientChannelAzureInternalRoleInitializer<TChannel> : ClientChannelInitializer<TChannel>
-    {
-        public ClientChannelAzureInternalRoleInitializer() : base() { }
-
-        protected override ChannelFactory<TChannel> ChannelFactoryInit(ChannelFactory<TChannel> channelFactory)
-        {
-            Uri backendEndpointAddress = ApplicationConfiguration.BackendServicesConfiguration.GetEndpoint(
-                                                    HostingPlatform.Azure,
-                                                    channelFactory.Endpoint.Binding,
-                                                    ContractDescription.GetContract(typeof(TChannel)));
-
-            channelFactory.Endpoint.Address = new EndpointAddress(backendEndpointAddress);
-
             return channelFactory;
         }
     }

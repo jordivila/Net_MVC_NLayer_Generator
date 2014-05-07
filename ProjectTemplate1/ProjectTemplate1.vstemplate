@@ -19,6 +19,7 @@
       <ProjectTemplateLink ProjectName="$customNamespace$.BL">Layers\BL\Template.BL.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.DAL">Layers\DAL\Template.DAL.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.Models">Layers\Models\Template.Models.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.Models.Azure">Layers\ModelsAzure\Template.Models.Azure.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.UI.Web">Layers\UI\Template.UI.Web.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.Tests.Common">Layers\TestCommon\Template.Tests.Common.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.Tests.Integration">Layers\TestIntegration\Template.Tests.Integration.vstemplate</ProjectTemplateLink>

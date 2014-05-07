@@ -12,6 +12,9 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DbCnnStrMembership" value="Server=tcp:azureDbServername.database.windows.net,1433;Database=azureDbName;User ID=azureDbUserName@azureDbServername;Password=azureDbUserPassword;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
+      <Setting name="DbCnnStrLogging" value="Server=tcp:azureDbServername.database.windows.net,1433;Database=azureDbName;User ID=azureDbUserName@azureDbServername;Password=azureDbUserPassword;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
+      <Setting name="DbCnnStrTokenPersistence" value="Server=tcp:azureDbServername.database.windows.net,1433;Database=azureDbName;User ID=azureDbUserName@azureDbServername;Password=azureDbUserPassword;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

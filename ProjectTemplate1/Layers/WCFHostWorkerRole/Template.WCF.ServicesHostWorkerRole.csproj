@@ -61,47 +61,15 @@
     <Reference Include="Microsoft.Practices.Unity.Configuration">
       <HintPath>$customPackagesRelativeLevelPath$packages\Unity.3.0.1304.1\lib\NET45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-    <!--
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
-      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
-    </Reference>
-    -->
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$customPackagesRelativeLevelPath$packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <Private>True</Private>
-    </Reference>
+
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$customPackagesRelativeLevelPath$packages\WindowsAzure.Storage.2.1.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$customPackagesRelativeLevelPath$packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-
 
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
-    <!--<Reference Include="System.Data.Services.Client" />-->
     <Reference Include="System.ServiceModel" />
-    <!--<Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />-->
-
 
 
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -139,6 +107,11 @@
       <Project>{893bc36d-2348-404d-bdb1-6a19a9ccff68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\$customNamespace$.Models.Azure\$customNamespace$.Models.Azure.csproj">
+      <Project>{D76105FF-17C0-4255-951A-3A29F704BF6D}</Project>
+      <Name>$customNamespace$.Models.Azure</Name>
+    </ProjectReference>
+
     <!--<ProjectReference Include="..\$customNamespace$\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
       <Project>{31ea2808-81a4-48cb-8730-6b8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>

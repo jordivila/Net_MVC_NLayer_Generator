@@ -66,6 +66,7 @@
     <None Include="Layers\CloudServices\ServiceConfiguration.Cloud.cscfg" />
     <None Include="Layers\CloudServices\ServiceConfiguration.Local.cscfg" />
     <None Include="Layers\CloudServices\ServiceDefinition.csdef" />
+    <None Include="Layers\ModelsAzure\packages.config" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.EndScript.bat" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.StartScript.bat" />
     <None Include="Layers\TestIntegration\Template.Tests.Integration.testsettings">
@@ -77,7 +78,6 @@
     <None Include="Layers\TestIntegration\TestMultiThreaded\MultiThreadResults.cs" />
     <None Include="Layers\TestIntegration\Common\MembershipCommonTestMethods.cs" />
     <None Include="Layers\TestIntegration\Common\TestIntegrationBase.cs" />
-    <None Include="Layers\Models\Logging\CustomTraceListenerAzureTableStorage.cs" />
     <None Include="Layers\Models\Logging\CustomTraceListenerInterface.cs" />
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.es.Designer.cs" />
     <None Include="Layers\Resources\LogViewer\LogViewerTexts.Designer.cs" />
@@ -97,9 +97,12 @@
     <None Include="Layers\WCFHostWorkerRole\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostWorkerRole\WorkerRole.cs" />
     <None Include="Layers\Models\Configuration\ConfigSections\AzureRoles\AzureRolesConfiguration.cs" />
-    <None Include="Layers\UI\WebRole.cs" />
     <None Include="Layers\WCFHostCommon\BackendHostInitializer.cs" />
-    <None Include="Layers\Models\Configuration\ConfigSections\BackendServices\BackendServicesConfiguration.cs" />
+    <None Include="Layers\ModelsAzure\Configuration\ApplicationConfiguration.cs" />
+    <None Include="Layers\ModelsAzure\Configuration\ConfigSections\AzureRoles\AzureRolesConfiguration.cs" />
+    <None Include="Layers\ModelsAzure\Logging\CustomTraceListenerAzureTableStorage.cs" />
+    <None Include="Layers\ModelsAzure\Properties\AssemblyInfo.cs" />
+    <None Include="Layers\ModelsAzure\ProxyProviders\ProviderProxyBase.cs" />
     <Compile Include="Todo.cs" />
     <None Include="Layers\BL\packages.config" />
     <None Include="Layers\DAL\packages.config" />
@@ -491,6 +494,9 @@
     <Content Include="Layers\Models\Template.Models.vstemplate" />
     <Content Include="Layers\Models\Template.Models.csproj" />
     <Content Include="Layers\Models\__TemplateIcon.ico" />
+    <Content Include="Layers\ModelsAzure\Template.Models.Azure.csproj" />
+    <Content Include="Layers\ModelsAzure\Template.Models.Azure.vstemplate" />
+    <Content Include="Layers\ModelsAzure\__TemplateIcon.ico" />
     <Content Include="Layers\Resources\Template.Resources.vstemplate" />
     <Content Include="Layers\Resources\Template.Resources.csproj" />
     <Content Include="Layers\Resources\__TemplateIcon.ico" />

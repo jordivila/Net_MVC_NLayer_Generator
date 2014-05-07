@@ -1,8 +1,10 @@
 ﻿using Microsoft.WindowsAzure.ServiceRuntime;
 using System;
-using System.Configuration;
-using System.ServiceModel;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace $customNamespace$.Models.Configuration.ConfigSections.AzureRoles
 {
@@ -22,7 +24,7 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.AzureRoles
         {
             this.WCF_RoleName = "$customNamespace$.WCF.ServicesHostWorkerRole";
             this.WCF_InternalEndPointName = "Internal";
-            this.WCF_InstanceNumber = 0;
+            this.WCF_InstanceNumber = RoleEnvironment.CurrentRoleInstance.UpdateDomain;
         }
 
         public string WCF_RoleName { get; set; }

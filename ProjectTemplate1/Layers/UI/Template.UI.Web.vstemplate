@@ -280,7 +280,6 @@
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="WebRole.cs">WebRole.cs</ProjectItem>
       <Folder Name="Models" TargetFolderName="Models">
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseModelView.cs">BaseModelView.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbModel.cs">BreadcrumbModel.cs</ProjectItem>

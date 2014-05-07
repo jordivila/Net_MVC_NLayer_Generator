@@ -1,15 +1,26 @@
 ﻿using System.Collections.Specialized;
 using System.Configuration;
+using System.Runtime.Serialization;
 using $customNamespace$.Models.Configuration.ConfigSections.ClientResources;
 using $customNamespace$.Models.Configuration.ConfigSections.DomainInfo;
 using $customNamespace$.Models.Configuration.ConfigSections.Mailing;
-using $customNamespace$.Models.Configuration.ConfigSections.AzureRoles;
-using $customNamespace$.Models.Configuration.ConfigSections.BackendServices;
 
 namespace $customNamespace$.Models.Configuration
 {
-    public class ApplicationConfiguration
+    public partial class ApplicationConfiguration
     {
+        public enum DatabaseNames : int
+        {
+            [EnumMember(Value = "DbCnnStrMembership")]
+            Membership,
+
+            [EnumMember(Value = "DbCnnStrLogging")]
+            Logging,
+
+            [EnumMember(Value = "DbCnnStrTokenPersistence")]
+            TokenPersistence
+        }
+
         public static bool IsDebugMode
         {
             get
@@ -17,7 +28,7 @@ namespace $customNamespace$.Models.Configuration
 #if DEBUG==true
                 return true;
 #else
-                return false;
+                            return false;
 #endif
             }
         }
@@ -30,21 +41,46 @@ namespace $customNamespace$.Models.Configuration
             }
         }
 
-        public enum DatabaseNames : int
+        private static IMailingConfiguration _MailingSettingsSection = null;
+        public static IMailingConfiguration MailingSettingsSection
         {
-            Membership
-            , Logging
-            , TokenPersistence
+            get
+            {
+                if (_MailingSettingsSection == null)
+                {
+                    _MailingSettingsSection = new MailingConfiguration();
+                }
+
+                return _MailingSettingsSection;
+            }
         }
 
-        public static IMailingConfiguration MailingSettingsSection = new MailingConfiguration();
+        private static IDomainInfoConfiguration _DomainInfoSettingsSection = null;
+        public static IDomainInfoConfiguration DomainInfoSettingsSection
+        {
+            get
+            {
+                if (_DomainInfoSettingsSection == null)
+                {
+                    _DomainInfoSettingsSection = new DomainInfoConfiguration();
+                }
 
-        public static IDomainInfoConfiguration DomainInfoSettingsSection = new DomainInfoConfiguration();
+                return _DomainInfoSettingsSection;
+            }
+        }
 
-        public static IClientResourcesConfiguration ClientResourcesSettingsSection = new ClientResourcesConfiguration();
+        private static IClientResourcesConfiguration _ClientResourcesSettingsSection = null;
+        public static IClientResourcesConfiguration ClientResourcesSettingsSection
+        {
+            get
+            {
+                if (_ClientResourcesSettingsSection == null)
+                {
+                    _ClientResourcesSettingsSection = new ClientResourcesConfiguration();
+                }
 
-        public static IAzureRolesConfiguration AzureRolesConfigurationSection = new AzureRolesConfiguration();
-
-        public static IBackendServicesConfiguration BackendServicesConfiguration = new BackendServicesConfiguration();
+                return _ClientResourcesSettingsSection;
+            }
+        }
     }
 }

@@ -19,16 +19,20 @@
     </ConfigurationSettings>
   </WebRole>
   <WorkerRole name="$customNamespace$.WCF.ServicesHostWorkerRole" vmsize="ExtraSmall">
-    <Runtime executionContext="elevated"></Runtime>
+    <Runtime executionContext="elevated">
+    </Runtime>
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" />
+      <Setting name="DbCnnStrMembership" />
+      <Setting name="DbCnnStrLogging" />
+      <Setting name="DbCnnStrTokenPersistence" />
     </ConfigurationSettings>
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
     <Endpoints>
-      <InputEndpoint name="External" protocol="tcp" port="10000"  />
-      <InternalEndpoint name="Internal" protocol="tcp"  />
+      <InputEndpoint name="External" protocol="tcp" port="10000" />
+      <InternalEndpoint name="Internal" protocol="tcp" />
     </Endpoints>
   </WorkerRole>
 </ServiceDefinition>

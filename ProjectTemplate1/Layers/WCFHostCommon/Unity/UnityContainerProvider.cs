@@ -41,7 +41,10 @@ namespace $customNamespace$.WCF.ServicesHostCommon.Unity
                     result.RegisterType(typeof(ITokenTemporaryPersistenceDAL<>), typeof(TokenTemporaryDatabasePersistenceDAL<>), new InjectionMember[0]);
                     //result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelNetTcp), new InjectionMember[0]);
                     //result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelHttpServer), new InjectionMember[0]);
-                    result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelNetTcp), new InjectionMember[0]);
+                    result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof($customBindingUserRequestModelAtServer$), new InjectionMember[0]);
+
+                    
+
                     break;
                 default:
                     throw new Exception("IUnityContainer does not exist in the list of available providers");

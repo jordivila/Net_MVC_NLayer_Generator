@@ -55,16 +55,6 @@
       <HintPath>$customPackagesRelativeLevelPath$packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
     </Reference>
 
-    <!--
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.0.1304.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
-      <HintPath>$customPackagesRelativeLevelPath$packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
-    </Reference>
-    -->
-
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
@@ -97,6 +87,7 @@
       <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
+
     <!--
     <ProjectReference Include="..\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
       <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>

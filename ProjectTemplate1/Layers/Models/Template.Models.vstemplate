@@ -40,12 +40,6 @@
           <Folder Name="Mailing" TargetFolderName="Mailing">
             <ProjectItem ReplaceParameters="true" TargetFileName="MailingConfiguration.cs">MailingConfiguration.cs</ProjectItem>
           </Folder>
-          <Folder Name="BackendServices" TargetFolderName="BackendServices">
-            <ProjectItem ReplaceParameters="true" TargetFileName="BackendServicesConfiguration.cs">BackendServicesConfiguration.cs</ProjectItem>
-          </Folder>
-          <Folder Name="AzureRoles" TargetFolderName="AzureRoles">
-            <ProjectItem ReplaceParameters="true" TargetFileName="AzureRolesConfiguration.cs">AzureRolesConfiguration.cs</ProjectItem>
-          </Folder>
         </Folder>
         <Folder Name="ConnectionProviders" TargetFolderName="ConnectionProviders">
           <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionProvidersConfig.cs">ConnectionProvidersConfig.cs</ProjectItem>
@@ -77,7 +71,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="GlobalizationHelper.cs">GlobalizationHelper.cs</ProjectItem>
       </Folder>
       <Folder Name="Logging" TargetFolderName="Logging">
-        <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerAzureTableStorage.cs">CustomTraceListenerAzureTableStorage.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerDatabase.cs">CustomTraceListenerDatabase.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerProxiedWCF.cs">CustomTraceListenerProxiedWCF.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CustomTraceListenerRollingXml.cs">CustomTraceListenerRollingXml.cs</ProjectItem>
@@ -105,7 +98,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipSettings.cs">MembershipSettings.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MembershipProxy.cs">MembershipProxy.cs</ProjectItem>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Profile" TargetFolderName="Profile">
         <ProjectItem ReplaceParameters="true" TargetFileName="IProfileBL.cs">IProfileBL.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IProfileDAL.cs">IProfileDAL.cs</ProjectItem>
@@ -156,6 +148,7 @@
       <Folder Name="UserSessionPersistence" TargetFolderName="UserSessionPersistence">
         <ProjectItem ReplaceParameters="true" TargetFileName="UserSessionHelper.cs">UserSessionHelper.cs</ProjectItem>
       </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
     </Project>
   </TemplateContent>
   
