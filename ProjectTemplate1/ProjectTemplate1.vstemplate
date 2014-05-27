@@ -1,11 +1,10 @@
 ﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>Web</ProjectSubType>
     <Name>ASP.NET MVC Layered Application</Name>
     <Description xml:space="preserve">Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Icon></Icon>
-    <ProjectType>CSharp</ProjectType>
-    <ProjectSubType>Web</ProjectSubType>
-    <TemplateGroupID>Web</TemplateGroupID>
     <SortOrder>90</SortOrder> 
     <EnableEditOfLocationField>true</EnableEditOfLocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -18,6 +17,9 @@
       <ProjectTemplateLink ProjectName="$customNamespace$.Resources">Layers\Resources\Template.Resources.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.BL">Layers\BL\Template.BL.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.DAL">Layers\DAL\Template.DAL.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.Database.Membership">Layers\DAL_Membership\Template.Database.Membership.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.Database.Logging">Layers\DAL_Logging\Template.Database.Logging.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$customNamespace$.Database.TokenTemporary">Layers\DAL_TokenTemporary\Template.Database.TokenTemporary.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.Models">Layers\Models\Template.Models.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.Models.Azure">Layers\ModelsAzure\Template.Models.Azure.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.UI.Web">Layers\UI\Template.UI.Web.vstemplate</ProjectTemplateLink>

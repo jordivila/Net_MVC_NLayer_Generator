@@ -32,24 +32,6 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>
-      <Folder Name="Scripts" TargetFolderName="Scripts">
-        <Folder Name="AspNetServices" TargetFolderName="AspNetServices">
-          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipDatabase.sql">AspNetMembershipDatabase.sql</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipInitAdminUser.sql">AspNetMembershipInitAdminUser.sql</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetMembershipUserSearch.sql">AspNetMembershipUserSearch.sql</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
-        </Folder>
-        <Folder Name="TokenPersistence" TargetFolderName="TokenPersistence">
-          <ProjectItem ReplaceParameters="true" TargetFileName="TokenPersistence.sql">TokenPersistence.sql</ProjectItem>
-        </Folder>
-        <Folder Name="EnterpriseLibrary" TargetFolderName="EnterpriseLibrary">
-          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingDatabase.sql">LoggingDatabase.sql</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetAll.sql">LoggingExceptionGetAll.sql</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetById.sql">LoggingExceptionGetById.sql</ProjectItem>
-        </Folder>
-        <ProjectItem ReplaceParameters="false" TargetFileName="InstallDatabase.bat">InstallDatabase.bat</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="InstallDatabaseDefault.bat">InstallDatabaseDefault.bat</ProjectItem>
-      </Folder>
       <Folder Name="SyndicationServices" TargetFolderName="SyndicationServices">
         <ProjectItem ReplaceParameters="true" TargetFileName="SyndicationDAL.cs">SyndicationDAL.cs</ProjectItem>
       </Folder>

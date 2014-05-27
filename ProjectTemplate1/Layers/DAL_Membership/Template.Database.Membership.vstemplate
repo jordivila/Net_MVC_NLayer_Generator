@@ -1,0 +1,101 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.Database.Membership</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>SQLDB</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Membership</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Database.Membership.sqlproj" File="Template.Database.Membership.sqlproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Template.Database.Membership.publish.xml">Template.Database.Membership.publish.xml</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties" />
+      <Folder Name="dbo" TargetFolderName="dbo">
+        <Folder Name="Stored Procedures" TargetFolderName="Stored Procedures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_AnyDataInTables.sql">aspnet_AnyDataInTables.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Applications_CreateApplication.sql">aspnet_Applications_CreateApplication.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_CheckSchemaVersion.sql">aspnet_CheckSchemaVersion.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_ChangePasswordQuestionAndAnswer.sql">aspnet_Membership_ChangePasswordQuestionAndAnswer.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_CreateUser.sql">aspnet_Membership_CreateUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_FindUsersByEmail.sql">aspnet_Membership_FindUsersByEmail.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_FindUsersByFilter.sql">aspnet_Membership_FindUsersByFilter.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_FindUsersByName.sql">aspnet_Membership_FindUsersByName.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetAllUsers.sql">aspnet_Membership_GetAllUsers.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetNumberOfUsersOnline.sql">aspnet_Membership_GetNumberOfUsersOnline.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetPassword.sql">aspnet_Membership_GetPassword.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetPasswordWithFormat.sql">aspnet_Membership_GetPasswordWithFormat.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetUserByEmail.sql">aspnet_Membership_GetUserByEmail.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetUserByName.sql">aspnet_Membership_GetUserByName.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_GetUserByUserId.sql">aspnet_Membership_GetUserByUserId.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_ResetPassword.sql">aspnet_Membership_ResetPassword.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_SetPassword.sql">aspnet_Membership_SetPassword.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_UnlockUser.sql">aspnet_Membership_UnlockUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_UpdateUser.sql">aspnet_Membership_UpdateUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_UpdateUserInfo.sql">aspnet_Membership_UpdateUserInfo.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_DeleteInactiveProfiles.sql">aspnet_Profile_DeleteInactiveProfiles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_DeleteProfiles.sql">aspnet_Profile_DeleteProfiles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_GetNumberOfInactiveProfiles.sql">aspnet_Profile_GetNumberOfInactiveProfiles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_GetProfiles.sql">aspnet_Profile_GetProfiles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_GetProperties.sql">aspnet_Profile_GetProperties.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_SetProperties.sql">aspnet_Profile_SetProperties.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_RegisterSchemaVersion.sql">aspnet_RegisterSchemaVersion.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_CreateRole.sql">aspnet_Roles_CreateRole.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_DeleteRole.sql">aspnet_Roles_DeleteRole.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_GetAllRoles.sql">aspnet_Roles_GetAllRoles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_RoleExists.sql">aspnet_Roles_RoleExists.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Setup_RemoveAllRoleMembers.sql">aspnet_Setup_RemoveAllRoleMembers.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Setup_RestorePermissions.sql">aspnet_Setup_RestorePermissions.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UnRegisterSchemaVersion.sql">aspnet_UnRegisterSchemaVersion.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Users_CreateUser.sql">aspnet_Users_CreateUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Users_DeleteUser.sql">aspnet_Users_DeleteUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_AddUsersToRoles.sql">aspnet_UsersInRoles_AddUsersToRoles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_FindUsersInRole.sql">aspnet_UsersInRoles_FindUsersInRole.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_GetRolesForUser.sql">aspnet_UsersInRoles_GetRolesForUser.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_GetUsersInRoles.sql">aspnet_UsersInRoles_GetUsersInRoles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_IsUserInRole.sql">aspnet_UsersInRoles_IsUserInRole.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles_RemoveUsersFromRoles.sql">aspnet_UsersInRoles_RemoveUsersFromRoles.sql</ProjectItem>
+        </Folder>
+        <Folder Name="Tables" TargetFolderName="Tables">
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Applications.sql">aspnet_Applications.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership.sql">aspnet_Membership.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile.sql">aspnet_Profile.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles.sql">aspnet_Roles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_SchemaVersions.sql">aspnet_SchemaVersions.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Users.sql">aspnet_Users.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_UsersInRoles.sql">aspnet_UsersInRoles.sql</ProjectItem>
+        </Folder>
+        <Folder Name="Views" TargetFolderName="Views">
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_Applications.sql">vw_aspnet_Applications.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_MembershipUsers.sql">vw_aspnet_MembershipUsers.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_Profiles.sql">vw_aspnet_Profiles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_Roles.sql">vw_aspnet_Roles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_Users.sql">vw_aspnet_Users.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="vw_aspnet_UsersInRoles.sql">vw_aspnet_UsersInRoles.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Script.PostDeployment.Init.1.0.sql">Script.PostDeployment.Init.1.0.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Script.PostDeployment.Init.1.1.SchemaVersion.sql">Script.PostDeployment.Init.1.1.SchemaVersion.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Script.PostDeployment.Init.1.2.RoleAndAdminUser.sql">Script.PostDeployment.Init.1.2.RoleAndAdminUser.sql</ProjectItem>
+      </Folder>
+      <Folder Name="Security" TargetFolderName="Security">
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_BasicAccess.sql">aspnet_Membership_BasicAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_FullAccess.sql">aspnet_Membership_FullAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Membership_ReportingAccess.sql">aspnet_Membership_ReportingAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_BasicAccess.sql">aspnet_Profile_BasicAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_FullAccess.sql">aspnet_Profile_FullAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Profile_ReportingAccess.sql">aspnet_Profile_ReportingAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_BasicAccess.sql">aspnet_Roles_BasicAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_FullAccess.sql">aspnet_Roles_FullAccess.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="aspnet_Roles_ReportingAccess.sql">aspnet_Roles_ReportingAccess.sql</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

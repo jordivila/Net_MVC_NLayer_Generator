@@ -8,6 +8,9 @@ namespace VSIX_MVC_Layered_ProjectTemplate
 {
     class TodoList
     {
+        ///TODO: api rest para crear la infraestructura de base de dtos + storage , etc
+
+
         ///TODO: DB Connection string at cloud services definition file
         ///TODO: Use jQuery.globalize from microsoft cdn. Remove from Template.UI.Web jquery.globalize files
         ///TODO: Check Session outdated can re-login

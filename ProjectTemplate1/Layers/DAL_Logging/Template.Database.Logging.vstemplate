@@ -1,0 +1,37 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Template.Database.Logging</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>SQLDB</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Template.Database.Logging</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Template.Database.Logging.sqlproj" File="Template.Database.Logging.sqlproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties" />
+      <Folder Name="dbo" TargetFolderName="dbo">
+        <Folder Name="Stored Procedures" TargetFolderName="Stored Procedures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AddCategory.sql">AddCategory.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ClearLogs.sql">ClearLogs.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="InsertCategoryLog.sql">InsertCategoryLog.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetAll.sql">LoggingExceptionGetAll.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="LoggingExceptionGetById.sql">LoggingExceptionGetById.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="WriteLog.sql">WriteLog.sql</ProjectItem>
+        </Folder>
+        <Folder Name="Tables" TargetFolderName="Tables">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Category.sql">Category.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CategoryLog.sql">CategoryLog.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Log.sql">Log.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Template.Database.Logging.publish.xml">Template.Database.Logging.publish.xml</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -26,7 +26,7 @@ namespace VSIX_MVC_Layered_Wizard
         public void ProjectFinishedGenerating(Project project)
         {
             this.BackEndHostsAddAsALinkSharedAppConfig();
-            this.FormInfo_CreateExecuteDatabase();
+            this.DatabaseProjects_ReplaceParameters();
         }
 
 
@@ -103,6 +103,8 @@ namespace VSIX_MVC_Layered_Wizard
         }
 
 
+        
+
         public bool ShouldAddProjectItem(string filePath)
         {
             return true;
@@ -137,46 +139,6 @@ namespace VSIX_MVC_Layered_Wizard
             IWizardImplementation.GlobalData.WebSiteConfig = e.WebSiteConfig;
         }
 
-        private void FormInfo_CreateExecuteDatabase()
-        {
-            IWizardImplementation.GlobalData.dte.StatusBar.Text = string.Format("{0} . {1}...", FormsWizardGeneralResources.DatabaseInitializing, FormsWizardGeneralResources.PlaseWaitMinute);
-
-            try
-            {
-                if (IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.CreateDatabaseAccepted)
-                {
-                    string command = string.Format(@"{0}\{1}.DAL\Scripts\InstallDatabase.bat", IWizardImplementation.GlobalData.SolutionDirectory, IWizardImplementation.GlobalData.CustomNamespace);
-                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-
-                    startInfo.RedirectStandardOutput = true;
-                    startInfo.RedirectStandardError = true;
-                    startInfo.UseShellExecute = false;
-                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    startInfo.CreateNoWindow = true;
-                    
-                    startInfo.FileName = command;
-                    startInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" ",
-                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.ServerName,
-                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.MembershipDBName,
-                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.LoggingDBName,
-                                                IWizardImplementation.GlobalData.WebSiteConfig.DBInfo.TokenPersistenceDBName,
-                                                IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
-                                                IWizardImplementation.GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword,
-                                                IWizardImplementation.GlobalData.CustomNamespace,
-                                                string.Format(@"{0}\{1}.DAL\Scripts\", IWizardImplementation.GlobalData.SolutionDirectory, IWizardImplementation.GlobalData.CustomNamespace));
-                    process.StartInfo = startInfo;
-                    process.Start();
-
-                    string result = process.StandardOutput.ReadToEnd();
-                }
-            }
-            catch (Exception ex)
-            {
-                IWizardImplementation.GlobalData.LogWriter.Write(new LogMessageModel(ex));
-            }
-        }
-
         #endregion
 
         private void BackEndHostsAddAsALinkSharedAppConfig()
@@ -204,6 +166,97 @@ namespace VSIX_MVC_Layered_Wizard
             }
         }
 
+
+
+        #region Database Projects
+        /// <summary>
+        /// Por el motivo que sea los proyectos de tipo *.sqlproj no pasan por el proceso normal y los parametros no llegan a reemplazarse
+        /// Asi que tengo que hacer un tratamiento especial para reemplazar los parametros programaticamente
+        /// </summary>
+        private void DatabaseProjects_ReplaceParameters()
+        {
+            IEnumerator enumerator = IWizardImplementation.GlobalData.dte.Solution.Projects.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                Project item = (Project)enumerator.Current;
+
+                bool isDatabaseProject = (item.Name.Contains(string.Format("{0}.Database.", IWizardImplementation.GlobalData.CustomNamespace)));
+
+                if (isDatabaseProject)
+                {
+                    IEnumerator enumeratorFiles = item.ProjectItems.GetEnumerator();
+
+                    while (enumeratorFiles.MoveNext())
+                    {
+                        this.DatabaseProjects_ReplaceRecursive(((ProjectItem)enumeratorFiles.Current));
+                    }
+                }
+            }
+        }
+        private void DatabaseProjects_ReplaceRecursive(ProjectItem pItem)
+        {
+            bool isFolder = pItem.ProjectItems.Count > 0;
+
+            if (isFolder)
+            {
+                IEnumerator enumerator = pItem.ProjectItems.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                {
+                    this.DatabaseProjects_ReplaceRecursive(((ProjectItem)enumerator.Current));
+                }
+            }
+            else
+            {
+                this.DatabaseProjects_ReplaceParameters(this.DatabaseProjects_GetFullPathFromProperties(pItem));
+            }
+        }
+        private string DatabaseProjects_GetFullPathFromProperties(ProjectItem project)
+        { 
+            string result = string.Empty;
+
+            if (project.Properties != null)
+            {
+
+                IEnumerator enumerator = project.Properties.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                {
+                    Property p = (Property)enumerator.Current;
+                    if (p.Name == "FullPath")
+                    {
+                        return p.Value;
+                    }
+                }
+            }
+
+            return result;
+        }
+        private void DatabaseProjects_ReplaceParameters(string filePath)
+        {
+            Dictionary<string, string> replacementsDictionary = replacementsDictionary = GlobalData.ReplacementDictionaryGet(new Dictionary<string, string>());
+
+
+            string fileContent = string.Empty;
+
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = File.OpenText(filePath))
+                {
+                    fileContent = sr.ReadToEnd();
+                }
+
+
+                foreach (var item in replacementsDictionary.Keys)
+                {
+                    fileContent = fileContent.Replace(item, replacementsDictionary[item]);
+                }
+
+                File.WriteAllText(filePath, fileContent);
+            }
+        }
+        #endregion
 
 
     }

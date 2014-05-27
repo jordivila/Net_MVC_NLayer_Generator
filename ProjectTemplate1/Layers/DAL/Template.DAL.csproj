@@ -73,16 +73,6 @@
     <Compile Include="TockenPersistenceServices\TokenPersistenceDAL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\AspNetServices\AspNetMembershipDatabase.sql" />
-    <Content Include="Scripts\AspNetServices\AspNetMembershipInitAdminUser.sql" />
-    <Content Include="Scripts\EnterpriseLibrary\LoggingDatabase.sql" />
-    <Content Include="Scripts\EnterpriseLibrary\LoggingExceptionGetAll.sql" />
-    <Content Include="Scripts\EnterpriseLibrary\LoggingExceptionGetById.sql" />
-    <Content Include="Scripts\AspNetServices\Readme.txt" />
-    <Content Include="Scripts\AspNetServices\AspNetMembershipUserSearch.sql" />
-    <Content Include="Scripts\TokenPersistence\TokenPersistence.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\$customNamespace$.Models\$customNamespace$.Models.csproj">
       <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
       <Name>$customNamespace$.Models</Name>
@@ -94,8 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Scripts\InstallDatabase.bat" />
-    <None Include="Scripts\InstallDatabaseDefault.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
