@@ -10,10 +10,32 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+declare @featureName varchar(128)
 
+set @featureName = 'common'
 
+if not exists(select * from [dbo].[aspnet_SchemaVersions] where Feature = @featureName)
+begin
+	insert into [dbo].[aspnet_SchemaVersions] VALUES (@featureName, 1, 1)
+end
 
-insert into [dbo].[aspnet_SchemaVersions] VALUES ('common', 1, 1)
-insert into [dbo].[aspnet_SchemaVersions] VALUES ('membership', 1, 1)
-insert into [dbo].[aspnet_SchemaVersions] VALUES ('profile', 1, 1)
-insert into [dbo].[aspnet_SchemaVersions] VALUES ('role manager', 1, 1)
+set @featureName = 'membership'
+
+if not exists(select * from [dbo].[aspnet_SchemaVersions] where Feature = @featureName)
+begin
+	insert into [dbo].[aspnet_SchemaVersions] VALUES (@featureName, 1, 1)
+end
+
+set @featureName = 'profile'
+
+if not exists(select * from [dbo].[aspnet_SchemaVersions] where Feature = @featureName)
+begin
+	insert into [dbo].[aspnet_SchemaVersions] VALUES (@featureName, 1, 1)
+end
+
+set @featureName = 'role manager'
+
+if not exists(select * from [dbo].[aspnet_SchemaVersions] where Feature = @featureName)
+begin
+	insert into [dbo].[aspnet_SchemaVersions] VALUES (@featureName, 1, 1)
+end

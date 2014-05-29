@@ -10,15 +10,5 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-:setvar ApplicationName "$WebSiteApplicationName$"
-:setvar ApplicationAdminEmail "$WebSiteAdminEmailAddress$"
-:setvar ApplicationAdminPassword "$WebSiteAdminPassword$"
-
 :r .\Script.PostDeployment.Init.1.1.SchemaVersion.sql
 :r .\Script.PostDeployment.Init.1.2.RoleAndAdminUser.sql
-
-
-/*
-
-
-*/

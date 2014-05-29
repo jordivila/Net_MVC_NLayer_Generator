@@ -7,10 +7,8 @@ using Microsoft.VisualStudio.TemplateWizard;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using EnvDTE80;
 using System.Diagnostics;
+using System.Xml;
 
 namespace VSIX_MVC_Layered_Wizard
 {
@@ -48,7 +46,7 @@ namespace VSIX_MVC_Layered_Wizard
             {
                 // Initilize GlobalData to be used by child template projects
                 IWizardImplementation.GlobalData = new GlobalData(automationObject, replacementsDictionary, customParams);
-                IWizardImplementation.GlobalData.dte = (DTE2)automationObject;
+                IWizardImplementation.GlobalData.dte = (DTE)automationObject;
                 IWizardImplementation.GlobalData.dte.Events.SolutionEvents.ProjectAdded += new _dispSolutionEvents_ProjectAddedEventHandler(SolutionEvents_ProjectAdded);
 
                 // Append Custom Dictionary Entries
@@ -72,6 +70,8 @@ namespace VSIX_MVC_Layered_Wizard
                                                                                 TraceEventType.Information,
                                                                                 FormsWizardGeneralResources.General,
                                                                                 null));
+
+            
 
             IWizardImplementation.GlobalData.dte.StatusBar.Text = string.Format(FormsWizardGeneralResources.AddingProject, Project.Name);
         }
@@ -185,6 +185,8 @@ namespace VSIX_MVC_Layered_Wizard
 
                 if (isDatabaseProject)
                 {
+                    this.DatabaseProject_AddUserFile(item);
+
                     IEnumerator enumeratorFiles = item.ProjectItems.GetEnumerator();
 
                     while (enumeratorFiles.MoveNext())
@@ -193,6 +195,33 @@ namespace VSIX_MVC_Layered_Wizard
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        private void DatabaseProject_AddUserFile(Project item)
+        {
+            string sql_Proj_user = string.Format("{0}.user", item.FullName);
+
+            string kk = string.Format(@"<?xml version=""1.0"" encoding=""utf-8""?>
+                            <Project ToolsVersion=""12.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
+                              <PropertyGroup>
+                                <SqlCmdVar__1>{0}</SqlCmdVar__1>
+                                <SqlCmdVar__2>{1}</SqlCmdVar__2>
+                                <SqlCmdVar__3>{2}</SqlCmdVar__3>
+                              </PropertyGroup>
+                            </Project>",
+                            GlobalData.CustomNamespace,
+                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
+                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword);
+
+            XmlDocument xDocSqlProjUserPreferences = new XmlDocument();
+            xDocSqlProjUserPreferences.LoadXml(kk);
+            xDocSqlProjUserPreferences.Save(sql_Proj_user);
+            
+            this.DatabaseProjects_ReplaceParameters(sql_Proj_user);
         }
         private void DatabaseProjects_ReplaceRecursive(ProjectItem pItem)
         {
@@ -218,7 +247,6 @@ namespace VSIX_MVC_Layered_Wizard
 
             if (project.Properties != null)
             {
-
                 IEnumerator enumerator = project.Properties.GetEnumerator();
 
                 while (enumerator.MoveNext())
@@ -235,7 +263,7 @@ namespace VSIX_MVC_Layered_Wizard
         }
         private void DatabaseProjects_ReplaceParameters(string filePath)
         {
-            Dictionary<string, string> replacementsDictionary = replacementsDictionary = GlobalData.ReplacementDictionaryGet(new Dictionary<string, string>());
+            Dictionary<string, string> replacementsDictionary = GlobalData.ReplacementDictionaryGet(new Dictionary<string, string>());
 
 
             string fileContent = string.Empty;

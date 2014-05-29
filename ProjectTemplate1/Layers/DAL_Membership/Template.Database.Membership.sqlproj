@@ -138,5 +138,18 @@
   <ItemGroup>
     <None Include="Template.Database.Membership.publish.xml"  />
   </ItemGroup>
-
+  <ItemGroup>
+    <SqlCmdVariable Include="ApplicationName">
+      <DefaultValue>$WebSiteApplicationName$</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ApplicationAdminEmail">
+      <DefaultValue>$WebSiteAdminEmailAddress$</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ApplicationAdminPassword">
+      <DefaultValue>$WebSiteAdminPassword$</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

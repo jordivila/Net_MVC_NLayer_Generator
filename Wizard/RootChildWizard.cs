@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
-using EnvDTE80;
 using System.IO;
 using System.Linq;
 using System.Diagnostics;
