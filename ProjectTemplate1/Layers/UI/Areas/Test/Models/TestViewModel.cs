@@ -14,9 +14,6 @@ namespace $safeprojectname$.Areas.Test.Models
         [Display(Name="Some Double Value")]
         public double SomeDouble { get; set; }
 
-        [Display(Name="Some Float Value")]
-        public float SomeFloat { get; set; }
-
         [Display(Name = "Some Boolean Value")]
         public bool SomeBoolean { get; set; }
 

@@ -47,7 +47,6 @@ namespace $safeprojectname$.Areas.Test.Controllers
                     model = new TestViewModel() { 
                         SomeBoolean = false,
                         SomeBooleanNullable = null,
-                        SomeFloat = (float)23.45,
                         SomeDouble = 67.89,
                         SomeDate = DateTime.Now
                     };
