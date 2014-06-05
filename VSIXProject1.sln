@@ -1,12 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F46D4B99-819A-44B0-9576-A7E0514D67BC}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		Resources\SQLDatabaseProj.7z = Resources\SQLDatabaseProj.7z
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIX_MVC_Layered_Project", "VSIXProject1\VSIX_MVC_Layered_Project.csproj", "{5EBB22C5-C75A-498F-BE4F-7E7C17BE6985}"
