@@ -139,9 +139,9 @@ as
 									case when @sortType + @sortAscending ='IsLockedOut asc' then m.IsLockedOut end asc 
 								) as rownumber  
 	from 
-			[dbo].[aspnet_Applications] a(NOLOCK)
-			,[dbo].[aspnet_Users] u (NOLOCK)
-			,[dbo].[aspnet_Membership]	m (NOLOCK)
+			[dbo].[aspnet_Applications] a 
+			,[dbo].[aspnet_Users] u 
+			,[dbo].[aspnet_Membership]	m 
 			,@tmpfilter as f
 	where 
 			u.ApplicationId = a.ApplicationId
