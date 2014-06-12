@@ -556,7 +556,6 @@
     <Content Include="Layers\DAL_Membership\Scripts\Script.PostDeployment.Init.1.0.sql" />
     <Content Include="Layers\DAL_Membership\Scripts\Script.PostDeployment.Init.1.1.SchemaVersion.sql" />
     <Content Include="Layers\DAL_Membership\Scripts\Script.PostDeployment.Init.1.2.RoleAndAdminUser.sql" />
-    <Content Include="Layers\DAL_Membership\Template.Database.Membership.sqlproj.user" />
     <Content Include="Layers\DAL_Membership\Template.Database.Membership.vstemplate" />
     <Content Include="Layers\DAL_Membership\Security\aspnet_Membership_BasicAccess.sql" />
     <Content Include="Layers\DAL_Membership\Security\aspnet_Membership_FullAccess.sql" />

@@ -185,7 +185,7 @@ namespace VSIX_MVC_Layered_Wizard
 
                 if (isDatabaseProject)
                 {
-                    this.DatabaseProject_AddUserFile(item);
+                    //this.DatabaseProject_AddUserFile(item);
 
                     IEnumerator enumeratorFiles = item.ProjectItems.GetEnumerator();
 
@@ -197,32 +197,33 @@ namespace VSIX_MVC_Layered_Wizard
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="item"></param>
-        private void DatabaseProject_AddUserFile(Project item)
-        {
-            string sql_Proj_user = string.Format("{0}.user", item.FullName);
+//        /// <summary>
+//        /// 
+//        /// </summary>
+//        /// <param name="item"></param>
+//        private void DatabaseProject_AddUserFile(Project item)
+//        {
+//            string sql_Proj_user = string.Format("{0}.user", item.FullName);
 
-            string kk = string.Format(@"<?xml version=""1.0"" encoding=""utf-8""?>
-                            <Project ToolsVersion=""12.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
-                              <PropertyGroup>
-                                <SqlCmdVar__1>{0}</SqlCmdVar__1>
-                                <SqlCmdVar__2>{1}</SqlCmdVar__2>
-                                <SqlCmdVar__3>{2}</SqlCmdVar__3>
-                              </PropertyGroup>
-                            </Project>",
-                            GlobalData.CustomNamespace,
-                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
-                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword);
+//            string kk = string.Format(@"<?xml version=""1.0"" encoding=""utf-8""?>
+//                            <Project ToolsVersion=""12.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
+//                              <PropertyGroup>
+//                                <SqlCmdVar__1>{0}</SqlCmdVar__1>
+//                                <SqlCmdVar__2>{1}</SqlCmdVar__2>
+//                                <SqlCmdVar__3>{2}</SqlCmdVar__3>
+//                              </PropertyGroup>
+//                            </Project>",
+//                            GlobalData.CustomNamespace,
+//                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
+//                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword);
 
-            XmlDocument xDocSqlProjUserPreferences = new XmlDocument();
-            xDocSqlProjUserPreferences.LoadXml(kk);
-            xDocSqlProjUserPreferences.Save(sql_Proj_user);
+//            XmlDocument xDocSqlProjUserPreferences = new XmlDocument();
+//            xDocSqlProjUserPreferences.LoadXml(kk);
+//            xDocSqlProjUserPreferences.Save(sql_Proj_user);
             
-            this.DatabaseProjects_ReplaceParameters(sql_Proj_user);
-        }
+//            this.DatabaseProjects_ReplaceParameters(sql_Proj_user);
+//        }
+
         private void DatabaseProjects_ReplaceRecursive(ProjectItem pItem)
         {
             bool isFolder = pItem.ProjectItems.Count > 0;

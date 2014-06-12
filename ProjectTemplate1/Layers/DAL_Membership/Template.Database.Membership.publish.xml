@@ -7,4 +7,15 @@
     <TargetConnectionString>Data Source=$DatabaseServerName$;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="ApplicationAdminEmail">
+      <Value>$WebSiteAdminEmailAddress$</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ApplicationAdminPassword">
+      <Value>$WebSiteAdminPassword$</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ApplicationName">
+      <Value>$WebSiteApplicationName$</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <SqlCmdVar__1>$WebSiteApplicationName$</SqlCmdVar__1>
-    <SqlCmdVar__2>$WebSiteAdminEmailAddress$</SqlCmdVar__2>
-    <SqlCmdVar__3>$WebSiteAdminPassword$</SqlCmdVar__3>
-  </PropertyGroup>
-</Project>
