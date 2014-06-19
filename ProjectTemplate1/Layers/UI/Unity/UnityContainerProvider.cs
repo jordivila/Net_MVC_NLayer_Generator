@@ -27,7 +27,7 @@ namespace $customNamespace$.UI.Web.Unity
             result.RegisterType(typeof(IProfileProxy), typeof(ProfileProxy), new InjectionMember[0]);
             result.RegisterType(typeof(ILoggingProxy), typeof(LoggingProxy), new InjectionMember[0]);
             result.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationProxy), new InjectionMember[0]);
-            result.RegisterType(typeof(IUserRequestModel<HttpContext, HttpCookieCollection>), typeof(UserRequestModelHttpClient), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserRequestContextFrontEnd), typeof(UserRequestContextFrontEnd), new InjectionMember[0]);
             result.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
 
             switch (containerSelected)

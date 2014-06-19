@@ -4,12 +4,10 @@ using System.Web.Mvc;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.UserRequestModel;
-using $safeprojectname$.Areas.Error;
+using $customNamespace$.UI.Web.Areas.Error;
 
-//namespace $safeprojectname$.Mvc_Attributes
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
-
     /// <summary>
     /// Custom Authorize Attibute allows an Enum to be used as Role declarations.
     /// 
@@ -20,7 +18,7 @@ namespace $safeprojectname$.Common.Mvc.Attributes
     ///                                                            Config.UI.Mvc.SiteRoles.Manager)] 
     /// </example>
     /// </summary>
-    public  class AuthorizeAttribute : FilterAttribute, IAuthorizationFilter
+    public class AuthorizeAttribute : FilterAttribute, IAuthorizationFilter
     {
         public SiteRoles Roles;
 
@@ -120,11 +118,11 @@ namespace $safeprojectname$.Common.Mvc.Attributes
                 {
                     if (Roles > 0)
                     {
-                        string[] userroles = (MvcApplication.UserRequest as IUserRequestClientModel).UserRoles;
+                        string[] userroles = MvcApplication.UserRequest.UserRoles;
 
                         foreach (string userrole in userroles)
                         {
-                            
+
                             SiteRoles role;
 
                             bool parseSucceed = Enum.TryParse<SiteRoles>(userrole, out role);
@@ -154,7 +152,7 @@ namespace $safeprojectname$.Common.Mvc.Attributes
             {
                 //if (userRequest != null)
                 //{
-                    //userRequest.Dispose();
+                //userRequest.Dispose();
                 //}
             }
         }

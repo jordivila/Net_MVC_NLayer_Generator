@@ -33,15 +33,15 @@ namespace $customNamespace$.UI.Web
             set { }
         }
 
-        private static IUserRequestModel<HttpContext, HttpCookieCollection> _userRequest = null;
+        private static IUserRequestContextFrontEnd _userRequest = null;
 
-        public static IUserRequestModel<HttpContext, HttpCookieCollection> UserRequest
+        public static IUserRequestContextFrontEnd UserRequest
         {
             get
             {
                 if (_userRequest == null)
                 {
-                    _userRequest = DependencyFactory.Resolve<IUserRequestModel<HttpContext, HttpCookieCollection>>();
+                    _userRequest = DependencyFactory.Resolve<IUserRequestContextFrontEnd>();
                 }
 
                 return _userRequest;

@@ -9,15 +9,15 @@ using System.ServiceModel.Web;
 using System.Web;
 using System.Web.Security;
 using Microsoft.Practices.Unity;
-using $safeprojectname$.Authentication;
-using $safeprojectname$.Enumerations;
-using $safeprojectname$.Globalization;
-using $safeprojectname$.Membership;
-using $safeprojectname$.Profile;
-using $safeprojectname$.Roles;
-using $safeprojectname$.Unity;
+using $customNamespace$.Models.Authentication;
+using $customNamespace$.Models.Enumerations;
+using $customNamespace$.Models.Globalization;
+using $customNamespace$.Models.Membership;
+using $customNamespace$.Models.Profile;
+using $customNamespace$.Models.Roles;
+using $customNamespace$.Models.Unity;
 
-namespace $safeprojectname$.UserRequestModel
+namespace $customNamespace$.Models.UserRequestModel
 {
     public static class UserRequestModel_Keys
     {
@@ -36,16 +36,8 @@ namespace $safeprojectname$.UserRequestModel
         public static string UserContextControllerTypeKey = "UserContextControllerTypeKey";
     }
 
-    public interface IUserRequestClientModel : IDisposable
+    public interface IUserRequestModel : IDisposable
     {
-        MembershipUserWrapper UserMembership_GetAndUpdateActivity { get; }
-        string[] UserRoles { get; }
-    }
-
-    public interface IUserRequestModel<TContext, TObjectCollection> : IDisposable
-    {
-        TContext Context { get; }
-        TObjectCollection ContextBag { get; }
         UserProfileModel UserProfile { get; set; }
         FormsIdentity UserFormsIdentity { get; }
         bool UserIsLoggedIn { get; }
@@ -53,58 +45,28 @@ namespace $safeprojectname$.UserRequestModel
         string WcfSessionIdKeyValue { get; }
     }
 
-    //public static class UserRequestHelper<TContext, TObjectCollection>
-    //{
-    //    private static IUserRequestModel<HttpContext, HttpCookieCollection> httpUserRequest = null;
-    //    private static IUserRequestModel<OperationContext, MessageHeaders> ntpTcpUserRequest = null;
+    public interface IUserRequestModel<TContext, TObjectCollection> : IUserRequestModel
+    {
+        TContext Context { get; }
+        TObjectCollection ContextBag { get; }
+    }
 
-    //    public static object CreateUserRequest()
-    //    {
-    //        object result = null;
+    #region Front End User Request Context
 
-    //        if (typeof(TContext) == typeof(HttpContext))
-    //        {
-    //            if (UserRequestHelper<TContext, TObjectCollection>.httpUserRequest == null)
-    //            {
-    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
-    //                {
-    //                    UserRequestHelper<TContext, TObjectCollection>.httpUserRequest = (IUserRequestModel<HttpContext, HttpCookieCollection>)dependencyFactory.Unity.Resolve<IUserRequestModel<HttpContext, HttpCookieCollection>>();
-    //                }
-    //            }
-    //            result = UserRequestHelper<TContext, TObjectCollection>.httpUserRequest;
-    //        }
+    public interface IUserRequestContextFrontEnd : IUserRequestModel, IUserRequestModel<HttpContext, HttpCookieCollection>
+    {
+        MembershipUserWrapper UserMembership_GetAndUpdateActivity { get; }
+        string[] UserRoles { get; }
+    }
 
-    //        if (typeof(TContext) == typeof(OperationContext))
-    //        {
-    //            if (UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest == null)
-    //            {
-    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
-    //                {
-    //                    UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest = (IUserRequestModel<OperationContext, MessageHeaders>)dependencyFactory.Unity.Resolve<IUserRequestModel<OperationContext, MessageHeaders>>();
-    //                }
-    //            }
-    //            result = UserRequestHelper<TContext, TObjectCollection>.ntpTcpUserRequest;
-    //        }
-
-    //        if (result == null)
-    //        {
-    //            throw new NotImplementedException("UserRequest Not supported");
-    //        }
-    //        else
-    //        {
-    //            return result;
-    //        }
-    //    }
-    //}
-
-    public class UserRequestModelHttpClient : UserRequestModelHttp, IUserRequestClientModel
+    public class UserRequestContextFrontEnd : IUserRequestContextFrontEnd
     {
         private IRolesProxy RolesProvider;
         private IMembershipProxy MembershipProvider;
         private IAuthenticationProxy ProviderAuthentication;
 
-        public UserRequestModelHttpClient(IRolesProxy providerRoles, 
-                                            IMembershipProxy providerMembership, 
+        public UserRequestContextFrontEnd(IRolesProxy providerRoles,
+                                            IMembershipProxy providerMembership,
                                             IAuthenticationProxy providerAuth)
         {
             this.RolesProvider = providerRoles;
@@ -112,7 +74,21 @@ namespace $safeprojectname$.UserRequestModel
             this.ProviderAuthentication = providerAuth;
         }
 
-        public override FormsIdentity UserFormsIdentity
+        public HttpContext Context
+        {
+            get
+            {
+                return HttpContext.Current;
+            }
+        }
+        public HttpCookieCollection ContextBag
+        {
+            get
+            {
+                return this.Context.Request.Cookies;
+            }
+        }
+        public FormsIdentity UserFormsIdentity
         {
             get
             {
@@ -134,7 +110,7 @@ namespace $safeprojectname$.UserRequestModel
                 return (MembershipUserWrapper)this.Context.Items[UserRequestModel_Keys.UserContextMembershipKey];
             }
         }
-        public override bool UserIsLoggedIn
+        public bool UserIsLoggedIn
         {
             get
             {
@@ -165,108 +141,6 @@ namespace $safeprojectname$.UserRequestModel
                 return (string[])this.Context.Items[UserRequestModel_Keys.UserContextRolesKey];
             }
 
-        }
-        public override void Dispose()
-        {
-            if (RolesProvider != null)
-            {
-                RolesProvider.Dispose();
-            }
-            if (MembershipProvider != null)
-            {
-                MembershipProvider.Dispose();
-            }
-            if (ProviderAuthentication != null)
-            {
-                ProviderAuthentication.Dispose();
-            }
-        }
-    }
-
-    public abstract class UserRequestModelHttp : IUserRequestModel<HttpContext, HttpCookieCollection>
-    {
-        public HttpContext Context
-        {
-            get
-            {
-                return HttpContext.Current;
-            }
-        }
-        public HttpCookieCollection ContextBag
-        {
-            get
-            {
-                return this.Context.Request.Cookies;
-            }
-        }
-        public virtual FormsIdentity UserFormsIdentity
-        {
-            get
-            {
-                if (!this.Context.Items.Contains(UserRequestModel_Keys.UserContextFormsIdentityKey))
-                {
-                    this.Context.Items[UserRequestModel_Keys.UserContextFormsIdentityKey] = ((FormsIdentity)this.Context.User.Identity);
-                }
-                return (FormsIdentity)this.Context.Items[UserRequestModel_Keys.UserContextFormsIdentityKey];
-            }
-        }
-        public virtual bool UserIsLoggedIn
-        {
-            get
-            {
-                return this.Context.User.Identity.IsAuthenticated;
-            }
-        }
-        public string WcfAuthenticationCookieValue
-        {
-            get
-            {
-                if (this.ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
-                {
-                    return this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value;
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-            set
-            {
-                // This is done in case WcfCookie Value is accessed right after authentication. When cookies yet have not been sent to client browser
-                if (ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
-                {
-                    this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value = value;
-                }
-                else
-                {
-                    Context.Response.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value));
-                }
-
-
-
-                if (ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
-                {
-                    Context.Response.Cookies[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value = value;
-                }
-                else
-                {
-                    Context.Response.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value));
-                }
-            }
-        }
-        public string WcfSessionIdKeyValue
-        {
-            get
-            {
-                if (this.ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfSessionIdKey))
-                {
-                    return this.ContextBag[UserRequestModel_Keys.WcfSessionIdKey].Value;
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
         }
         internal CultureInfo CultureSelected
         {
@@ -345,11 +219,79 @@ namespace $safeprojectname$.UserRequestModel
                 this.Context.Items[UserRequestModel_Keys.UserContextProfileKey] = value;
             }
         }
-        public virtual void Dispose()
+        public string WcfAuthenticationCookieValue
         {
+            get
+            {
+                if (this.ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
+                {
+                    return this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                // This is done in case WcfCookie Value is accessed right after authentication. When cookies yet have not been sent to client browser
+                if (ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
+                {
+                    this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value = value;
+                }
+                else
+                {
+                    Context.Response.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value));
+                }
 
+
+
+                if (ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfFormsAuthenticationCookieName))
+                {
+                    Context.Response.Cookies[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value = value;
+                }
+                else
+                {
+                    Context.Response.Cookies.Add(new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value));
+                }
+            }
+        }
+        public string WcfSessionIdKeyValue
+        {
+            get
+            {
+                if (this.ContextBag.AllKeys.Contains(UserRequestModel_Keys.WcfSessionIdKey))
+                {
+                    return this.ContextBag[UserRequestModel_Keys.WcfSessionIdKey].Value;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            if (RolesProvider != null)
+            {
+                RolesProvider.Dispose();
+            }
+            if (MembershipProvider != null)
+            {
+                MembershipProvider.Dispose();
+            }
+            if (ProviderAuthentication != null)
+            {
+                ProviderAuthentication.Dispose();
+            }
         }
     }
+
+    #endregion 
+
+
+    #region Back End User Request Context
 
     public class UserRequestModelNetTcp : IUserRequestModel<OperationContext, MessageHeaders>
     {
@@ -582,4 +524,6 @@ namespace $safeprojectname$.UserRequestModel
 
         }
     }
+
+    #endregion
 }

@@ -2,9 +2,9 @@
 using System.Web.Mvc;
 using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.UserRequestModel;
-using $safeprojectname$.Areas.UserAccount.Controllers;
+using $customNamespace$.UI.Web.Areas.UserAccount.Controllers;
 
-namespace $safeprojectname$.Common.AspNetApplicationServices
+namespace $customNamespace$.UI.Web.Common.AspNetApplicationServices
 {
     public class MembershipUpdateLastActivityActionAttribute : ActionFilterAttribute
     {
@@ -16,7 +16,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
                 {
                     if (MvcApplication.UserRequest.UserIsLoggedIn)
                     {
-                        MembershipUserWrapper user = (MvcApplication.UserRequest as IUserRequestClientModel).UserMembership_GetAndUpdateActivity;
+                        MembershipUserWrapper user = MvcApplication.UserRequest.UserMembership_GetAndUpdateActivity;
                     }
                 }
             }
@@ -26,7 +26,7 @@ namespace $safeprojectname$.Common.AspNetApplicationServices
             }
             finally
             {
-        
+
             }
 
             base.OnActionExecuting(filterContext);
