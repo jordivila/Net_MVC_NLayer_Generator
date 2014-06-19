@@ -156,5 +156,29 @@ namespace $customNamespace$.BL.MembershipServices
         {
             return _dal.RoleExists(roleName);
         }
+
+        public string[] GetRolesForCurrentUser()
+        {
+            if (string.IsNullOrEmpty(this.UserRequest.WcfAuthenticationCookieValue))
+            {
+                return new string[0];
+            }
+            else
+            {
+                return this.FindByUserName(this.UserRequest.UserFormsIdentity.Name).Data;
+            }
+        }
+        public bool IsCurrentUserInRole(string roleName)
+        {
+            if (string.IsNullOrEmpty(this.UserRequest.WcfAuthenticationCookieValue))
+            {
+                return false;
+            }
+            else
+            {
+                return this.FindByUserName(this.UserRequest.UserFormsIdentity.Name).Data.Contains(roleName);
+            }
+        }
+
     }
 }

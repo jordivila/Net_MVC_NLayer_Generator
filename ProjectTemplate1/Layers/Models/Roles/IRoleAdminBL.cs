@@ -4,7 +4,7 @@ using $customNamespace$.Models.Common;
 
 namespace $customNamespace$.Models.Roles
 {
-    public interface IRoleAdminBL : IRoleManagerProxy
+    public interface IRoleAdminBL : IRoleManagerProxy, IRolesProxy
     {
 
     }
