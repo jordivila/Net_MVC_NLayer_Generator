@@ -53,7 +53,7 @@ namespace $customNamespace$.Models.UserRequestModel
 
     #region Front End User Request Context
 
-    public interface IUserRequestContextFrontEnd : IUserRequestModel, IUserRequestModel<HttpContext, HttpCookieCollection>
+    public interface IUserRequestContextFrontEnd : IUserRequestModel<HttpContext, HttpCookieCollection>
     {
         MembershipUserWrapper UserMembership_GetAndUpdateActivity { get; }
         string[] UserRoles { get; }
@@ -293,7 +293,7 @@ namespace $customNamespace$.Models.UserRequestModel
 
     #region Back End User Request Context
 
-    public class UserRequestModelNetTcp : IUserRequestModel<OperationContext, MessageHeaders>
+    public class UserRequestContextBackEndNetTcp : IUserRequestModel<OperationContext, MessageHeaders>
     {
         public OperationContext Context
         {
@@ -398,7 +398,7 @@ namespace $customNamespace$.Models.UserRequestModel
         }
     }
 
-    public class UserRequestModelHttpServer : IUserRequestModel<OperationContext, MessageHeaders>
+    public class UserRequestContextBackEndHttp : IUserRequestModel<OperationContext, MessageHeaders>
     {
         public OperationContext Context
         {

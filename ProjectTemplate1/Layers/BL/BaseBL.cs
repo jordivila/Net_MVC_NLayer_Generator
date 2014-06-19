@@ -14,15 +14,15 @@ namespace $customNamespace$.BL
 
         }
 
-        private IUserRequestModel<OperationContext, MessageHeaders> _userRequest = null;
+        private IUserRequestModel _userRequest = null;
 
-        internal IUserRequestModel<OperationContext, MessageHeaders> UserRequest
+        internal IUserRequestModel UserRequest
         {
             get
             {
                 if (_userRequest == null)
                 {
-                    _userRequest = DependencyFactory.Resolve<IUserRequestModel<OperationContext, MessageHeaders>>();
+                    _userRequest = DependencyFactory.Resolve<IUserRequestModel>();
                 }
 
                 return _userRequest;

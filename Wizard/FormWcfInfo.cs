@@ -48,8 +48,8 @@ namespace VSIX_MVC_Layered_Wizard
         public string Protocol { get; private set; }
         public string BindingTypeNameConfigValue { get; private set; }
         public string BindingUserRequestModelAtServerClassNameSelected { get; private set; }
-        public readonly string BindingUserRequestModelAtServerNetTcpClassName = "UserRequestModelNetTcp";
-        public readonly string BindingUserRequestModelAtServerHttpClassName = "UserRequestModelHttpServer";
+        public readonly string BindingUserRequestModelAtServerNetTcpClassName = "UserRequestContextBackEndNetTcp";
+        public readonly string BindingUserRequestModelAtServerHttpClassName = "UserRequestContextBackEndHttp";
 
         public FormsWcfInfoData(Type bindingSelected)
         {

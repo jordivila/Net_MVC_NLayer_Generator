@@ -14,12 +14,12 @@ namespace $customNamespace$.DAL.MembershipServices
         private const string CacheManagerName = "CacheManagerForProfileDAL";
         private ObjectCache _objCacheManager = new MemoryCache(CacheManagerName);
         private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
-        private string CacheManager_GetKey(IUserRequestModel<OperationContext, MessageHeaders> userRequest)
+        private string CacheManager_GetKey(IUserRequestModel userRequest)
         {
             return string.Format("Cache_DataResultUserProfile_{0}", userRequest.UserFormsIdentity.Name);
         }
 
-        public virtual DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
+        public virtual DataResultUserProfile Create(string userName, IUserRequestModel userRequest)
         {
             UserProfileModel userProfile = new UserProfileModel();
             userProfile.UserName = userName;
@@ -46,7 +46,7 @@ namespace $customNamespace$.DAL.MembershipServices
             base.Dispose();
         }
 
-        public virtual DataResultUserProfile Get(IUserRequestModel<OperationContext, MessageHeaders> userRequest)
+        public virtual DataResultUserProfile Get(IUserRequestModel userRequest)
         {
             if (!_objCacheManager.Contains(this.CacheManager_GetKey(userRequest)))
             {
@@ -64,7 +64,7 @@ namespace $customNamespace$.DAL.MembershipServices
             return (DataResultUserProfile)_objCacheManager.Get(this.CacheManager_GetKey(userRequest));
         }
 
-        public virtual DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel<OperationContext, MessageHeaders> userRequest)
+        public virtual DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel userRequest)
         {
             if (_objCacheManager.Contains(this.CacheManager_GetKey(userRequest)))
             {

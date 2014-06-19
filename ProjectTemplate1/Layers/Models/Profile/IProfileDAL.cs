@@ -7,10 +7,10 @@ namespace $customNamespace$.Models.Profile
 {
     public interface IProfileDAL : IDisposable
     {
-        DataResultUserProfile Create(string userName, IUserRequestModel<OperationContext, MessageHeaders> userRequest);
+        DataResultUserProfile Create(string userName, IUserRequestModel userRequest);
 
-        DataResultUserProfile Get(IUserRequestModel<OperationContext, MessageHeaders> userRequest);
+        DataResultUserProfile Get(IUserRequestModel userRequest);
 
-        DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel<OperationContext, MessageHeaders> userRequest);
+        DataResultUserProfile Update(UserProfileModel userProfile, IUserRequestModel userRequest);
     }
 }

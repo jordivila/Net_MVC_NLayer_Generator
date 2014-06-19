@@ -39,11 +39,10 @@ namespace $customNamespace$.WCF.ServicesHostCommon.Unity
                     result.RegisterType(typeof(ILoggingDAL), typeof(LoggingDAL), new InjectionMember[0]);
                     result.RegisterType(typeof(ISyndicationDAL), typeof(SyndicationDAL), new InjectionMember[0]);
                     result.RegisterType(typeof(ITokenTemporaryPersistenceDAL<>), typeof(TokenTemporaryDatabasePersistenceDAL<>), new InjectionMember[0]);
-                    //result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelNetTcp), new InjectionMember[0]);
-                    //result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof(UserRequestModelHttpServer), new InjectionMember[0]);
-                    result.RegisterType(typeof(IUserRequestModel<OperationContext, MessageHeaders>), typeof($customBindingUserRequestModelAtServer$), new InjectionMember[0]);
 
-                    
+                    //result.RegisterType(typeof(IUserRequestModel), typeof(UserRequestContextBackEndNetTcp), new InjectionMember[0]);
+                    //result.RegisterType(typeof(IUserRequestModel), typeof(UserRequestContextBackEndHttp), new InjectionMember[0]);
+                    result.RegisterType(typeof(IUserRequestModel), typeof($customBindingUserRequestModelAtServer$), new InjectionMember[0]);
 
                     break;
                 default:
