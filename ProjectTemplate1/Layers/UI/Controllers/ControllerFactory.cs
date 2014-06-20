@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     public class CustomControllerFactory : DefaultControllerFactory
     {

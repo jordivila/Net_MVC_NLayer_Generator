@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using $customNamespace$.Models.Membership;
-using $safeprojectname$.Models;
-using $safeprojectname$.Common.Mvc.Attributes;
+using $customNamespace$.UI.Web.Models;
+using $customNamespace$.UI.Web.Common.Mvc.Attributes;
 
 
-namespace $safeprojectname$.Areas.UserAdministration.Models
+namespace $customNamespace$.UI.Web.Areas.UserAdministration.Models
 {
     public enum Actions : int
     {

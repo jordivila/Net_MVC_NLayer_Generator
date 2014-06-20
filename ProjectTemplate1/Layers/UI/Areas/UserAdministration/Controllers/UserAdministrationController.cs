@@ -10,14 +10,14 @@ using $customNamespace$.Models.Roles;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.General;
 using $customNamespace$.Resources.UserAdministration;
-using $safeprojectname$.Areas.UserAdministration.Models;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Common.Mvc.Html;
+using $customNamespace$.UI.Web.Areas.UserAdministration.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Common.Mvc.Html;
 
 
-namespace $safeprojectname$.Areas.UserAdministration.Controllers
+namespace $customNamespace$.UI.Web.Areas.UserAdministration.Controllers
 {
-    [$safeprojectname$.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
+    [$customNamespace$.UI.Web.Common.Mvc.Attributes.Authorize(Roles = SiteRoles.Administrator)]
     public class UserAdministrationController : Controller, IControllerWithClientResources
     {
         private IMembershipProxy _providerMembership;

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.Test
+namespace $customNamespace$.UI.Web.Areas.Test
 {
     public static class TestsUrlHelper
     {

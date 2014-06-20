@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.Error
+namespace $customNamespace$.UI.Web.Areas.Error
 {
     public static class ErrorUrlHelper
     {

@@ -8,10 +8,10 @@ using $customNamespace$.Models.Profile;
 using $customNamespace$.Resources.Account;
 using $customNamespace$.Resources.DataAnnotations;
 using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
-using $safeprojectname$.Models;
-using $safeprojectname$.Common.Mvc.Attributes;
+using $customNamespace$.UI.Web.Models;
+using $customNamespace$.UI.Web.Common.Mvc.Attributes;
 
-namespace $safeprojectname$.Areas.UserAccount.Models
+namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
 {
     [NonValidateModelOnHttpGet]
     public class ChangePasswordViewModel: baseViewModel

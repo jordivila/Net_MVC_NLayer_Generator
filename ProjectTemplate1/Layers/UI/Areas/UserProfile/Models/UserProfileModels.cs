@@ -1,8 +1,8 @@
 ﻿using $customNamespace$.Models.Profile;
-using $safeprojectname$.Models;
-using $safeprojectname$.Common.Mvc.Attributes;
+using $customNamespace$.UI.Web.Models;
+using $customNamespace$.UI.Web.Common.Mvc.Attributes;
 
-namespace $safeprojectname$.Areas.UserProfile.Models
+namespace $customNamespace$.UI.Web.Areas.UserProfile.Models
 {
     [NonValidateModelOnHttpGet]
     public class UserProfileIndexModel : baseViewModel

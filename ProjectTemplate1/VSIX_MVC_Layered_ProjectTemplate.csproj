@@ -96,6 +96,10 @@
     <None Include="Layers\Models\Roles\IRoleAdminBL.cs" />
     <None Include="Layers\Models\Membership\IMembershipBL.cs" />
     <None Include="Layers\Models\Syndication\ISyndicationBL.cs" />
+    <None Include="Layers\UI\Unity\UnityContainerProvider.cs.standalone" />
+    <None Include="Layers\UI\web.config.standalone">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Layers\WCFHostCommon\Properties\AssemblyInfo.cs" />
     <None Include="Layers\WCFHostCommon\app.config" />
     <None Include="Layers\WCFHostCommon\Unity\UnityContainerProvider.cs" />
@@ -605,6 +609,10 @@
     <Content Include="Layers\UI\Content\Site.css" />
     <Content Include="Layers\UI\Content\Site.mobile.css" />
     <Content Include="Layers\UI\Global.asax" />
+    <Content Include="Layers\UI\Template.UI.Web.Standalone.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Layers\UI\Template.UI.Web.Standalone.csproj" />
     <Content Include="Layers\UI\Template.UI.Web.vstemplate">
       <SubType>Designer</SubType>
     </Content>

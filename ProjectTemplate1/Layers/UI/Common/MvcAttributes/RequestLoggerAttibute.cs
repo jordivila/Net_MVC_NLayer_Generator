@@ -7,9 +7,9 @@ using System.Web.Mvc;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Logging;
-using $safeprojectname$.Controllers;
+using $customNamespace$.UI.Web.Controllers;
 
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
     public class RequestLoggerActionAttribute : ActionFilterAttribute
     {

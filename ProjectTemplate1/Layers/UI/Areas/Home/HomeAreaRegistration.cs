@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.Home
+namespace $customNamespace$.UI.Web.Areas.Home
 {
     public class HomeAreaRegistration : AreaRegistration
     {

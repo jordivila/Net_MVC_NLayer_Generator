@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
-using $safeprojectname$.Controllers;
+using $customNamespace$.UI.Web.Controllers;
 
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
     [AttributeUsage(
                                 AttributeTargets.Class |

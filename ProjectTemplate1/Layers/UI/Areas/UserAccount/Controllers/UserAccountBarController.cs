@@ -2,10 +2,10 @@
 using Microsoft.Practices.Unity;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Unity;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.UserAccount.Controllers
+namespace $customNamespace$.UI.Web.Areas.UserAccount.Controllers
 {
     public class UserAccountBarController : Controller, IControllerWithClientResources
     {

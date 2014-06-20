@@ -12,12 +12,12 @@ using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Resources.General;
 using $customNamespace$.Resources.Helpers;
-using $safeprojectname$.Areas.Blog;
-using $safeprojectname$.Areas.Home;
-using $safeprojectname$.Areas.UserAccount;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Areas.Blog;
+using $customNamespace$.UI.Web.Areas.Home;
+using $customNamespace$.UI.Web.Areas.UserAccount;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Common.Mvc.Html
+namespace $customNamespace$.UI.Web.Common.Mvc.Html
 {
     public static class HtmlHelperExtensions
     {

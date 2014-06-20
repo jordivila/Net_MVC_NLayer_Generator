@@ -4,11 +4,11 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using $customNamespace$.Models.Syndication;
 using $customNamespace$.Models.Unity;
-using $safeprojectname$.Areas.Blog.Models;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Common.Mvc.Html;
+using $customNamespace$.UI.Web.Areas.Blog.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Common.Mvc.Html;
 
-namespace $safeprojectname$.Areas.Blog.Controllers
+namespace $customNamespace$.UI.Web.Areas.Blog.Controllers
 {
     public class BlogController : Controller, IControllerWithClientResources
     {

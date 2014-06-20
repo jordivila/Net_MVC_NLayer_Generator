@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace $safeprojectname$.Areas.Test
+namespace $customNamespace$.UI.Web.Areas.Test
 {
     public class TestAreaRegistration : AreaRegistration
     {

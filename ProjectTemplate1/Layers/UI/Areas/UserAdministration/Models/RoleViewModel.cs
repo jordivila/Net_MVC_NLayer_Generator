@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using $customNamespace$.Models.Membership;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.UserAdministration.Models
+namespace $customNamespace$.UI.Web.Areas.UserAdministration.Models
 {
     public class RoleViewModel : baseViewModel
 	{

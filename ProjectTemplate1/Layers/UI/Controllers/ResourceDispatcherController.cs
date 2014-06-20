@@ -8,11 +8,11 @@ using Microsoft.Ajax.Utilities;
 using $customNamespace$.Models.Configuration;
 using $customNamespace$.Models.Cryptography;
 using $customNamespace$.Models.Enumerations;
-using $safeprojectname$.Common.Mvc.Attributes;
-using $safeprojectname$.Common.T4;
+using $customNamespace$.UI.Web.Common.Mvc.Attributes;
+using $customNamespace$.UI.Web.Common.T4;
 
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     [CacheFilterAttribute(Duration=9000000)]
     public class ResourceDispatcherController : Controller

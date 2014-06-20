@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using $customNamespace$.Models.UserRequestModel;
 using $customNamespace$.Models.UserSessionPersistence;
 using $customNamespace$.UI.Web.Common.AspNetApplicationServices;
@@ -84,6 +85,7 @@ namespace $customNamespace$.UI.Web
 
         public void Application_InitEnterpriseLibrary()
         {
+            DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             DependencyFactory.SetUnityContainerProviderFactory(UnityContainerProvider.GetContainer(FrontEndUnityContainerAvailable.ProxiesToAzure));
             LogWriterFactory logWriterFactory = new LogWriterFactory();
             Logger.SetLogWriter(logWriterFactory.Create());

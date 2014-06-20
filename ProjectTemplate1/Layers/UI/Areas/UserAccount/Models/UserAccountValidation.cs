@@ -1,6 +1,6 @@
 ﻿using System.Web.Security;
 
-namespace $safeprojectname$.Areas.UserAccount.Models
+namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
 {
     public static class AccountValidation
     {

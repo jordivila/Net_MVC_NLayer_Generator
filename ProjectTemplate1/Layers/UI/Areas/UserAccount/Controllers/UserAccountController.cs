@@ -9,16 +9,16 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
-using $safeprojectname$.Areas.Home;
-using $safeprojectname$.Areas.LogViewer;
-using $safeprojectname$.Areas.Test;
-using $safeprojectname$.Areas.UserAccount.Models;
-using $safeprojectname$.Areas.UserAdministration;
-using $safeprojectname$.Areas.UserProfile;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Areas.Home;
+using $customNamespace$.UI.Web.Areas.LogViewer;
+using $customNamespace$.UI.Web.Areas.Test;
+using $customNamespace$.UI.Web.Areas.UserAccount.Models;
+using $customNamespace$.UI.Web.Areas.UserAdministration;
+using $customNamespace$.UI.Web.Areas.UserProfile;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.UserAccount.Controllers
+namespace $customNamespace$.UI.Web.Areas.UserAccount.Controllers
 {
     public class UserAccountController : Controller, IControllerWithClientResources
     {
@@ -231,7 +231,7 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
         #endregion
 
         #region ChangePassword
-        [$safeprojectname$.Common.Mvc.Attributes.Authorize]
+        [$customNamespace$.UI.Web.Common.Mvc.Attributes.Authorize]
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult ChangePassword(ChangePasswordViewModel model)
         {
@@ -288,7 +288,7 @@ namespace $safeprojectname$.Areas.UserAccount.Controllers
         #endregion
 
         #region DashBoard
-        [$safeprojectname$.Common.Mvc.Attributes.Authorize]
+        [$customNamespace$.UI.Web.Common.Mvc.Attributes.Authorize]
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult Dashboard()
         {

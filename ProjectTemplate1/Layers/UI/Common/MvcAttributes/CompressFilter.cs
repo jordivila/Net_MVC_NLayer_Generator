@@ -3,7 +3,7 @@ using System.IO.Compression;
 using System.Web;
 using System.Web.Mvc;
 
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
     //http://weblogs.asp.net/rashid/archive/2008/03/28/asp-net-mvc-action-filter-caching-and-compression.aspx
     //http://msdn.microsoft.com/en-us/magazine/gg232768.aspx

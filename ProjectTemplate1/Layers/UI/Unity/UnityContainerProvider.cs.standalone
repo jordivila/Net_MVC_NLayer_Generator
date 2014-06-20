@@ -1,0 +1,62 @@
+﻿using Microsoft.Practices.Unity;
+using $customNamespace$.Models.Authentication;
+using $customNamespace$.Models.Logging;
+using $customNamespace$.Models.Membership;
+using $customNamespace$.Models.Profile;
+using $customNamespace$.Models.ProxyProviders;
+using $customNamespace$.Models.Roles;
+using $customNamespace$.Models.Syndication;
+using $customNamespace$.Models.Unity;
+using $customNamespace$.Models.UserRequestModel;
+using $customNamespace$.Models.UserSessionPersistence;
+using System;
+using System.Web;
+using System.Web.SessionState;
+using $customNamespace$.Models.SmtpModels;
+using $customNamespace$.DAL.MembershipServices;
+using $customNamespace$.DAL.MembershipRoleServices;
+using $customNamespace$.DAL.LoggingServices;
+using $customNamespace$.DAL.SyndicationServices;
+using $customNamespace$.DAL.TokenTemporaryPersistenceServices;
+using $customNamespace$.Models.TokenPersistence;
+using $customNamespace$.BL.SyndicationServices;
+using $customNamespace$.BL.LoggingServices;
+using $customNamespace$.BL.MembershipServices;
+using $customNamespace$.BL.AuthenticationServices;
+
+namespace $customNamespace$.UI.Web.Unity
+{
+    public class UnityContainerProvider
+    {
+        public static IUnityContainer GetContainer(FrontEndUnityContainerAvailable containerSelected)
+        {
+            IUnityContainer result = new UnityContainer();
+            /*Front End Interfaces begin*/
+            result.RegisterType(typeof(IAuthenticationProxy), typeof(AuthenticationBL), new InjectionMember[0]);
+            result.RegisterType(typeof(IMembershipProxy), typeof(MembershipBL), new InjectionMember[0]);
+            result.RegisterType(typeof(IRoleManagerProxy), typeof(RoleAdminBL), new InjectionMember[0]);
+            result.RegisterType(typeof(IRolesProxy), typeof(RoleAdminBL), new InjectionMember[0]);
+            result.RegisterType(typeof(IProfileProxy), typeof(ProfileBL), new InjectionMember[0]);
+            result.RegisterType(typeof(ILoggingProxy), typeof(LoggingBL), new InjectionMember[0]);
+            result.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationBL), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserRequestContextFrontEnd), typeof(UserRequestContextFrontEnd), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
+            /*Front End Interfaces end*/
+
+            /*Back End Interfaces begin*/
+            result.RegisterType(typeof(ISmtpClient), typeof(SmtpClientMock), new InjectionMember[0]);
+            result.RegisterType(typeof(IMembershipDAL), typeof(MembershipDAL), new InjectionMember[0]);
+            result.RegisterType(typeof(IRoleAdminDAL), typeof(RoleAdminDAL), new InjectionMember[0]);
+            result.RegisterType(typeof(IProfileDAL), typeof(ProfileDAL), new InjectionMember[0]);
+            result.RegisterType(typeof(ILoggingDAL), typeof(LoggingDAL), new InjectionMember[0]);
+            result.RegisterType(typeof(ISyndicationDAL), typeof(SyndicationDAL), new InjectionMember[0]);
+            result.RegisterType(typeof(ITokenTemporaryPersistenceDAL<>), typeof(TokenTemporaryDatabasePersistenceDAL<>), new InjectionMember[0]);
+            //result.RegisterType(typeof(IUserRequestModel), typeof(UserRequestContextBackEndNetTcp), new InjectionMember[0]);
+            //result.RegisterType(typeof(IUserRequestModel), typeof(UserRequestContextBackEndHttp), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserRequestModel), typeof(UserRequestContextBackEndStandaloneVersion), new InjectionMember[0]);
+            /*Back End Interfaces end*/
+
+            return result;
+        }
+    }
+}

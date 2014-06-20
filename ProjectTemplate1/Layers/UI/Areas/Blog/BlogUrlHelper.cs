@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.Blog
+namespace $customNamespace$.UI.Web.Areas.Blog
 {
     public static class BlogUrlHelper
     {

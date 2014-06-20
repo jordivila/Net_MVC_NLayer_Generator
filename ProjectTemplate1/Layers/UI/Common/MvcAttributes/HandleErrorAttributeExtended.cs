@@ -9,9 +9,9 @@ using Microsoft.Practices.EnterpriseLibrary.Logging;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Logging;
-using $safeprojectname$.Areas.Error;
+using $customNamespace$.UI.Web.Areas.Error;
 
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
     public class HandleErrorAttributeExtended : HandleErrorAttribute
     {

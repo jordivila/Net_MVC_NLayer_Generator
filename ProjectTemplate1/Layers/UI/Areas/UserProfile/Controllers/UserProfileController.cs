@@ -3,12 +3,12 @@ using Microsoft.Practices.Unity;
 using $customNamespace$.Models.Configuration.ConfigSections.ClientResources;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Unity;
-using $safeprojectname$.Areas.UserProfile.Models;
-using $safeprojectname$.Controllers;
+using $customNamespace$.UI.Web.Areas.UserProfile.Models;
+using $customNamespace$.UI.Web.Controllers;
 
-namespace $safeprojectname$.Areas.UserProfile.Controllers
+namespace $customNamespace$.UI.Web.Areas.UserProfile.Controllers
 {
-    [$safeprojectname$.Common.Mvc.Attributes.Authorize]
+    [$customNamespace$.UI.Web.Common.Mvc.Attributes.Authorize]
     public class UserProfileController : Controller, IControllerWithClientResources
     {
         protected override void Dispose(bool disposing)

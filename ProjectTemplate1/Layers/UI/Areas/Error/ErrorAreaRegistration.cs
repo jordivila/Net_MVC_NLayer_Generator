@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace $safeprojectname$.Areas.Error
+namespace $customNamespace$.UI.Web.Areas.Error
 {
     public class ErrorAreaRegistration : AreaRegistration
     {

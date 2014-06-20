@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.UserAdministration
+namespace $customNamespace$.UI.Web.Areas.UserAdministration
 {
     public class UserAdministrationAreaRegistration : AreaRegistration
     {

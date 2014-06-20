@@ -1,10 +1,10 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
 using $customNamespace$.Models.Logging;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Models;
 
 
-namespace $safeprojectname$.Areas.LogViewer.Models
+namespace $customNamespace$.UI.Web.Areas.LogViewer.Models
 {
     public class LogViewerModel : baseViewModel
     {

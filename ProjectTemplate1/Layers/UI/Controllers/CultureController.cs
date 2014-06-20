@@ -2,7 +2,7 @@
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Globalization;
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     public class CultureController : Controller
     {

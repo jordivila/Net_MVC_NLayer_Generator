@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using $safeprojectname$.Areas.Test.Models;
-using $safeprojectname$.Controllers;
+using $customNamespace$.UI.Web.Areas.Test.Models;
+using $customNamespace$.UI.Web.Controllers;
 
-namespace $safeprojectname$.Areas.Test.Controllers
+namespace $customNamespace$.UI.Web.Areas.Test.Controllers
 {
     public class TestController : AsyncController, IControllerWithClientResources
     {

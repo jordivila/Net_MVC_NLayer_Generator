@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using $customNamespace$.Models.UserRequestModel;
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     public static class ControllerHelper
     {

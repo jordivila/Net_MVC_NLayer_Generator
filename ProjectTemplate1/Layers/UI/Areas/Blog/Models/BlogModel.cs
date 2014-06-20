@@ -1,8 +1,8 @@
 ﻿using System.ServiceModel.Syndication;
 using $customNamespace$.Models.Syndication;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.Blog.Models
+namespace $customNamespace$.UI.Web.Areas.Blog.Models
 {
     //[NonValidateModelOnHttpGet]
     public class BlogModel : baseViewModel

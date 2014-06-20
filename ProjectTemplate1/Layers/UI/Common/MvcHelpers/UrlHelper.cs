@@ -1,10 +1,10 @@
 ﻿
 using System.Web.Mvc;
 using $customNamespace$.Models.Cryptography;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Common.Mvc.Html
+namespace $customNamespace$.UI.Web.Common.Mvc.Html
 {
     public static class UrlHelperExtension
     {
@@ -28,7 +28,7 @@ namespace $safeprojectname$.Common.Mvc.Html
                             System.Web.HttpUtility.UrlEncode(Crypto.Encrypt(controller, ResourceDispatcherController.ResourceDispatchCryptoPasswordKey)),
 
                             ResourceDispatcherController.ResourceDispatchParamVersionKey,
-                            $safeprojectname$.MvcApplication.Version,
+                            $customNamespace$.UI.Web.MvcApplication.Version,
 
                             ResourceDispatcherController.ResourceDispatchParamCultureKey,
                             baseModel.LocalizationResources.Culture);
@@ -46,7 +46,7 @@ namespace $safeprojectname$.Common.Mvc.Html
                             System.Web.HttpUtility.UrlEncode(Crypto.Encrypt(controller, ResourceDispatcherController.ResourceDispatchCryptoPasswordKey)),
 
                             ResourceDispatcherController.ResourceDispatchParamVersionKey,
-                            $safeprojectname$.MvcApplication.Version,
+                            $customNamespace$.UI.Web.MvcApplication.Version,
 
                             ResourceDispatcherController.ResourceDispatchParamCultureKey,
                             baseModel.LocalizationResources.Culture);

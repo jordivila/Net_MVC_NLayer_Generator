@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.Home.Controllers
+namespace $customNamespace$.UI.Web.Areas.Home.Controllers
 {
     [Serializable]
     public class HomeController : Controller, IControllerWithClientResources

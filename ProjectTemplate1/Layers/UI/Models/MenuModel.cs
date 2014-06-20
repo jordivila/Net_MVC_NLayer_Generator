@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using $customNamespace$.Models;
 
-namespace $safeprojectname$.Models
+namespace $customNamespace$.UI.Web.Models
 {
     public class MenuModel : baseModel
     {

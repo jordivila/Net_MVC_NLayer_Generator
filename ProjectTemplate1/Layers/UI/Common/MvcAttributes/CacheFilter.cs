@@ -2,7 +2,7 @@
     using System.Web;
     using System.Web.Mvc;
 
-namespace $safeprojectname$.Common.Mvc.Attributes
+namespace $customNamespace$.UI.Web.Common.Mvc.Attributes
 {
     
     public class CacheFilterAttribute : ActionFilterAttribute

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using $customNamespace$.Resources.Helpers.GeneratedResxClasses;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.Test.Models
+namespace $customNamespace$.UI.Web.Areas.Test.Models
 {
     public class TestViewModel : baseViewModel
     {

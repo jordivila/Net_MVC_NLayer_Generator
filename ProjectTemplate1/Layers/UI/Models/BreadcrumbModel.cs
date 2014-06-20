@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using $customNamespace$.Models;
 using $customNamespace$.Resources.General;
-using $safeprojectname$.Areas.Home;
+using $customNamespace$.UI.Web.Areas.Home;
 
-namespace $safeprojectname$.Models
+namespace $customNamespace$.UI.Web.Models
 {
     public class Breadcrumb : baseModel, IDisposable
     {

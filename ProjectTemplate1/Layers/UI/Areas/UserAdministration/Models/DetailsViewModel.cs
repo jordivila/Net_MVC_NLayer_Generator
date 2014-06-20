@@ -5,10 +5,10 @@ using System.Web.Mvc;
 using $customNamespace$.Models;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Membership;
-using $safeprojectname$.Controllers;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Controllers;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.UserAdministration.Models
+namespace $customNamespace$.UI.Web.Areas.UserAdministration.Models
 {
 	public class DetailsViewModel: baseViewModel
 	{

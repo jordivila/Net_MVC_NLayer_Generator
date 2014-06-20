@@ -1,5 +1,5 @@
 ﻿
-namespace $safeprojectname$.Models
+namespace $customNamespace$.UI.Web.Models
 {
     //public class LocalizationResourcesHelper : baseModel, IDisposable
     //{

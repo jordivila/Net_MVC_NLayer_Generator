@@ -16,7 +16,7 @@ using $customNamespace$.Models.Unity;
 
 
 
-namespace $safeprojectname$.Common.AspNetApplicationServices
+namespace $customNamespace$.UI.Web.Common.AspNetApplicationServices
 {
     public class MessageInspectorBehaviorExtension : BehaviorExtensionElement
     {

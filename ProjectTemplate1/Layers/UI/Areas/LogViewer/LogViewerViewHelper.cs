@@ -1,5 +1,5 @@
 ﻿
-namespace $safeprojectname$.Areas.LogViewer
+namespace $customNamespace$.UI.Web.Areas.LogViewer
 {
     public static class LogViewerViewHelper
     {

@@ -10,12 +10,12 @@ using $customNamespace$.Models.Authentication;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Unity;
-using $safeprojectname$.Areas.Error.Models;
-using $safeprojectname$.Areas.UserAccount;
+using $customNamespace$.UI.Web.Areas.Error.Models;
+using $customNamespace$.UI.Web.Areas.UserAccount;
 using $customNamespace$.Resources.General;
 
 
-namespace $safeprojectname$.Areas.Error.Controllers
+namespace $customNamespace$.UI.Web.Areas.Error.Controllers
 {
     public class ErrorController : AsyncController   //--> Must NOT implement IControllerWithClientResources. Otherwise Take a look at ~/Views/Shared/_LogOnPartial.cshtml
     {

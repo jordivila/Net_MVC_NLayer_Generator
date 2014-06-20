@@ -2,9 +2,9 @@
 using $customNamespace$.Models;
 using $customNamespace$.Models.Configuration.ConfigSections.ClientResources;
 using $customNamespace$.Models.Profile;
-using $safeprojectname$.Controllers;
+using $customNamespace$.UI.Web.Controllers;
 
-namespace $safeprojectname$.Models
+namespace $customNamespace$.UI.Web.Models
 {
     public class baseViewModel : baseModel, IDisposable
     {

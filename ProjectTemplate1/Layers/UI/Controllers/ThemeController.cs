@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
 
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     public class ThemeController : Controller
     {

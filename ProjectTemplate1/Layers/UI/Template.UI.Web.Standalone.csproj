@@ -1071,6 +1071,15 @@
       <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\$customNamespace$.DAL\$customNamespace$.DAL.csproj">
+      <Project>{EDC045DC-A310-426E-B714-61967C41383F}</Project>
+      <Name>$customNamespace$.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\$customNamespace$.BL\$customNamespace$.BL.csproj">
+      <Project>{FCADB22A-E826-4444-8C2B-9F7FC36CCE78}</Project>
+      <Name>$customNamespace$.BL</Name>
+    </ProjectReference>
+
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

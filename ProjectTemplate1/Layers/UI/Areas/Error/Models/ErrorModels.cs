@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using $safeprojectname$.Models;
+using $customNamespace$.UI.Web.Models;
 
-namespace $safeprojectname$.Areas.Error.Models
+namespace $customNamespace$.UI.Web.Areas.Error.Models
 {
     public class SessionExpiredModel: baseViewModel
     {

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration" />
+    <section name="loggingConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.LoggingSettings, Microsoft.Practices.EnterpriseLibrary.Logging" requirePermission="true" />
+    <section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data" requirePermission="true" />
+    <sectionGroup name="templateSettings">
+      <section name="mailingSettings" type="$customNamespace$.Models.Configuration.ConfigSections.Mailing.MailingSettingsConfigSection, $customNamespace$.Models" />
+      <section name="domainInfoSettings" type="$customNamespace$.Models.Configuration.ConfigSections.DomainInfo.DomainInfoSettingsConfigSection, $customNamespace$.Models" />
+    </sectionGroup>
+  </configSections>
+  <templateSettings>
+    <domainInfoSettings>
+      <domainInfo domainName="CurlyCode.com" securityProtocol="https"></domainInfo>
+    </domainInfoSettings>
+    <mailingSettings>
+      <mailAddresses supportTeamEmailAddress="support@template.com"></mailAddresses>
+    </mailingSettings>
+  </templateSettings>
+  <dataConfiguration defaultDatabase="DbCnnStrMembership" />
+  <connectionStrings>
+    <clear/>
+    <add name="DbCnnStrMembership"        connectionString="Server=$DatabaseServerName$;Database=$MembershipDBName$;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+    <add name="DbCnnStrLogging"           connectionString="Server=$DatabaseServerName$;Database=$LoggingDBName$;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+    <add name="DbCnnStrTokenPersistence"  connectionString="Server=$DatabaseServerName$;Database=$TokenPersistenceDBNameKey$;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <loggingConfiguration name="logWriterName" tracingEnabled="true" defaultCategory="General" logWarningsWhenNoCategoriesMatch="true">
+    <listeners>
+      <add name="Database Trace Listener" type="$customNamespace$.Models.Logging.DatabaseTraceListener, $customNamespace$.Models" listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.CustomTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging" databaseInstanceName="DbCnnStrLogging" />
+      <!--<add name="ListenerOnAzureStorageTable" azureStorageConnectionStringName="StorageConnectionString" type="$customNamespace$.Models.Logging.AzureTableStorageListener, $customNamespace$.Models" listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.CustomTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging" />-->
+    </listeners>
+    <categorySources>
+      <!-- Begin WCF Logging Scope-->
+      <add switchValue="All" name="WCFGeneral">
+        <listeners>
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+          <add name="Database Trace Listener" />
+        </listeners>
+      </add>
+      <add switchValue="All" name="WCFBeginRequest">
+        <listeners>
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+          <add name="Database Trace Listener" />
+        </listeners>
+      </add>
+      <!-- End WCF Logging Scope -->
+
+      <!-- Begin UI Proxied Logging -->
+      <add switchValue="All" name="UIGeneral">
+        <listeners>
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+          <add name="Database Trace Listener" />
+        </listeners>
+      </add>
+      <add switchValue="All" name="UIBeginRequest">
+        <listeners>
+          <add name="Database Trace Listener" />
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+        </listeners>
+      </add>
+      <add switchValue="All" name="UIServerSideUnhandledException">
+        <listeners>
+          <add name="Database Trace Listener" />
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+        </listeners>
+      </add>
+      <add switchValue="All" name="UIClientSideJavascriptError">
+        <listeners>
+          <add name="Database Trace Listener" />
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+        </listeners>
+      </add>
+      <!--End UI Proxied Logging -->
+    </categorySources>
+    <specialSources>
+      <allEvents switchValue="All" name="All Events" />
+      <notProcessed switchValue="All" name="Unprocessed Category" />
+      <errors switchValue="All" name="Logging Errors &amp; Warnings">
+        <listeners>
+          <add name="Database Trace Listener" />
+          <!--<add name="ListenerOnAzureStorageTable" />-->
+        </listeners>
+      </errors>
+    </specialSources>
+  </loggingConfiguration>
+  <appSettings>
+    <add key="webpages:Version" value="2.0.0.0" />
+    <add key="PreserveLoginUrl" value="true" />
+    <!--<add key="webpages:Enabled" value="true" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />-->
+  </appSettings>
+  <system.web>
+    <!--<globalization uiCulture="es" culture="es-ES" />-->
+    <sessionState mode="StateServer" cookieName=".UISessionId" />
+    <customErrors mode="Off">
+      <error statusCode="404" redirect="/Error/NotFound404" />
+      <error statusCode="401" redirect="/Error/NotFound404" />
+    </customErrors>
+    <compilation debug="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+      </assemblies>
+    </compilation>
+    <pages>
+      <namespaces>
+        <add namespace="System.Web.Helpers" />
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="System.Web.WebPages" />
+      </namespaces>
+    </pages>
+    <anonymousIdentification enabled="false" />
+    <authentication mode="Forms">
+      <!--Do NOT remove sliding expiration -->
+      <forms cookieless="UseCookies" name=".WCFAUTH" slidingExpiration="true" timeout="20"></forms>
+    </authentication>
+    <membership defaultProvider="AspNetSqlMembershipProvider" userIsOnlineTimeWindow="20">
+      <providers>
+        <clear />
+        <add applicationName="$customNamespace$" connectionStringName="DbCnnStrMembership" enablePasswordReset="true" enablePasswordRetrieval="false" maxInvalidPasswordAttempts="5" minRequiredNonalphanumericCharacters="0" minRequiredPasswordLength="6" name="AspNetSqlMembershipProvider" passwordAttemptWindow="10" requiresQuestionAndAnswer="false" requiresUniqueEmail="true" type="System.Web.Security.SqlMembershipProvider" />
+      </providers>
+    </membership>
+    <profile enabled="true" defaultProvider="AspNetSqlProfileProvider" automaticSaveEnabled="true">
+      <properties>
+        <add name="FirstName" type="System.String" allowAnonymous="false" serializeAs="String" />
+        <add name="LastName" type="System.String" allowAnonymous="false" serializeAs="String" />
+        <add name="BirthDate" type="System.Nullable`1[System.DateTime]" allowAnonymous="false" />
+        <add name="Gender" type="System.String" allowAnonymous="false" />
+        <add name="Culture" type="System.String" allowAnonymous="false" />
+        <add name="Theme" type="System.String" allowAnonymous="false" />
+      </properties>
+      <providers>
+        <clear />
+        <add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="DbCnnStrMembership" applicationName="$customNamespace$"></add>
+      </providers>
+    </profile>
+    <roleManager enabled="true" defaultProvider="AspNetSqlRoleProvider">
+      <providers>
+        <clear />
+        <add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="DbCnnStrMembership" applicationName="$customNamespace$" />
+      </providers>
+    </roleManager>
+
+  </system.web>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules runAllManagedModulesForAllRequests="false" />
+  </system.webServer>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>

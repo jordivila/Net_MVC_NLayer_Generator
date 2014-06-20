@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace $safeprojectname$.Areas.UserAccount
+namespace $customNamespace$.UI.Web.Areas.UserAccount
 {
     public static class UserAccountUrlHelper
     {

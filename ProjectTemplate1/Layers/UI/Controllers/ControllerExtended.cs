@@ -1,5 +1,5 @@
 ﻿
-namespace $safeprojectname$.Controllers
+namespace $customNamespace$.UI.Web.Controllers
 {
     //public abstract class ControllerUserIntended : Controller
     //{

@@ -288,7 +288,7 @@ namespace $customNamespace$.Models.UserRequestModel
         }
     }
 
-    #endregion 
+    #endregion
 
 
     #region Back End User Request Context
@@ -523,6 +523,146 @@ namespace $customNamespace$.Models.UserRequestModel
         {
 
         }
+    }
+
+    public class UserRequestContextBackEndStandaloneVersion : IUserRequestModel<HttpContext, HttpCookieCollection>
+    {
+        public HttpContext Context
+        {
+            get
+            {
+                return HttpContext.Current;
+            }
+        }
+        public HttpCookieCollection ContextBag
+        {
+            get
+            {
+                return this.Context.Request.Cookies;
+            }
+            //set
+            //{
+            //    this.Context.Response.Cookies.Add(new HttpCookie());
+            //    WebOperationContext.Current.OutgoingResponse.Headers.Add(HttpResponseHeader.SetCookie, string.Format("{0}={1}", value[0].Name, value.GetHeader<string>(0)));
+            //    //Context.OutgoingMessageHeaders.Add(MessageHeader.CreateHeader(value[0].Name, value[0].Namespace, value.GetHeader<string>(0)));
+            //}
+        }
+        public FormsIdentity UserFormsIdentity
+        {
+            get
+            {
+                FormsAuthenticationTicket fTicket = FormsAuthentication.Decrypt(this.WcfAuthenticationCookieValue);
+                FormsIdentity fIdentity = new FormsIdentity(fTicket);
+                return fIdentity;
+            }
+        }
+        public bool UserIsLoggedIn
+        {
+            get
+            {
+                return this.UserFormsIdentity.IsAuthenticated;
+            }
+        }
+        public string WcfAuthenticationCookieValue
+        {
+            get
+            {
+                if (this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName] != null)
+                {
+                    return this.ContextBag[UserRequestModel_Keys.WcfFormsAuthenticationCookieName].Value;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+                //return ContextBag.GetHeader<string>(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, UserRequestModel_Keys.WcfCustomBehaviourName);
+            }
+            set
+            {
+                HttpCookie c = new HttpCookie(UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value);
+
+                //string cookieValue = string.Format("{0}={1}", UserRequestModel_Keys.WcfFormsAuthenticationCookieName, value);
+                if (string.IsNullOrEmpty(value))
+                {
+                    c.Expires = DateTime.Now.AddYears(-100);
+                    //cookieValue = string.Format("{0};expires={1};", cookieValue, DateTime.Now.AddYears(-100));
+                }
+                //WebOperationContext.Current.OutgoingResponse.Headers.Add(HttpResponseHeader.SetCookie, cookieValue);
+                this.Context.Response.Cookies.Add(c);
+            }
+        }
+        public string WcfSessionIdKeyValue
+        {
+            get
+            {
+                if (this.ContextBag[UserRequestModel_Keys.WcfSessionIdKey] != null)
+                {
+                    return this.ContextBag[UserRequestModel_Keys.WcfSessionIdKey].Value;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+                //return ContextBag.GetHeader<string>(UserRequestModel_Keys.WcfSessionIdKey, UserRequestModel_Keys.WcfCustomBehaviourName);
+            }
+        }
+        internal CultureInfo CultureSelected
+        {
+            get
+            {
+                string cultureName = string.Empty;
+
+                if (this.ContextBag[UserRequestModel_Keys.WcfClientCultureSelectedCookieName] != null)
+                {
+                    cultureName = this.ContextBag[UserRequestModel_Keys.WcfClientCultureSelectedCookieName].Value;
+                }
+
+                //string cultureName = ContextBag.GetHeader<string>(UserRequestModel_Keys.WcfClientCultureSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName);
+                return GlobalizationHelper.CultureInfoGetOrDefault(cultureName);
+            }
+            set
+            {
+                // We should not set culture at service layer. This should be done at frontend side
+            }
+        }
+        internal ThemesAvailable ThemeSelected
+        {
+            get
+            {
+                return EnumExtension.ToEnumMember<ThemesAvailable>(this.ContextBag[UserRequestModel_Keys.WcfClientThemeSelectedCookieName].Value).Value;
+                //return ContextBag.GetHeader<ThemesAvailable>(UserRequestModel_Keys.WcfClientThemeSelectedCookieName, UserRequestModel_Keys.WcfCustomBehaviourName);
+            }
+            set
+            {
+                // We should not set culture at service layer. This should be done at frontend side
+            }
+        }
+        internal CultureInfo CultureInfoSelected
+        {
+            get
+            {
+                return this.CultureSelected;
+            }
+        }
+        public UserProfileModel UserProfile
+        {
+            get
+            {
+                UserProfileModel userProfile = new UserProfileModel();
+                userProfile.Culture = this.CultureSelected;
+                userProfile.Theme = this.ThemeSelected;
+                return userProfile;
+            }
+            set
+            {
+
+            }
+        }
+        public void Dispose()
+        {
+
+        }
+
     }
 
     #endregion
