@@ -40,7 +40,7 @@ namespace $customNamespace$.UI.Web.Unity
             result.RegisterType(typeof(ILoggingProxy), typeof(LoggingBL), new InjectionMember[0]);
             result.RegisterType(typeof(ISyndicationProxy), typeof(SyndicationBL), new InjectionMember[0]);
             result.RegisterType(typeof(IUserRequestContextFrontEnd), typeof(UserRequestContextFrontEnd), new InjectionMember[0]);
-            result.RegisterType(typeof(IUserSessionModel<HttpContext, HttpSessionState>), typeof(UserSessionHttp), new InjectionMember[0]);
+            result.RegisterType(typeof(IUserSessionModel), typeof(UserSessionAtHttpCookies), new InjectionMember[0]);
             /*Front End Interfaces end*/
 
             /*Back End Interfaces begin*/

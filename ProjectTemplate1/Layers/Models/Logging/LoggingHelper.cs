@@ -24,11 +24,18 @@ namespace $customNamespace$.Models.Logging
             {
                 if (Logger.ShouldLog(logEntry))
                 {
-                    Task.Factory.StartNew(() => LoggingHelper.LogMessageAsync(logEntry));
+                    // Warning: starting new tasks could create threading deadlocks
+                    //Task.Factory.StartNew(() => LoggingHelper.LogMessageAsync(logEntry));
+
+                    LoggingHelper.LogMessageAsync(logEntry);
                 }
             }
         }
 
+        public static void Write(Exception exception)
+        {
+            LoggingHelper.Write(new LogEntry(exception, LoggerCategories.WCFGeneral, 1, 1, TraceEventType.Error, string.Format("{0} (DetailException)", baseModel.GetInvokingMethod().DeclaringType.FullName), null));
+        }
 
     }
 }

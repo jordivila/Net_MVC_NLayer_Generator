@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using $customNamespace$.Models.Common;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace $customNamespace$.Models
 {
@@ -22,9 +23,9 @@ namespace $customNamespace$.Models
     [Serializable]
     public abstract class baseModel : Object
     {
-        public baseModel() 
-        { 
-        
+        public baseModel()
+        {
+
         }
 
         private static Func<IDataReader, string, bool> readerColumnExists = delegate(IDataReader rdr, string columnName)
@@ -87,12 +88,22 @@ namespace $customNamespace$.Models
             return ((MethodCallExpression)action.Body).Method;
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public static MethodBase GetCurrentMethod()
         {
             StackTrace st = new StackTrace();
             StackFrame sf = st.GetFrame(1);
             return sf.GetMethod();
         }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static MethodBase GetInvokingMethod()
+        {
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(2);
+            return sf.GetMethod();
+        }
+
 
         public object DownCast(object source)
         {

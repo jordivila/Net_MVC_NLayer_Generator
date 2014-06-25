@@ -49,15 +49,15 @@ namespace $customNamespace$.UI.Web
             }
         }
 
-        private static IUserSessionModel<HttpContext, HttpSessionState> _userSession = null;
+        private static IUserSessionModel _userSession = null;
 
-        public static IUserSessionModel<HttpContext, HttpSessionState> UserSession
+        public static IUserSessionModel UserSession
         {
             get
             {
                 if (_userSession == null)
                 {
-                    _userSession = DependencyFactory.Resolve<IUserSessionModel<HttpContext, HttpSessionState>>();
+                    _userSession = DependencyFactory.Resolve<IUserSessionModel>();
                 }
 
                 return _userSession;

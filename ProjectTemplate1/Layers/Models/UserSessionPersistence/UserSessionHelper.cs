@@ -2,65 +2,41 @@
 using System.Web;
 using System.Web.SessionState;
 using System.Xml.Serialization;
+using System.Linq;
 using Microsoft.Practices.Unity;
-using $safeprojectname$.Membership;
-using $safeprojectname$.Unity;
+using $customNamespace$.Models.Membership;
+using $customNamespace$.Models.Unity;
+using $customNamespace$.Models.Cryptography;
+using $customNamespace$.Models.Logging;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 
-namespace $safeprojectname$.UserSessionPersistence
+namespace $customNamespace$.Models.UserSessionPersistence
 {
-    public interface IUserSessionModel<TContext, TObjectCollection> : IDisposable
+    public interface IUserSessionModel : IDisposable
     {
-        TContext Context { get; }
-        TObjectCollection ContextBag { get; }
-
         DataFilterUserList UserAdministrationController_LastSearch { get; set; }
     }
 
-    //public static class UserSessionHelper<TContext, TObjectCollection>
-    //{
-    //    private static IUserSessionModel<HttpContext, HttpSessionState> httpUserSessionPersistence = null;
-    //    //private static IUserSessionModel<OperationContext, MessageHeaders> ntpTcpUserSessionPersistence = null;
+    public interface IUserSessionModel<TContext, TObjectCollection> : IUserSessionModel
+    {
+        TContext Context { get; }
+        TObjectCollection ContextBag { get; }
+    }
 
-    //    public static object CreateUserSession()
-    //    {
-    //        object result = null;
+    public abstract class UserSessionBase
+    {
+        protected const string _CryptoPassword = "UserSessionCryptoPassword";
+        protected const string _UserAdministrationController_LastSearch = "lsUAC";
 
-    //        if (typeof(TContext) == typeof(HttpContext))
-    //        {
-    //            if (UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence == null)
-    //            {
-    //                using (DependencyFactory dependencyFactory = new DependencyFactory())
-    //                {
-    //                    UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence = (IUserSessionModel<HttpContext, HttpSessionState>)dependencyFactory.Unity.Resolve<IUserSessionModel<HttpContext, HttpSessionState>>();
-    //                }
-    //            }
-    //            result = UserSessionHelper<TContext, TObjectCollection>.httpUserSessionPersistence;
-    //        }
-
-    //        //if (typeof(TContext) == typeof(OperationContext))
-    //        //{
-    //        //    if (UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence == null)
-    //        //    {
-    //        //        UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence = (IUserSessionModel<OperationContext, MessageHeaders>)DependencyFactory.Unity.Resolve<IUserSessionModel<OperationContext, MessageHeaders>>();
-    //        //    }
-    //        //    result = UserSessionHelper<TContext, TObjectCollection>.ntpTcpUserSessionPersistence;
-    //        //}
-
-    //        if (result == null)
-    //        {
-    //            throw new NotImplementedException("IUserSessionModel Not supported");
-    //        }
-    //        else
-    //        {
-    //            return result;
-    //        }
-    //    }
-    //}
+        public UserSessionBase() { }
+    }
 
     [Serializable]
-    public class UserSessionHttp : IUserSessionModel<HttpContext, HttpSessionState>
+    public class UserSessionAtHttpSessionState : UserSessionBase, IUserSessionModel<HttpContext, HttpSessionState>
     {
+        public UserSessionAtHttpSessionState() { }
+
         [XmlIgnore]
         public HttpContext Context
         {
@@ -84,7 +60,8 @@ namespace $safeprojectname$.UserSessionPersistence
         {
             get
             {
-                string jsonSerializedFilter = (string)ContextBag["UserAdministrationController_LastSearch"];
+                string jsonSerializedFilter = (string)ContextBag[UserSessionBase._UserAdministrationController_LastSearch];
+
                 if (string.IsNullOrEmpty(jsonSerializedFilter))
                 {
                     return null;
@@ -96,7 +73,7 @@ namespace $safeprojectname$.UserSessionPersistence
             }
             set
             {
-                ContextBag["UserAdministrationController_LastSearch"] = ((DataFilterUserList)value).SerializeToJson();
+                ContextBag[UserSessionBase._UserAdministrationController_LastSearch] = ((DataFilterUserList)value).SerializeToJson();
             }
         }
 
@@ -105,4 +82,78 @@ namespace $safeprojectname$.UserSessionPersistence
 
         }
     }
+
+    [Serializable]
+    public class UserSessionAtHttpCookies : UserSessionBase, IUserSessionModel<HttpContext, HttpCookieCollection>
+    {
+        public UserSessionAtHttpCookies() { }
+
+        [XmlIgnore]
+        public HttpContext Context
+        {
+            get
+            {
+                return HttpContext.Current;
+            }
+        }
+
+        [XmlIgnore]
+        public HttpCookieCollection ContextBag
+        {
+            get
+            {
+                return this.Context.Request.Cookies;
+            }
+        }
+
+        [XmlElement]
+        public DataFilterUserList UserAdministrationController_LastSearch
+        {
+            get
+            {
+                HttpCookie c = ContextBag[UserSessionBase._UserAdministrationController_LastSearch];
+
+                if (c == null)
+                {
+                    // do nothing
+                }
+
+                DataFilterUserList result = null;
+
+                if (c != null)
+                {
+                    try
+                    {
+                        result = baseModel.DeserializeFromJson<DataFilterUserList>(Crypto.Decrypt(c.Value, UserSessionBase._CryptoPassword));
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggingHelper.Write(ex);
+                    }
+                    
+                }
+
+                return result;
+            }
+            set
+            {
+                string valueSerialized = Crypto.Encrypt(((DataFilterUserList)value).SerializeToJson(), UserSessionBase._CryptoPassword);
+
+                if (this.Context.Response.Cookies.AllKeys.Contains(UserSessionBase._UserAdministrationController_LastSearch))
+                {
+                    this.Context.Response.Cookies[UserSessionBase._UserAdministrationController_LastSearch].Value = valueSerialized;
+                }
+                else
+                {
+                    this.Context.Response.Cookies.Add(new HttpCookie(UserSessionBase._UserAdministrationController_LastSearch, valueSerialized));
+                }
+            }
+        }
+
+        public virtual void Dispose()
+        {
+
+        }
+    }
+
 }
