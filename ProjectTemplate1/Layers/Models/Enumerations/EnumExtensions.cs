@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
 using System.Runtime.Serialization;
 using System.Linq;
 
 
-namespace $safeprojectname$.Enumerations
+namespace $customNamespace$.Models.Enumerations
 {
     public static class EnumExtension
     {
@@ -23,31 +22,7 @@ namespace $safeprojectname$.Enumerations
                 return localizedDescription;
             }
         }
-        public static IEnumerable<SelectListItem> ToSelectList(this Enum valueSelected, Type enumType)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
-            Array enumValues = Enum.GetValues(enumType);
-            foreach (Enum item in enumValues)
-            {
-                list.Add(new SelectListItem()
-                {
-                    Selected = item.Equals(valueSelected),
-                    Text = EnumExtension.EnumDescription(item),
-                    Value = item.ToString()
-                });
-            }
-            return list;
-        }
-        public static IEnumerable<SelectListItem> ToSelectList(this Enum valueSelected, Type enumType, Func<Enum, SelectListItem> forEachItem)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
-            Array enumValues = Enum.GetValues(enumType);
-            foreach (Enum item in enumValues)
-            {
-                list.Add(forEachItem(item));
-            }
-            return list;
-        }
+
         public static string ToUri(this ThemesAvailable themeSelected)
         {
             return string.Format("http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/{0}/jquery-ui.css", themeSelected.ToString().Replace("_", "-").ToLower());
@@ -64,7 +39,7 @@ namespace $safeprojectname$.Enumerations
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
             return enumMemberAttribute.Value;
         }
-        
+
         public static Nullable<T> ToEnumMember<T>(string str) where T : struct
         {
             var enumType = typeof(T);
@@ -82,7 +57,7 @@ namespace $safeprojectname$.Enumerations
         public static Nullable<T> ToEnumMember<T>(string str, bool useDefaultValue) where T : struct
         {
             Nullable<T> result = EnumExtension.ToEnumMember<T>(str);
-            
+
             if ((!result.HasValue) && useDefaultValue)
             {
                 result = default(T);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,6 +11,7 @@ using System.Web.Mvc.Html;
 using $customNamespace$.Models;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
+using $customNamespace$.Models.Globalization;
 using $customNamespace$.Resources.General;
 using $customNamespace$.Resources.Helpers;
 using $customNamespace$.UI.Web.Areas.Blog;
@@ -123,7 +125,56 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
 
     }
 
-    #region jQuery Helper 
+    public static class EnumExtensions
+    {
+        public static IEnumerable<SelectListItem> ToSelectList(this Enum valueSelected, Type enumType)
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            Array enumValues = Enum.GetValues(enumType);
+            foreach (Enum item in enumValues)
+            {
+                list.Add(new SelectListItem()
+                {
+                    Selected = item.Equals(valueSelected),
+                    Text = EnumExtension.EnumDescription(item),
+                    Value = item.ToString()
+                });
+            }
+            return list;
+        }
+        public static IEnumerable<SelectListItem> ToSelectList(this Enum valueSelected, Type enumType, Func<Enum, SelectListItem> forEachItem)
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            Array enumValues = Enum.GetValues(enumType);
+            foreach (Enum item in enumValues)
+            {
+                list.Add(forEachItem(item));
+            }
+            return list;
+        }
+    }
+
+    public static class GlobalizationExtension
+    {
+        public static List<SelectListItem> ToSelectList(this CultureInfo c)
+        {
+            var x = (from cAvailble in GlobalizationHelper.CultureInfoAvailableList()
+                     select new SelectListItem()
+                     {
+                         Text = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(cAvailble.NativeName),
+                         Value = cAvailble.Name
+                     }).ToList();
+
+            if (x.Any(p => p.Value == c.Name))
+            {
+                x.Where(p => p.Value == c.Name).First().Selected = true;
+            }
+
+            return x;
+        }
+    }
+
+    #region jQuery Helper
     public class jQueryHelpers
     {
         public enum Icon : int
@@ -369,7 +420,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             //return htmlHelper.ValidationSummary( htmlHelper.ResourceTexts().ResourceTextsGeneral.PleaseReviewForm, new { @class = "ui-widgetForm-ValidationSummary ui-state-error ui-corner-all" });
         }
 
-    
+
     }
     #endregion
 
@@ -430,7 +481,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             }
             return ButtonExtensions.Button(htmlHelper, htmlContent, buttonIcon, buttonType, attrs);
         }
-    
+
     }
     #endregion
 
@@ -500,7 +551,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
                                                                         );
             return MvcHtmlString.Create(htmlString);
         }
-    
+
     }
     #endregion
 
@@ -700,7 +751,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             IHtmlString emptyResultsMessage = MvcHtmlString.Create(string.IsNullOrEmpty(this.EmptyResultsMessage) ? $customNamespace$.Resources.General.GeneralTexts.NoDataFound : this.EmptyResultsMessage);
             WebGridStyle webGridStyle = this.webGridStyle;
             int columnsCount = this.columns.Count();
-            
+
 
             return htmlHelper.Display(this.FieldNamePrefix,
                                                         "WebGrid",
