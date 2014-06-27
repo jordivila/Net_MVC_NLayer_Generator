@@ -6,7 +6,7 @@ fieldset,img,hr{border:none;}
 caption,th {text-align:left;}
 td {vertical-align:top;}
 body{padding:0em 0.5em 0.5em 0.5em;border:0;font-size:1em !important; border:0 !important;}
-pre.ui-widget-content{font-size:1.1em !important;padding:0.5em;}
+pre.ui-widget-content{font-size:1em !important;padding:0.5em;}
 input[type=text], input[type=password], input[type=email], select {padding:0.5em 0em 0.5em 0.5em;margin:0 0 0 0;font-weight:normal !important;}
 select {padding:0.5em 0.5em 0.5em 0.5em;}
 input[type=checkbox].ui-widget-content { border:0px solid transparent !important; }
