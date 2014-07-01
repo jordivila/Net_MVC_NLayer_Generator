@@ -1063,10 +1063,6 @@
       <Project>{893BC36D-2348-404D-BDB1-6A19A9CCFF68}</Project>
       <Name>$customNamespace$.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\$customNamespace$.Models.Azure\$customNamespace$.Models.Azure.csproj">
-      <Project>{D76105FF-17C0-4255-951A-3A29F704BF6D}</Project>
-      <Name>$customNamespace$.Models.Azure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\$customNamespace$.Resources\$customNamespace$.Resources.csproj">
       <Project>{31EA2808-81A4-48CB-8730-6B8883886587}</Project>
       <Name>$customNamespace$.Resources</Name>
