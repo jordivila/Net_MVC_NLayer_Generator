@@ -61,6 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Layers\GitFiles\.deployment">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Layers\CloudServices\Roles\diagnostics.wadcfg" />
     <None Include="Layers\CloudServices\Template.CloudServices.ccproj" />
     <None Include="Layers\CloudServices\ServiceConfiguration.Cloud.cscfg" />
@@ -479,6 +483,14 @@
     <None Include="Layers\Resources\UserProfile\UserProfileTexts.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Layers\GitFiles\.gitattributes">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Layers\GitFiles\.gitignore">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Layers\BL\Template.BL.vstemplate" />
     <Content Include="Layers\BL\Template.BL.csproj" />
     <Content Include="Layers\BL\__TemplateIcon.ico" />

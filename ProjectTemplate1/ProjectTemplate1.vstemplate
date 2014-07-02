@@ -3,7 +3,7 @@
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
     <Name>ASP.NET MVC Layered Application</Name>
-    <Description xml:space="preserve">Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
+    <Description xml:space="preserve">XXX Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Icon></Icon>
     <SortOrder>90</SortOrder> 
     <EnableEditOfLocationField>true</EnableEditOfLocationField>
@@ -32,7 +32,10 @@
       <ProjectTemplateLink ProjectName="$customNamespace$.WCF.ServicesHostWorkerRole">Layers\WCFHostWorkerRole\Template.WCF.ServicesHostWorkerRole.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$customNamespace$.CloudServices">Layers\CloudServices\Template.CloudServices.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
+    
   </TemplateContent>
+  
+  
   <WizardExtension>
     <Assembly>VSIX_MVC_Layered_Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=159c44d1dc74dc87</Assembly>
     <FullClassName>VSIX_MVC_Layered_Wizard.IWizardImplementation</FullClassName>

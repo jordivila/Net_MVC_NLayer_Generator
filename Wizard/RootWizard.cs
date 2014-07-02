@@ -9,6 +9,8 @@ using System.Linq;
 using Microsoft.VisualStudio;
 using System.Diagnostics;
 using System.Xml;
+using EnvDTE100;
+using EnvDTE80;
 
 namespace VSIX_MVC_Layered_Wizard
 {
@@ -35,6 +37,7 @@ namespace VSIX_MVC_Layered_Wizard
 
         public void RunFinished()
         {
+            this.GitHelperFiles_Add();
             this.SolutionEvents_SetStartupProjects();
 
             IWizardImplementation.GlobalData.LogWriter.Dispose();
@@ -287,6 +290,18 @@ namespace VSIX_MVC_Layered_Wizard
         }
         #endregion
 
+        #region Git Helper Files
 
+        private void GitHelperFiles_Add()
+        {
+            Solution4 solution = ((Solution4)GlobalData.dte.Solution);
+            string k = solution.GetProjectTemplate("ProjectTemplate1.zip", "CSharp");
+
+            Project p = solution.AddSolutionFolder("git");
+            //p.ParentProjectItem.ProjectItems.AddFromFileCopy
+
+        }
+
+        #endregion
     }
 }

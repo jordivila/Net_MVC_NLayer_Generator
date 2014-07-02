@@ -4,7 +4,7 @@
     <Name>ASP_NET_MVC_LAYERED</Name>
     <Author>Jordi Vila</Author>
     <Version>8.0</Version>
-    <Description xml:space="preserve">Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
+    <Description xml:space="preserve">current Creates MVC project based on best practices. Built-in WCF authentication, authorization based on User/Roles, exception logging, globalization support, administration zone, integration tests and much more. </Description>
     <Locale>1033</Locale>
     <SupportedProducts>
       <VisualStudio Version="10.0">
@@ -34,5 +34,9 @@
     <CustomExtension Type="Moq.4.0.10827.nupkg">packages\Moq.4.0.10827\Moq.4.0.10827.nupkg</CustomExtension>
     <CustomExtension Type="Newtonsoft.Json.6.0.1.nupkg">packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nupkg</CustomExtension>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
+
+    <CustomExtension Type=".deployment">GitFiles\.deployment</CustomExtension>
+    <CustomExtension Type=".gitattributes">GitFiles\.gitattributes</CustomExtension>
+    
   </Content>
 </Vsix>
