@@ -299,7 +299,7 @@ namespace VSIX_MVC_Layered_Wizard
             {
                 ProjectItem pItem = p.ProjectItems.AddFromFileCopy(item);
                 this.SolutionEvents_ReplaceParameters(Path.Combine(GlobalData.SolutionDirectory.Parent.FullName, pItem.Name));
-                pItem.Save();
+                //pItem.Save(); // Do not save otherwise ReplacementParameters would be overriden
             }
         }
 
