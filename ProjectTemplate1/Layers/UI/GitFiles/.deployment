@@ -1,0 +1,2 @@
+[config]
+project = $customNamespace$/$customNamespace$.UI.Web.Standalone/$customNamespace$.UI.Web.Standalone.csproj

@@ -61,10 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Layers\GitFiles\.deployment">
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Layers\CloudServices\Roles\diagnostics.wadcfg" />
     <None Include="Layers\CloudServices\Template.CloudServices.ccproj" />
     <None Include="Layers\CloudServices\ServiceConfiguration.Cloud.cscfg" />
@@ -82,6 +78,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Layers\UI\Areas\LogViewer\Views\Shared\LayoutLogViewer.cshtml" />
+    <Content Include="Layers\UI\GitFiles\.deployment">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Layers\UI\GitFiles\.gitHowToDeploy" />
     <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\TestIntegration\TestMultiThreaded\LoadMultiThreadTest.cs" />
     <None Include="Layers\TestIntegration\TestMultiThreaded\MultiThreadResults.cs" />
@@ -483,14 +483,6 @@
     <None Include="Layers\Resources\UserProfile\UserProfileTexts.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Layers\GitFiles\.gitattributes">
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Layers\GitFiles\.gitignore">
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Layers\BL\Template.BL.vstemplate" />
     <Content Include="Layers\BL\Template.BL.csproj" />
     <Content Include="Layers\BL\__TemplateIcon.ico" />
@@ -620,6 +612,12 @@
     <Content Include="Layers\UI\Content\reset.css" />
     <Content Include="Layers\UI\Content\Site.css" />
     <Content Include="Layers\UI\Content\Site.mobile.css" />
+    <Content Include="Layers\UI\GitFiles\.gitattributes">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Layers\UI\GitFiles\.gitignore">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Layers\UI\Global.asax" />
     <Content Include="Layers\UI\Template.UI.Web.Standalone.vstemplate">
       <SubType>Designer</SubType>

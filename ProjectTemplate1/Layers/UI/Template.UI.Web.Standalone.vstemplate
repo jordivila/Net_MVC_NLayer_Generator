@@ -15,6 +15,12 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="Template.UI.Web.Standalone.csproj" File="Template.UI.Web.Standalone.csproj" ReplaceParameters="true">
+      <Folder Name="GitFiles" TargetFolderName="GitFiles">
+        <ProjectItem ReplaceParameters="true" TargetFileName=".deployment">.deployment</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".gitattributes">.gitattributes</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".gitignore">.gitignore</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".gitHowToDeploy">.gitHowToDeploy</ProjectItem>
+      </Folder>
       <Folder Name="App_Data" TargetFolderName="App_Data" />
       <Folder Name="Areas" TargetFolderName="Areas">
         <Folder Name="Blog" TargetFolderName="Blog">

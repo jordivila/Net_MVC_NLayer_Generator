@@ -1,0 +1,16 @@
+﻿Steps to publish UI.Web.standalone project using shit 
+
+Create your git repository at azure website
+
+Compile solution
+
+Cmd Window->
+
+cd "path to solution folder"
+git init
+git add .
+git commit -m "initial commit"
+
+
+git remote add websitename https://gitUrlsWebSite
+git push websitename master

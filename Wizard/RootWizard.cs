@@ -9,8 +9,10 @@ using System.Linq;
 using Microsoft.VisualStudio;
 using System.Diagnostics;
 using System.Xml;
-using EnvDTE100;
+using EnvDTE;
 using EnvDTE80;
+using EnvDTE90;
+using EnvDTE100;
 
 namespace VSIX_MVC_Layered_Wizard
 {
@@ -37,8 +39,9 @@ namespace VSIX_MVC_Layered_Wizard
 
         public void RunFinished()
         {
-            this.GitHelperFiles_Add();
+            this.SolutionEvents_GitHelperFiles_Add();
             this.SolutionEvents_SetStartupProjects();
+            this.SolutionEvents_CloseAllDocuments();
 
             IWizardImplementation.GlobalData.LogWriter.Dispose();
         }
@@ -49,8 +52,10 @@ namespace VSIX_MVC_Layered_Wizard
             {
                 // Initilize GlobalData to be used by child template projects
                 IWizardImplementation.GlobalData = new GlobalData(automationObject, replacementsDictionary, customParams);
-                IWizardImplementation.GlobalData.dte = (DTE)automationObject;
+                IWizardImplementation.GlobalData.dte = (DTE2)automationObject;
                 IWizardImplementation.GlobalData.dte.Events.SolutionEvents.ProjectAdded += new _dispSolutionEvents_ProjectAddedEventHandler(SolutionEvents_ProjectAdded);
+                
+
 
                 // Append Custom Dictionary Entries
                 replacementsDictionary.Add(IWizardImplementation.GlobalData.TemplateConstants.CustomNamespaceKey, IWizardImplementation.GlobalData.CustomNamespace);
@@ -64,7 +69,7 @@ namespace VSIX_MVC_Layered_Wizard
             }
         }
 
-        protected void SolutionEvents_ProjectAdded(Project Project)
+        private void SolutionEvents_ProjectAdded(Project Project)
         {
             IWizardImplementation.GlobalData.LogWriter.Write(new LogMessageModel(string.Format(FormsWizardGeneralResources.AddingProject, Project.Name),
                                                                                 FormsWizardGeneralResources.General,
@@ -78,7 +83,7 @@ namespace VSIX_MVC_Layered_Wizard
 
             IWizardImplementation.GlobalData.dte.StatusBar.Text = string.Format(FormsWizardGeneralResources.AddingProject, Project.Name);
         }
-        protected void SolutionEvents_SetStartupProjects()
+        private void SolutionEvents_SetStartupProjects()
         {
             IWizardImplementation.GlobalData.dte.StatusBar.Text = FormsWizardGeneralResources.SettingStartupProjects;
             IWizardImplementation.GlobalData.LogWriter.Write(new LogMessageModel(FormsWizardGeneralResources.SettingStartupProjects,
@@ -103,6 +108,51 @@ namespace VSIX_MVC_Layered_Wizard
             {
                 IWizardImplementation.GlobalData.LogWriter.Write(new LogMessageModel(ex));
             }
+        }
+        private void SolutionEvents_ReplaceParameters(string filePath)
+        {
+            Dictionary<string, string> replacementsDictionary = GlobalData.ReplacementDictionaryGet(new Dictionary<string, string>());
+
+
+            string fileContent = string.Empty;
+
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = File.OpenText(filePath))
+                {
+                    fileContent = sr.ReadToEnd();
+                }
+
+
+                foreach (var item in replacementsDictionary.Keys)
+                {
+                    fileContent = fileContent.Replace(item, replacementsDictionary[item]);
+                }
+
+                File.WriteAllText(filePath, fileContent);
+            }
+        }
+        private void SolutionEvents_ReplaceRecursive(ProjectItem pItem)
+        {
+            bool isFolder = pItem.ProjectItems.Count > 0;
+
+            if (isFolder)
+            {
+                IEnumerator enumerator = pItem.ProjectItems.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                {
+                    this.SolutionEvents_ReplaceRecursive(((ProjectItem)enumerator.Current));
+                }
+            }
+            else
+            {
+                this.SolutionEvents_ReplaceParameters(this.DatabaseProjects_GetFullPathFromProperties(pItem));
+            }
+        }
+        private void SolutionEvents_CloseAllDocuments()
+        {
+            GlobalData.dte.ExecuteCommand("Window.CloseAllDocuments");
         }
 
 
@@ -194,55 +244,9 @@ namespace VSIX_MVC_Layered_Wizard
 
                     while (enumeratorFiles.MoveNext())
                     {
-                        this.DatabaseProjects_ReplaceRecursive(((ProjectItem)enumeratorFiles.Current));
+                        this.SolutionEvents_ReplaceRecursive(((ProjectItem)enumeratorFiles.Current));
                     }
                 }
-            }
-        }
-
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="item"></param>
-//        private void DatabaseProject_AddUserFile(Project item)
-//        {
-//            string sql_Proj_user = string.Format("{0}.user", item.FullName);
-
-//            string kk = string.Format(@"<?xml version=""1.0"" encoding=""utf-8""?>
-//                            <Project ToolsVersion=""12.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
-//                              <PropertyGroup>
-//                                <SqlCmdVar__1>{0}</SqlCmdVar__1>
-//                                <SqlCmdVar__2>{1}</SqlCmdVar__2>
-//                                <SqlCmdVar__3>{2}</SqlCmdVar__3>
-//                              </PropertyGroup>
-//                            </Project>",
-//                            GlobalData.CustomNamespace,
-//                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminEmailAddress,
-//                            GlobalData.WebSiteConfig.WebSiteData.WebSiteAdminPassword);
-
-//            XmlDocument xDocSqlProjUserPreferences = new XmlDocument();
-//            xDocSqlProjUserPreferences.LoadXml(kk);
-//            xDocSqlProjUserPreferences.Save(sql_Proj_user);
-            
-//            this.DatabaseProjects_ReplaceParameters(sql_Proj_user);
-//        }
-
-        private void DatabaseProjects_ReplaceRecursive(ProjectItem pItem)
-        {
-            bool isFolder = pItem.ProjectItems.Count > 0;
-
-            if (isFolder)
-            {
-                IEnumerator enumerator = pItem.ProjectItems.GetEnumerator();
-
-                while (enumerator.MoveNext())
-                {
-                    this.DatabaseProjects_ReplaceRecursive(((ProjectItem)enumerator.Current));
-                }
-            }
-            else
-            {
-                this.DatabaseProjects_ReplaceParameters(this.DatabaseProjects_GetFullPathFromProperties(pItem));
             }
         }
         private string DatabaseProjects_GetFullPathFromProperties(ProjectItem project)
@@ -265,41 +269,38 @@ namespace VSIX_MVC_Layered_Wizard
 
             return result;
         }
-        private void DatabaseProjects_ReplaceParameters(string filePath)
-        {
-            Dictionary<string, string> replacementsDictionary = GlobalData.ReplacementDictionaryGet(new Dictionary<string, string>());
-
-
-            string fileContent = string.Empty;
-
-            if (File.Exists(filePath))
-            {
-                using (StreamReader sr = File.OpenText(filePath))
-                {
-                    fileContent = sr.ReadToEnd();
-                }
-
-
-                foreach (var item in replacementsDictionary.Keys)
-                {
-                    fileContent = fileContent.Replace(item, replacementsDictionary[item]);
-                }
-
-                File.WriteAllText(filePath, fileContent);
-            }
-        }
         #endregion
 
         #region Git Helper Files
 
-        private void GitHelperFiles_Add()
+        private void SolutionEvents_GitHelperFiles_Add()
         {
+            //As far as -> adding files directly to the solution is not posible using *.vstemplate file
+            //             I need 
+            //               1.- to create "GitFiles" folder under "ui.web.standalone" and set needed files inside
+            //               2.- then add those files using ui.web.standalone.vstemplate 
+            //               3.- copy to the solution folder using this routine
+
             Solution4 solution = ((Solution4)GlobalData.dte.Solution);
-            string k = solution.GetProjectTemplate("ProjectTemplate1.zip", "CSharp");
+            string templatePath = solution.GetProjectTemplate("ProjectTemplate1.zip", "CSharp");
+            FileInfo fi = new FileInfo(templatePath);
+            DirectoryInfo di = fi.Directory.GetDirectories("Layers").First()
+                                            .GetDirectories("UI").First()
+                                            .GetDirectories("GitFiles").First();
 
-            Project p = solution.AddSolutionFolder("git");
-            //p.ParentProjectItem.ProjectItems.AddFromFileCopy
+            List<string> filePaths = new List<string>();
+            filePaths.Add(di.GetFiles(".deployment").First().FullName);
+            filePaths.Add(di.GetFiles(".gitattributes").First().FullName);
+            filePaths.Add(di.GetFiles(".gitignore").First().FullName);
+            filePaths.Add(di.GetFiles(".gitHowToDeploy").First().FullName);
 
+            Project p = solution.AddSolutionFolder("git_files");
+            foreach (var item in filePaths)
+            {
+                ProjectItem pItem = p.ProjectItems.AddFromFileCopy(item);
+                this.SolutionEvents_ReplaceParameters(Path.Combine(GlobalData.SolutionDirectory.Parent.FullName, pItem.Name));
+                pItem.Save();
+            }
         }
 
         #endregion

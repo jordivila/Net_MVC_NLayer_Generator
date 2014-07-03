@@ -20,6 +20,7 @@
     </Reference>
   </References>
   <Content>
+    <ProjectTemplate>ProjectTemplates</ProjectTemplate>
     <Assembly AssemblyName="|VSIX_MVC_Layered_Wizard;AssemblyName|">|VSIX_MVC_Layered_Wizard|</Assembly>
     <CustomExtension Type="CommonServiceLocator.1.0.nupkg">packages\CommonServiceLocator.1.0\CommonServiceLocator.1.0.nupkg</CustomExtension>
     <CustomExtension Type="EnterpriseLibrary.Common.6.0.1304.0.nupkg">packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nupkg</CustomExtension>
@@ -33,10 +34,6 @@
     <CustomExtension Type="Microsoft.Web.Infrastructure.1.0.0.0.nupkg">packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg</CustomExtension>
     <CustomExtension Type="Moq.4.0.10827.nupkg">packages\Moq.4.0.10827\Moq.4.0.10827.nupkg</CustomExtension>
     <CustomExtension Type="Newtonsoft.Json.6.0.1.nupkg">packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nupkg</CustomExtension>
-    <ProjectTemplate>ProjectTemplates</ProjectTemplate>
-
-    <CustomExtension Type=".deployment">GitFiles\.deployment</CustomExtension>
-    <CustomExtension Type=".gitattributes">GitFiles\.gitattributes</CustomExtension>
-    
   </Content>
+  
 </Vsix>

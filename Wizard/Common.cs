@@ -9,6 +9,9 @@ using System.Globalization;
 using System.Xml.Serialization;
 using System.Xml.XPath;
 using EnvDTE;
+using EnvDTE80;
+using EnvDTE90;
+using EnvDTE100;
 
 namespace VSIX_MVC_Layered_Wizard
 {
@@ -37,7 +40,7 @@ namespace VSIX_MVC_Layered_Wizard
         public DirectoryInfo PackagesDirectory { get; private set; }
         public DirectoryInfo SolutionDirectory { get; private set; }
         //public DirectoryInfo PackagesDirectoryRepository { get; private set; }
-        public DTE dte { get; set; }
+        public DTE2 dte { get; set; }
 
 
         private bool DirectoryHasPackages(DirectoryInfo current)

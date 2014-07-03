@@ -49,12 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GitFiles\.gitattributes">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="GitFiles\.gitignore">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -139,9 +133,6 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nupkg">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="GitFiles\.deployment">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="packages\EnterpriseLibrary.Common.6.0.1304.0\EnterpriseLibrary.Common.6.0.1304.0.nuspec" />
