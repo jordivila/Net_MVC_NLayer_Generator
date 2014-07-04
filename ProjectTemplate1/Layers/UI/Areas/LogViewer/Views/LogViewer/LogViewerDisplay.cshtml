@@ -16,6 +16,10 @@
 @section InlineStyles
 {
     <style type="text/css">
+        #logMessageGridViewResults { display:none; }
+    </style>
+
+    <style type="text/css">
         .ui-logMessageViewer h2 { text-align: left; }
         .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Timestamp { text-align: left !important; width: 9em !important; vertical-align: middle; }
         .ui-logMessageViewer .ui-widgetGrid .ui-widgetGrid-Title { text-align: left !important; }
@@ -31,12 +35,44 @@
 {
     <script type="text/javascript">
         (function ($) {
+
             jQuery(document).ready(function () {
-                jQuery('div[data-widget="accordion"]').accordion({
-                    collapsible: true
-                    , active: false
-                });
+
+                deferredInitAccordions()
+                    .done(function () {
+                        jQuery('#logMessageGridViewResults').show();
+                    })
+                    .fail(function (err) {
+                        //alert($customNamespace$.Resources.unExpectedError);
+                    })
             });
+
+            function deferredInitAccordions() {
+
+                var defer = $.Deferred();
+                var items = jQuery('div[data-widget="accordion"]');
+
+                try {
+                    items.each(function (nIndex, element) {
+                        jQuery(element).accordion({
+                            collapsible: true
+                            , active: false
+                            , heightStyle: "content"
+                            , create: function () {
+                                if (nIndex == (items.length - 1)) {
+                                    defer.resolve();
+                                }
+                            }
+                        });
+                    });
+                }
+                catch (e) {
+                    defer.reject("Error inicializando el formulario: " + e.message);
+                }
+
+                return defer.promise();
+            }
+
         }(jQuery));
     </script>
 }
@@ -139,10 +175,11 @@
                                                                                             emptyResultsMessage: $customNamespace$.Resources.General.GeneralTexts.NoDataFound);
                                                                                             <text>
                                                                                                 <br />
+                                                                                                <div id="logMessageGridViewResults">
                                                                                                 @gridHtml.Render()
+                                                                                                </div>
                                                                                             </text>
         }
     }
     </div>
 }
-
