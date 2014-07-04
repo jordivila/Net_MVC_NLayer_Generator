@@ -3,7 +3,7 @@
 <rss version="2.0">
   <channel>
     <webMaster>Jordi Vila</webMaster>
-    <title>JordiVila.com Blog</title>
+    <title>junceum.com Blog</title>
     <link>http://localhost:2159/Blog</link>
     <description>
     </description>
@@ -11,7 +11,7 @@
     <generator>Jitbit RSS Feed Creator</generator>
     <pubDate>Wed, 03 Apr 2013 16:19:52 +0200</pubDate>
     <image>
-      <title>JordiVila.com Blog</title>
+      <title>junceum.com Blog</title>
       <link>http://localhost:2159/Blog</link>
       <url>https://lh4.googleusercontent.com/-0zSjc4RFTbE/UKUDIWhYVWI/AAAAAAAAGjE/woy-_b9hpR8/s256/2100edd9-a022-4fd7-b279-a897ac4db9c9</url>
     </image>

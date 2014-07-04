@@ -11,10 +11,10 @@
   </configSections>
   <templateSettings>
     <domainInfoSettings>
-      <domainInfo domainName="CurlyCode.com" securityProtocol="https"></domainInfo>
+      <domainInfo domainName="junceum.com" securityProtocol="https"></domainInfo>
     </domainInfoSettings>
     <mailingSettings>
-      <mailAddresses supportTeamEmailAddress="support@template.com"></mailAddresses>
+      <mailAddresses supportTeamEmailAddress="support@junceum.com"></mailAddresses>
     </mailingSettings>
   </templateSettings>
   <dataConfiguration defaultDatabase="DbCnnStrMembership" />
