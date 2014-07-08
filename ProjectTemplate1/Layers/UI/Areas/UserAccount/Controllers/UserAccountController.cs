@@ -34,17 +34,13 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Controllers
             get
             {
                 return new string[0];
-                //return new string[3] {"~/Areas/UserAccount/Content/$customNamespace$.WCF.UserAccount.js"
-                //                                            ,"~/Areas/UserAccount/Content/$customNamespace$.Widget.LogOn.js"
-                //                                            , "~/Areas/UserAccount/Content/$customNamespace$.Widget.logOnRegister.js" 
-                //};
             }
         }
         public string[] GetControllerStyleSheetResources
         {
             get
             {
-                return new string[1] { "~/Areas/UserAccount/Content/UserAccount.css" };
+                return new string[0];
             }
         }
         protected override void Dispose(bool disposing)
