@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using $safeprojectname$.Globalization;
+using $customNamespace$.Models.Globalization;
 
-namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
+namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
 {
     public interface IClientResourcesConfiguration
     {
@@ -16,7 +16,7 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
         List<string> WebSiteCommonStyleSheets { get; set; }
         string WebSiteCommonAjax { get; set; }
 
-        
+
         string CDN_RootFolderName { get; set; }
 
         string CDN_JS_RootFolderName { get; set; }
@@ -40,6 +40,14 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
                                             "~/Scripts/jquery-validation-1.11.0/dist/jquery.validate.min.js",
                                             "~/Scripts/jQuery-globalize/lib/globalize.js"
                 };
+
+
+                //return new List<string>() { 
+                //                            "~/Scripts/jQuery/jquery-1.9.1.min.js",
+                //                            "~/Scripts/jquery-ui-1.10.0/ui/minified/jquery-ui.min.js",
+                //                            "~/Scripts/jquery-validation-1.11.0/dist/jquery.validate.min.js",
+                //                            "~/Scripts/jQuery-globalize/lib/globalize.js"
+                //};
             }
             set
             {
@@ -72,7 +80,7 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
         {
             return string.Format("~/Scripts/jQuery-globalize/lib/cultures/globalize.culture.{0}.js", localizationHelper.CultureGlobalization);
         }
-        
+
         public List<string> WebSiteCommonScripts
         {
             get
@@ -128,6 +136,8 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
             {
                 return new List<string>() { "~/Content/reset.css", 
                                             "~/Content/Site.css", 
+                                            "~/Content/font-awesome.css",
+                                            "~/Content/Site.JqueryUI.IconsExtendWithFontAwsome.css",
                                             "~/Scripts/ui-widgetMsg/ui-widgetMsg.css" ,
                                             "~/Scripts/ui-dateSelector/ui-dateSelector.css" ,
                                         };
@@ -162,7 +172,10 @@ namespace $safeprojectname$.Configuration.ConfigSections.ClientResources
             {
                 return string.Format("~/{0}/{1}/", this.CDN_RootFolderName, this.CDN_JS_RootFolderName);
             }
-            set { }
+            set
+            {
+
+            }
         }
         public string CDN_JS_CommonFileName(CultureInfo culture, string Version)
         {

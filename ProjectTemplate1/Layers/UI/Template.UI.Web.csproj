@@ -641,9 +641,19 @@
     <Content Include="Views\Shared\_ResourcesStyleSheetCommonRender.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Areas\UserAdministration\Content\UserAdmin.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.JqueryUI.IconsExtendWithFontAwsome.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-globalize\lib\cultures\globalize.culture.af-ZA.js" />
     <Content Include="Scripts\jquery-globalize\lib\cultures\globalize.culture.af.js" />

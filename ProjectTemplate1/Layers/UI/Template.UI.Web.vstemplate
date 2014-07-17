@@ -269,6 +269,9 @@
         <ProjectItem ReplaceParameters="false" TargetFileName="reset.css">reset.css</ProjectItem>
         <ProjectItem ReplaceParameters="false" TargetFileName="Site.css">Site.css</ProjectItem>
         <ProjectItem ReplaceParameters="false" TargetFileName="Site.mobile.css">Site.mobile.css</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Site.JqueryUI.IconsExtendWithFontAwsome.css">Site.JqueryUI.IconsExtendWithFontAwsome.css</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="font-awesome.css">font-awesome.css</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="font-awesome.min.css">font-awesome.min.css</ProjectItem>
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
         <ProjectItem ReplaceParameters="true" TargetFileName="ControllerExtended.cs">ControllerExtended.cs</ProjectItem>
@@ -277,6 +280,13 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="CultureController.cs">CultureController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ResourceDispatcherController.cs">ResourceDispatcherController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ThemeController.cs">ThemeController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="fonts" TargetFolderName="fonts">
+        <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.eot">fontawesome-webfont.eot</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.svg">fontawesome-webfont.svg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.ttf">fontawesome-webfont.ttf</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.woff">fontawesome-webfont.woff</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="FontAwesome.otf">FontAwesome.otf</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>

@@ -70,6 +70,15 @@
     <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\Readme.txt" />
     <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDatabase.sql" />
     <Content Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDatabaseObjects.sql" />
+    <Content Include="packages\FontAwesome.4.1.0\Content\Content\font-awesome.css">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\Content\Content\font-awesome.min.css">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\Content\fonts\fontawesome-webfont.svg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -161,6 +170,24 @@
     <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\scripts\CreateLoggingDb.cmd" />
     <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\tools\install.ps1" />
     <None Include="packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\tools\Utils.psm1" />
+    <Content Include="packages\FontAwesome.4.1.0\Content\fonts\fontawesome-webfont.eot">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\Content\fonts\fontawesome-webfont.ttf">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\Content\fonts\fontawesome-webfont.woff">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\Content\fonts\FontAwesome.otf">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\FontAwesome.4.1.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\FontAwesome.4.1.0\tools\install.ps1">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nuspec" />
     <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>

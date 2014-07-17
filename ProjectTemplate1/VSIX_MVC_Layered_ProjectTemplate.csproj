@@ -78,9 +78,17 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Layers\UI\Areas\LogViewer\Views\Shared\LayoutLogViewer.cshtml" />
+    <Content Include="Layers\UI\Content\font-awesome.css" />
+    <Content Include="Layers\UI\Content\font-awesome.min.css" />
+    <Content Include="Layers\UI\Content\Site.JqueryUI.IconsExtendWithFontAwsome.css" />
+    <Content Include="Layers\UI\fonts\fontawesome-webfont.svg" />
     <Content Include="Layers\UI\GitFiles\.deployment">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Layers\UI\fonts\fontawesome-webfont.eot" />
+    <None Include="Layers\UI\fonts\fontawesome-webfont.ttf" />
+    <None Include="Layers\UI\fonts\fontawesome-webfont.woff" />
+    <None Include="Layers\UI\fonts\FontAwesome.otf" />
     <None Include="Layers\UI\GitFiles\.gitHowToDeploy" />
     <None Include="Layers\UI\Unity\UnityContainerProvider.cs" />
     <None Include="Layers\TestIntegration\TestMultiThreaded\LoadMultiThreadTest.cs" />
