@@ -79,6 +79,42 @@
     <Content Include="packages\FontAwesome.4.1.0\Content\fonts\fontawesome-webfont.svg">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="packages\Moq.4.0.10827\lib\NET35\Moq.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -188,8 +224,29 @@
     <Content Include="packages\FontAwesome.4.1.0\tools\install.ps1">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.0\Content\Web.config.install.xdt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.0\Content\Web.config.uninstall.xdt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.0\Microsoft.AspNet.Mvc.5.2.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.0\Microsoft.AspNet.Razor.3.2.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="packages\Microsoft.AspNet.Web.Optimization.1.0.0\Microsoft.AspNet.Web.Optimization.1.0.0.nuspec" />
     <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\Content\Web.config.install.xdt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\Content\Web.config.uninstall.xdt">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.0\Microsoft.AspNet.WebPages.3.2.0.nupkg">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nuspec" />
