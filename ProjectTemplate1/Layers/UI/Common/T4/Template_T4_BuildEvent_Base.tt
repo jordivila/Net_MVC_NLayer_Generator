@@ -1,7 +1,7 @@
 ﻿<#@ output extension=".result" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Web" #>
-<#@ Assembly Name="System.Web.Mvc" #>
+
 <#
 // ********************************************************************/
 // Some assemblies come from Project -> ReferencePaths 
@@ -25,8 +25,6 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="System.Web.Hosting" #>
-<#@ import namespace="System.Web.Mvc" #>
-<#@ import namespace="System.Web.Routing" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Web" #>
 
@@ -48,24 +46,6 @@
 
 
 <#+ 
-	public UrlHelper UrlHelperGet()
-	{
-		SimpleWorkerRequest simpleWorkerRequest = new SimpleWorkerRequest("/", @"C:\", string.Empty, null, new StringWriter());
-		HttpRuntime.ProcessRequest(simpleWorkerRequest);
-		HttpContext.Current = new HttpContext(simpleWorkerRequest);
-
-		var routes = new RouteCollection();
-		MvcApplication.RegisterRoutes(routes);
-		new UserProfileAreaRegistration().RegisterArea(new AreaRegistrationContext(UserProfileAreaRegistration.UserProfileAreaName, routes));
-		new UserAccountAreaRegistration().RegisterArea(new AreaRegistrationContext(UserAccountAreaRegistration.UserAccountAdminAreaName, routes));
-		new HomeAreaRegistration().RegisterArea(new AreaRegistrationContext(HomeAreaRegistration.HomeAreaName, routes));
-		new UserAdministrationAreaRegistration().RegisterArea(new AreaRegistrationContext(UserAdministrationAreaRegistration.UserAdminAreaName, routes));
-		new ErrorAreaRegistration().RegisterArea(new AreaRegistrationContext(ErrorAreaRegistration.ErrorAreaName, routes));
-
-		UrlHelper Url = new UrlHelper(new System.Web.Routing.RequestContext(new HttpContextWrapper(HttpContext.Current), new RouteData()), routes);
-		return Url;
-	}
-
 	public void SaveOutput(string outputFolder, string outputFileName)
 	{
 		this.SaveOutput(outputFolder, outputFileName, false, MediaType.none);
