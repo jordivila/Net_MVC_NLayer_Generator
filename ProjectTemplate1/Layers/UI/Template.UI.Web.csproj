@@ -191,9 +191,7 @@
     <Compile Include="Controllers\ControllerExtended.cs" />
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
-    <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\ResourceDispatcherController.cs" />
-    <Compile Include="Controllers\ThemeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

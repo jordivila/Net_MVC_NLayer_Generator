@@ -193,9 +193,7 @@
     <Compile Include="Controllers\ControllerExtended.cs" />
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
-    <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\ResourceDispatcherController.cs" />
-    <Compile Include="Controllers\ThemeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +241,8 @@
     <Content Include="Areas\Error\Views\Web.config" />
     <Content Include="Areas\Home\Views\Home\About.cshtml" />
     <Content Include="Areas\Home\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Home\Views\Home\CultureSet.cshtml" />
+    <Content Include="Areas\Home\Views\Home\ThemeSet.cshtml" />
     <Content Include="Areas\Home\Views\Web.config" />
     <Content Include="Areas\Test\Content\Test_WidgetTreeNest.js" />
     <Content Include="Areas\Test\Content\Test_WidgetTreeSortable.js" />

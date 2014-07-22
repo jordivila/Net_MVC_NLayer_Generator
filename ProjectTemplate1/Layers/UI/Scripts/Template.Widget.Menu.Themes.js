@@ -1,6 +1,4 @@
-﻿/// <reference path="$customNamespace$.A.Intellisense.js" />
-
-jQuery.widget("ui.menuThemes", jQuery.ui.menuSite,
+﻿jQuery.widget("ui.menuThemes", jQuery.ui.menuSite,
 {
     options: {
         defaultTheme: ''
@@ -28,24 +26,6 @@ jQuery.widget("ui.menuThemes", jQuery.ui.menuSite,
     }
     , setTheme: function (value) {
 
-        var self = this;
-
-
-
-        $customNamespace$.Ajax.ThemeSet(value,
-                            function (result) {
-
-                                jQuery.ui.menuSite.prototype.addCss.call(this, '<link href="' + result.Data + '" rel="stylesheet" type="text/css" />');
-
-                                jQuery(self.element)
-                                            .find("li")
-                                                .removeClass('ui-state-active')
-                                                .end()
-                                            .find("li[data-widget-value='" + value + "']")
-                                                    .addClass('ui-state-active');
-                            },
-                            function () {
-                                $customNamespace$.Widgets.Dialogs.createErrorMessage($customNamespace$.Resources.unExpectedError, function () { });
-                            });
+        window.location.href = "/Home/ThemeSet/" + value;
     }
 });

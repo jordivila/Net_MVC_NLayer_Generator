@@ -82,6 +82,10 @@
             <Folder Name="Home" TargetFolderName="Home">
               <ProjectItem ReplaceParameters="true" TargetFileName="About.cshtml">About.cshtml</ProjectItem>
               <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+
+              <ProjectItem ReplaceParameters="true" TargetFileName="CultureSet.cshtml">CultureSet.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ThemeSet.cshtml">ThemeSet.cshtml</ProjectItem>
+
             </Folder>
             <Folder Name="Shared" TargetFolderName="Shared" />
             <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
@@ -277,9 +281,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="ControllerExtended.cs">ControllerExtended.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ControllerFactory.cs">ControllerFactory.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ControllerHelper.cs">ControllerHelper.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="CultureController.cs">CultureController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ResourceDispatcherController.cs">ResourceDispatcherController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ThemeController.cs">ThemeController.cs</ProjectItem>
       </Folder>
       <Folder Name="fonts" TargetFolderName="fonts">
         <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.eot">fontawesome-webfont.eot</ProjectItem>

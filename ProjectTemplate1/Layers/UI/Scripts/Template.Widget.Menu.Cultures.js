@@ -1,6 +1,4 @@
-﻿/// <reference path="$customNamespace$.A.Intellisense.js" />
-
-
+﻿
 jQuery.widget("ui.menuCultures", jQuery.ui.menuSite,
 {
     options: {
@@ -10,30 +8,19 @@ jQuery.widget("ui.menuCultures", jQuery.ui.menuSite,
 
         var self = this;
 
-
-
         jQuery.ui.menuSite.prototype._init.call(this);
 
         jQuery(this.element)
-        //.removeClass('ui-corner-all')
-        //.addClass("ui-corner-bottom")
             .find('li')
                 .click(function () {
 
                     var culture = jQuery(this).find('div.ui-flag').attr('data-widget-value');
 
-                    $customNamespace$.Ajax.CultureSet(culture,
-                                            function () {
-                                                window.location.reload();
-                                            },
-                                            function () {
-                                                $customNamespace$.Widgets.Dialogs.createErrorMessage($customNamespace$.Resources.unExpectedError, function () { });
-                                            });
+                    window.location.href = "/Home/CultureSet/" + culture;
                 });
 
         jQuery(this.element)
             .find('div[data-widget-value="' + this.options.cultureSelected + '"]')
-        //.find("span.value:contains('" + this.options.cultureSelected + "')")
             .parents('li:first')
                             .addClass('ui-state-active')
                             .removeClass('ui-state-default');
