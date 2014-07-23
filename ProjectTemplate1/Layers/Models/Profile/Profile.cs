@@ -123,7 +123,7 @@ namespace $customNamespace$.Models.Profile
         [DataMember]
         public Gender? Gender { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
+        //[Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         [Display(ResourceType = typeof($customNamespace$.Resources.UserProfile.UserProfileTexts), Name = UserProfileTextsKeys.Language)]
         public CultureInfo Culture
         {
@@ -149,7 +149,7 @@ namespace $customNamespace$.Models.Profile
         [DataMember]
         public string CultureName { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
+        //[Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         [Display(ResourceType = typeof($customNamespace$.Resources.UserProfile.UserProfileTexts), Name = UserProfileTextsKeys.Theme)]
         [DataMember]
         public ThemesAvailable? Theme { get; set; }

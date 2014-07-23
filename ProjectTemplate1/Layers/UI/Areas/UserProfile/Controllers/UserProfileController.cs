@@ -61,6 +61,10 @@ namespace $customNamespace$.UI.Web.Areas.UserProfile.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Set Culture & Theme values currently in use
+                    model.UserProfileResult.Data.CultureName = MvcApplication.UserRequest.UserProfile.CultureName;
+                    model.UserProfileResult.Data.Theme = MvcApplication.UserRequest.UserProfile.Theme;
+
                     DataResultUserProfile result = this.ProviderProfile.Update(model.UserProfileResult.Data);
                     model.UserProfileResultUpdated = result;
                     MvcApplication.UserRequest.UserProfile = result.Data;
