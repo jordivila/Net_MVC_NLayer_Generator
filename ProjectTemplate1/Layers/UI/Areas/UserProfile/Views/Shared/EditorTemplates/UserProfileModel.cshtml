@@ -20,14 +20,6 @@
             @Html.FormItem(model => model.LastName)
             @Html.FormItem(model => model.BirthDate)
             @Html.FormItem(model => model.Gender)
-            @*@Html.FormItem(model => model.Culture,
-                                    FormsExtension.DropDownListFor(Html, model => model.Culture, this.Model.Culture.ToSelectList(), new { }),
-                                    string.Empty)
-            @Html.FormItem(model => model.Theme
-                                        , new
-                                        {
-                                            onchange = @"jQuery(document).find('.ui-themeSwitcher:first').menuThemes('setTheme', jQuery(this).val());"
-                                        })*@
         </text>
         }
     }

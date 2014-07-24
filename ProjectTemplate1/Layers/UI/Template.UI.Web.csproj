@@ -613,7 +613,6 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Shared\_MenuPreferencesPartial.cshtml" />
     <Content Include="Views\Shared\_MenuTopNavPartial.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -626,7 +625,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_MenuPreferencesSwitchersPartial.cshtml" />
+    
     <Content Include="Views\Shared\EditorTemplates\IEnumerable_RadioButtons.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\IEnumerable_DropdownList.cshtml" />
     <Content Include="Views\Shared\_Breadcrumb.cshtml" />
@@ -1012,10 +1011,6 @@
     <Content Include="Scripts\Template.Widget.Base.js" />
     <Content Include="Scripts\Template.Widget.Form.js" />
     <Content Include="Scripts\Template.Widget.Grid.js" />
-    <Content Include="Scripts\Template.Widget.Menu.Base.js" />
-    <Content Include="Scripts\Template.Widget.Menu.Cultures.js" />
-    <Content Include="Scripts\Template.Widget.Menu.Nav.js" />
-    <Content Include="Scripts\Template.Widget.Menu.Themes.js" />
     <Content Include="Scripts\Template.Widget.Page.js" />
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector-doc.htm" />
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector-sample.htm" />

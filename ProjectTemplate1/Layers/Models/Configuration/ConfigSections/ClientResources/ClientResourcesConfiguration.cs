@@ -95,15 +95,12 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
                                             "~/Scripts/Template.Widget.Grid.js",
                                             "~/Scripts/Template.Widget.AjaxProgress.js",
                                             "~/Scripts/Template.Widget.ButtonWrapper.js",
-                                            "~/Scripts/Template.Widget.Menu.Base.js",
-                                            "~/Scripts/Template.Widget.Menu.Nav.js",
-                                            "~/Scripts/Template.Widget.Menu.Cultures.js",
-                                            "~/Scripts/Template.Widget.Menu.Themes.js",
                                             "~/Scripts/Template.Widget.UserOptions.js",
                                             "~/Scripts/ui-dateSelector/ui-dateSelector.js",
                                             "~/Scripts/ui-widgetMsg/ui-widgetMsg.js",
                                             "~/Scripts/Template.Widget.Dialogs.js",
-                                            "~/Scripts/Template.Widget.DialogInline.js"
+                                            "~/Scripts/Template.Widget.DialogInline.js",
+                                            "~/Scripts/ui-widgetTreeList/ui-widgetTreeList.js"
                 };
             }
             set
@@ -140,6 +137,7 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
                                             "~/Content/Site.JqueryUI.IconsExtendWithFontAwsome.css",
                                             "~/Scripts/ui-widgetMsg/ui-widgetMsg.css" ,
                                             "~/Scripts/ui-dateSelector/ui-dateSelector.css" ,
+                                            "~/Scripts/ui-widgetTreeList/ui-widgetTreeList.css"
                                         };
             }
             set
@@ -246,5 +244,4 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
 
         }
     }
-
 }

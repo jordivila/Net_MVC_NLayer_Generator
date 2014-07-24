@@ -1,8 +1,8 @@
 ﻿
-(function($) {
+(function ($) {
     jQuery.widget("jv.treeList", {
         options: { selectable: true },
-        _create: function() {
+        _create: function () {
 
             var w = this;
             w._initItem(jQuery(this.element).find("li"));
@@ -14,7 +14,7 @@
 
             jQuery(this.element)
                 .addClass('ui-treeList ui-widget-content ui-corner-all')
-                .bind('click', function(e) {
+                .bind('click', function (e) {
                     var $t = jQuery(e.target);
                     if ($t.hasClass('ui-treeList-toggle')) {
                         var b = $t.siblings('ul').is(':visible');
@@ -28,7 +28,7 @@
                 })
                 .disableSelection();
         },
-        destroy: function() {
+        destroy: function () {
 
             jQuery(this.element)
             .unbind('click')
@@ -45,25 +45,25 @@
 
             jQuery.Widget.prototype.destroy.call(this);
         },
-        _initItem: function($lis) {
+        _initItem: function ($lis) {
             $lis.addClass('ui-treeList-item ui-widget-content ui-corner-all ui-state-default')
                   .hover(
-                        function() { jQuery(this).addClass('ui-state-hover').parents('li').removeClass('ui-state-hover'); ; return false; }
-                        , function() { jQuery(this).removeClass('ui-state-hover'); return false; }
+                        function () { jQuery(this).addClass('ui-state-hover').parents('li').removeClass('ui-state-hover');; return false; }
+                        , function () { jQuery(this).removeClass('ui-state-hover'); return false; }
                     );
         },
-        _initChildList: function($uls) {
+        _initChildList: function ($uls) {
             $uls.addClass('ui-treeList-childs')
                     .hide()
-                    .before('<div class="ui-treeList-toggle ui-widget-content ui-icon ui-icon-triangle-1-s"></div>');
+                    .before('<div class="ui-treeList-toggle fa fa-arrow-down"></div>');
         },
-        openNode: function($lisOpen) {
+        openNode: function ($lisOpen) {
             if ($lisOpen) {
                 $lisOpen.children('ul')
                                 .show()
                                 .siblings('div.ui-treeList-toggle')
-                                    .removeClass('ui-icon-triangle-1-s')
-                                    .addClass('ui-icon ui-icon-triangle-1-n')
+                                    .removeClass('fa fa-arrow-down')
+                                    .addClass('fa fa-arrow-up')
                                     .end()
                                 .end()
                                 .find('ul:has(li)')
@@ -72,15 +72,15 @@
             }
         }
         ,
-        closeNode: function($lisClose) {
+        closeNode: function ($lisClose) {
             if ($lisClose) {
                 $lisClose.addClass('ui-state-default')
                                 .children('ul')
                                 .hide()
-                                .siblings('div.ui-treeList-toggle').removeClass('ui-icon-triangle-1-n').addClass('ui-icon ui-icon-triangle-1-s');
+                                .siblings('div.ui-treeList-toggle').removeClass('ui-icon-triangle-1-n').addClass('fa fa-arrow-down');
             }
         }
-        , selected: function($lis) {
+        , selected: function ($lis) {
             if ($lis) {
                 jQuery(this.element).find('li').removeClass('ui-state-active');
                 $lis.addClass('ui-state-active');

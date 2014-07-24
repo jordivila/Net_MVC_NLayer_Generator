@@ -1,7 +1,4 @@
 ﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
-@using $customNamespace$.UI.Web.Areas.UserAccount;
-@using $customNamespace$.UI.Web.Areas.Error;
-@using $customNamespace$.Models.Enumerations;
 
 @model $customNamespace$.UI.Web.Models.baseViewModel
 
@@ -12,28 +9,32 @@
         @Html.PartialResourcesStylesheetsCommonRender()
         @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
     </head>
-    <body class="ui-widget-content">
+    <body class="ui-widget-content ui-hidden">
         <div class="ui-sitePage ui-widget">
-            <div class="ui-site-userOptions" data-widget="userOptions" data-widget-url="@Url.Account_UserAccountBar()">
-                <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all"></div>
-            </div>
-            <div class="ui-carriageReturn"></div>
+
             @Html.PartialMenuTopNav()
-            <div class="ui-site-title">
-                <h1>Jordi Vila - @this.Model.BaseViewModelInfo.Title</h1>
-            </div>
+
             @Html.PartialBreadcrumb()
-            <div class="ui-siteContent ">
-                <div class="ui-siteContent-Container ">
+            
+            <div class="ui-siteContent">
+                
+                @Html.MenuGet().Render(new { id = "panelMenu", @class = "ui-menuNav ui-menuNav-Expand" })
+                
+                <div id="panelContent" class="ui-siteContent-Container ui-siteContent-Container-Collapse">
+                    <div class="ui-site-title">
+                        <h1>Jordi Vila - @this.Model.BaseViewModelInfo.Title</h1>
+                    </div>
                     @RenderBody()
                 </div>
             </div>
+
             <div class="ui-siteFooter">
                 <div class="ui-widget-header ui-corner-all">
                     <div>Copyright © 2012 Company Co. All rights reserved</div>
                     <div class="ui-siteFooter-html5Logo"></div>
                 </div>
             </div>
+
             <br />
         </div>
         @Html.PartialResourcesScriptsCommonRender()
@@ -46,9 +47,43 @@
                     $customNamespace$.Widgets.Page.cultureGlobalization = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureGlobalization";
                     $customNamespace$.Widgets.Page.cultureDatePicker = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureDatePicker";
                     $customNamespace$.Widgets.Page.defaultTheme = "@this.Model.BaseViewModelInfo.UserProfile.Theme.Value";
+                    $customNamespace$.Widgets.Page.onInit(function () { afterEverythingLoads(); });
                     $customNamespace$.Widgets.Page.Init();
                 });
+
             })(jQuery);
+
+            function afterEverythingLoads() {
+
+                jQuery('body').removeClass('ui-hidden');
+
+                var $panelMenu = jQuery('#panelMenu');
+                var $panelContent = jQuery('#panelContent');
+
+                $panelMenu.treeList();
+
+
+                jQuery('#menuToggle').click(function () {
+
+                    $panelMenu.show('slide', function () {
+                        if (jQuery(this).is(':visible')) {
+
+                            jQuery(document).bind("click", function (e) {
+
+                                var menuClicked = jQuery(e.target).parents($panelMenu.selector).length > 0;
+
+                                if (!menuClicked)
+                                {
+                                    $panelMenu.hide('slide');
+                                    jQuery(document).unbind("click");
+                                }
+                                
+                            });
+                        }
+                    });
+                });
+            }
+
         </script>
     </body>
 </html>

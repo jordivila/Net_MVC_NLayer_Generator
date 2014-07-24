@@ -12,11 +12,13 @@ using $customNamespace$.Models;
 using $customNamespace$.Models.Common;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Globalization;
+using $customNamespace$.Resources.Account;
 using $customNamespace$.Resources.General;
 using $customNamespace$.Resources.Helpers;
 using $customNamespace$.UI.Web.Areas.Blog;
 using $customNamespace$.UI.Web.Areas.Home;
 using $customNamespace$.UI.Web.Areas.UserAccount;
+using $customNamespace$.UI.Web.Areas.UserProfile;
 using $customNamespace$.UI.Web.Models;
 
 namespace $customNamespace$.UI.Web.Common.Mvc.Html
@@ -29,14 +31,6 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
         public static MvcHtmlString PartialMenuTopNav(this HtmlHelper htmlHelper)
         {
             return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_MenuTopNavPartial.cshtml");
-        }
-        public static MvcHtmlString PartialMenuPreferences(this HtmlHelper htmlHelper)
-        {
-            return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_MenuPreferencesPartial.cshtml");
-        }
-        public static MvcHtmlString PartialMenuPreferencesSwitchers(this HtmlHelper htmlHelper)
-        {
-            return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_MenuPreferencesSwitchersPartial.cshtml");
         }
         public static MvcHtmlString PartialBreadcrumb(this HtmlHelper htmlHelper)
         {
@@ -560,24 +554,64 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
     #region Menu Extensions
     public static class MenuExtensions
     {
+
+
         public static MenuModel MenuGet(this HtmlHelper Html)
         {
+            baseViewModel viewModel = (baseViewModel)Html.ViewData.Model;
             UrlHelper url = new UrlHelper(Html.ViewContext.RequestContext);
-            MenuModel result = new MenuModel()
-            {
-                MenuItems = new List<MenuItemModel>() { 
-                    new MenuItemModel(){DataAction = HomeUrlHelper.Home_Index(url),Description = GeneralTexts.Home},
-                    new MenuItemModel(){DataAction = BlogUrlHelper.IndexRoot(url),Description = GeneralTexts.Blog},
-                    new MenuItemModel(){DataAction = HomeUrlHelper.Home_About(url),Description = GeneralTexts.About},
-                    new MenuItemModel(){DataAction = UserAccountUrlHelper.Account_Dashboard(url),Description = GeneralTexts.Dashboard}
-                }
-            };
 
-            bool isLoggedIn = MvcApplication.UserRequest.UserIsLoggedIn;
-            if (!isLoggedIn)
+
+            MenuModel result = new MenuModel();
+
+            if (MvcApplication.UserRequest.UserIsLoggedIn)
             {
-                result.MenuItems.RemoveAll(x => x.DataAction == UserAccountUrlHelper.Account_Dashboard(url));
+                string name = string.IsNullOrEmpty(viewModel.BaseViewModelInfo.UserProfile.FirstName) ?
+                                                            viewModel.BaseViewModelInfo.UserFormsIdentityName :
+                                                            viewModel.BaseViewModelInfo.UserProfile.FirstName;
+
+                result.MenuItems.Add(new MenuItemModel(string.Empty, name, new List<SiteRoles>() { SiteRoles.Guest }, new List<MenuItemModel>() 
+                { 
+                    new MenuItemModel(UrlHelperUserProfile.UserProfile_Edit(url), AccountResources.ProfileEdit, new List<SiteRoles>(){  SiteRoles.Guest }, null),
+                    new MenuItemModel(UserAccountUrlHelper.Account_ChangePassword(url), AccountResources.ChangePassword, new List<SiteRoles>(){  SiteRoles.Guest }, null),
+                    new MenuItemModel(UserAccountUrlHelper.Account_LogOff(url), AccountResources.SignOut, new List<SiteRoles>(){  SiteRoles.Guest }, null)
+                }));
             }
+            else
+            {
+                result.MenuItems.Add(new MenuItemModel(UserAccountUrlHelper.Account_LogOn(url), GeneralTexts.LogOn, new List<SiteRoles>() { SiteRoles.Guest }, null));
+            }
+
+
+            result.MenuItems.AddRange(new List<MenuItemModel>()
+                {
+                    new MenuItemModel(HomeUrlHelper.Home_Index(url), GeneralTexts.Home, new List<SiteRoles>(){  SiteRoles.Guest }, null),
+                    new MenuItemModel(BlogUrlHelper.IndexRoot(url), GeneralTexts.Blog, new List<SiteRoles>(){  SiteRoles.Guest }, null),
+                    new MenuItemModel(HomeUrlHelper.Home_About(url),GeneralTexts.About, new List<SiteRoles>(){  SiteRoles.Guest }, null),
+                    new MenuItemModel(UserAccountUrlHelper.Account_Dashboard(url),GeneralTexts.Dashboard, new List<SiteRoles>(){  SiteRoles.Administrator }, null)
+                });
+
+
+
+
+            var cultureMenuItem = new MenuItemModel(string.Empty, GeneralTexts.Languages, new List<SiteRoles>() { SiteRoles.Guest }, new List<MenuItemModel>() { });
+            foreach (var item in GlobalizationHelper.CultureInfoAvailableList())
+            {
+                cultureMenuItem.Childs.Add(new MenuItemModel(HomeUrlHelper.Home_CultureSet(url, item.Name), item.DisplayName, new List<SiteRoles>() { SiteRoles.Guest }, null));
+            }
+            result.MenuItems.Add(cultureMenuItem);
+
+
+
+
+            var themesMenuItem = new MenuItemModel(string.Empty, GeneralTexts.SiteThemes, new List<SiteRoles>() { SiteRoles.Guest }, new List<MenuItemModel>() { });
+            foreach (var item in viewModel.BaseViewModelInfo.UserProfile.Theme.ToSelectList(typeof(ThemesAvailable)).ToList())
+            {
+                themesMenuItem.Childs.Add(new MenuItemModel(HomeUrlHelper.Home_ThemeSet(url, item.Value), item.Text, new List<SiteRoles>() { SiteRoles.Guest }, null));
+            }
+            result.MenuItems.Add(themesMenuItem);
+
+
 
             return result;
         }

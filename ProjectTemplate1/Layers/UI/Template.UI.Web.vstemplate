@@ -966,10 +966,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Form.js">Template.Widget.Form.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Grid.js">Template.Widget.Grid.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.jQueryzer.js">Template.Widget.jQueryzer.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Base.js">Template.Widget.Menu.Base.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Cultures.js">Template.Widget.Menu.Cultures.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Nav.js">Template.Widget.Menu.Nav.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Menu.Themes.js">Template.Widget.Menu.Themes.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Page.js">Template.Widget.Page.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.UserOptions.js">Template.Widget.UserOptions.js</ProjectItem>
         <Folder Name="ui-dateSelector" TargetFolderName="ui-dateSelector">
@@ -1024,8 +1020,6 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="_LogOffButton.cshtml">_LogOffButton.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="_LogOnButton.cshtml">_LogOnButton.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="_LogOnPartial.cshtml">_LogOnPartial.cshtml</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="_MenuPreferencesPartial.cshtml">_MenuPreferencesPartial.cshtml</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="_MenuPreferencesSwitchersPartial.cshtml">_MenuPreferencesSwitchersPartial.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="_MenuTopNavPartial.cshtml">_MenuTopNavPartial.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="_ResourcesScriptsCommonRender.cshtml">_ResourcesScriptsCommonRender.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="_ResourcesStyleSheetCommonRender.cshtml">_ResourcesStyleSheetCommonRender.cshtml</ProjectItem>

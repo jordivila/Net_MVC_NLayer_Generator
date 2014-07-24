@@ -1275,10 +1275,6 @@
     <Content Include="Layers\UI\Scripts\Template.Widget.Form.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.Grid.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.jQueryzer.js" />
-    <Content Include="Layers\UI\Scripts\Template.Widget.Menu.Base.js" />
-    <Content Include="Layers\UI\Scripts\Template.Widget.Menu.Cultures.js" />
-    <Content Include="Layers\UI\Scripts\Template.Widget.Menu.Nav.js" />
-    <Content Include="Layers\UI\Scripts\Template.Widget.Menu.Themes.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.Page.js" />
     <Content Include="Layers\UI\Scripts\Template.Widget.UserOptions.js" />
     <Content Include="Layers\UI\Scripts\ui-dateSelector\ui-dateSelector-doc.htm" />

@@ -6,10 +6,7 @@
 
     <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all">
         <div class="ui-siteVersion">
-            @$customNamespace$.UI.Web.MvcApplication.Version
+            <span id="menuToggle" class="ui-menuToggle fa fa-bars"></span> - @$customNamespace$.UI.Web.MvcApplication.Version
         </div>
-        @Html.PartialMenuPreferences()
-        @Html.PartialLogOnPartial()
     </div>
     <div class="ui-carriageReturn"></div>
-    @Html.PartialMenuPreferencesSwitchers()

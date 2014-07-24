@@ -3,14 +3,16 @@
 @using $customNamespace$.UI.Web.Areas.UserAdministration;
 @using $customNamespace$.UI.Web.Areas.Error;
 @using $customNamespace$.UI.Web.Models;
+@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
+@using $customNamespace$.UI.Web.Areas.Error;
+@using $customNamespace$.Models.Enumerations;
+
 
 @model   $customNamespace$.UI.Web.Models.baseViewModel
 
 
-<div class="ui-siteMenu-TopNav ui-siteMenu ui-menuNav ui-widget-content ui-corner-all ui-state-default" 
-    data-widget="menuNav" 
-    data-widget-controllerSelected="@this.ViewContext.Controller.ControllerContext.RouteData.Values["controller"].ToString()"
-    data-widget-controllerAction="@this.ViewContext.Controller.ControllerContext.RouteData.Values["action"].ToString()">
-    @Html.MenuGet().Render()
-    <div class="ui-carriageReturn"></div>
+<div class="ui-site-userOptions" data-widget="userOptions" data-widget-url="@Url.Account_UserAccountBar()">
+    <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all"></div>
 </div>
+<div class="ui-carriageReturn"></div>
