@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -173,179 +174,526 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
     {
         public enum Icon : int
         {
+            [EnumMember(Value = "")]
             None,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_n,
+            
+            [EnumMember(Value = "")]
             ui_icon_carat_1_ne,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_se,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_1_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_2_n_s,
+
+            [EnumMember(Value = "")]
             ui_icon_carat_2_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_ne,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_se,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_1_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_2_n_s,
+
+            [EnumMember(Value = "")]
             ui_icon_triangle_2_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_ne,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_se,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_1_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_2_n_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_2_ne_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_2_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_2_se_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowstop_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowstop_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowstop_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowstop_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_ne,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_se,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_1_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_2_n_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_2_ne_sw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_2_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthick_2_se_nw,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthickstop_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthickstop_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthickstop_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowthickstop_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturnthick_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturnthick_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturnthick_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturnthick_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturn_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturn_1_n,
+            
+            [EnumMember(Value = "")]
             ui_icon_arrowreturn_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowreturn_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowrefresh_1_w,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowrefresh_1_n,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowrefresh_1_e,
+
+            [EnumMember(Value = "")]
             ui_icon_arrowrefresh_1_s,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_4,
+
+            [EnumMember(Value = "")]
             ui_icon_arrow_4_diag,
+
+            [EnumMember(Value = "")]
             ui_icon_extlink,
+
+            [EnumMember(Value = "")]
             ui_icon_newwin,
+
+            [EnumMember(Value = "")]
             ui_icon_refresh,
+
+            [EnumMember(Value = "")]
             ui_icon_shuffle,
+
+            [EnumMember(Value = "")]
             ui_icon_transfer_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_transferthick_e_w,
+
+            [EnumMember(Value = "")]
             ui_icon_folder_collapsed,
+
+            [EnumMember(Value = "")]
             ui_icon_folder_open,
+
+            [EnumMember(Value = "")]
             ui_icon_document,
+
+            [EnumMember(Value = "")]
             ui_icon_document_b,
+
+            [EnumMember(Value = "")]
             ui_icon_note,
+
+            [EnumMember(Value = "")]
             ui_icon_mail_closed,
+
+            [EnumMember(Value = "")]
             ui_icon_mail_open,
+
+            [EnumMember(Value = "")]
             ui_icon_suitcase,
+
+            [EnumMember(Value = "")]
             ui_icon_comment,
+
+            [EnumMember(Value="fa-male")]
             ui_icon_person,
+
+            [EnumMember(Value = "")]
             ui_icon_print,
+
+            [EnumMember(Value = "")]
             ui_icon_trash,
+
+            [EnumMember(Value = "")]
             ui_icon_locked,
+
+            [EnumMember(Value = "")]
             ui_icon_unlocked,
+
+            [EnumMember(Value = "")]
             ui_icon_bookmark,
+
+            [EnumMember(Value = "")]
             ui_icon_tag,
+
+            [EnumMember(Value = "")]
             ui_icon_home,
+
+            [EnumMember(Value = "")]
             ui_icon_flag,
+
+            [EnumMember(Value = "")]
             ui_icon_calculator,
+
+            [EnumMember(Value = "")]
             ui_icon_cart,
+
+            [EnumMember(Value = "")]
             ui_icon_pencil,
+
+            [EnumMember(Value = "")]
             ui_icon_clock,
+
+            [EnumMember(Value = "")]
             ui_icon_disk,
+
+            [EnumMember(Value = "")]
             ui_icon_calendar,
+
+            [EnumMember(Value = "")]
             ui_icon_zoomin,
+
+            [EnumMember(Value = "")]
             ui_icon_zoomout,
+
+            [EnumMember(Value = "")]
             ui_icon_search,
+
+            [EnumMember(Value = "")]
             ui_icon_wrench,
+
+            [EnumMember(Value = "")]
             ui_icon_gear,
+
+            [EnumMember(Value = "")]
             ui_icon_heart,
+
+            [EnumMember(Value = "")]
             ui_icon_star,
+
+            [EnumMember(Value = "")]
             ui_icon_link,
+
+            [EnumMember(Value = "")]
             ui_icon_cancel,
+
+            [EnumMember(Value = "")]
             ui_icon_plus,
+
+            [EnumMember(Value = "")]
             ui_icon_plusthick,
+
+            [EnumMember(Value = "")]
             ui_icon_minus,
+
+            [EnumMember(Value = "")]
             ui_icon_minusthick,
+
+            [EnumMember(Value = "")]
             ui_icon_close,
+
+            [EnumMember(Value = "")]
             ui_icon_closethick,
+
+            [EnumMember(Value = "fa-key")]
             ui_icon_key,
+
+            [EnumMember(Value = "")]
             ui_icon_lightbulb,
+
+            [EnumMember(Value = "")]
             ui_icon_scissors,
+
+            [EnumMember(Value = "")]
             ui_icon_clipboard,
+
+            [EnumMember(Value = "")]
             ui_icon_copy,
+
+            [EnumMember(Value = "")]
             ui_icon_contact,
+
+            [EnumMember(Value = "")]
             ui_icon_image,
+
+            [EnumMember(Value = "")]
             ui_icon_video,
+
+            [EnumMember(Value = "")]
             ui_icon_script,
+
+            [EnumMember(Value = "")]
             ui_icon_alert,
+
+            [EnumMember(Value = "")]
             ui_icon_info,
+
+            [EnumMember(Value = "")]
             ui_icon_notice,
+
+            [EnumMember(Value = "")]
             ui_icon_help,
+
+            [EnumMember(Value = "")]
             ui_icon_check,
+
+            [EnumMember(Value = "")]
             ui_icon_bullet,
+
+            [EnumMember(Value = "")]
             ui_icon_radio_off,
+
+            [EnumMember(Value = "")]
             ui_icon_radio_on,
+
+            [EnumMember(Value = "")]
             ui_icon_pin_w,
+
+            [EnumMember(Value = "")]
             ui_icon_pin_s,
+
+            [EnumMember(Value = "")]
             ui_icon_play,
+
+            [EnumMember(Value = "")]
             ui_icon_pause,
+
+            [EnumMember(Value = "")]
             ui_icon_seek_next,
+
+            [EnumMember(Value = "")]
             ui_icon_seek_prev,
+
+            [EnumMember(Value = "")]
             ui_icon_seek_end,
+
+            [EnumMember(Value = "")]
             ui_icon_seek_first,
+
+            [EnumMember(Value = "")]
             ui_icon_stop,
+
+            [EnumMember(Value = "")]
             ui_icon_eject,
+
+            [EnumMember(Value = "")]
             ui_icon_volume_off,
+
+            [EnumMember(Value = "")]
             ui_icon_volume_on,
+
+            [EnumMember(Value = "")]
             ui_icon_power,
+
+            [EnumMember(Value = "")]
             ui_icon_signal_diag,
+
+            [EnumMember(Value = "")]
             ui_icon_signal,
+            
+            [EnumMember(Value = "")]
             ui_icon_battery_0,
+
+            [EnumMember(Value = "")]
             ui_icon_battery_1,
+
+            [EnumMember(Value = "")]
             ui_icon_battery_2,
+
+            [EnumMember(Value = "")]
             ui_icon_battery_3,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_plus,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_minus,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_close,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_triangle_e,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_triangle_s,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_triangle_w,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_triangle_n,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_arrow_e,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_arrow_s,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_arrow_w,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_arrow_n,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_zoomin,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_zoomout,
+
+            [EnumMember(Value = "")]
             ui_icon_circle_check,
+
+            [EnumMember(Value = "")]
             ui_icon_circlesmall_plus,
+
+            [EnumMember(Value = "")]
             ui_icon_circlesmall_minus,
+
+            [EnumMember(Value = "")]
             ui_icon_circlesmall_close,
+
+            [EnumMember(Value = "")]
             ui_icon_squaresmall_plus,
+
+            [EnumMember(Value = "")]
             ui_icon_squaresmall_minus,
+
+            [EnumMember(Value = "")]
             ui_icon_squaresmall_close,
+
+            [EnumMember(Value = "")]
             ui_icon_grip_dotted_vertical,
+
+            [EnumMember(Value = "")]
             ui_icon_grip_dotted_horizontal,
+
+            [EnumMember(Value = "")]
             ui_icon_grip_solid_vertical,
+
+            [EnumMember(Value = "")]
             ui_icon_grip_solid_horizontal,
+
+            [EnumMember(Value = "")]
             ui_icon_gripsmall_diagonal_se,
+
+            [EnumMember(Value = "")]
             ui_icon_grip_diagonal_se,
         }
 
@@ -354,6 +702,12 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             string result = buttonIcon.ToString().Replace("_", "-");
             return result;
         }
+
+        public static string IconToFontawsomeClass(Icon buttonIcon)
+        {
+            return string.Format("{0} fa {1}", IconToCssClass(buttonIcon), buttonIcon.ToEnumMemberString());
+        }
+
     }
     #endregion
 
@@ -435,10 +789,12 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             tagTextSpan.InnerHtml = string.IsNullOrEmpty(htmlContent) ? "&nbsp;" : htmlContent;
 
             TagBuilder tagIconSpan = new TagBuilder("span");
-            //tagIconSpan.AddCssClass("ui-button-icon-primary ui-icon");
-            //tagIconSpan.AddCssClass(jQueryHelpers.IconToCssClass(buttonIcon));
-            tagIconSpan.AddCssClass("ui-button-icon-primary");
-            tagIconSpan.AddCssClass("fa fa-volume-up fa-lg ui-icon");
+            tagIconSpan.AddCssClass("ui-button-icon-primary ui-icon");
+            tagIconSpan.AddCssClass(jQueryHelpers.IconToCssClass(buttonIcon));
+            //tagIconSpan.AddCssClass(jQueryHelpers.IconToFontawsomeClass(buttonIcon));
+            
+            //tagIconSpan.AddCssClass("ui-button-icon-primary");
+            //tagIconSpan.AddCssClass("fa fa-volume-up fa-lg ui-icon");
 
             TagBuilder tagButton = new TagBuilder("button");
             tagButton.MergeAttributes(htmlAttributes);
