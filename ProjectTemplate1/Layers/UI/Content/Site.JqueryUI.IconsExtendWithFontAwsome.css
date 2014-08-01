@@ -252,7 +252,7 @@
 .ui-icon-star-o:before {
   content: "\f006";
 }
-.ui-icon-user:before {
+.ui-icon-person:before,.ui-icon-user:before {
   content: "\f007";
 }
 .ui-icon-film:before {
