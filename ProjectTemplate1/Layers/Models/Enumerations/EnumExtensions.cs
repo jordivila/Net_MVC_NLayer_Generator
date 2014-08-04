@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Linq;
-
+using $customNamespace$.Resources.Enumerations;
 
 namespace $customNamespace$.Models.Enumerations
 {
@@ -11,7 +11,7 @@ namespace $customNamespace$.Models.Enumerations
         public static string EnumDescription(Enum enumerator)
         {
             string key = String.Format("{0}.{1}", enumerator.GetType(), enumerator).Replace(".", "_");
-            string localizedDescription = $customNamespace$.Resources.Enumerations.EnumerationsTexts.ResourceManager.GetString(key);
+            string localizedDescription = EnumerationsTexts.ResourceManager.GetString(key);
 
             if (localizedDescription == null)
             {

@@ -161,7 +161,7 @@ namespace $customNamespace$.BL.MembershipServices
         {
             if (string.IsNullOrEmpty(this.UserRequest.WcfAuthenticationCookieValue))
             {
-                return new string[0];
+                return new string[] { SiteRoles.Guest.ToEnumMemberString() }; 
             }
             else
             {

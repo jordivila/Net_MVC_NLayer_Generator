@@ -752,7 +752,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
                 }
 
                 TagBuilder tgDivTitle = new TagBuilder("span");
-                tgDivTitle.InnerHtml = $customNamespace$.Resources.General.GeneralTexts.PleaseReviewForm; //htmlHelper.ResourceTexts().ResourceTextsGeneral.PleaseReviewForm;
+                tgDivTitle.InnerHtml = GeneralTexts.PleaseReviewForm; //htmlHelper.ResourceTexts().ResourceTextsGeneral.PleaseReviewForm;
 
                 TagBuilder tgDivBox = new TagBuilder("div");
                 tgDivBox.Attributes.Add("data-widget", "widgetFormSummary");
@@ -911,9 +911,39 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
     #region Menu Extensions
     public static class MenuExtensions
     {
-
-
         public static MenuModel MenuGet(this HtmlHelper Html)
+        {
+            List<SiteRoles> userRoles = MvcApplication.UserRequest
+                                                    .UserRoles
+                                                    .Where(x => EnumExtension.ToEnumMember<SiteRoles>(x).HasValue)
+                                                    .Select(x => EnumExtension.ToEnumMember<SiteRoles>(x).Value)
+                                                    .ToList();
+
+            MenuModel menuModel = MenuGetAll(Html);
+            Predicate<MenuItemModel> removeItemsByRole = x => !x.RolesAllowed.Intersect<SiteRoles>(userRoles).Any();
+            Action<MenuItemModel> removeItemsByRoleRecusively = null;
+
+            removeItemsByRoleRecusively = delegate(MenuItemModel current) 
+            {
+                current.Childs.RemoveAll(removeItemsByRole);
+
+                foreach (var item in current.Childs)
+                {
+                    removeItemsByRoleRecusively(item);
+                }
+            };
+
+            menuModel.MenuItems.RemoveAll(removeItemsByRole);
+
+            foreach (var item in menuModel.MenuItems)
+            {
+                removeItemsByRoleRecusively(item);
+            }
+
+            return menuModel;
+        }
+
+        private static MenuModel MenuGetAll(this HtmlHelper Html)
         {
             baseViewModel viewModel = (baseViewModel)Html.ViewData.Model;
             UrlHelper url = new UrlHelper(Html.ViewContext.RequestContext);
@@ -970,8 +1000,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             result.MenuItems.Add(themesMenuItem);
 
 
-
-            return result;
+            return result;        
         }
     }
     #endregion
@@ -1142,7 +1171,7 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
             IHtmlString listHeader = isEmptyGrid ? MvcHtmlString.Empty : this.RenderHeader(/*this.columns, "ui-widget-header ui-priority-secondary"*/);
             IHtmlString listBody = isEmptyGrid ? MvcHtmlString.Empty : this.RenderBody();
             IHtmlString listPager = isEmptyGrid ? MvcHtmlString.Empty : this.RenderPagination();
-            IHtmlString emptyResultsMessage = MvcHtmlString.Create(string.IsNullOrEmpty(this.EmptyResultsMessage) ? $customNamespace$.Resources.General.GeneralTexts.NoDataFound : this.EmptyResultsMessage);
+            IHtmlString emptyResultsMessage = MvcHtmlString.Create(string.IsNullOrEmpty(this.EmptyResultsMessage) ? GeneralTexts.NoDataFound : this.EmptyResultsMessage);
             WebGridStyle webGridStyle = this.webGridStyle;
             int columnsCount = this.columns.Count();
 

@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
-namespace $safeprojectname$.Enumerations
+namespace $customNamespace$.Models.Enumerations
 {
-
     [Serializable]
     [Flags]
     public enum SiteRoles
     {
+        [EnumMember(Value = "Administrator")]
         Administrator = 1,
+
+        [EnumMember(Value = "Guest")]
         Guest = 2
     }
     public enum MediaType
@@ -85,9 +88,8 @@ namespace $safeprojectname$.Enumerations
         Confirm = 3
     }
     public enum HostingPlatform
-    { 
+    {
         Custom,
         Azure
     }
-
 }

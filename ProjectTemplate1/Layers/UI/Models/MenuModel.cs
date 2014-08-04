@@ -26,6 +26,7 @@ namespace $customNamespace$.UI.Web.Models
         }
 
     }
+
     public class MenuItemModel : baseModel
     {
         public MenuItemModel()
@@ -49,9 +50,6 @@ namespace $customNamespace$.UI.Web.Models
         public IHtmlString Render()
         {
             TagBuilder li = new TagBuilder("li");
-
-
-
             TagBuilder link = new TagBuilder("a");
             link.SetInnerText(this.Description);
             if (!string.IsNullOrEmpty(this.DataAction))
@@ -61,7 +59,7 @@ namespace $customNamespace$.UI.Web.Models
             }
             else
             {
-                link.Attributes.Add("href", "#");
+                link.Attributes.Add("href", "javascript:void(0);");
             }
 
             li.InnerHtml += link.ToString(TagRenderMode.Normal);
