@@ -23,7 +23,9 @@
 
 
 
-
+.ui-datepicker .ui-icon-circle-triangle-e,
+.ui-datepicker .ui-icon-circle-triangle-w
+{width:0.9em !important;}
 
 .ui-button-icon-only .ui-icon {
     /* Bump it - jQuery UI is -8px */
@@ -31,12 +33,13 @@
     margin-top: -18%;
 }
 
+
+.ui-treeList .ui-treeList-toggle {width:2em; height:2em;}
+
+
+
 /* Allow use of icon-large to be properly aligned */
 
-
-.fa.fa-lg {
-    /*margin-top: -.4em !important;*/
-}
 
 
 /*********************************************************************
@@ -505,17 +508,19 @@
 .ui-icon-ban:before {
   content: "\f05e";
 }
-.ui-icon-triangle-1-w:before, .ui-icon-arrow-left:before {
+
+
+.ui-icon-circle-triangle-w:before, .ui-icon-triangle-1-w:before, .ui-icon-arrow-left:before {
   content: "\f060";
 }
-.ui-icon-triangle-1-e:before, .ui-icon-arrow-right:before {
+.ui-icon-circle-triangle-e:before, .ui-icon-triangle-1-e:before, .ui-icon-arrow-right:before {
   content: "\f061";
 }
 
-.ui-icon-triangle-1-n:before, .ui-icon-arrow-up:before {
+.ui-icon-circle-triangle-n:before, .ui-icon-triangle-1-n:before, .ui-icon-arrow-up:before {
   content: "\f062";
 }
-.ui-icon-triangle-1-s:before, .ui-icon-arrow-down:before {
+.ui-icon-circle-triangle-s:before, .ui-icon-triangle-1-s:before, .ui-icon-arrow-down:before {
   content: "\f063";
 }
 .ui-icon-mail-forward:before,
@@ -1615,34 +1620,4 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**********************************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
