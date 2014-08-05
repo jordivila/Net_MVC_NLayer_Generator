@@ -25,16 +25,17 @@
 
 
 
-.ui-button-icon-only .fa {
+.ui-button-icon-only .ui-icon {
     /* Bump it - jQuery UI is -8px */
-    margin-left: -7px;
+    margin-left: -18%;
+    margin-top: -18%;
 }
 
 /* Allow use of icon-large to be properly aligned */
 
 
 .fa.fa-lg {
-    margin-top: -.4em !important;
+    /*margin-top: -.4em !important;*/
 }
 
 
@@ -43,11 +44,7 @@
 *********************************************************************/
 
 
-/* 
-    just took fontawsome and replace ".fa-" by ".ui-icon-"  
-    
-    use LESS instead !!!
-*/
+
 
 
 
@@ -252,7 +249,7 @@
 .ui-icon-star-o:before {
   content: "\f006";
 }
-.ui-icon-person:before,.ui-icon-user:before {
+.ui-icon-person:before, .ui-icon-user:before {
   content: "\f007";
 }
 .ui-icon-film:before {
