@@ -1,4 +1,4 @@
-﻿/// <reference path="$customNamespace$.A.Intellisense.js" />
+﻿/// <reference path="VsixMvcAppResult.A.Intellisense.js" />
 
 jQuery.widget("ui.widgetBase",
 {
@@ -74,47 +74,36 @@ jQuery.widget("ui.widgetBase",
             var collapseFunc = function () {
                 var $content = jQuery(self.element).find('div.ui-widget-content');
                 $content.toggle();
-                jQuery(self.element).find('button.ui-widget-collapse').find('span.ui-icon').toggleClass('ui-icon-triangle-1-n', $content.is(':visible')).toggleClass('ui-icon-triangle-1-s', !$content.is(':visible'));
+                jQuery(self.element).find('div.ui-widget-collapse').toggleClass('ui-icon-triangle-1-n', $content.is(':visible')).toggleClass('ui-icon-triangle-1-s', !$content.is(':visible'));
                 self._trigger('onCollapsed', null, $content.is(':visible') ? true : false);
             };
 
             jQuery(this.element)
                 .find('div.ui-widget-header:first')
-            //.css("cursor", "pointer")
-                    .append('<button type="button" class="ui-widget-collapse"></button>')
-                    .end()
-                  .click(function (e) {
+                    .wrapInner("<div class='ui-widget-headerText'></div>")
 
-                      var $c = jQuery(e.target);
+                    .append('<div class="ui-widget-collapse ui-icon ui-icon-triangle-1-s"></div>')
+                .end()
+                .click(function (e) {
 
-                      //if ($c.hasClass("ui-widget-header")) {
-                      //collapseFunc();
-                      //}
-                      //else {
-                      if ($c.is("button") && $c.hasClass("ui-widget-collapse")) {
-                          collapseFunc();
-                      }
-                      else {
-                          if ($c.is("span") && $c.parents("button:first").hasClass("ui-widget-collapse")) {
-                              collapseFunc();
-                          }
-                      }
-                      //}
+                    var $c = jQuery(e.target);
 
-
-                  })
-                .find('button.ui-widget-collapse')
-                    .button({
-                        text: false,
-                        icons: {
-                            primary: 'ui-icon-triangle-1-n'
+                    if ($c.is("div") && $c.hasClass("ui-widget-collapse")) {
+                        collapseFunc();
+                    }
+                    else {
+                        if ($c.is("span") && $c.parents("div:first").hasClass("ui-widget-collapse")) {
+                            collapseFunc();
                         }
-                    });
+                    }
+                })
+            .find('div.ui-widget-collapse')
+                .removeClass('ui-icon-triangle-1-n')
+                .addClass('ui-icon-triangle-1-s');
 
             if (self.options.isCollapsed) {
                 collapseFunc();
             }
-
         }
     }
     , allowClose: function () {
@@ -122,15 +111,9 @@ jQuery.widget("ui.widgetBase",
             var self = this;
             jQuery(this.element)
                 .find('div.ui-widget-header:first')
-                    .append('<button class="ui-widget-close" type="button"></button>')
+                    .append('<div class="ui-widget-close ui-icon ui-icon-close"></div>')
                 .end()
-                .find('button.ui-widget-close')
-                    .button({
-                        text: false,
-                        icons: {
-                            primary: 'ui-icon-close'
-                        }
-                    })
+                .find('div.ui-widget-close')
                     .click(function () {
                         jQuery(self.element).toggle();
                     });

@@ -9,6 +9,7 @@ using $customNamespace$.Models.Membership;
 using $customNamespace$.Models.Profile;
 using $customNamespace$.Models.Unity;
 using $customNamespace$.Resources.Account;
+using $customNamespace$.Resources.General;
 using $customNamespace$.UI.Web.Areas.Home;
 using $customNamespace$.UI.Web.Areas.LogViewer;
 using $customNamespace$.UI.Web.Areas.Test;
@@ -22,7 +23,7 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Controllers
 {
     public class UserAccountController : Controller, IControllerWithClientResources
     {
-        public UserAccountController() 
+        public UserAccountController()
         {
             this.FormsAuthenticationService = DependencyFactory.Resolve<IAuthenticationProxy>();
             this.FormsMembershipService = DependencyFactory.Resolve<IMembershipProxy>();
@@ -307,7 +308,9 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Controllers
                     }
                 }
             };
-            
+
+            model.BaseViewModelInfo.Title = GeneralTexts.Dashboard;
+
             return View(model);
         }
         #endregion

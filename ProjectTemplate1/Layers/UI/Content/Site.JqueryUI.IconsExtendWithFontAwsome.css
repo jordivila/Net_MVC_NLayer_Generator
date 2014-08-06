@@ -27,14 +27,7 @@
 .ui-datepicker .ui-icon-circle-triangle-w
 {width:0.9em !important;}
 
-.ui-button-icon-only .ui-icon {
-    /* Bump it - jQuery UI is -8px */
-    margin-left: -18%;
-    margin-top: -18%;
-}
-
-
-.ui-treeList .ui-treeList-toggle {width:2em; height:2em;}
+.ui-button-icon-only .ui-icon { margin-left: -18%; margin-top: -18%; }
 
 
 

@@ -14,64 +14,58 @@
 
 @section InlineStyles{
     <style type="text/css">
-        .ui-dashboard-box { width:20em; float:left; margin: 1em 1em 1em 1em;}
+        .ui-dashboard-box { /*width:20em; float:left;*/ margin: 1em auto 1em auto;}
         .ui-dashboard-box li { padding:1em 1em 1em 1em; }
     </style>
 }
 
 @{
-    using(MvcForm form = Html.BeginWidgetForm())
+    using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-siteAdminBox" }))    
     {
-        using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-siteAdminBox" }))    
+        using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+        { 
+            @$customNamespace$.Resources.General.GeneralTexts.SiteAdmin
+        }
+        using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
         {
-            using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
-            { 
-                @$customNamespace$.Resources.General.GeneralTexts.SiteAdmin
-            }
-            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
-            {
-                <text>
-                    <ul>
-                    @{
-                        foreach (var item in this.Model.SiteAdminMenu.MenuItems)
-                        {
-                            <text>
-                                <li><a href="@item.DataAction">@item.Description</a></li>
-                            </text>
-                        }    
-                    }
-                    </ul>
-                </text>
-            }
+            <text>
+                <ul>
+                @{
+                    foreach (var item in this.Model.SiteAdminMenu.MenuItems)
+                    {
+                        <text>
+                            <li><a href="@item.DataAction">@item.Description</a></li>
+                        </text>
+                    }    
+                }
+                </ul>
+            </text>
         }
     }
 }
 
 
 @{
-    using (MvcForm form = Html.BeginWidgetForm())
+    using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-userPofile" }))    
     {
-        using (MvcWidgetBox boxSite = Html.BeginWidgetBox(new { @class = "ui-dashboard-box ui-dashboard-userPofile" }))    
+        using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
+        { 
+            @$customNamespace$.Resources.Account.AccountResources.UserProfile
+        }
+        using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
         {
-            using (MvcWidgetBox divBoxHeader = Html.BeginWidgetBoxHeader())
-            { 
-                @$customNamespace$.Resources.Account.AccountResources.UserProfile
-            }
-            using (MvcWidgetBox divBoxContent = Html.BeginWidgetBoxContent())
-            {
-                <text>
-                    <ul>
-                    @{
-                        foreach (var item in this.Model.ProfileMenu.MenuItems)
-                        {
-                            <text>
-                                <li><a href="@item.DataAction">@item.Description</a></li>
-                            </text>
-                        }    
-                    }
-                    </ul>
-                </text>
-            }
+            <text>
+                <ul>
+                @{
+                    foreach (var item in this.Model.ProfileMenu.MenuItems)
+                    {
+                        <text>
+                            <li><a href="@item.DataAction">@item.Description</a></li>
+                        </text>
+                    }    
+                }
+                </ul>
+            </text>
         }
     }
 }
