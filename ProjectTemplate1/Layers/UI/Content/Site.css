@@ -94,7 +94,7 @@ input[type='radio'] {height:1em;width:1em;}
     @media screen and (-webkit-min-device-pixel-ratio: 2)
     {
         /*html {font-size:1.3em !important;}*/
-        body {background-color: blue !important;}
+        /*body {background-color: blue !important;}*/
     }
 }
 
@@ -111,7 +111,7 @@ input[type='radio'] {height:1em;width:1em;}
     @media screen and (min-resolution: 300dpi), screen and (-webkit-min-device-pixel-ratio: 2)
     {
         /*html {font-size:0.9em !important;}*/
-        body {background-color: red !important;}
+        /*body {background-color: red !important;}*/
     }
 }
 
