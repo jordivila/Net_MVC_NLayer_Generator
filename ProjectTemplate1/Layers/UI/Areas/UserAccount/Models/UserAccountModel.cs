@@ -14,7 +14,7 @@ using $customNamespace$.UI.Web.Common.Mvc.Attributes;
 namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
 {
     [NonValidateModelOnHttpGet]
-    public class ChangePasswordViewModel: baseViewModel
+    public class ChangePasswordViewModel : baseViewModel
     {
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         [DataType(DataType.Password)]
@@ -37,7 +37,7 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
     }
 
     [NonValidateModelOnHttpGet]
-    public class LogOnViewModel: baseViewModel
+    public class LogOnViewModel : baseViewModel
     {
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         [Email(ErrorMessageResourceName = DataAnnotationsResourcesKeys.EmailAddressAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
@@ -57,7 +57,7 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
     }
 
     [NonValidateModelOnHttpGet]
-    public class RegisterViewModel: baseViewModel
+    public class RegisterViewModel : baseViewModel
     {
         //[Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         //[Display(ResourceType = typeof($customNamespace$.Resources.Account.AccountResources), Name = AccountResourcesKeys.UserName)]
@@ -65,7 +65,7 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
 
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
         [Email(ErrorMessageResourceName = DataAnnotationsResourcesKeys.EmailAddressAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
-        [Display(ResourceType=typeof($customNamespace$.Resources.Account.AccountResources), Name= AccountResourcesKeys.EmailAddress)]
+        [Display(ResourceType = typeof($customNamespace$.Resources.Account.AccountResources), Name = AccountResourcesKeys.EmailAddress)]
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceType = typeof($customNamespace$.Resources.General.GeneralTexts), ErrorMessageResourceName = GeneralTextsKeys.Required)]
@@ -85,11 +85,11 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
     }
 
     [NonValidateModelOnHttpGet]
-    public class CantAccessYourAccountViewModel: baseViewModel
+    public class CantAccessYourAccountViewModel : baseViewModel
     {
         [Required(ErrorMessageResourceName = DataAnnotationsResourcesKeys.ModelBinderConfig_ValueRequired, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
         [Email(ErrorMessageResourceName = DataAnnotationsResourcesKeys.EmailAddressAttribute_Invalid, ErrorMessageResourceType = typeof(DataAnnotationsResources))]
-        [Display(ResourceType = typeof(AccountResources),  Name = AccountResourcesKeys.EmailAddress)]
+        [Display(ResourceType = typeof(AccountResources), Name = AccountResourcesKeys.EmailAddress)]
         public string EmailAddress { get; set; }
 
         public DataResultUserCantAccess Result { get; set; }
@@ -130,8 +130,8 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount.Models
     }
 
     [NonValidateModelOnHttpGet]
-    public class UserAccountBarModel
-    { 
-        
+    public class UserUpdateLastActivityModel
+    {
+
     }
 }

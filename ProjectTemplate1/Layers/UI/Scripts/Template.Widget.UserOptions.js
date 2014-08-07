@@ -16,7 +16,7 @@ jQuery.widget("ui.userOptions", jQuery.ui.widgetBase,
 
         $customNamespace$.Ajax.UserBar(
                             function (data, textStatus, jqXHR) {
-                                jQuery(self.element).html(data);
+                                jQuery(self.element).append(data);
                                 $customNamespace$.Widgets.jQueryzer(self.element);
                             }
                             , function (jqXHR, textStatus, errorThrown) {

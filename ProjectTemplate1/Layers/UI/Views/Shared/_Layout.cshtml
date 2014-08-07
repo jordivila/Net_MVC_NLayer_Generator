@@ -1,4 +1,5 @@
 ﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.UI.Web.Areas.UserAccount;
 
 @model $customNamespace$.UI.Web.Models.baseViewModel
 
@@ -13,7 +14,20 @@
     <body class="ui-widget-content ui-hidden">
         <div class="ui-sitePage ui-widget">
 
-            @Html.PartialMenuTopNav()
+            <div data-widget="userOptions" data-widget-url="@Url.Account_UserUpdateLastActivity()">
+                <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all">
+                    <div id="menuToggle" class="ui-menuToggle">
+                        <div class="ui-menuToggle-icon fa fa-bars fa-2x"></div>
+                        <div class="ui-menuToggle-text">Menu</div>
+                        <div class="ui-carriageReturn"></div>
+                    </div>
+                </div>
+                <div class="ui-carriageReturn"></div>
+            </div>
+            <div class="ui-carriageReturn"></div>
+
+
+
 
             @Html.PartialBreadcrumb()
             
@@ -33,6 +47,9 @@
                 <div class="ui-widget-header ui-corner-all">
                     <div>Copyright © 2012 Company Co. All rights reserved</div>
                     <div class="ui-siteFooter-html5Logo"></div>
+                    <div class="ui-siteVersion">
+                        v. - @$customNamespace$.UI.Web.MvcApplication.Version
+                    </div>
                 </div>
             </div>
 

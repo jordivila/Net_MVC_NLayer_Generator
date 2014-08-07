@@ -12,7 +12,7 @@ namespace $customNamespace$.UI.Web.Common.AspNetApplicationServices
         {
             try
             {
-                if (filterContext.Controller.GetType() == typeof(UserAccountBarController))
+                if (filterContext.Controller.GetType() == typeof(UserUpdateLastActivityController))
                 {
                     if (MvcApplication.UserRequest.UserIsLoggedIn)
                     {

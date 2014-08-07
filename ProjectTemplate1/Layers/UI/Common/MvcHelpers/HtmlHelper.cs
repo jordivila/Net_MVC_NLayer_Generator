@@ -30,10 +30,10 @@ namespace $customNamespace$.UI.Web.Common.Mvc.Html
         public readonly static string SectionScriptsToAdd = "ScriptsToAdd";
         public readonly static string SectionInlineStyles = "InlineStyles";
 
-        public static MvcHtmlString PartialMenuTopNav(this HtmlHelper htmlHelper)
-        {
-            return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_MenuTopNavPartial.cshtml");
-        }
+        //public static MvcHtmlString PartialMenuTopNav(this HtmlHelper htmlHelper)
+        //{
+        //    return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_MenuTopNavPartial.cshtml");
+        //}
         public static MvcHtmlString PartialBreadcrumb(this HtmlHelper htmlHelper)
         {
             return System.Web.Mvc.Html.PartialExtensions.Partial(htmlHelper, "~/Views/Shared/_Breadcrumb.cshtml");

@@ -47,8 +47,10 @@ input[type='radio'] {height:1em;width:1em;}
 
 /* header */
 .ui-site-header {position: relative;margin:0.5em 0em 0em 0em ;border:0 !important;width:100%;padding:0em;min-height:2.5em;}
-.ui-site-header .ui-menuToggle {margin:0.5em;}
-.ui-site-header .ui-siteVersion {display:none;}
+.ui-site-header .ui-menuToggle{float:right;margin:.13em .5em 0 .5em;width:6em;}
+.ui-site-header .ui-menuToggle .ui-menuToggle-icon {float:left;}
+.ui-site-header .ui-menuToggle .ui-menuToggle-text {float:left;margin:0.4em 0 0 0.5em;font-weight:normal;}
+
 
 /*
 .ui-site-userOptions {float:right;display:table;margin:0 0em 0 auto;width:100%;text-align:right;}

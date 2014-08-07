@@ -36,10 +36,9 @@ namespace $customNamespace$.UI.Web.Areas.UserAccount
         {
             return helper.Action("Dashboard", "UserAccount", new { Area = UserAccountAreaRegistration.UserAccountAdminAreaName });
         }
-        public static string Account_UserAccountBar(this UrlHelper helper)
+        public static string Account_UserUpdateLastActivity(this UrlHelper helper)
         {
-            return "/UserAccountBar/UserAccountBar";
-            //return helper.Action("UserAccountBar", "UserAccountBar", new { Area = UserAccountAreaRegistration.UserAccountAdminAreaName });
+            return "/UserUpdateLastActivity/UserUpdateLastActivity";
         }
     }
 }
