@@ -10,7 +10,7 @@
 @{
     using (MvcForm form = Html.BeginWidgetForm(new { @id = "formWidgetFormItems", name = "formWidgetFormItems" }))
     {
-        using(MvcWidgetBox box = Html.BeginWidgetBox(false, true, true, string.Empty, null))
+        using(MvcWidgetBox box = Html.BeginWidgetBox(true, true, true, string.Empty, null))
         {
             using(MvcWidgetBoxHeader header = Html.BeginWidgetBoxHeader())
             {
@@ -40,9 +40,7 @@
                     @Html.Button($customNamespace$.Resources.Javascript.JavascriptTexts.accept, jQueryHelpers.Icon.ui_icon_alert, ButtonType.Submit, null)
                     @Html.Button($customNamespace$.Resources.Javascript.JavascriptTexts.validate, jQueryHelpers.Icon.ui_icon_alert, ButtonType.Button, null)
                 }
-    
             }
-
         }
     }
 }

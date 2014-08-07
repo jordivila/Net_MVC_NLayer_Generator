@@ -53,7 +53,7 @@
  * -------------------------- */
 
 .ui-icon {
-  display: inline-block;
+  /*display: inline-block;*/
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -1611,6 +1611,5 @@
 .ui-icon-bomb:before {
   content: "\f1e2";
 }
-
 
 /**********************************************************************/

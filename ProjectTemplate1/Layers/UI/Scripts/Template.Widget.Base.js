@@ -1,5 +1,4 @@
-﻿/// <reference path="VsixMvcAppResult.A.Intellisense.js" />
-
+﻿
 jQuery.widget("ui.widgetBase",
 {
     options: {
@@ -66,6 +65,40 @@ jQuery.widget("ui.widgetBase",
         }
         return tmp;
     }
+
+    , boxButtonsContainerGet: function () {
+        var self = this;
+
+        if (jQuery(this.element)
+            .find('div.ui-widget-header:first')
+                .find('div.ui-widget-boxButtons:first')
+                .length == 0) {
+            jQuery(this.element)
+                .find('div.ui-widget-header:first')
+                    .wrapInner("<div class='ui-widget-headerText'></div>")
+                    .append('<div class="ui-widget-boxButtons"></div>');
+        }
+
+        return jQuery(this.element)
+                .find('div.ui-widget-header:first')
+                    .find('div.ui-widget-boxButtons:first');
+    }
+    , allowClose: function () {
+
+        if (this.options.allowClose) {
+
+            var self = this;
+
+            var $p = self.boxButtonsContainerGet();
+
+            $p.append('<div class="ui-widget-close ui-corner-all ui-icon ui-icon-close"></div>')
+              .find('div.ui-widget-close:first')
+                .click(function () {
+                    jQuery(self.element).toggle();
+                })
+                .show();
+        }
+    }
     , allowCollapse: function () {
 
         if (this.options.allowCollapse) {
@@ -74,49 +107,34 @@ jQuery.widget("ui.widgetBase",
             var collapseFunc = function () {
                 var $content = jQuery(self.element).find('div.ui-widget-content');
                 $content.toggle();
-                jQuery(self.element).find('div.ui-widget-collapse').toggleClass('ui-icon-triangle-1-n', $content.is(':visible')).toggleClass('ui-icon-triangle-1-s', !$content.is(':visible'));
+                jQuery(self.element).find('div.ui-widget-collapse:first').toggleClass('ui-icon-triangle-1-n', $content.is(':visible')).toggleClass('ui-icon-triangle-1-s', !$content.is(':visible'));
                 self._trigger('onCollapsed', null, $content.is(':visible') ? true : false);
             };
 
-            jQuery(this.element)
-                .find('div.ui-widget-header:first')
-                    .wrapInner("<div class='ui-widget-headerText'></div>")
+            var $p = self.boxButtonsContainerGet();
 
-                    .append('<div class="ui-widget-collapse ui-icon ui-icon-triangle-1-s"></div>')
-                .end()
-                .click(function (e) {
+            $p.append('<div class="ui-widget-collapse ui-corner-all ui-icon ui-icon-triangle-1-s"></div>')
+              .find('div.ui-widget-collapse:first')
+              .click(function (e) {
 
-                    var $c = jQuery(e.target);
+                  var $c = jQuery(e.target);
 
-                    if ($c.is("div") && $c.hasClass("ui-widget-collapse")) {
-                        collapseFunc();
-                    }
-                    else {
-                        if ($c.is("span") && $c.parents("div:first").hasClass("ui-widget-collapse")) {
-                            collapseFunc();
-                        }
-                    }
-                })
-            .find('div.ui-widget-collapse')
-                .removeClass('ui-icon-triangle-1-n')
-                .addClass('ui-icon-triangle-1-s');
+                  if ($c.is("div") && $c.hasClass("ui-widget-collapse")) {
+                      collapseFunc();
+                  }
+                  else {
+                      if ($c.is("span") && $c.parents("div:first").hasClass("ui-widget-collapse")) {
+                          collapseFunc();
+                      }
+                  }
+              })
+              .removeClass('ui-icon-triangle-1-n')
+              .addClass('ui-icon-triangle-1-s')
+              .show();
 
             if (self.options.isCollapsed) {
                 collapseFunc();
             }
-        }
-    }
-    , allowClose: function () {
-        if (this.options.allowClose) {
-            var self = this;
-            jQuery(this.element)
-                .find('div.ui-widget-header:first')
-                    .append('<div class="ui-widget-close ui-icon ui-icon-close"></div>')
-                .end()
-                .find('div.ui-widget-close')
-                    .click(function () {
-                        jQuery(self.element).toggle();
-                    });
         }
     }
 });
