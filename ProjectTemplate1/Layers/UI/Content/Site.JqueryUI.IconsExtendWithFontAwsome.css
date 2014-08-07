@@ -768,6 +768,8 @@
 .ui-icon-paperclip:before {
   content: "\f0c6";
 }
+
+.ui-icon-disk:before,
 .ui-icon-save:before,
 .ui-icon-floppy-o:before {
   content: "\f0c7";
@@ -1611,5 +1613,6 @@
 .ui-icon-bomb:before {
   content: "\f1e2";
 }
+
 
 /**********************************************************************/
