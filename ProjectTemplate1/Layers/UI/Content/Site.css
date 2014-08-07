@@ -81,37 +81,34 @@ input[type='radio'] {height:1em;width:1em;}
 .ui-siteContent .ui-menuNav li:first-letter { margin:0em 0em 0em 0.1em;}
 
 
+
+.ui-siteContent .ui-siteContent-Container{width:100%;}
+.ui-siteContent .ui-siteContent-Container-Expand{}
+.ui-siteContent .ui-siteContent-Container-Collapse{}
+.ui-siteContent .ui-menuNav {margin:0 1em 0 0;position:absolute;left:0;display:none;}
+.ui-siteContent .ui-menuNav-Collapse {}
+.ui-siteContent .ui-menuNav-Expand {width:60%;}
+.ui-menuToggle {display:block !important;cursor:pointer;}
+
 @media all and (orientation: portrait)
 {
-    .ui-siteContent .ui-siteContent-Container{width:100%;}
-    .ui-siteContent .ui-siteContent-Container-Expand{}
-    .ui-siteContent .ui-siteContent-Container-Collapse{}
-    .ui-siteContent .ui-menuNav {margin:0 1em 0 0;position:absolute;left:0;display:none;}
-    .ui-siteContent .ui-menuNav-Collapse {}
-    .ui-siteContent .ui-menuNav-Expand {width:60%;}
-    .ui-menuToggle {display:block !important;cursor:pointer;}
 
-    @media screen and (-webkit-min-device-pixel-ratio: 2)
-    {
-        /*html {font-size:1.3em !important;}*/
-        /*body {background-color: blue !important;}*/
-    }
 }
 
-@media all and (orientation: landscape)
+@media all and (orientation: landscape) and (min-width: 30em)
 {
-    .ui-siteContent .ui-siteContent-Container{width:auto; margin-left: auto ;margin-right:1em ;}
+    .ui-siteContent .ui-siteContent-Container{/*width:auto; margin-left: auto ;margin-right:1em ;*/}
     .ui-siteContent .ui-siteContent-Container-Expand{}
     .ui-siteContent .ui-siteContent-Container-Collapse{width:65%;float:left;}
-    .ui-siteContent .ui-menuNav {margin:0 1em 0 0;float:left;display:block !important;}
+    .ui-siteContent .ui-menuNav {position:relative;display:block !important;float:left;/*margin:0 1em 0 0;*/}
     .ui-siteContent .ui-menuNav-Collapse {} 
     .ui-siteContent .ui-menuNav-Expand {width:25%;}
     .ui-menuToggle {display:none !important;}
 
+
     @media screen and (min-resolution: 300dpi), screen and (-webkit-min-device-pixel-ratio: 2)
     {
-        /*html {font-size:0.9em !important;}*/
-        /*body {background-color: red !important;}*/
+
     }
 }
 
