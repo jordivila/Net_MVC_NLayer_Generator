@@ -93,9 +93,11 @@
 
                                 if (!menuClicked)
                                 {
-                                    $panelMenu.hide('slide');
+                                    $panelMenu.hide('slide', function () {
+                                        $panelMenu.navMenu('collapseAll');
+                                    });
+                                    
                                     jQuery(document).unbind("click");
-                                    $panelMenu.navMenu('collapseAll');
                                 }
                                 
                             });
