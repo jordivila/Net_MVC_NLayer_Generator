@@ -627,6 +627,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Layers\UI\Global.asax" />
+    <Content Include="Layers\UI\Scripts\Template.Widget.NavMenu.js" />
     <Content Include="Layers\UI\Template.UI.Web.Standalone.vstemplate">
       <SubType>Designer</SubType>
     </Content>

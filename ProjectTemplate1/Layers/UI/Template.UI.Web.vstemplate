@@ -967,6 +967,10 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Grid.js">Template.Widget.Grid.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.jQueryzer.js">Template.Widget.jQueryzer.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.Page.js">Template.Widget.Page.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.NavMenu.js">Template.Widget.NavMenu.js</ProjectItem>
+
+        
+
         <ProjectItem ReplaceParameters="true" TargetFileName="Template.Widget.UserOptions.js">Template.Widget.UserOptions.js</ProjectItem>
         <Folder Name="ui-dateSelector" TargetFolderName="ui-dateSelector">
           <ProjectItem ReplaceParameters="true" TargetFileName="ui-dateSelector-doc.htm">ui-dateSelector-doc.htm</ProjectItem>

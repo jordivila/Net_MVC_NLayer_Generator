@@ -1016,6 +1016,9 @@
     <Content Include="Scripts\Template.Widget.Form.js" />
     <Content Include="Scripts\Template.Widget.Grid.js" />
     <Content Include="Scripts\Template.Widget.Page.js" />
+    <Content Include="Scripts\Template.Widget.NavMenu.js" />
+    
+
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector-doc.htm" />
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector-sample.htm" />
     <Content Include="Scripts\ui-dateSelector\ui-dateSelector.js" />

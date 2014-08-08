@@ -100,6 +100,7 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
                                             "~/Scripts/ui-widgetMsg/ui-widgetMsg.js",
                                             "~/Scripts/Template.Widget.Dialogs.js",
                                             "~/Scripts/Template.Widget.DialogInline.js",
+                                            "~/Scripts/Template.Widget.NavMenu.js",
                                             "~/Scripts/ui-widgetTreeList/ui-widgetTreeList.js"
                 };
             }
@@ -133,7 +134,7 @@ namespace $customNamespace$.Models.Configuration.ConfigSections.ClientResources
             {
                 return new List<string>() { "~/Content/reset.css", 
                                             "~/Content/Site.css", 
-                                            "~/Content/font-awesome.css",
+                                            "~/Content/font-awesome.min.css",
                                             "~/Content/Site.JqueryUI.IconsExtendWithFontAwsome.css",
                                             "~/Scripts/ui-widgetMsg/ui-widgetMsg.css" ,
                                             "~/Scripts/ui-dateSelector/ui-dateSelector.css" ,
