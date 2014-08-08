@@ -1,4 +1,8 @@
-﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+﻿@using $customNamespace$.UI.Web.Common.Mvc.Html;
+@using $customNamespace$.Models.Enumerations;
+
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
 
 
 @section InlineStyles{
@@ -10,3 +14,50 @@
 }
 
 
+<style type="text/css">
+    .widgetMessageBoxesTest ul {
+        margin: 1em;
+    }
+</style>
+
+@using (MvcForm form = Html.BeginWidgetForm(new { id = "widgetTreeListSortable" }))
+{
+    using (MvcWidgetBox box = Html.BeginWidgetBox(false, true, false, string.Empty, null))
+    {
+        using (MvcWidgetBoxHeader header = Html.BeginWidgetBoxHeader())
+        {
+            <text>Demo Widget Messages</text>
+        }
+        using (MvcWidgetBoxContent content = Html.BeginWidgetBoxContent(new { @class = "widgetMessageBoxesTest" }))
+        {
+            <text>
+
+                Succes Messages:
+                <ul>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Success, "Succes Message")</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Success, "Succes Message", true, false)</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Success, "Succes Message", true, true)</li>
+                </ul>
+
+                Error Messages:
+                <ul>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Error, "Error Message")</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Error, "Error Message", true, false)</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Error, "Error Message", true, true)</li>
+                </ul>
+
+                Warning Messages:
+                <ul>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Warning, "Warning Message")</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Warning, "Warning Message", true, false)</li>
+                    <li>@Html.WidgetMessage(DataResultMessageType.Warning, "Warning Message", true, true)</li>
+                </ul>
+
+                Confirmation Messages:
+                <ul>
+                    <li>@Html.WidgetMessageConfirm("Confirm Message", "alert('You Click Accept');", "alert('You Click Cancel');")</li>
+                </ul>
+            </text>
+        }
+    }
+}

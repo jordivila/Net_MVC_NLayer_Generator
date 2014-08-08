@@ -129,6 +129,12 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="DatePattern" xml:space="preserve">
+    <value>Patrón de fecha</value>
+  </data>
+  <data name="Dates" xml:space="preserve">
+    <value>Fechas</value>
+  </data>
   <data name="Documentation" xml:space="preserve">
     <value>Documentación</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="NotFound404" xml:space="preserve">
     <value>Página no encontrada</value>
+  </data>
+  <data name="Numbers" xml:space="preserve">
+    <value>Números</value>
   </data>
   <data name="OnlineSince" xml:space="preserve">
     <value>Conectado desde</value>
@@ -191,6 +200,21 @@
   </data>
   <data name="SiteThemes" xml:space="preserve">
     <value>Apariencia</value>
+  </data>
+  <data name="TheNumber" xml:space="preserve">
+    <value>El número</value>
+  </data>
+  <data name="TheNumberFormattedAsCurrency" xml:space="preserve">
+    <value>El número formateado como moneda</value>
+  </data>
+  <data name="TheNumberFormattedAsNumber" xml:space="preserve">
+    <value>El número formateado como número</value>
+  </data>
+  <data name="TodayIs" xml:space="preserve">
+    <value>Hoy es...</value>
+  </data>
+  <data name="TotalAmountIs" xml:space="preserve">
+    <value>El importe total es</value>
   </data>
   <data name="TotalRecordsFound" xml:space="preserve">
     <value>Total encontrados</value>

@@ -1,12 +1,52 @@
-﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+﻿@model $customNamespace$.UI.Web.Models.baseViewModel
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
 
 
 @section InlineStyles{
+    <style type="text/css">
+        .ui-cultureSet-boxInfo li {
+            margin: 1em;
+        }
 
+        .ui-cultureSet-boxInfoTable td {
+            padding: 0.5em;
+        }
+    </style>
 }
 
 @section ScriptsToAdd{
 
 }
 
+@{
+    var d = DateTime.Now;
+    var a = 1234567890.12345;
+}
 
+<h2>@this.Model.BaseViewModelInfo.UserProfile.Culture.DisplayName</h2>
+<br />
+<h3>@$customNamespace$.Resources.General.GeneralTexts.Dates</h3>
+<br />
+<ul class="ui-cultureSet-boxInfo">
+    <li>@string.Format("{0} {1}", $customNamespace$.Resources.General.GeneralTexts.DatePattern, this.Model.BaseViewModelInfo.UserProfile.Culture.DateTimeFormat.ShortDatePattern)</li>
+    <li>@string.Format("{0} {1}", $customNamespace$.Resources.General.GeneralTexts.TodayIs, d.ToLongDateString())</li>
+    <li>@string.Format("{0} {1}", $customNamespace$.Resources.General.GeneralTexts.TodayIs, d.ToString())</li>
+</ul>
+<br />
+<h3>@$customNamespace$.Resources.General.GeneralTexts.Numbers</h3>
+<br />
+<table class="ui-cultureSet-boxInfoTable">
+    <tr>
+        <td>@a.ToString()</td>
+        <td>@$customNamespace$.Resources.General.GeneralTexts.TheNumber</td>
+    </tr>
+    <tr>
+        <td>@a.ToString("C")</td>
+        <td>@$customNamespace$.Resources.General.GeneralTexts.TheNumberFormattedAsCurrency</td>
+    </tr>
+    <tr>
+        <td>@a.ToString("N")</td>
+        <td>@$customNamespace$.Resources.General.GeneralTexts.TheNumberFormattedAsNumber</td>
+    </tr>
+</table>
