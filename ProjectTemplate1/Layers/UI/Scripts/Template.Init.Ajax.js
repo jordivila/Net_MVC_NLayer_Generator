@@ -8,7 +8,6 @@
 
 
 
-
 jQuery(document).ready(function () {
     jQuery.ajaxSetup({
         type: "GET",
@@ -45,9 +44,9 @@ $customNamespace$.Ajax.CultureSet = function (culture, onOK, onKO) {
         onKO(jqXHR);
     });
 };
-$customNamespace$.Ajax.UserBar = function (onOK, onKO, onComplete) {
+$customNamespace$.Ajax.UserUpdateLastActivity = function (onOK, onKO, onComplete) {
     var jqxhr = jQuery.ajax({
-			url: "/UserAccountBar/UserAccountBar"
+        url: "/UserUpdateLastActivity/UserUpdateLastActivity"
             , type: "GET"
             , data: {}
             , dataType: "html"
@@ -60,7 +59,6 @@ $customNamespace$.Ajax.UserBar = function (onOK, onKO, onComplete) {
         onKO(jqXHR);
     })
 	.always(function (jqXHR, textStatus, errorThrown) {
-		onComplete();
+	    onComplete();
 	});
 };
-

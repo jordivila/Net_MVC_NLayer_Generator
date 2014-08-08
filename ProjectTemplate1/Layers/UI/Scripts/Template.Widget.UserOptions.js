@@ -14,7 +14,7 @@ jQuery.widget("ui.userOptions", jQuery.ui.widgetBase,
 
         var self = this;
 
-        $customNamespace$.Ajax.UserBar(
+        $customNamespace$.Ajax.UserUpdateLastActivity(
                             function (data, textStatus, jqXHR) {
                                 jQuery(self.element).append(data);
                                 $customNamespace$.Widgets.jQueryzer(self.element);

@@ -40,7 +40,7 @@ $customNamespace$.Ajax.CultureSet = function (culture, onOK, onKO) {
         onKO(jqXHR);
     });
 };
-$customNamespace$.Ajax.UserBar = function (onOK, onKO, onComplete) {
+$customNamespace$.Ajax.UserUpdateLastActivity = function (onOK, onKO, onComplete) {
     var jqxhr = jQuery.ajax({
 			url: "/UserUpdateLastActivity/UserUpdateLastActivity"
             , type: "GET"
