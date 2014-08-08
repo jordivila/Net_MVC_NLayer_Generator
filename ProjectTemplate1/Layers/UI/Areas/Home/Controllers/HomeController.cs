@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using $customNamespace$.Models.Enumerations;
 using $customNamespace$.Models.Globalization;
+using $customNamespace$.Resources.General;
 using $customNamespace$.UI.Web.Controllers;
 using $customNamespace$.UI.Web.Models;
 
@@ -30,14 +31,14 @@ namespace $customNamespace$.UI.Web.Areas.Home.Controllers
         public ActionResult About()
         {
             baseViewModel model = new baseViewModel();
-            model.BaseViewModelInfo.Title = "About";
+            model.BaseViewModelInfo.Title = GeneralTexts.About;
             return View(model);
         }
 
         private ActionResult SettingsApplied()
         {
             baseViewModel model = new baseViewModel();
-            model.BaseViewModelInfo.Title = "Settings applied";
+            model.BaseViewModelInfo.Title = GeneralTexts.SettingsApplied;
             return View(model);
         }
 

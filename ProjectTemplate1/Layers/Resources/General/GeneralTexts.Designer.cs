@@ -303,6 +303,15 @@ namespace $customNamespace$.Resources.General {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings applied.
+        /// </summary>
+        public static string SettingsApplied {
+            get {
+                return ResourceManager.GetString("SettingsApplied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Showing.
         /// </summary>
         public static string Showing {

@@ -216,6 +216,9 @@
   <data name="SessionExpiredPleaseLogin" xml:space="preserve">
     <value>La sesión ha caducado, por favor entra usuario y contraseña</value>
   </data>
+  <data name="SettingsApplied" xml:space="preserve">
+    <value>Ajustes aplicados</value>
+  </data>
   <data name="Showing" xml:space="preserve">
     <value>Mostrando</value>
   </data>

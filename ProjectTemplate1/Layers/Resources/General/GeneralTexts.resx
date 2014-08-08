@@ -216,6 +216,9 @@
   <data name="SessionExpiredPleaseLogin" xml:space="preserve">
     <value>Session expired, please login</value>
   </data>
+  <data name="SettingsApplied" xml:space="preserve">
+    <value>Settings applied</value>
+  </data>
   <data name="Showing" xml:space="preserve">
     <value>Showing</value>
   </data>
