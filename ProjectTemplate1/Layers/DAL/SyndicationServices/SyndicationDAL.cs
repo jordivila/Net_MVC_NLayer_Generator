@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Caching;
 using System.ServiceModel.Syndication;
 using System.Xml;
 using $customNamespace$.Models.ExtensionMethods;
+using $customNamespace$.Models.Logging;
 using $customNamespace$.Models.Syndication;
 
 namespace $customNamespace$.DAL.SyndicationServices
 {
     public class SyndicationDAL : BaseDAL, ISyndicationDAL
     {
-        private string _blogRssFeedPath = Path.Combine(Environment.CurrentDirectory, "blogrss.xml");
-        private const string _blogCacheManagerName = "CacheManagerForBlogFile";
-        private const string _blogCacheFeedKey = "BlogCacheFeedKey";
-        private ObjectCache _objCacheManager = new MemoryCache(_blogCacheManagerName);
-        private CacheItemPolicy _objCachePolicy = new CacheItemPolicy();
+        private string GetBlogRssFeedPath
+        {
+            get
+            {
+                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase).Replace(@"file:\", string.Empty), "SyndicationServices\\blogrss.xml");
+            }
+        }
 
         private SyndicationFeedFormatter GetAll()
         {
@@ -26,22 +30,15 @@ namespace $customNamespace$.DAL.SyndicationServices
 
             try
             {
-                if (_objCacheManager.Get(SyndicationDAL._blogCacheFeedKey) == null)
-                {
-                    fs = System.IO.File.OpenRead(_blogRssFeedPath);
+                    fs = System.IO.File.OpenRead(this.GetBlogRssFeedPath);
                     xr = XmlTextReader.Create((Stream)fs);
-                    _objCacheManager.Add(SyndicationDAL._blogCacheFeedKey, SyndicationFeed.Load(xr), _objCachePolicy);
-                }
-
-                feed = ((SyndicationFeed)_objCacheManager.Get(SyndicationDAL._blogCacheFeedKey)).Clone(true);
-
-                if ($customNamespace$.Models.Configuration.ApplicationConfiguration.IsDebugMode)
-                {
-                    _objCacheManager.Remove(SyndicationDAL._blogCacheFeedKey);
-                }
+                    feed = SyndicationFeed.Load(xr);
+                    return new Atom10FeedFormatter(feed);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LoggingHelper.Write(ex);
+
                 throw;
             }
             finally
@@ -49,8 +46,6 @@ namespace $customNamespace$.DAL.SyndicationServices
                 if (fs != null) { fs.Close(); fs.Dispose(); }
                 if (xr != null) { xr.Close(); }
             }
-
-            return new Atom10FeedFormatter(feed);
         }
 
         private SyndicationItemFormatter GetFormatter(SyndicationItem feedItem)
