@@ -3,8 +3,8 @@
 @section InlineStyles{
     <style type="text/css">
         .ui-list {
-            list-style-type: none;
-            margin: 0 0 0 0em;
+            list-style-type: circle;
+            margin: 1em 0 1em 3em;
             padding: 0;
         }
 
@@ -19,13 +19,4 @@
 
 }
 
-
-<div class="ui-home-content">
-    <ul class="ui-list">
-        <li>Asp.Net Authentication, Authorization, Membership, Role and Profile providers are used throughout n-tier web app using WCF.</li>
-        <li>WCF services are prepared to use NetTcp or Http bindings and UserContext is passed throughout messages.</li>
-        <li>Asp.Net Globalization & jQuery Globalize & jQuery Validation combined together.</li>
-        <li>Asp.Net MVC site common exceptions like "Page not Found 404", "Session Expired", "Permission Denied" and "Communication Errors" are allready handled.</li>
-        <li>Enterprise Library Blocks : data access, logging, unity and cache.</li>
-    </ul>
-</div> 
+@System.Web.Mvc.MvcHtmlString.Create($customNamespace$.Resources.General.GeneralTexts.HomeIndexText)

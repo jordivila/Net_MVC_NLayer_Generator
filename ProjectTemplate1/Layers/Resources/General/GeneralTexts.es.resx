@@ -141,6 +141,30 @@
   <data name="Home" xml:space="preserve">
     <value>Inicio</value>
   </data>
+  <data name="HomeIndexText" xml:space="preserve">
+    <value>&lt;p&gt;
+    Este website ha sido generado mediante un template de Visual Studio 2013. 
+    El template permite crear una solución basada en 2 posibilidades:
+    &lt;ul class="ui-list"&gt;
+        &lt;li&gt;un web site ASP NET MVC&lt;/li&gt;
+        &lt;li&gt;una aplicacion distribuida con ASP Net MVC como front-end y WCF como back-end&lt;/li&gt;
+    &lt;/ul&gt;
+
+    La solución generada se puede desplegar en Azure ya sea como Azure Web Site o como Azure Cloud Service dependiendo del tipo de solución que se haya escogido 
+    y dispone de una serie de funcionalidades ya implementadas como:
+
+    &lt;div class="ui-home-content"&gt;
+        &lt;ul class="ui-list"&gt;
+            &lt;li&gt;Authentication and Authorization based on users and roles&lt;/li&gt;
+            &lt;li&gt;WCF services are prepared to use NetTcp or Http bindings and UserContext is passed throughout messages.&lt;/li&gt;
+            &lt;li&gt;ASP NET MVC website for mobile, desktop and tablet browsers&lt;/li&gt;
+            &lt;li&gt;Logging exceptions at front-end and back-end tiers&lt;/li&gt;
+            &lt;li&gt;User management&lt;/li&gt;
+            &lt;li&gt;Globalization support&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt; 
+&lt;/p&gt;</value>
+  </data>
   <data name="Languages" xml:space="preserve">
     <value>Idiomas</value>
   </data>

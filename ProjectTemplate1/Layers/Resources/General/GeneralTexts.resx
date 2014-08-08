@@ -141,6 +141,30 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="HomeIndexText" xml:space="preserve">
+    <value>&lt;p&gt;
+    This web site was created using &lt;a href="https://github.com/jordivila/Net_MVC_NLayer_Generator"&gt;Net_MVC_NLayer_Generator&lt;/a&gt;.
+    The template allows you to create a Visual Studio 2013 solution based on 2 possibilities:
+    &lt;ul class="ui-list"&gt;
+        &lt;li&gt;an ASP NET MVC web site&lt;/li&gt;
+        &lt;li&gt;a .NET Multi-Tier application with an ASP NET MVC front-end website and WCF back-end application&lt;/li&gt;
+    &lt;/ul&gt;
+
+    The resulting solution can be desployed to Azure Web Sites or Azure Cloud Services depending on the selected choice and 
+    and has built-in features like:
+
+    &lt;div class="ui-home-content"&gt;
+        &lt;ul class="ui-list"&gt;
+            &lt;li&gt;Authentication and Authorization based on users and roles&lt;/li&gt;
+            &lt;li&gt;WCF services are prepared to use NetTcp or Http bindings and UserContext is passed throughout messages.&lt;/li&gt;
+            &lt;li&gt;ASP NET MVC website for mobile, desktop and tablet browsers&lt;/li&gt;
+            &lt;li&gt;Logging exceptions at front-end and back-end tiers&lt;/li&gt;
+            &lt;li&gt;User management&lt;/li&gt;
+            &lt;li&gt;Globalization support&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt; 
+&lt;/p&gt;</value>
+  </data>
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
   </data>
