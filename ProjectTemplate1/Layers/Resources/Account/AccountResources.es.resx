@@ -192,7 +192,7 @@ Atentamente, el equipo de soporte de {0}</value>
     <value>Email</value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
-    <value>Dirección de correo electrónico</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="ForgotPasswordQuestion" xml:space="preserve">
     <value>¿ Olvidaste tu contraseña ?</value>
