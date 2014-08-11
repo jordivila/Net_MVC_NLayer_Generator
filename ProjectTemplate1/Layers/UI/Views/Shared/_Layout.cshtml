@@ -5,69 +5,70 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="initial-scale=1.0" />
-    <title>@this.Model.BaseViewModelInfo.Title</title>
-    @Html.PartialResourcesStylesheetsCommonRender()
-    @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
-</head>
-<body class="ui-widget-content ui-hidden">
-    <div class="ui-sitePage ui-widget">
+    <head>
+        <meta name="viewport" content="initial-scale=1.0" />
+        <title>@this.Model.BaseViewModelInfo.Title</title>
+        @Html.PartialResourcesStylesheetsCommonRender()
+        @RenderSection(HtmlHelperExtensions.SectionInlineStyles, true)
+    </head>
+    <body class="ui-widget-content ui-hidden">
+        <div class="ui-sitePage ui-widget">
 
-        <div data-widget="userOptions" data-widget-url="@Url.Account_UserUpdateLastActivity()">
-            <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all">
-                <div id="menuToggle" class="ui-menuToggle">
-                    <div class="ui-menuToggle-icon fa fa-bars fa-2x"></div>
-                    <div class="ui-menuToggle-text">Menu</div>
-                    <div class="ui-carriageReturn"></div>
+            <div data-widget="userOptions" data-widget-url="@Url.Account_UserUpdateLastActivity()">
+                <div class="ui-site-header ui-widget-header ui-widget-content ui-corner-all">
+                    <div id="menuToggle" class="ui-menuToggle">
+                        <div class="ui-menuToggle-icon fa fa-bars fa-2x"></div>
+                        <div class="ui-menuToggle-text">Menu</div>
+                        <div class="ui-carriageReturn"></div>
+                    </div>
+                    <div class="ui-site-nameBox">
+                        <a href="/">@$customNamespace$.Models.Configuration.ApplicationConfiguration.DomainInfoSettingsSection.DomainName</a>
+                    </div>
                 </div>
-                <div class="ui-site-title">
-                    <a href="/">@$customNamespace$.Models.Configuration.ApplicationConfiguration.DomainInfoSettingsSection.DomainName</a>
-                </div>
+                <div class="ui-carriageReturn"></div>
             </div>
             <div class="ui-carriageReturn"></div>
-        </div>
-        <div class="ui-carriageReturn"></div>
 
-        <div class="ui-site-title">
-            <h1>@this.Model.BaseViewModelInfo.Title</h1>
-        </div>
-
-        @Html.PartialBreadcrumb()
-
-        <div class="ui-siteContent">
-            @Html.MenuGet().Render(new { id = "panelMenu", @class = "ui-menuNav ui-menuNav-Expand" })
-            <div id="panelContent" class="ui-siteContent-Container ui-siteContent-Container-Collapse">
-                @RenderBody()
+            <div class="ui-site-title">
+                <h1>@this.Model.BaseViewModelInfo.Title</h1>
+                <hr />
             </div>
-        </div>
 
-        <div class="ui-siteFooter">
-            <div class="ui-widget-header ui-corner-all">
-                <div>Copyright © 2012 Company Co. All rights reserved</div>
-                <div class="ui-siteFooter-html5Logo"></div>
-                <div class="ui-siteVersion">
-                    v. - @$customNamespace$.UI.Web.MvcApplication.Version
+            @Html.PartialBreadcrumb()
+            
+            <div class="ui-siteContent">
+                @Html.MenuGet().Render(new { id = "panelMenu", @class = "ui-menuNav ui-menuNav-Expand" })
+                <div id="panelContent" class="ui-siteContent-Container ui-siteContent-Container-Collapse">
+                    @RenderBody()
                 </div>
             </div>
-        </div>
 
-        <br />
-    </div>
-    @Html.PartialResourcesScriptsCommonRender()
-    @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, true)
-    <script type="text/javascript">
-        (function ($) {
-            jQuery(document).ready(function () {
-                $customNamespace$.Widgets.Page.selector = "body";
-                $customNamespace$.Widgets.Page.cultureSelected = '@this.Model.BaseViewModelInfo.LocalizationResources.Culture';
-                $customNamespace$.Widgets.Page.cultureGlobalization = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureGlobalization";
-                $customNamespace$.Widgets.Page.cultureDatePicker = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureDatePicker";
-                $customNamespace$.Widgets.Page.defaultTheme = "@this.Model.BaseViewModelInfo.UserProfile.Theme.Value";
-                $customNamespace$.Widgets.Page.onInit(function () { jQuery('body').removeClass('ui-hidden'); });
-                $customNamespace$.Widgets.Page.Init();
-            });
-        })(jQuery);
-    </script>
-</body>
+            <div class="ui-siteFooter">
+                <div class="ui-widget-header ui-corner-all">
+                    <div>Copyright © 2012 Company Co. All rights reserved</div>
+                    <div class="ui-siteFooter-html5Logo"></div>
+                    <div class="ui-siteVersion">
+                        v. - @$customNamespace$.UI.Web.MvcApplication.Version
+                    </div>
+                </div>
+            </div>
+
+            <br />
+        </div>
+        @Html.PartialResourcesScriptsCommonRender()
+        @RenderSection(HtmlHelperExtensions.SectionScriptsToAdd, true)
+        <script type="text/javascript">
+            (function ($) {
+                jQuery(document).ready(function () {
+                    $customNamespace$.Widgets.Page.selector = "body";
+                    $customNamespace$.Widgets.Page.cultureSelected = '@this.Model.BaseViewModelInfo.LocalizationResources.Culture';
+                    $customNamespace$.Widgets.Page.cultureGlobalization = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureGlobalization";
+                    $customNamespace$.Widgets.Page.cultureDatePicker = "@this.Model.BaseViewModelInfo.LocalizationResources.CultureDatePicker";
+                    $customNamespace$.Widgets.Page.defaultTheme = "@this.Model.BaseViewModelInfo.UserProfile.Theme.Value";
+                    $customNamespace$.Widgets.Page.onInit(function () { jQuery('body').removeClass('ui-hidden'); });
+                    $customNamespace$.Widgets.Page.Init();
+                });
+            })(jQuery);
+        </script>
+    </body>
 </html>
