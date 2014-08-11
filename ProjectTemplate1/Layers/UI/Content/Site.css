@@ -88,7 +88,7 @@ input[type='radio'] {height:1em;width:1em;}
 .ui-siteContent {padding:0em 0em 0em 0em ;margin:0em 0 0 0;overflow:auto;}
 .ui-siteContent .ui-menuNav { padding:0.3em; z-index:9999;}
 .ui-siteContent .ui-menuNav .ui-treeList-toggle{margin:-0.45em 0.5em 0 0 !important;padding: 0.5em;border:0;}
-.ui-siteContent .ui-menuNav li { margin:0.3em 0.1em 0.1em 0.1em;padding:0.7em 0.1em 0.7em 0.3em;background-image:none;}
+.ui-siteContent .ui-menuNav li { margin:0.3em 0.1em 0.1em 0.1em;padding:1em 0.1em 1em 0.3em;background-image:none;}
 .ui-siteContent .ui-menuNav li ul {margin:0.1em 0.1em 0.1em 0.1em;padding:0.1em 0.1em 0.1em 0.3em;background-image:none;}
 .ui-siteContent .ui-menuNav li:first-letter { margin:0em 0em 0em 0.1em;}
 
