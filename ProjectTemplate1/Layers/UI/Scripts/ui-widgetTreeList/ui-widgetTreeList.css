@@ -1,4 +1,4 @@
-﻿.ui-treeList {list-style-type:none;position:relative;margin:0 0 0 0;padding:0.5em 0.5em 0.5em 0.5em ;}
+﻿.ui-treeList {list-style-type:none;position:relative;margin:0 0 0 0;padding:0.5em 0.5em 0.5em 0.5em ;cursor:pointer;}
 .ui-treeList ul{list-style-type:none;margin:0em 0em 0em 0em;padding:1.5em 0.5em 1.5em 0.5em;}
 .ui-treeList li {margin:1em ;padding:1em;position:relative;}
 .ui-treeList li:first-letter {margin:0.1em 0.1em 0.1em 2em;}

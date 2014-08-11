@@ -42,7 +42,7 @@ jQuery.widget("ui.page", jQuery.ui.widgetBase,
     options: {
         cultureGlobalization: null
         , cultureDatePicker: null
-        , controllerSelected: null
+        //, controllerSelected: null
         , defaultTheme: null
     }
     , _init: function () {
@@ -50,11 +50,8 @@ jQuery.widget("ui.page", jQuery.ui.widgetBase,
         jQuery.ui.widgetBase.prototype._init.call(this);
 
         this.initAjaxProgress();
-        this.initResizeControl();
         this.initGlobalization();
         this.initValidate();
-        this.initJQueryzer();
-        //this.initMenuNav();
         this.initUserOptions();
     }
     , _create: function () {
@@ -63,15 +60,14 @@ jQuery.widget("ui.page", jQuery.ui.widgetBase,
     , destroy: function () {
         jQuery.ui.widgetBase.prototype.destroy.call(this);
     }
-    //, initMenuNav: function () {
-    //    jQuery(this.element).find('div[data-widget="menuNav"]:first').menuNav({ allowCollapse: true, isCollapsed: true, allowClose: false });
-    //}
+
     , initUserOptions: function () {
 
         var self = this;
 
         jQuery(this.element).find('div[data-widget="userOptions"]:first').userOptions({
             complete: function () {
+                self.initJQueryzer();
                 self._trigger('initComplete', null, null);
             }
         });
@@ -103,24 +99,6 @@ jQuery.widget("ui.page", jQuery.ui.widgetBase,
             }
             return false;
         }
-    }
-    , initResizeControl: function () {
-        var resizing = function () {
-
-            var availableHeight = jQuery(window).height() -
-                                                (jQuery('div.ui-site-header:first').height() +
-                                                    jQuery('div.ui-siteFooter:first').height() +
-                                                    jQuery('div.ui-siteMenu-TopNav:first').height() +
-                                                    jQuery('div.ui-cultureSwitcher:first').height() +
-                                                    jQuery('div.ui-themeSwitcher:first').height()
-                                                );
-
-            jQuery('div.ui-siteContent:first').animate({ height: availableHeight - 50 }, "slow");
-        }
-        //        jQuery(window).resize(function () {
-        //            resizing();
-        //        });
-        //        resizing();
     }
     , initJQueryzer: function () {
 
